@@ -3,61 +3,11 @@ set -euo pipefail
 
 source "$LIB_DIR/common.sh"
 
-BOOTSTRAP_ZSH_DIR="$HOME/.config/dev-bootstrap/zsh"
-FZF_ZSH_FILE="$BOOTSTRAP_ZSH_DIR/fzf.zsh"
+REPO_ZSH_FILE="$REPO_ROOT/home/dot_config/dev-bootstrap/zsh/fzf.zsh"
+TARGET_ZSH_FILE="$HOME/.config/dev-bootstrap/zsh/fzf.zsh"
 
-BOOTSTRAP_NVIM_DIR="$HOME/.config/dev-bootstrap/nvim"
-BOOTSTRAP_VIM_DIR="$HOME/.config/dev-bootstrap/vim"
-BOOTSTRAP_NVIM_PLUGIN_DIR="$BOOTSTRAP_NVIM_DIR/plugin"
-FZF_VIM_FILE="$BOOTSTRAP_VIM_DIR/fzf.vim"
-FZF_NVIM_FILE="$BOOTSTRAP_NVIM_PLUGIN_DIR/fzf.vim"
-
-write_zsh_integration() {
-  mkdir -p "$BOOTSTRAP_ZSH_DIR"
-
-  cat > "$FZF_ZSH_FILE" <<'EOF'
-# dev-bootstrap managed fzf integration
-
-if [[ -f /opt/homebrew/opt/fzf/shell/completion.zsh ]]; then
-  source /opt/homebrew/opt/fzf/shell/completion.zsh
-fi
-
-if [[ -f /opt/homebrew/opt/fzf/shell/key-bindings.zsh ]]; then
-  source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
-fi
-
-if [[ -f /usr/local/opt/fzf/shell/completion.zsh ]]; then
-  source /usr/local/opt/fzf/shell/completion.zsh
-fi
-
-if [[ -f /usr/local/opt/fzf/shell/key-bindings.zsh ]]; then
-  source /usr/local/opt/fzf/shell/key-bindings.zsh
-fi
-EOF
-}
-
-write_vim_integration() {
-  mkdir -p "$BOOTSTRAP_VIM_DIR"
-  mkdir -p "$BOOTSTRAP_NVIM_PLUGIN_DIR"
-
-  cat > "$FZF_VIM_FILE" <<'EOF'
-" dev-bootstrap managed fzf Vim integration
-if isdirectory('/opt/homebrew/opt/fzf')
-  set rtp+=/opt/homebrew/opt/fzf
-elseif isdirectory('/usr/local/opt/fzf')
-  set rtp+=/usr/local/opt/fzf
-endif
-EOF
-
-  cat > "$FZF_NVIM_FILE" <<'EOF'
-" dev-bootstrap managed fzf Neovim integration
-if isdirectory('/opt/homebrew/opt/fzf')
-  set rtp+=/opt/homebrew/opt/fzf
-elseif isdirectory('/usr/local/opt/fzf')
-  set rtp+=/usr/local/opt/fzf
-endif
-EOF
-}
+REPO_NVIM_FILE="$REPO_ROOT/home/dot_config/dev-bootstrap/nvim/plugin/fzf.vim"
+TARGET_NVIM_FILE="$HOME/.config/dev-bootstrap/nvim/plugin/fzf.vim"
 
 verify_fzf() {
   command_exists fzf || die "fzf command not found after installation."
@@ -72,8 +22,16 @@ verify_fzf() {
 
 main() {
   brew_install_formula "fzf"
-  write_zsh_integration
-  write_vim_integration
+
+  [[ -f "$REPO_ZSH_FILE" ]] || die "Missing repo-managed file: $REPO_ZSH_FILE"
+  [[ -f "$REPO_NVIM_FILE" ]] || die "Missing repo-managed file: $REPO_NVIM_FILE"
+
+  mkdir -p "$(dirname "$TARGET_ZSH_FILE")"
+  mkdir -p "$(dirname "$TARGET_NVIM_FILE")"
+
+  cp "$REPO_ZSH_FILE" "$TARGET_ZSH_FILE"
+  cp "$REPO_NVIM_FILE" "$TARGET_NVIM_FILE"
+
   verify_fzf
 }
 

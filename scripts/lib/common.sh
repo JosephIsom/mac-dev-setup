@@ -37,6 +37,11 @@ command_exists() {
   command -v "$1" >/dev/null 2>&1
 }
 
+command_exists_in_zsh() {
+  local cmd="$1"
+  zsh -i -c "command -v $cmd >/dev/null 2>&1"
+}
+
 is_macos() {
   [[ "$(uname -s)" == "Darwin" ]]
 }
@@ -61,12 +66,6 @@ brew_bin_path() {
   fi
 
   return 1
-}
-
-homebrew_shellenv() {
-  local brew_bin
-  brew_bin="$(brew_bin_path)" || return 1
-  "$brew_bin" shellenv
 }
 
 ensure_brew_available() {
@@ -94,6 +93,11 @@ brew_install_cask() {
   ensure_brew_available
   log_info "Installing/upgrading Homebrew cask: $cask"
   brew install --cask "$cask"
+}
+
+run_in_login_zsh() {
+  local cmd="$1"
+  zsh -i -c "$cmd"
 }
 
 run_module() {

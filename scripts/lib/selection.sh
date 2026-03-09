@@ -8,6 +8,15 @@ GIT_USER_NAME="${GIT_USER_NAME:-}"
 GIT_USER_EMAIL="${GIT_USER_EMAIL:-}"
 GITHUB_GIT_PROTOCOL="${GITHUB_GIT_PROTOCOL:-https}"
 
+PYTHON_VERSION="${PYTHON_VERSION:-3.12}"
+NODE_VERSION="${NODE_VERSION:-lts}"
+GO_VERSION="${GO_VERSION:-latest}"
+JAVA_VERSION="${JAVA_VERSION:-21}"
+
+COLIMA_CPU="${COLIMA_CPU:-4}"
+COLIMA_MEMORY="${COLIMA_MEMORY:-8}"
+COLIMA_DISK="${COLIMA_DISK:-60}"
+
 declare -a WITH_FLAGS=()
 declare -a WITHOUT_FLAGS=()
 
@@ -17,9 +26,14 @@ ALL_SELECTION_VARS=(
   INSTALL_CORE_GIT
   INSTALL_CORE_GITHUB_CLI
   INSTALL_CORE_CHEZMOI
+  INSTALL_CORE_MISE
+  INSTALL_CORE_BREWFILE_APPLY
+  INSTALL_CORE_BREWFILE_EXPORT
 
   INSTALL_CONFIG_GIT_BASELINE
   INSTALL_CONFIG_GITHUB_CLI_BASELINE
+  INSTALL_CONFIG_SSH_BASELINE
+  INSTALL_CONFIG_GITHUB_SSH_CHECK
 
   INSTALL_SHELL_ZSH_BASELINE
   INSTALL_SHELL_STARSHIP
@@ -59,8 +73,10 @@ ALL_SELECTION_VARS=(
   INSTALL_EDITOR_VSCODE_APP
   INSTALL_EDITOR_VSCODE_CLI
   INSTALL_EDITOR_VSCODE_EXTENSIONS_BASE
+  INSTALL_EDITOR_VSCODE_SETTINGS_BASE
   INSTALL_EDITOR_INTELLIJ_TOOLBOX
   INSTALL_EDITOR_INTELLIJ_IDEA
+  INSTALL_EDITOR_INTELLIJ_CLI
   INSTALL_EDITOR_ITERM2_APP
   INSTALL_EDITOR_NEOVIM
 
@@ -297,8 +313,12 @@ interactive_adjustments() {
   INSTALL_SHELL_TMUX="$(prompt_yes_no "Install tmux?" "${INSTALL_SHELL_TMUX:-false}")"
   INSTALL_GO_RUNTIME="$(prompt_yes_no "Install Golang tooling?" "${INSTALL_GO_RUNTIME:-false}")"
   INSTALL_EDITOR_VSCODE_APP="$(prompt_yes_no "Install VS Code?" "${INSTALL_EDITOR_VSCODE_APP:-false}")"
+  INSTALL_EDITOR_VSCODE_CLI="$(prompt_yes_no "Set up VS Code CLI support?" "${INSTALL_EDITOR_VSCODE_CLI:-false}")"
+  INSTALL_EDITOR_VSCODE_EXTENSIONS_BASE="$(prompt_yes_no "Install baseline VS Code extensions?" "${INSTALL_EDITOR_VSCODE_EXTENSIONS_BASE:-false}")"
+  INSTALL_EDITOR_VSCODE_SETTINGS_BASE="$(prompt_yes_no "Install baseline VS Code settings scaffold?" "${INSTALL_EDITOR_VSCODE_SETTINGS_BASE:-false}")"
   INSTALL_EDITOR_INTELLIJ_TOOLBOX="$(prompt_yes_no "Install JetBrains Toolbox?" "${INSTALL_EDITOR_INTELLIJ_TOOLBOX:-false}")"
-  INSTALL_EDITOR_INTELLIJ_IDEA="$(prompt_yes_no "Install IntelliJ IDEA?" "${INSTALL_EDITOR_INTELLIJ_IDEA:-false}")"
+  INSTALL_EDITOR_INTELLIJ_IDEA="$(prompt_yes_no "Mark IntelliJ IDEA as expected/managed?" "${INSTALL_EDITOR_INTELLIJ_IDEA:-false}")"
+  INSTALL_EDITOR_INTELLIJ_CLI="$(prompt_yes_no "Set up IntelliJ CLI helper?" "${INSTALL_EDITOR_INTELLIJ_CLI:-false}")"
   INSTALL_CONTAINERS_COLIMA="$(prompt_yes_no "Install Colima?" "${INSTALL_CONTAINERS_COLIMA:-false}")"
   INSTALL_CONTAINERS_DOCKER_CLI="$(prompt_yes_no "Install Docker CLI tooling?" "${INSTALL_CONTAINERS_DOCKER_CLI:-false}")"
   INSTALL_OPTIONAL_NIX="$(prompt_yes_no "Install Nix?" "${INSTALL_OPTIONAL_NIX:-false}")"
@@ -306,10 +326,16 @@ interactive_adjustments() {
   if [[ "$INSTALL_EDITOR_VSCODE_APP" == "false" ]]; then
     INSTALL_EDITOR_VSCODE_CLI="false"
     INSTALL_EDITOR_VSCODE_EXTENSIONS_BASE="false"
+    INSTALL_EDITOR_VSCODE_SETTINGS_BASE="false"
   fi
 
   if [[ "$INSTALL_EDITOR_INTELLIJ_TOOLBOX" == "false" ]]; then
     INSTALL_EDITOR_INTELLIJ_IDEA="false"
+    INSTALL_EDITOR_INTELLIJ_CLI="false"
+  fi
+
+  if [[ "$INSTALL_EDITOR_INTELLIJ_IDEA" == "false" ]]; then
+    INSTALL_EDITOR_INTELLIJ_CLI="false"
   fi
 
   if [[ "$INSTALL_CONTAINERS_COLIMA" == "false" ]]; then
@@ -342,6 +368,8 @@ print_selection_summary() {
   log_info "Git identity name set: $([[ -n "${GIT_USER_NAME:-}" ]] && printf yes || printf no)"
   log_info "Git identity email set: $([[ -n "${GIT_USER_EMAIL:-}" ]] && printf yes || printf no)"
   log_info "GitHub protocol: ${GITHUB_GIT_PROTOCOL:-https}"
+  log_info "Runtime versions: python=${PYTHON_VERSION} node=${NODE_VERSION} go=${GO_VERSION} java=${JAVA_VERSION}"
+  log_info "Colima resources: cpu=${COLIMA_CPU} memory=${COLIMA_MEMORY}GiB disk=${COLIMA_DISK}GiB"
   log_info "Resolved selections:"
   for var in "${ALL_SELECTION_VARS[@]}"; do
     printf '  %-34s %s\n' "$var" "${!var}"

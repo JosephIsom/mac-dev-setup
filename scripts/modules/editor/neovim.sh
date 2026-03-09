@@ -3,11 +3,13 @@ set -euo pipefail
 
 source "$LIB_DIR/common.sh"
 
-BOOTSTRAP_NVIM_DIR="$HOME/.config/dev-bootstrap/nvim"
-BOOTSTRAP_NVIM_PLUGIN_DIR="$BOOTSTRAP_NVIM_DIR/plugin"
-BOOTSTRAP_NVIM_AFTER_PLUGIN_DIR="$BOOTSTRAP_NVIM_DIR/after/plugin"
-BOOTSTRAP_NVIM_LUA_DIR="$BOOTSTRAP_NVIM_DIR/lua/dev_bootstrap"
-BOOTSTRAP_NVIM_LOCAL_LUA="$BOOTSTRAP_NVIM_DIR/local.lua"
+REPO_NVIM_DIR="$REPO_ROOT/home/dot_config/dev-bootstrap/nvim"
+
+TARGET_NVIM_DIR="$HOME/.config/dev-bootstrap/nvim"
+TARGET_PLUGIN_DIR="$TARGET_NVIM_DIR/plugin"
+TARGET_AFTER_PLUGIN_DIR="$TARGET_NVIM_DIR/after/plugin"
+TARGET_LUA_DIR="$TARGET_NVIM_DIR/lua/dev_bootstrap"
+TARGET_LUA_PLUGIN_DIR="$TARGET_LUA_DIR/plugins"
 
 USER_NVIM_DIR="$HOME/.config/nvim"
 USER_INIT_VIM="$USER_NVIM_DIR/init.vim"
@@ -31,39 +33,14 @@ append_line_if_missing() {
   log_success "Added managed include to $file"
 }
 
-write_bootstrap_loader() {
-  mkdir -p "$BOOTSTRAP_NVIM_PLUGIN_DIR"
-  mkdir -p "$BOOTSTRAP_NVIM_AFTER_PLUGIN_DIR"
-  mkdir -p "$BOOTSTRAP_NVIM_LUA_DIR"
+copy_repo_tree_clean() {
+  local src_dir="$1"
+  local dest_dir="$2"
 
-  cat > "$BOOTSTRAP_NVIM_PLUGIN_DIR/bootstrap.vim" <<'EOF'
-" dev-bootstrap managed Neovim loader
-
-if filereadable(expand('~/.config/dev-bootstrap/nvim/plugin/fzf.vim'))
-  source ~/.config/dev-bootstrap/nvim/plugin/fzf.vim
-endif
-
-if filereadable(expand('~/.config/dev-bootstrap/nvim/plugin/core.vim'))
-  source ~/.config/dev-bootstrap/nvim/plugin/core.vim
-endif
-
-lua << EOF_LUA
-local local_lua = vim.fn.expand("~/.config/dev-bootstrap/nvim/local.lua")
-if vim.fn.filereadable(local_lua) == 1 then
-  dofile(local_lua)
-end
-EOF_LUA
-EOF
-
-  cat > "$BOOTSTRAP_NVIM_PLUGIN_DIR/core.vim" <<'EOF'
-" dev-bootstrap managed core Neovim settings
-" Intentionally minimal for now.
-EOF
-
-  cat > "$BOOTSTRAP_NVIM_LOCAL_LUA" <<'EOF'
--- dev-bootstrap user-local Neovim overrides
--- Intentionally left minimal.
-EOF
+  [[ -d "$src_dir" ]] || die "Missing repo-managed directory: $src_dir"
+  rm -rf "$dest_dir"
+  mkdir -p "$dest_dir"
+  cp -R "$src_dir"/. "$dest_dir"/
 }
 
 ensure_nvim_config_hook() {
@@ -85,17 +62,36 @@ EOF
   log_success "Created $USER_INIT_LUA"
 }
 
+bootstrap_plugins() {
+  log_info "Bootstrapping Neovim plugins with lazy.nvim..."
+  nvim --headless "+Lazy! sync" +qa || true
+}
+
 verify_neovim() {
   command_exists nvim || die "nvim command not found after installation."
+
   log_info "Neovim version:"
   nvim --version | head -n 1
-  log_success "Neovim installation verified."
+
+  log_success "Neovim baseline installation completed."
 }
 
 main() {
   brew_install_formula "neovim"
-  write_bootstrap_loader
+  brew_install_formula "tree-sitter"
+
+  mkdir -p "$TARGET_NVIM_DIR"
+
+  copy_repo_tree_clean "$REPO_NVIM_DIR/plugin" "$TARGET_PLUGIN_DIR"
+  copy_repo_tree_clean "$REPO_NVIM_DIR/after" "$TARGET_AFTER_PLUGIN_DIR"
+  copy_repo_tree_clean "$REPO_NVIM_DIR/lua/dev_bootstrap" "$TARGET_LUA_DIR"
+
+  if [[ -f "$REPO_NVIM_DIR/local.lua" ]]; then
+    cp "$REPO_NVIM_DIR/local.lua" "$TARGET_NVIM_DIR/local.lua"
+  fi
+
   ensure_nvim_config_hook
+  bootstrap_plugins
   verify_neovim
 }
 

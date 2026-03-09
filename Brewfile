@@ -1,0 +1,31 @@
+brew "git"
+brew "gh"
+brew "chezmoi"
+brew "mise"
+
+brew "fzf"
+brew "zoxide"
+brew "eza"
+brew "bat"
+brew "ripgrep"
+brew "fd"
+brew "jq"
+brew "yq"
+brew "tree"
+brew "wget"
+brew "tmux"
+
+brew "uv"
+
+brew "shellcheck"
+brew "shfmt"
+brew "yamllint"
+brew "actionlint"
+
+brew "docker"
+brew "docker-buildx"
+brew "docker-compose"
+brew "colima"
+
+cask "iterm2"
+cask "visual-studio-code"

@@ -3,29 +3,17 @@ set -euo pipefail
 
 source "$LIB_DIR/common.sh"
 
-BOOTSTRAP_ZSH_DIR="$HOME/.config/dev-bootstrap/zsh"
-COMPLETIONS_FILE="$BOOTSTRAP_ZSH_DIR/completions.zsh"
+REPO_FILE="$REPO_ROOT/home/dot_config/dev-bootstrap/zsh/completions.zsh"
+TARGET_FILE="$HOME/.config/dev-bootstrap/zsh/completions.zsh"
 
 main() {
-  mkdir -p "$BOOTSTRAP_ZSH_DIR"
-
-  cat > "$COMPLETIONS_FILE" <<'EOF'
-# dev-bootstrap managed completion config
-
-typeset -gaU fpath
-
-if [[ -d /opt/homebrew/share/zsh/site-functions ]]; then
-  fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
-fi
-
-if [[ -d /usr/local/share/zsh/site-functions ]]; then
-  fpath=(/usr/local/share/zsh/site-functions $fpath)
-fi
-EOF
+  [[ -f "$REPO_FILE" ]] || die "Missing repo-managed file: $REPO_FILE"
+  mkdir -p "$(dirname "$TARGET_FILE")"
+  cp "$REPO_FILE" "$TARGET_FILE"
 
   log_info "Verifying zsh completions config..."
   zsh -i -c 'autoload -Uz compinit && true'
-  log_success "Core completion config installed."
+  log_success "Core completion config installed from repo-managed source."
 }
 
 main "$@"

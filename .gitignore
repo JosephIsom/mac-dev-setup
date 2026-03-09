@@ -6,3 +6,23 @@
 .env.*
 .tmp/
 .cache/
+
+.DS_Store
+
+# Generated docs/artifacts
+docs/generated/*
+!docs/generated/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+
+# Neovim
+.nvimlog
+
+# Local env files
+config/user.env
+
+# OS/editor temp files
+*.swp
+*.tmp
