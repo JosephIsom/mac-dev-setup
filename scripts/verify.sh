@@ -91,6 +91,36 @@ check_optional_cmd nvim "Neovim available"
 check_optional_cmd code "VS Code CLI available"
 check_optional_cmd idea "IntelliJ CLI helper available"
 
+if zsh -i -c 'command -v codex >/dev/null 2>&1'; then
+  pass "Codex CLI available"
+else
+  warn "Codex CLI available"
+fi
+
+if zsh -i -c 'command -v cursor-agent >/dev/null 2>&1 || command -v cursor >/dev/null 2>&1'; then
+  pass "Cursor CLI available"
+else
+  warn "Cursor CLI available"
+fi
+
+if [[ -d "/Applications/Codex.app" ]]; then
+  pass "Codex app present"
+else
+  warn "Codex app present"
+fi
+
+if [[ -d "/Applications/Cursor.app" ]]; then
+  pass "Cursor editor present"
+else
+  warn "Cursor editor present"
+fi
+
+if [[ -d "/Applications/Windsurf.app" ]]; then
+  pass "Windsurf editor present"
+else
+  warn "Windsurf editor present"
+fi
+
 check_file "$HOME/.config/dev-bootstrap/zsh/bootstrap.zsh" "Managed zsh bootstrap present"
 check_file "$HOME/.config/dev-bootstrap/tmux/tmux.conf" "Managed tmux config present"
 check_file "$HOME/.config/dev-bootstrap/nvim/plugin/bootstrap.vim" "Managed Neovim bootstrap present"

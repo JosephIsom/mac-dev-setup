@@ -110,6 +110,12 @@ run_selected_modules() {
   run_if_selected "INSTALL_EDITOR_ITERM2_APP"          "editor"    "iterm2-app"
   run_if_selected "INSTALL_EDITOR_NEOVIM"              "editor"    "neovim"
   run_if_selected "INSTALL_EDITOR_NEOVIM"              "editor"    "neovim-toolchain"
+
+  run_if_selected "INSTALL_AI_CODEX_APP"               "ai"        "codex-app"
+  run_if_selected "INSTALL_AI_CODEX_CLI"               "ai"        "codex-cli"
+  run_if_selected "INSTALL_AI_CURSOR_EDITOR"           "ai"        "cursor-editor"
+  run_if_selected "INSTALL_AI_CURSOR_CLI"              "ai"        "cursor-cli"
+  run_if_selected "INSTALL_AI_WINDSURF_EDITOR"         "ai"        "windsurf-editor"
 }
 
 main "$@"

@@ -80,6 +80,12 @@ ALL_SELECTION_VARS=(
   INSTALL_EDITOR_ITERM2_APP
   INSTALL_EDITOR_NEOVIM
 
+  INSTALL_AI_CODEX_APP
+  INSTALL_AI_CODEX_CLI
+  INSTALL_AI_CURSOR_EDITOR
+  INSTALL_AI_CURSOR_CLI
+  INSTALL_AI_WINDSURF_EDITOR
+
   INSTALL_CONTAINERS_COLIMA
   INSTALL_CONTAINERS_DOCKER_CLI
   INSTALL_CONTAINERS_BUILDX
@@ -319,6 +325,11 @@ interactive_adjustments() {
   INSTALL_EDITOR_INTELLIJ_TOOLBOX="$(prompt_yes_no "Install JetBrains Toolbox?" "${INSTALL_EDITOR_INTELLIJ_TOOLBOX:-false}")"
   INSTALL_EDITOR_INTELLIJ_IDEA="$(prompt_yes_no "Mark IntelliJ IDEA as expected/managed?" "${INSTALL_EDITOR_INTELLIJ_IDEA:-false}")"
   INSTALL_EDITOR_INTELLIJ_CLI="$(prompt_yes_no "Set up IntelliJ CLI helper?" "${INSTALL_EDITOR_INTELLIJ_CLI:-false}")"
+  INSTALL_AI_CODEX_APP="$(prompt_yes_no "Install OpenAI Codex app?" "${INSTALL_AI_CODEX_APP:-false}")"
+  INSTALL_AI_CODEX_CLI="$(prompt_yes_no "Install OpenAI Codex CLI?" "${INSTALL_AI_CODEX_CLI:-false}")"
+  INSTALL_AI_CURSOR_EDITOR="$(prompt_yes_no "Install Cursor editor?" "${INSTALL_AI_CURSOR_EDITOR:-false}")"
+  INSTALL_AI_CURSOR_CLI="$(prompt_yes_no "Install Cursor CLI?" "${INSTALL_AI_CURSOR_CLI:-false}")"
+  INSTALL_AI_WINDSURF_EDITOR="$(prompt_yes_no "Install Windsurf editor?" "${INSTALL_AI_WINDSURF_EDITOR:-false}")"
   INSTALL_CONTAINERS_COLIMA="$(prompt_yes_no "Install Colima?" "${INSTALL_CONTAINERS_COLIMA:-false}")"
   INSTALL_CONTAINERS_DOCKER_CLI="$(prompt_yes_no "Install Docker CLI tooling?" "${INSTALL_CONTAINERS_DOCKER_CLI:-false}")"
   INSTALL_OPTIONAL_NIX="$(prompt_yes_no "Install Nix?" "${INSTALL_OPTIONAL_NIX:-false}")"
