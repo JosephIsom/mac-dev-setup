@@ -63,11 +63,11 @@ COLIMA_DISK="60"
 
 ## When Adding a New Tool
 
-1. decide whether it is baseline or optional
-2. add module and profile flags if needed
-3. add verification
-4. update Brewfile policy if appropriate
-5. update docs
+1. add or update module entries in `config/modules.yaml`
+2. add or update verification checks in `config/modules.yaml`
+3. regenerate registry artifacts:
+   - `./scripts/generate-module-registry.sh`
+4. update docs
 
 ## When Changing Config
 

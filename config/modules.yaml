@@ -1,0 +1,538 @@
+version: 1
+profiles: [minimal, base, full]
+modules:
+  - id: core-repo-sanity
+    group: core
+    script: repo-sanity
+    selection_var: null
+    enabled_profiles: [minimal, base, full]
+    depends_on: []
+  - id: core-xcode-clt
+    group: core
+    script: xcode-clt
+    selection_var: INSTALL_CORE_XCODE_CLT
+    enabled_profiles: [minimal, base, full]
+    depends_on: []
+  - id: core-homebrew
+    group: core
+    script: homebrew
+    selection_var: INSTALL_CORE_HOMEBREW
+    enabled_profiles: [minimal, base, full]
+    depends_on: []
+  - id: core-git
+    group: core
+    script: git
+    selection_var: INSTALL_CORE_GIT
+    enabled_profiles: [minimal, base, full]
+    depends_on: [core-homebrew]
+  - id: core-github-cli
+    group: core
+    script: github-cli
+    selection_var: INSTALL_CORE_GITHUB_CLI
+    enabled_profiles: [minimal, base, full]
+    depends_on: [core-homebrew]
+  - id: core-mise
+    group: core
+    script: mise
+    selection_var: INSTALL_CORE_MISE
+    enabled_profiles: [minimal, base, full]
+    depends_on: [core-homebrew]
+  - id: config-git-baseline
+    group: config
+    script: git-baseline
+    selection_var: INSTALL_CONFIG_GIT_BASELINE
+    enabled_profiles: [minimal, base, full]
+    depends_on: [core-git]
+  - id: config-github-cli-baseline
+    group: config
+    script: github-cli-baseline
+    selection_var: INSTALL_CONFIG_GITHUB_CLI_BASELINE
+    enabled_profiles: [minimal, base, full]
+    depends_on: [core-github-cli]
+  - id: config-ssh-baseline
+    group: config
+    script: ssh-baseline
+    selection_var: INSTALL_CONFIG_SSH_BASELINE
+    enabled_profiles: [base, full]
+    depends_on: []
+  - id: config-github-ssh-check
+    group: config
+    script: github-ssh-check
+    selection_var: INSTALL_CONFIG_GITHUB_SSH_CHECK
+    enabled_profiles: []
+    depends_on: [config-ssh-baseline]
+  - id: shell-zsh-baseline
+    group: shell
+    script: zsh-baseline
+    selection_var: INSTALL_SHELL_ZSH_BASELINE
+    enabled_profiles: [minimal, base, full]
+    depends_on: []
+  - id: shell-completion-core
+    group: shell
+    script: completion-core
+    selection_var: INSTALL_SHELL_COMPLETION_CORE
+    enabled_profiles: [minimal, base, full]
+    depends_on: []
+  - id: shell-git-integration
+    group: shell
+    script: git-integration
+    selection_var: INSTALL_SHELL_GIT_INTEGRATION
+    enabled_profiles: [minimal, base, full]
+    depends_on: []
+  - id: shell-fzf
+    group: shell
+    script: fzf
+    selection_var: INSTALL_SHELL_FZF
+    enabled_profiles: [minimal, base, full]
+    depends_on: []
+  - id: shell-zoxide
+    group: shell
+    script: zoxide
+    selection_var: INSTALL_SHELL_ZOXIDE
+    enabled_profiles: [base, full]
+    depends_on: []
+  - id: shell-eza
+    group: shell
+    script: eza
+    selection_var: INSTALL_SHELL_EZA
+    enabled_profiles: [base, full]
+    depends_on: []
+  - id: shell-bat
+    group: shell
+    script: bat
+    selection_var: INSTALL_SHELL_BAT
+    enabled_profiles: [base, full]
+    depends_on: []
+  - id: shell-ripgrep
+    group: shell
+    script: ripgrep
+    selection_var: INSTALL_SHELL_RIPGREP
+    enabled_profiles: [minimal, base, full]
+    depends_on: []
+  - id: shell-fd
+    group: shell
+    script: fd
+    selection_var: INSTALL_SHELL_FD
+    enabled_profiles: [minimal, base, full]
+    depends_on: []
+  - id: shell-jq
+    group: shell
+    script: jq
+    selection_var: INSTALL_SHELL_JQ
+    enabled_profiles: [minimal, base, full]
+    depends_on: []
+  - id: shell-yq
+    group: shell
+    script: yq
+    selection_var: INSTALL_SHELL_YQ
+    enabled_profiles: [minimal, base, full]
+    depends_on: []
+  - id: shell-direnv
+    group: shell
+    script: direnv
+    selection_var: INSTALL_SHELL_DIRENV
+    enabled_profiles: []
+    depends_on: []
+  - id: shell-tree
+    group: shell
+    script: tree
+    selection_var: INSTALL_SHELL_TREE
+    enabled_profiles: [full]
+    depends_on: []
+  - id: shell-wget
+    group: shell
+    script: wget
+    selection_var: INSTALL_SHELL_WGET
+    enabled_profiles: [full]
+    depends_on: []
+  - id: shell-tmux
+    group: shell
+    script: tmux
+    selection_var: INSTALL_SHELL_TMUX
+    enabled_profiles: [full]
+    depends_on: []
+  - id: shell-tmux-baseline
+    group: shell
+    script: tmux-baseline
+    selection_var: INSTALL_SHELL_TMUX
+    enabled_profiles: [full]
+    depends_on: [shell-tmux]
+  - id: runtime-python-runtime
+    group: runtime
+    script: python-runtime
+    selection_var: INSTALL_PYTHON_RUNTIME
+    enabled_profiles: [minimal, base, full]
+    depends_on: [core-mise]
+  - id: runtime-python-uv
+    group: runtime
+    script: python-uv
+    selection_var: INSTALL_PYTHON_UV
+    enabled_profiles: [minimal, base, full]
+    depends_on: [core-homebrew]
+  - id: runtime-python-linters
+    group: runtime
+    script: python-linters
+    selection_var: INSTALL_PYTHON_LINTERS
+    enabled_profiles: [base, full]
+    depends_on: [runtime-python-uv]
+  - id: runtime-python-pre-commit
+    group: runtime
+    script: python-pre-commit
+    selection_var: INSTALL_PYTHON_PRE_COMMIT
+    enabled_profiles: [base, full]
+    depends_on: [runtime-python-uv]
+  - id: runtime-node-runtime
+    group: runtime
+    script: node-runtime
+    selection_var: INSTALL_NODE_RUNTIME
+    enabled_profiles: [base, full]
+    depends_on: [core-mise]
+  - id: runtime-node-pnpm
+    group: runtime
+    script: node-pnpm
+    selection_var: INSTALL_NODE_PNPM
+    enabled_profiles: [base, full]
+    depends_on: [runtime-node-runtime]
+  - id: runtime-node-typescript
+    group: runtime
+    script: node-typescript
+    selection_var: INSTALL_NODE_TYPESCRIPT
+    enabled_profiles: [base, full]
+    depends_on: [runtime-node-runtime]
+  - id: runtime-go-runtime
+    group: runtime
+    script: go-runtime
+    selection_var: INSTALL_GO_RUNTIME
+    enabled_profiles: [base, full]
+    depends_on: [core-mise]
+  - id: runtime-go-dev-tools
+    group: runtime
+    script: go-dev-tools
+    selection_var: INSTALL_GO_DEV_TOOLS
+    enabled_profiles: [base, full]
+    depends_on: [runtime-go-runtime]
+  - id: runtime-java-runtime
+    group: runtime
+    script: java-runtime
+    selection_var: INSTALL_JAVA_RUNTIME
+    enabled_profiles: [base, full]
+    depends_on: [core-mise]
+  - id: runtime-java-maven
+    group: runtime
+    script: java-maven
+    selection_var: INSTALL_JAVA_MAVEN
+    enabled_profiles: [base, full]
+    depends_on: [runtime-java-runtime]
+  - id: runtime-java-gradle
+    group: runtime
+    script: java-gradle
+    selection_var: INSTALL_JAVA_GRADLE
+    enabled_profiles: [base, full]
+    depends_on: [runtime-java-runtime]
+  - id: container-colima
+    group: container
+    script: colima
+    selection_var: INSTALL_CONTAINERS_COLIMA
+    enabled_profiles: [base, full]
+    depends_on: [core-homebrew]
+  - id: container-docker-cli
+    group: container
+    script: docker-cli
+    selection_var: INSTALL_CONTAINERS_DOCKER_CLI
+    enabled_profiles: [base, full]
+    depends_on: [core-homebrew]
+  - id: container-buildx
+    group: container
+    script: buildx
+    selection_var: INSTALL_CONTAINERS_BUILDX
+    enabled_profiles: [base, full]
+    depends_on: [container-docker-cli]
+  - id: container-compose
+    group: container
+    script: compose
+    selection_var: INSTALL_CONTAINERS_COMPOSE
+    enabled_profiles: [base, full]
+    depends_on: [container-docker-cli]
+  - id: container-colima-start
+    group: container
+    script: colima-start
+    selection_var: INSTALL_CONTAINERS_COLIMA
+    enabled_profiles: [base, full]
+    depends_on: [container-colima]
+  - id: container-docker-verify
+    group: container
+    script: docker-verify
+    selection_var: INSTALL_CONTAINERS_DOCKER_CLI
+    enabled_profiles: [base, full]
+    depends_on: [container-docker-cli, container-colima, container-buildx, container-compose]
+  - id: quality-shellcheck
+    group: quality
+    script: shellcheck
+    selection_var: INSTALL_QUALITY_SHELLCHECK
+    enabled_profiles: [minimal, base, full]
+    depends_on: [core-homebrew]
+  - id: quality-shfmt
+    group: quality
+    script: shfmt
+    selection_var: INSTALL_QUALITY_SHFMT
+    enabled_profiles: [minimal, base, full]
+    depends_on: [core-homebrew]
+  - id: quality-markdownlint
+    group: quality
+    script: markdownlint
+    selection_var: INSTALL_QUALITY_MARKDOWNLINT
+    enabled_profiles: [full]
+    depends_on: [runtime-node-runtime]
+  - id: quality-yamllint
+    group: quality
+    script: yamllint
+    selection_var: INSTALL_QUALITY_YAMLLINT
+    enabled_profiles: [full]
+    depends_on: [core-homebrew]
+  - id: quality-actionlint
+    group: quality
+    script: actionlint
+    selection_var: INSTALL_QUALITY_ACTIONLINT
+    enabled_profiles: [full]
+    depends_on: [core-homebrew]
+  - id: editor-vscode-app
+    group: editor
+    script: vscode-app
+    selection_var: INSTALL_EDITOR_VSCODE_APP
+    enabled_profiles: [base, full]
+    depends_on: [core-homebrew]
+  - id: editor-vscode-cli
+    group: editor
+    script: vscode-cli
+    selection_var: INSTALL_EDITOR_VSCODE_CLI
+    enabled_profiles: [base, full]
+    depends_on: [editor-vscode-app]
+  - id: editor-vscode-extensions-base
+    group: editor
+    script: vscode-extensions-base
+    selection_var: INSTALL_EDITOR_VSCODE_EXTENSIONS_BASE
+    enabled_profiles: [base, full]
+    depends_on: [editor-vscode-cli]
+  - id: editor-vscode-settings-base
+    group: editor
+    script: vscode-settings-base
+    selection_var: INSTALL_EDITOR_VSCODE_SETTINGS_BASE
+    enabled_profiles: [base, full]
+    depends_on: [editor-vscode-app]
+  - id: editor-intellij-toolbox
+    group: editor
+    script: intellij-toolbox
+    selection_var: INSTALL_EDITOR_INTELLIJ_TOOLBOX
+    enabled_profiles: [full]
+    depends_on: [core-homebrew]
+  - id: editor-intellij-idea
+    group: editor
+    script: intellij-idea
+    selection_var: INSTALL_EDITOR_INTELLIJ_IDEA
+    enabled_profiles: [full]
+    depends_on: [editor-intellij-toolbox]
+  - id: editor-intellij-cli
+    group: editor
+    script: intellij-cli
+    selection_var: INSTALL_EDITOR_INTELLIJ_CLI
+    enabled_profiles: [full]
+    depends_on: [editor-intellij-idea]
+  - id: editor-iterm2-app
+    group: editor
+    script: iterm2-app
+    selection_var: INSTALL_EDITOR_ITERM2_APP
+    enabled_profiles: [base, full]
+    depends_on: [core-homebrew]
+  - id: editor-neovim
+    group: editor
+    script: neovim
+    selection_var: INSTALL_EDITOR_NEOVIM
+    enabled_profiles: [full]
+    depends_on: [core-homebrew]
+  - id: editor-neovim-toolchain
+    group: editor
+    script: neovim-toolchain
+    selection_var: INSTALL_EDITOR_NEOVIM
+    enabled_profiles: [full]
+    depends_on: [editor-neovim, runtime-node-runtime, runtime-python-runtime]
+  - id: ai-codex-app
+    group: ai
+    script: codex-app
+    selection_var: INSTALL_AI_CODEX_APP
+    enabled_profiles: [base, full]
+    depends_on: [core-homebrew]
+  - id: ai-codex-cli
+    group: ai
+    script: codex-cli
+    selection_var: INSTALL_AI_CODEX_CLI
+    enabled_profiles: [base, full]
+    depends_on: [core-homebrew]
+  - id: ai-cursor-editor
+    group: ai
+    script: cursor-editor
+    selection_var: INSTALL_AI_CURSOR_EDITOR
+    enabled_profiles: [base, full]
+    depends_on: [core-homebrew]
+  - id: ai-cursor-cli
+    group: ai
+    script: cursor-cli
+    selection_var: INSTALL_AI_CURSOR_CLI
+    enabled_profiles: [base, full]
+    depends_on: [core-homebrew]
+  - id: ai-windsurf-editor
+    group: ai
+    script: windsurf-editor
+    selection_var: INSTALL_AI_WINDSURF_EDITOR
+    enabled_profiles: [base, full]
+    depends_on: [core-homebrew]
+verify_checks:
+  - selection_var: INSTALL_CORE_HOMEBREW
+    kind: cmd
+    arg: "brew"
+    label: "Homebrew available"
+    severity: fail
+  - selection_var: INSTALL_CORE_GIT
+    kind: cmd
+    arg: "git"
+    label: "Git available"
+    severity: fail
+  - selection_var: INSTALL_CORE_GITHUB_CLI
+    kind: cmd
+    arg: "gh"
+    label: "GitHub CLI available"
+    severity: fail
+  - selection_var: INSTALL_CORE_MISE
+    kind: cmd
+    arg: "mise"
+    label: "mise available"
+    severity: fail
+  - selection_var: INSTALL_PYTHON_RUNTIME
+    kind: cmd
+    arg: "python"
+    label: "Python available"
+    severity: fail
+  - selection_var: INSTALL_PYTHON_UV
+    kind: cmd
+    arg: "uv"
+    label: "uv available"
+    severity: fail
+  - selection_var: INSTALL_NODE_RUNTIME
+    kind: cmd
+    arg: "node"
+    label: "Node available"
+    severity: fail
+  - selection_var: INSTALL_NODE_RUNTIME
+    kind: cmd
+    arg: "npm"
+    label: "npm available"
+    severity: fail
+  - selection_var: INSTALL_NODE_PNPM
+    kind: cmd
+    arg: "pnpm"
+    label: "pnpm available"
+    severity: fail
+  - selection_var: INSTALL_GO_RUNTIME
+    kind: cmd
+    arg: "go"
+    label: "Go available"
+    severity: fail
+  - selection_var: INSTALL_JAVA_RUNTIME
+    kind: cmd
+    arg: "java"
+    label: "Java available"
+    severity: fail
+  - selection_var: INSTALL_JAVA_MAVEN
+    kind: cmd
+    arg: "mvn"
+    label: "Maven available"
+    severity: fail
+  - selection_var: INSTALL_JAVA_GRADLE
+    kind: cmd
+    arg: "gradle"
+    label: "Gradle available"
+    severity: fail
+  - selection_var: INSTALL_CONTAINERS_COLIMA
+    kind: cmd
+    arg: "colima"
+    label: "Colima available"
+    severity: fail
+  - selection_var: INSTALL_CONTAINERS_DOCKER_CLI
+    kind: cmd
+    arg: "docker"
+    label: "Docker CLI available"
+    severity: fail
+  - selection_var: INSTALL_CONTAINERS_COLIMA
+    kind: colima_running
+    arg: ""
+    label: "Colima running"
+    severity: warn
+  - selection_var: INSTALL_CONTAINERS_DOCKER_CLI
+    kind: docker_reachable
+    arg: ""
+    label: "Docker daemon reachable"
+    severity: warn
+  - selection_var: INSTALL_SHELL_TMUX
+    kind: cmd
+    arg: "tmux"
+    label: "tmux available"
+    severity: warn
+  - selection_var: INSTALL_EDITOR_NEOVIM
+    kind: cmd
+    arg: "nvim"
+    label: "Neovim available"
+    severity: warn
+  - selection_var: INSTALL_EDITOR_VSCODE_CLI
+    kind: cmd
+    arg: "code"
+    label: "VS Code CLI available"
+    severity: warn
+  - selection_var: INSTALL_EDITOR_INTELLIJ_CLI
+    kind: cmd
+    arg: "idea"
+    label: "IntelliJ CLI helper available"
+    severity: warn
+  - selection_var: INSTALL_AI_CODEX_CLI
+    kind: cmd
+    arg: "codex"
+    label: "Codex CLI available"
+    severity: warn
+  - selection_var: INSTALL_AI_CURSOR_CLI
+    kind: cursor_cli
+    arg: ""
+    label: "Cursor CLI available"
+    severity: warn
+  - selection_var: INSTALL_AI_CODEX_APP
+    kind: dir
+    arg: "/Applications/Codex.app"
+    label: "Codex app present"
+    severity: warn
+  - selection_var: INSTALL_AI_CURSOR_EDITOR
+    kind: dir
+    arg: "/Applications/Cursor.app"
+    label: "Cursor editor present"
+    severity: warn
+  - selection_var: INSTALL_AI_WINDSURF_EDITOR
+    kind: dir
+    arg: "/Applications/Windsurf.app"
+    label: "Windsurf editor present"
+    severity: warn
+  - selection_var: INSTALL_SHELL_ZSH_BASELINE
+    kind: file
+    arg: "$HOME/.config/dev-bootstrap/zsh/bootstrap.zsh"
+    label: "Managed zsh bootstrap present"
+    severity: fail
+  - selection_var: INSTALL_SHELL_TMUX
+    kind: file
+    arg: "$HOME/.config/dev-bootstrap/tmux/tmux.conf"
+    label: "Managed tmux config present"
+    severity: fail
+  - selection_var: INSTALL_EDITOR_NEOVIM
+    kind: file
+    arg: "$HOME/.config/dev-bootstrap/nvim/plugin/bootstrap.vim"
+    label: "Managed Neovim bootstrap present"
+    severity: fail
+  - selection_var: INSTALL_CONFIG_SSH_BASELINE
+    kind: file
+    arg: "$HOME/.ssh/config"
+    label: "SSH config present"
+    severity: fail

@@ -108,7 +108,6 @@ ls -d "/Applications/Windsurf.app" 2>/dev/null || true
 - Colima lifecycle helper commands (`stop`, `reset`, etc.)
 - richer VS Code extension bundles by language
 - additional Neovim filetype cleanup for niche filetypes
-- fuller chezmoi-native apply flow
 - CI for repo linting/smoke tests
 - broader AI tooling support once install paths stabilize
 - richer AI-specific verification once workflows settle

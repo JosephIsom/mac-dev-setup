@@ -13,7 +13,7 @@ This repository bootstraps a modern macOS development machine with:
 - Colima + Docker CLI + Buildx + Compose instead of Docker Desktop
 - zsh-based terminal setup with repo-managed config
 - VS Code, IntelliJ/Toolbox, tmux, and Neovim support
-- repo-managed configuration with a staged path toward fuller chezmoi ownership
+- repo-managed dotfiles and config deployed via standard scripts
 - verification tooling to audit machine readiness
 - evaluation-friendly AI tooling support without locking into a single AI workflow
 
@@ -118,6 +118,18 @@ Example:
 - Environment tools: mise by default, direnv optional and off by default
 
 See `docs/tooling-decisions.md` for the full rationale.
+
+## Module Registry
+
+- Source of truth: `config/modules.yaml`
+- Generated runtime data: `scripts/lib/module-registry-generated.sh`
+- Generated docs: `docs/generated/module-registry.md`
+
+When adding or changing modules, regenerate artifacts with:
+
+```bash
+./scripts/generate-module-registry.sh
+```
 
 ## Editors and AI
 
