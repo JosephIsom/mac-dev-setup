@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 PROFILE="base"
-NON_INTERACTIVE="false"
 INTERACTIVE="true"
 
 GIT_USER_NAME="${GIT_USER_NAME:-}"
@@ -20,103 +19,40 @@ COLIMA_DISK="${COLIMA_DISK:-60}"
 declare -a WITH_FLAGS=()
 declare -a WITHOUT_FLAGS=()
 
-ALL_SELECTION_VARS=(
-  INSTALL_CORE_XCODE_CLT
-  INSTALL_CORE_HOMEBREW
-  INSTALL_CORE_GIT
-  INSTALL_CORE_GITHUB_CLI
-  INSTALL_CORE_CHEZMOI
-  INSTALL_CORE_MISE
-  INSTALL_CORE_BREWFILE_APPLY
-  INSTALL_CORE_BREWFILE_EXPORT
+# shellcheck disable=SC1091
+source "$LIB_DIR/module-registry-generated.sh"
 
-  INSTALL_CONFIG_GIT_BASELINE
-  INSTALL_CONFIG_GITHUB_CLI_BASELINE
-  INSTALL_CONFIG_SSH_BASELINE
-  INSTALL_CONFIG_GITHUB_SSH_CHECK
-
-  INSTALL_SHELL_ZSH_BASELINE
-  INSTALL_SHELL_STARSHIP
-  INSTALL_SHELL_FZF
-  INSTALL_SHELL_ZOXIDE
-  INSTALL_SHELL_EZA
-  INSTALL_SHELL_BAT
-  INSTALL_SHELL_RIPGREP
-  INSTALL_SHELL_FD
-  INSTALL_SHELL_JQ
-  INSTALL_SHELL_YQ
-  INSTALL_SHELL_DIRENV
-  INSTALL_SHELL_TREE
-  INSTALL_SHELL_WGET
-  INSTALL_SHELL_TMUX
-  INSTALL_SHELL_GIT_INTEGRATION
-  INSTALL_SHELL_COMPLETION_CORE
-
-  INSTALL_PYTHON_RUNTIME
-  INSTALL_PYTHON_UV
-  INSTALL_PYTHON_LINTERS
-  INSTALL_PYTHON_PRE_COMMIT
-
-  INSTALL_NODE_RUNTIME
-  INSTALL_NODE_PNPM
-  INSTALL_NODE_TYPESCRIPT
-  INSTALL_NODE_BUN
-  INSTALL_NODE_FRONTEND_TOOLS
-
-  INSTALL_GO_RUNTIME
-  INSTALL_GO_DEV_TOOLS
-
-  INSTALL_JAVA_RUNTIME
-  INSTALL_JAVA_MAVEN
-  INSTALL_JAVA_GRADLE
-
-  INSTALL_EDITOR_VSCODE_APP
-  INSTALL_EDITOR_VSCODE_CLI
-  INSTALL_EDITOR_VSCODE_EXTENSIONS_BASE
-  INSTALL_EDITOR_VSCODE_SETTINGS_BASE
-  INSTALL_EDITOR_INTELLIJ_TOOLBOX
-  INSTALL_EDITOR_INTELLIJ_IDEA
-  INSTALL_EDITOR_INTELLIJ_CLI
-  INSTALL_EDITOR_ITERM2_APP
-  INSTALL_EDITOR_NEOVIM
-
-  INSTALL_AI_CODEX_APP
-  INSTALL_AI_CODEX_CLI
-  INSTALL_AI_CURSOR_EDITOR
-  INSTALL_AI_CURSOR_CLI
-  INSTALL_AI_WINDSURF_EDITOR
-
-  INSTALL_CONTAINERS_COLIMA
-  INSTALL_CONTAINERS_DOCKER_CLI
-  INSTALL_CONTAINERS_BUILDX
-  INSTALL_CONTAINERS_COMPOSE
-  INSTALL_CONTAINERS_LAZYDOCKER
-
-  INSTALL_CLOUD_AWS
-  INSTALL_CLOUD_GCLOUD
-  INSTALL_CLOUD_AZURE
-  INSTALL_CLOUD_KUBECTL
-  INSTALL_CLOUD_HELM
-
-  INSTALL_QUALITY_SHELLCHECK
-  INSTALL_QUALITY_SHFMT
-  INSTALL_QUALITY_MARKDOWNLINT
-  INSTALL_QUALITY_YAMLLINT
-  INSTALL_QUALITY_ACTIONLINT
-
-  INSTALL_MACOS_FONTS_DEV
-  INSTALL_MACOS_WINDOW_MANAGEMENT
-  INSTALL_MACOS_APP_STORE_CLI
-  INSTALL_MACOS_DEFAULTS
-
-  INSTALL_OPTIONAL_NIX
-  INSTALL_OPTIONAL_DIRENV_NIX
-)
+ALL_SELECTION_VARS=("${REGISTRY_SELECTION_VARS[@]}")
 
 init_defaults() {
   local var
   for var in "${ALL_SELECTION_VARS[@]}"; do
     printf -v "$var" '%s' ''
+  done
+}
+
+profile_exists_in_registry() {
+  local candidate="$1"
+  local profile
+
+  for profile in "${REGISTRY_PROFILES[@]}"; do
+    if [[ "$profile" == "$candidate" ]]; then
+      return 0
+    fi
+  done
+
+  return 1
+}
+
+apply_profile_defaults_from_registry() {
+  local record profile var value
+
+  profile_exists_in_registry "$PROFILE" || die "Unknown profile: $PROFILE"
+
+  for record in "${REGISTRY_PROFILE_DEFAULT_RECORDS[@]}"; do
+    IFS='|' read -r profile var value <<< "$record"
+    [[ "$profile" == "$PROFILE" ]] || continue
+    printf -v "$var" '%s' "$value"
   done
 }
 
@@ -141,12 +77,10 @@ parse_args() {
         shift 2
         ;;
       --non-interactive)
-        NON_INTERACTIVE="true"
         INTERACTIVE="false"
         shift
         ;;
       --interactive)
-        NON_INTERACTIVE="false"
         INTERACTIVE="true"
         shift
         ;;
@@ -170,7 +104,7 @@ parse_args() {
 }
 
 print_help() {
-  cat <<'EOF'
+  cat <<'EOF_HELP'
 Usage:
   ./scripts/bootstrap.sh [options]
 
@@ -181,7 +115,7 @@ Options:
   --with-<module>          Force-enable a module
   --without-<module>       Force-disable a module
   -h, --help               Show help
-EOF
+EOF_HELP
 }
 
 profile_path() {
@@ -192,7 +126,7 @@ load_profile() {
   local profile_file
   profile_file="$(profile_path)"
   [[ -f "$profile_file" ]] || die "Profile not found: $profile_file"
-  log_info "Loading profile: $PROFILE"
+  log_info "Loading profile overrides: $PROFILE"
   # shellcheck disable=SC1090
   source "$profile_file"
 }
@@ -229,34 +163,38 @@ flag_to_var_name() {
   printf 'INSTALL_%s' "$normalized"
 }
 
+selection_var_in_list() {
+  local needle="$1"
+  shift
+
+  local item
+  for item in "$@"; do
+    if [[ "$item" == "$needle" ]]; then
+      return 0
+    fi
+  done
+
+  return 1
+}
+
 validate_flag_targets() {
-  local flag var_name found var
+  local flag var_name
 
   if [[ ${#WITH_FLAGS[@]} -gt 0 ]]; then
     for flag in "${WITH_FLAGS[@]}"; do
       var_name="$(flag_to_var_name "$flag")"
-      found="false"
-      for var in "${ALL_SELECTION_VARS[@]}"; do
-        if [[ "$var" == "$var_name" ]]; then
-          found="true"
-          break
-        fi
-      done
-      [[ "$found" == "true" ]] || die "Unsupported module flag: $flag"
+      if ! selection_var_in_list "$var_name" "${ALL_SELECTION_VARS[@]}"; then
+        die "Unsupported module flag: $flag"
+      fi
     done
   fi
 
   if [[ ${#WITHOUT_FLAGS[@]} -gt 0 ]]; then
     for flag in "${WITHOUT_FLAGS[@]}"; do
       var_name="$(flag_to_var_name "$flag")"
-      found="false"
-      for var in "${ALL_SELECTION_VARS[@]}"; do
-        if [[ "$var" == "$var_name" ]]; then
-          found="true"
-          break
-        fi
-      done
-      [[ "$found" == "true" ]] || die "Unsupported module flag: $flag"
+      if ! selection_var_in_list "$var_name" "${ALL_SELECTION_VARS[@]}"; then
+        die "Unsupported module flag: $flag"
+      fi
     done
   fi
 }
@@ -279,6 +217,12 @@ apply_flag_overrides() {
       printf -v "$var_name" 'false'
     done
   fi
+}
+
+set_selection_var() {
+  local selection_var="$1"
+  local value="$2"
+  printf -v "$selection_var" '%s' "$value"
 }
 
 prompt_yes_no() {
@@ -332,36 +276,59 @@ interactive_adjustments() {
   INSTALL_AI_WINDSURF_EDITOR="$(prompt_yes_no "Install Windsurf editor?" "${INSTALL_AI_WINDSURF_EDITOR:-false}")"
   INSTALL_CONTAINERS_COLIMA="$(prompt_yes_no "Install Colima?" "${INSTALL_CONTAINERS_COLIMA:-false}")"
   INSTALL_CONTAINERS_DOCKER_CLI="$(prompt_yes_no "Install Docker CLI tooling?" "${INSTALL_CONTAINERS_DOCKER_CLI:-false}")"
-  INSTALL_OPTIONAL_NIX="$(prompt_yes_no "Install Nix?" "${INSTALL_OPTIONAL_NIX:-false}")"
 
   if [[ "$INSTALL_EDITOR_VSCODE_APP" == "false" ]]; then
-    INSTALL_EDITOR_VSCODE_CLI="false"
-    INSTALL_EDITOR_VSCODE_EXTENSIONS_BASE="false"
-    INSTALL_EDITOR_VSCODE_SETTINGS_BASE="false"
+    set_selection_var "INSTALL_EDITOR_VSCODE_CLI" "false"
+    set_selection_var "INSTALL_EDITOR_VSCODE_EXTENSIONS_BASE" "false"
+    set_selection_var "INSTALL_EDITOR_VSCODE_SETTINGS_BASE" "false"
+  fi
+
+  if [[ "$INSTALL_EDITOR_VSCODE_CLI" == "false" ]]; then
+    set_selection_var "INSTALL_EDITOR_VSCODE_EXTENSIONS_BASE" "false"
   fi
 
   if [[ "$INSTALL_EDITOR_INTELLIJ_TOOLBOX" == "false" ]]; then
-    INSTALL_EDITOR_INTELLIJ_IDEA="false"
-    INSTALL_EDITOR_INTELLIJ_CLI="false"
+    set_selection_var "INSTALL_EDITOR_INTELLIJ_IDEA" "false"
+    set_selection_var "INSTALL_EDITOR_INTELLIJ_CLI" "false"
   fi
 
   if [[ "$INSTALL_EDITOR_INTELLIJ_IDEA" == "false" ]]; then
-    INSTALL_EDITOR_INTELLIJ_CLI="false"
+    set_selection_var "INSTALL_EDITOR_INTELLIJ_CLI" "false"
+  fi
+
+  if [[ "$INSTALL_GO_RUNTIME" == "false" ]]; then
+    set_selection_var "INSTALL_GO_DEV_TOOLS" "false"
+  fi
+
+  if [[ "$INSTALL_NODE_RUNTIME" == "false" ]]; then
+    set_selection_var "INSTALL_NODE_PNPM" "false"
+    set_selection_var "INSTALL_NODE_TYPESCRIPT" "false"
+  fi
+
+  if [[ "$INSTALL_JAVA_RUNTIME" == "false" ]]; then
+    set_selection_var "INSTALL_JAVA_MAVEN" "false"
+    set_selection_var "INSTALL_JAVA_GRADLE" "false"
+  fi
+
+  if [[ "$INSTALL_PYTHON_UV" == "false" ]]; then
+    set_selection_var "INSTALL_PYTHON_LINTERS" "false"
+    set_selection_var "INSTALL_PYTHON_PRE_COMMIT" "false"
   fi
 
   if [[ "$INSTALL_CONTAINERS_COLIMA" == "false" ]]; then
-    INSTALL_CONTAINERS_DOCKER_CLI="false"
-    INSTALL_CONTAINERS_BUILDX="false"
-    INSTALL_CONTAINERS_COMPOSE="false"
-    INSTALL_CONTAINERS_LAZYDOCKER="false"
+    set_selection_var "INSTALL_CONTAINERS_DOCKER_CLI" "false"
+    set_selection_var "INSTALL_CONTAINERS_BUILDX" "false"
+    set_selection_var "INSTALL_CONTAINERS_COMPOSE" "false"
   fi
 
-  if [[ "$INSTALL_OPTIONAL_NIX" == "false" ]]; then
-    INSTALL_OPTIONAL_DIRENV_NIX="false"
+  if [[ "$INSTALL_CONTAINERS_DOCKER_CLI" == "false" ]]; then
+    set_selection_var "INSTALL_CONTAINERS_BUILDX" "false"
+    set_selection_var "INSTALL_CONTAINERS_COMPOSE" "false"
   fi
 }
 
 resolve_selection() {
+  apply_profile_defaults_from_registry
   load_profile
   load_optional_user_config
   normalize_all_selection_vars

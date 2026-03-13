@@ -57,5 +57,4 @@ main() {
   log_success "Neovim toolchain installation verified."
 }
 
-main "$@"chmod 755 scripts/modules/editor/neovim-toolchain.sh
-./scripts/bootstrap.sh --profile base --non-interactive --with-editor-neovim
+main "$@"

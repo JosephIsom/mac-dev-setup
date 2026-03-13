@@ -6,7 +6,9 @@ LIB_DIR="$REPO_ROOT/scripts/lib"
 CONFIG_DIR="$REPO_ROOT/config"
 MODULES_DIR="$REPO_ROOT/scripts/modules"
 
+# shellcheck disable=SC1091
 source "$LIB_DIR/common.sh"
+# shellcheck disable=SC1091
 source "$LIB_DIR/selection.sh"
 
 export REPO_ROOT LIB_DIR CONFIG_DIR MODULES_DIR
@@ -40,82 +42,74 @@ run_if_selected() {
   fi
 }
 
+module_index_by_id() {
+  local module_id="$1"
+  local idx
+
+  for idx in "${!REGISTRY_MODULE_IDS[@]}"; do
+    if [[ "${REGISTRY_MODULE_IDS[$idx]}" == "$module_id" ]]; then
+      printf '%s' "$idx"
+      return 0
+    fi
+  done
+
+  return 1
+}
+
+module_is_selected_by_index() {
+  local idx="$1"
+  local selection_var="${REGISTRY_MODULE_SELECTION_VARS[$idx]}"
+
+  if [[ -z "$selection_var" ]]; then
+    return 0
+  fi
+
+  bool_is_true "${!selection_var:-false}"
+}
+
+validate_selected_module_dependencies() {
+  local idx dep_list dep dep_idx dep_selection_var dep_flag module_id
+
+  for idx in "${!REGISTRY_MODULE_IDS[@]}"; do
+    module_is_selected_by_index "$idx" || continue
+    module_id="${REGISTRY_MODULE_IDS[$idx]}"
+    dep_list="${REGISTRY_MODULE_DEPENDS_ON[$idx]}"
+    [[ -n "$dep_list" ]] || continue
+
+    IFS=',' read -r -a deps <<< "$dep_list"
+    for dep in "${deps[@]}"; do
+      [[ -n "$dep" ]] || continue
+      dep_idx="$(module_index_by_id "$dep")" || die "Module $module_id depends on unknown module id: $dep"
+
+      if ! module_is_selected_by_index "$dep_idx"; then
+        dep_selection_var="${REGISTRY_MODULE_SELECTION_VARS[$dep_idx]}"
+        if [[ -n "$dep_selection_var" ]]; then
+          dep_flag="$(printf '%s' "${dep_selection_var#INSTALL_}" | tr '[:upper:]_' '[:lower:]-')"
+          die "Module $module_id requires $dep. Enable dependency flag via --with-$dep_flag."
+        fi
+        die "Module $module_id requires always-on dependency $dep."
+      fi
+    done
+  done
+}
+
 run_selected_modules() {
-  run_module "core" "repo-sanity"
+  local idx selection_var group script
 
-  run_if_selected "INSTALL_CORE_XCODE_CLT"             "core"      "xcode-clt"
-  run_if_selected "INSTALL_CORE_HOMEBREW"              "core"      "homebrew"
-  run_if_selected "INSTALL_CORE_GIT"                   "core"      "git"
-  run_if_selected "INSTALL_CORE_GITHUB_CLI"            "core"      "github-cli"
-  run_if_selected "INSTALL_CORE_CHEZMOI"               "core"      "chezmoi"
-  run_if_selected "INSTALL_CORE_MISE"                  "core"      "mise"
-  run_if_selected "INSTALL_CORE_BREWFILE_APPLY"        "core"      "brewfile-apply"
-  run_if_selected "INSTALL_CORE_BREWFILE_EXPORT"       "core"      "brewfile-export"
+  validate_selected_module_dependencies
 
-  run_if_selected "INSTALL_CONFIG_GIT_BASELINE"        "config"    "git-baseline"
-  run_if_selected "INSTALL_CONFIG_GITHUB_CLI_BASELINE" "config"    "github-cli-baseline"
-  run_if_selected "INSTALL_CONFIG_SSH_BASELINE"        "config"    "ssh-baseline"
-  run_if_selected "INSTALL_CONFIG_GITHUB_SSH_CHECK"    "config"    "github-ssh-check"
+  for idx in "${!REGISTRY_MODULE_IDS[@]}"; do
+    selection_var="${REGISTRY_MODULE_SELECTION_VARS[$idx]}"
+    group="${REGISTRY_MODULE_GROUPS[$idx]}"
+    script="${REGISTRY_MODULE_SCRIPTS[$idx]}"
 
-  run_if_selected "INSTALL_SHELL_ZSH_BASELINE"         "shell"     "zsh-baseline"
-  run_if_selected "INSTALL_SHELL_COMPLETION_CORE"      "shell"     "completion-core"
-  run_if_selected "INSTALL_SHELL_GIT_INTEGRATION"      "shell"     "git-integration"
-  run_if_selected "INSTALL_SHELL_FZF"                  "shell"     "fzf"
-  run_if_selected "INSTALL_SHELL_ZOXIDE"               "shell"     "zoxide"
-  run_if_selected "INSTALL_SHELL_EZA"                  "shell"     "eza"
-  run_if_selected "INSTALL_SHELL_BAT"                  "shell"     "bat"
-  run_if_selected "INSTALL_SHELL_RIPGREP"              "shell"     "ripgrep"
-  run_if_selected "INSTALL_SHELL_FD"                   "shell"     "fd"
-  run_if_selected "INSTALL_SHELL_JQ"                   "shell"     "jq"
-  run_if_selected "INSTALL_SHELL_YQ"                   "shell"     "yq"
-  run_if_selected "INSTALL_SHELL_DIRENV"               "shell"     "direnv"
-  run_if_selected "INSTALL_SHELL_TREE"                 "shell"     "tree"
-  run_if_selected "INSTALL_SHELL_WGET"                 "shell"     "wget"
-  run_if_selected "INSTALL_SHELL_TMUX"                 "shell"     "tmux"
-  run_if_selected "INSTALL_SHELL_TMUX"                 "shell"     "tmux-baseline"
+    if [[ -z "$selection_var" ]]; then
+      run_module "$group" "$script"
+      continue
+    fi
 
-  run_if_selected "INSTALL_PYTHON_RUNTIME"             "runtime"   "python-runtime"
-  run_if_selected "INSTALL_PYTHON_UV"                  "runtime"   "python-uv"
-  run_if_selected "INSTALL_PYTHON_LINTERS"             "runtime"   "python-linters"
-  run_if_selected "INSTALL_PYTHON_PRE_COMMIT"          "runtime"   "python-pre-commit"
-  run_if_selected "INSTALL_NODE_RUNTIME"               "runtime"   "node-runtime"
-  run_if_selected "INSTALL_NODE_PNPM"                  "runtime"   "node-pnpm"
-  run_if_selected "INSTALL_NODE_TYPESCRIPT"            "runtime"   "node-typescript"
-  run_if_selected "INSTALL_GO_RUNTIME"                 "runtime"   "go-runtime"
-  run_if_selected "INSTALL_GO_DEV_TOOLS"               "runtime"   "go-dev-tools"
-  run_if_selected "INSTALL_JAVA_RUNTIME"               "runtime"   "java-runtime"
-  run_if_selected "INSTALL_JAVA_MAVEN"                 "runtime"   "java-maven"
-  run_if_selected "INSTALL_JAVA_GRADLE"                "runtime"   "java-gradle"
-
-  run_if_selected "INSTALL_CONTAINERS_COLIMA"          "container" "colima"
-  run_if_selected "INSTALL_CONTAINERS_DOCKER_CLI"      "container" "docker-cli"
-  run_if_selected "INSTALL_CONTAINERS_BUILDX"          "container" "buildx"
-  run_if_selected "INSTALL_CONTAINERS_COMPOSE"         "container" "compose"
-  run_if_selected "INSTALL_CONTAINERS_COLIMA"          "container" "colima-start"
-  run_if_selected "INSTALL_CONTAINERS_DOCKER_CLI"      "container" "docker-verify"
-
-  run_if_selected "INSTALL_QUALITY_SHELLCHECK"         "quality"   "shellcheck"
-  run_if_selected "INSTALL_QUALITY_SHFMT"              "quality"   "shfmt"
-  run_if_selected "INSTALL_QUALITY_MARKDOWNLINT"       "quality"   "markdownlint"
-  run_if_selected "INSTALL_QUALITY_YAMLLINT"           "quality"   "yamllint"
-  run_if_selected "INSTALL_QUALITY_ACTIONLINT"         "quality"   "actionlint"
-
-  run_if_selected "INSTALL_EDITOR_VSCODE_APP"          "editor"    "vscode-app"
-  run_if_selected "INSTALL_EDITOR_VSCODE_CLI"          "editor"    "vscode-cli"
-  run_if_selected "INSTALL_EDITOR_VSCODE_EXTENSIONS_BASE" "editor" "vscode-extensions-base"
-  run_if_selected "INSTALL_EDITOR_VSCODE_SETTINGS_BASE"   "editor" "vscode-settings-base"
-  run_if_selected "INSTALL_EDITOR_INTELLIJ_TOOLBOX"    "editor"    "intellij-toolbox"
-  run_if_selected "INSTALL_EDITOR_INTELLIJ_IDEA"       "editor"    "intellij-idea"
-  run_if_selected "INSTALL_EDITOR_INTELLIJ_CLI"        "editor"    "intellij-cli"
-  run_if_selected "INSTALL_EDITOR_ITERM2_APP"          "editor"    "iterm2-app"
-  run_if_selected "INSTALL_EDITOR_NEOVIM"              "editor"    "neovim"
-  run_if_selected "INSTALL_EDITOR_NEOVIM"              "editor"    "neovim-toolchain"
-
-  run_if_selected "INSTALL_AI_CODEX_APP"               "ai"        "codex-app"
-  run_if_selected "INSTALL_AI_CODEX_CLI"               "ai"        "codex-cli"
-  run_if_selected "INSTALL_AI_CURSOR_EDITOR"           "ai"        "cursor-editor"
-  run_if_selected "INSTALL_AI_CURSOR_CLI"              "ai"        "cursor-cli"
-  run_if_selected "INSTALL_AI_WINDSURF_EDITOR"         "ai"        "windsurf-editor"
+    run_if_selected "$selection_var" "$group" "$script"
+  done
 }
 
 main "$@"

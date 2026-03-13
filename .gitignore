@@ -12,6 +12,7 @@
 # Generated docs/artifacts
 docs/generated/*
 !docs/generated/.gitkeep
+!docs/generated/module-registry.md
 
 # Python
 __pycache__/

@@ -1,0 +1,261 @@
+Don't change things unless otherwise stated below:
+
+1. Remove chezmoi (and all related files / structure / functionality) - I don't want to use it or have it in this project.  Dotfiles will simply be managed through standard scripts here.
+
+
+
+2. The base "init" should include:
+
+- verify xcode clt is installed
+
+- homebrew
+|-- If homebrew is already installed, it should be updated (and doctored) to ensure it's up-to-date.
+|-- Do NOT use a brewfile (remove brewfile-apply.sh and brewfile-export.sh, along with the use of those)
+|-- Support simply using brew to install and update the selected modules.
+
+- git (ensure latest stable version is installed)
+|-- Baseline setup with common / sane defualts
+|-- Global .gitignore
+|-- Global configs (such as defaultBranch)
+|-- User configs (name, email, etc)
+|-- Full support for all auto completions and colors.
+
+- zsh (verify latest stable version is installed and it is the default shell)
+|-- ensure proper config files are in place and have sane defualts: .zshenv .zprofile .zshrc .zlogin .zlogout
+|-- ensure completions are wired in (completions.zsh)
+|-- Use no plugin manager, preferring a simple manual process for installing and sourcing them.
+|-- zsh plugins:
+|---- zsh-syntax-highlighting (https://github.com/zsh-users/zsh-syntax-highlighting)
+|---- zsh-completions (https://github.com/zsh-users/zsh-completions)
+|---- zsh-autosuggestions (https://github.com/zsh-users/zsh-autosuggestions)
+|---- fzf-tab (https://github.com/Aloxaf/fxf-tab)
+
+TODO: Look into fxf tab a bit more - how I can customize it and make the most of it.
+
+|---- zsh-history-substring-search (https://github.com/zsh-users/zsh-history-substring-search)
+|---- zsh-z (https://github.com/agkozak/zsh-z)
+|---- zoxide
+
+- tmux
+- fzf
+
+
+- Install fonts:
+|-- font-fira-code
+|-- font-fira-code-nerd-font
+|-- font-fira-mono
+|-- font-fira-mono-nerd-font
+|-- font-hack
+|-- font-hack-nerd-font
+|-- font-inter
+|-- font-jetbrains-mono
+|-- font-jetbrains-mono-nerd-font
+|-- font-open-sans
+|-- font-roboto
+|-- font-roboto-mono
+|-- font-roboto-mono-nerd-font
+
+- Setup font-jetbrains-mono-nerd-font as the default for the terminal & sessions
+
+Helm
+Terraform
+
+(podman?)
+
+Starship Command Prompt: https://starship.rs/
+
+107 Done
+8 not done
+
+
+
+fzf
+
+To Research:
+z-compile?  (compiles plugins to bytecode for performacne)
+Setting up 256 colors:  set -g default-terminal 'screen-256color'
+# increase scrollback lines
+set -g history-limit 10000
+
+
+
+-- completions
+aws cli stuff
+aws cli autocompletions
+
+brew completions (https://github.com/z-shell/brew-completions)
+brew service completions (https://github.com/vasyharan/zsh-brew-services)
+
+claude-code-zsh-completion - Adds completions for Anthropic's Claude Code CLI with support for 120+ languages. Includes dynamic completion for MCP servers, plugins, and session IDs.
+claudecode-completion - Minimal and always up-to-date zsh completions for Claude Code CLI.
+copilot - Adds completions for the GitHub Copilot CLI.
+docker (greymd) - Add tab completions for docker and docker-compose.
+fancy-completions - Provides various completions tools, libraries and integrations.
+
+fzf-rg - Add some functionalities to terminal using fzf, bat and ripgrep.
+fzf-tab-completion - Add tab completion for ZSH, bash & applications using GNU Readline.
+fzf-zsh-completions - Fuzzy completions for fzf and ZSH that can be triggered by a trigger sequence that defaults to **.
+
+github-cli - Tab completions for the GitHub cli.
+git-fzf - ZSH plugin that wraps git operations for simplicity and productivity. It also contains completions and combines support for fzf.
+helmfile - Adds autocompletion for helm.
+kubectl-fzf - Fast and powerful fzf-powered autocompletion for kubectl.
+kubectl-plugin - Generates kubectl completion scripts to extend the kubectl auto complete functionality to accomodate for plugin sub-commands.
+npm-run - Autocompletion support for npm run.
+npm-scripts-autocomplete - Shows autocomplete suggestions from scripts found in the current directory's package.json. Works with npm and yarn.
+okta - Provides command line completions for the aws-okta and okta-awscli commands.
+pagerduty - Adds completions for the pagerduty cli
+spring-boot-plugin - Adds autocompletions for spring-boot commands.
+zoxide - Tab completions for zoxide.
+
+
+https://github.com/JannoTjarks/catppuccin-zsh
+
+
+
+- neovim
+
+
+- mise (mise-en-place https://github.com/jdx/mise)
+
+
+
+
+
+
+
+
+- Install fonts:
+|-- font-fira-code
+|-- font-fira-code-nerd-font
+|-- font-fira-mono
+|-- font-fira-mono-nerd-font
+|-- font-hack
+|-- font-hack-nerd-font
+|-- font-inter
+|-- font-jetbrains-mono
+|-- font-jetbrains-mono-nerd-font
+|-- font-open-sans
+|-- font-roboto
+|-- font-roboto-mono
+|-- font-roboto-mono-nerd-font
+
+
+
+
+
+mkdir -p ~/.config/zsh/conf.d
+mkdir -p ~/.config/zsh/plugins
+mkdir -p ~/.config/zsh/completions
+mkdir -p ~/.cache/zsh
+mkdir -p ~/.local/state/zsh
+mkdir -p ~/.local/share
+
+
+
+~/.zshenv:
+    export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+    export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+    export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+    export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
+
+    export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+
+
+
+$XDG_CONFIG_HOME/.zprofile:
+    # Login shell initialization
+
+
+
+$XDG_CONFIG_HOME/.zshrc:
+    export HISTFILE="${XDG_STATE_HOME}/zsh/history"
+    export HISTSIZE=50000
+    export SAVEHIST=50000
+
+    setopt HIST_IGNORE_DUPS
+    setopt SHARE_HISTORY
+    setopt EXTENDED_HISTORY
+
+    autoload -Uz compinit
+    compinit -d "${XDG_CACHE_HOME}/zsh/.zcompdump"
+
+    fpath=("$ZDOTDIR/completions" $fpath)
+
+    for file in "$ZDOTDIR"/conf.d/*.zsh; do
+      [ -r "$file" ] && source "$file"
+    done
+
+
+
+	$ZDOTDIR/conf.d/00-path.zsh
+	$ZDOTDIR/conf.d/10-aliases.zsh
+	$ZDOTDIR/conf.d/20-bindings.zsh
+	$ZDOTDIR/conf.d/30-completion.zsh
+	$ZDOTDIR/conf.d/40-plugins.zsh
+	$ZDOTDIR/conf.d/90-local.zsh
+
+
+
+
+
+
+# Load Completions
+autoload -Uz compinit && compinit -C
+
+autoload -U compinit && compinit
+autoload -U colors && colors
+
+TODO: keybindings for autosuggestions
+
+# Keybindings
+bindkey -v
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+
+# History
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+
+# History Settings
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_SAVE_NO_DUPS
+
+
+
+# Completion Styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS} ma=0\;33
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+
+# Aliases
+alias ls='ls --color'
+
+# TODO: Custom ls Colors
+
+# Shell Integrations
+eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"
+
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
+
+
+export EDITOR="nvim"
