@@ -745,9 +745,9 @@ REGISTRY_VERIFY_ARGS=(
   '/Applications/Codex.app'
   '/Applications/Cursor.app'
   '/Applications/Windsurf.app'
-  '$HOME/.config/dev-bootstrap/zsh/bootstrap.zsh'
-  '$HOME/.config/dev-bootstrap/tmux/tmux.conf'
-  '$HOME/.config/dev-bootstrap/nvim/plugin/bootstrap.vim'
+  '$HOME/.config/zsh/.zshrc'
+  '$HOME/.config/tmux/tmux.conf'
+  '$HOME/.config/nvim/plugin/bootstrap.vim'
   '$HOME/.ssh/config'
 )
 

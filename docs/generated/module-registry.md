@@ -104,7 +104,7 @@ Source: `config/modules.yaml`
 | 24 | INSTALL_AI_CODEX_APP | dir | warn | Codex app present | /Applications/Codex.app |
 | 25 | INSTALL_AI_CURSOR_EDITOR | dir | warn | Cursor editor present | /Applications/Cursor.app |
 | 26 | INSTALL_AI_WINDSURF_EDITOR | dir | warn | Windsurf editor present | /Applications/Windsurf.app |
-| 27 | INSTALL_SHELL_ZSH_BASELINE | file | fail | Managed zsh bootstrap present | $HOME/.config/dev-bootstrap/zsh/bootstrap.zsh |
-| 28 | INSTALL_SHELL_TMUX | file | fail | Managed tmux config present | $HOME/.config/dev-bootstrap/tmux/tmux.conf |
-| 29 | INSTALL_EDITOR_NEOVIM | file | fail | Managed Neovim bootstrap present | $HOME/.config/dev-bootstrap/nvim/plugin/bootstrap.vim |
+| 27 | INSTALL_SHELL_ZSH_BASELINE | file | fail | Managed zsh bootstrap present | $HOME/.config/zsh/.zshrc |
+| 28 | INSTALL_SHELL_TMUX | file | fail | Managed tmux config present | $HOME/.config/tmux/tmux.conf |
+| 29 | INSTALL_EDITOR_NEOVIM | file | fail | Managed Neovim bootstrap present | $HOME/.config/nvim/plugin/bootstrap.vim |
 | 30 | INSTALL_CONFIG_SSH_BASELINE | file | fail | SSH config present | $HOME/.ssh/config |
