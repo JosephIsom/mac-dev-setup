@@ -6,7 +6,7 @@ source "$LIB_DIR/common.sh"
 LOCAL_BIN_EXPORT='export PATH="$HOME/.local/bin:$PATH"'
 
 ensure_local_bin_in_path() {
-  local local_zsh="$HOME/.config/dev-bootstrap/zsh/local.zsh"
+  local local_zsh="$HOME/.config/zsh/conf.d/90-local.zsh"
 
   mkdir -p "$(dirname "$local_zsh")"
   touch "$local_zsh"

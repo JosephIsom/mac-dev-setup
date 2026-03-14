@@ -1,0 +1,2 @@
+-- User-local Neovim overrides (mac-dev-setup)
+-- Intentionally left minimal.

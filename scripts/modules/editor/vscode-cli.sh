@@ -10,9 +10,9 @@ TARGET_LINK="$TARGET_DIR/code"
 ensure_local_bin_in_path() {
   mkdir -p "$TARGET_DIR"
 
-  if ! grep -Fq 'export PATH="$HOME/.local/bin:$PATH"' "$HOME/.config/dev-bootstrap/zsh/local.zsh" 2>/dev/null; then
-    printf '\nexport PATH="$HOME/.local/bin:$PATH"\n' >> "$HOME/.config/dev-bootstrap/zsh/local.zsh"
-    log_success "Added ~/.local/bin PATH entry to dev-bootstrap local.zsh"
+  if ! grep -Fq 'export PATH="$HOME/.local/bin:$PATH"' "$HOME/.config/zsh/conf.d/90-local.zsh" 2>/dev/null; then
+    printf '\nexport PATH="$HOME/.local/bin:$PATH"\n' >> "$HOME/.config/zsh/conf.d/90-local.zsh"
+    log_success "Added ~/.local/bin PATH entry to zsh conf.d/90-local.zsh"
   fi
 }
 

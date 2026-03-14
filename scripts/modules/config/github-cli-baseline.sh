@@ -3,8 +3,8 @@ set -euo pipefail
 
 source "$LIB_DIR/common.sh"
 
-BOOTSTRAP_GH_DIR="$HOME/.config/dev-bootstrap/gh"
-GH_NOTES_FILE="$BOOTSTRAP_GH_DIR/README"
+GH_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/gh"
+GH_NOTES_FILE="$GH_CONFIG_DIR/bootstrap-notes"
 
 verify_protocol() {
   case "${GITHUB_GIT_PROTOCOL:-https}" in
@@ -14,7 +14,7 @@ verify_protocol() {
 }
 
 write_notes() {
-  mkdir -p "$BOOTSTRAP_GH_DIR"
+  mkdir -p "$GH_CONFIG_DIR"
 
   cat > "$GH_NOTES_FILE" <<EOF
 GitHub CLI bootstrap notes
@@ -51,7 +51,7 @@ verify_gh_config() {
   local configured_protocol
   configured_protocol="$(gh config get git_protocol 2>/dev/null || true)"
   [[ "$configured_protocol" == "${GITHUB_GIT_PROTOCOL}" ]] || die "GitHub CLI git_protocol mismatch."
-  log_success "GitHub CLI baseline configuration verified."
+  log_success "GitHub CLI baseline configuration verified (XDG: $GH_CONFIG_DIR)."
 }
 
 main() {

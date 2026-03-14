@@ -3,26 +3,13 @@ set -euo pipefail
 
 source "$LIB_DIR/common.sh"
 
-REPO_ZSH_DIR="$REPO_ROOT/home/dot_config/dev-bootstrap/zsh"
-TARGET_ZSH_DIR="$HOME/.config/dev-bootstrap/zsh"
-TARGET_PLUGIN_DIR="$TARGET_ZSH_DIR/plugins"
-USER_ZSHRC="$HOME/.zshrc"
-USER_ZPROFILE="$HOME/.zprofile"
-
-append_line_if_missing() {
-  local file="$1"
-  local line="$2"
-
-  touch "$file"
-
-  if grep -Fqx "$line" "$file" 2>/dev/null; then
-    log_info "Line already present in $file"
-    return 0
-  fi
-
-  printf '\n%s\n' "$line" >> "$file"
-  log_success "Added managed include to $file"
-}
+REPO_HOME="$REPO_ROOT/home"
+REPO_ZSH_DIR="$REPO_ROOT/home/dot_config/zsh"
+TARGET_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+TARGET_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+TARGET_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
+TARGET_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+TARGET_ZDOTDIR="$TARGET_CONFIG_HOME/zsh"
 
 copy_repo_file() {
   local src="$1"
@@ -33,22 +20,66 @@ copy_repo_file() {
   cp "$src" "$dest"
 }
 
+copy_repo_file_if_missing() {
+  local src="$1"
+  local dest="$2"
+
+  [[ -f "$src" ]] || return 0
+  if [[ -f "$dest" ]]; then
+    log_info "Preserving existing $dest"
+    return 0
+  fi
+  mkdir -p "$(dirname "$dest")"
+  cp "$src" "$dest"
+  log_success "Created $dest from repo template"
+}
+
 main() {
-  mkdir -p "$TARGET_ZSH_DIR"
-  mkdir -p "$TARGET_PLUGIN_DIR"
-  mkdir -p "${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+  # XDG directories for zsh
+  mkdir -p "$TARGET_ZDOTDIR/conf.d"
+  mkdir -p "$TARGET_ZDOTDIR/plugins"
+  mkdir -p "$TARGET_ZDOTDIR/completions"
+  mkdir -p "$TARGET_CACHE_HOME/zsh"
+  mkdir -p "$TARGET_STATE_HOME/zsh"
+  mkdir -p "$TARGET_DATA_HOME"
 
-  copy_repo_file "$REPO_ZSH_DIR/bootstrap.zsh" "$TARGET_ZSH_DIR/bootstrap.zsh"
-  copy_repo_file "$REPO_ZSH_DIR/bootstrap.zprofile" "$TARGET_ZSH_DIR/bootstrap.zprofile"
-  copy_repo_file "$REPO_ZSH_DIR/aliases.zsh" "$TARGET_ZSH_DIR/aliases.zsh"
-  copy_repo_file "$REPO_ZSH_DIR/local.zsh" "$TARGET_ZSH_DIR/local.zsh"
+  # Single file in HOME: .zshenv (sets XDG_* and ZDOTDIR)
+  copy_repo_file "$REPO_HOME/dot_zshenv" "$HOME/.zshenv"
 
-  append_line_if_missing "$USER_ZSHRC" 'source "$HOME/.config/dev-bootstrap/zsh/bootstrap.zsh"'
-  append_line_if_missing "$USER_ZPROFILE" 'source "$HOME/.config/dev-bootstrap/zsh/bootstrap.zprofile"'
+  # ZDOTDIR files: .zprofile, .zshrc
+  copy_repo_file "$REPO_ZSH_DIR/dot_zprofile" "$TARGET_ZDOTDIR/.zprofile"
+  copy_repo_file "$REPO_ZSH_DIR/dot_zshrc" "$TARGET_ZDOTDIR/.zshrc"
 
-  log_info "Verifying zsh baseline..."
+  # conf.d: deploy all; do not overwrite 90-local.zsh if it already exists
+  for f in "$REPO_ZSH_DIR/conf.d/"*.zsh; do
+    [[ -f "$f" ]] || continue
+    base="$(basename "$f")"
+    if [[ "$base" == "90-local.zsh" ]]; then
+      copy_repo_file_if_missing "$f" "$TARGET_ZDOTDIR/conf.d/$base"
+    else
+      copy_repo_file "$f" "$TARGET_ZDOTDIR/conf.d/$base"
+    fi
+  done
+
+  # Completions and plugins dirs (copy contents, not .gitkeep)
+  if [[ -d "$REPO_ZSH_DIR/completions" ]]; then
+    for f in "$REPO_ZSH_DIR/completions"/*; do
+      [[ -f "$f" ]] || continue
+      [[ "$(basename "$f")" == .gitkeep ]] && continue
+      copy_repo_file "$f" "$TARGET_ZDOTDIR/completions/$(basename "$f")"
+    done
+  fi
+  if [[ -d "$REPO_ZSH_DIR/plugins" ]]; then
+    for f in "$REPO_ZSH_DIR/plugins"/*; do
+      [[ -f "$f" ]] || continue
+      [[ "$(basename "$f")" == .gitkeep ]] && continue
+      copy_repo_file "$f" "$TARGET_ZDOTDIR/plugins/$(basename "$f")"
+    done
+  fi
+
+  log_info "Verifying zsh baseline (XDG layout)..."
   zsh -i -c exit
-  log_success "zsh baseline installed from repo-managed source files."
+  log_success "zsh baseline installed (XDG: ZDOTDIR=$TARGET_ZDOTDIR)."
 }
 
 main "$@"

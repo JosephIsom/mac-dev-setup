@@ -1,2 +1,0 @@
--- dev-bootstrap user-local Neovim overrides
--- Intentionally left minimal.

@@ -3,7 +3,7 @@ set -euo pipefail
 
 source "$LIB_DIR/common.sh"
 
-NOTES_DIR="$HOME/.config/dev-bootstrap/jetbrains"
+NOTES_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/jetbrains"
 NOTES_FILE="$NOTES_DIR/intellij-idea-notes.txt"
 
 find_intellij_app() {

@@ -518,17 +518,17 @@ verify_checks:
     severity: warn
   - selection_var: INSTALL_SHELL_ZSH_BASELINE
     kind: file
-    arg: "$HOME/.config/dev-bootstrap/zsh/bootstrap.zsh"
+    arg: "$HOME/.config/zsh/.zshrc"
     label: "Managed zsh bootstrap present"
     severity: fail
   - selection_var: INSTALL_SHELL_TMUX
     kind: file
-    arg: "$HOME/.config/dev-bootstrap/tmux/tmux.conf"
+    arg: "$HOME/.config/tmux/tmux.conf"
     label: "Managed tmux config present"
     severity: fail
   - selection_var: INSTALL_EDITOR_NEOVIM
     kind: file
-    arg: "$HOME/.config/dev-bootstrap/nvim/plugin/bootstrap.vim"
+    arg: "$HOME/.config/nvim/plugin/bootstrap.vim"
     label: "Managed Neovim bootstrap present"
     severity: fail
   - selection_var: INSTALL_CONFIG_SSH_BASELINE

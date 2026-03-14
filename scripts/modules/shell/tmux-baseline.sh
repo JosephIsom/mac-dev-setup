@@ -3,11 +3,11 @@ set -euo pipefail
 
 source "$LIB_DIR/common.sh"
 
-REPO_TMUX_DIR="$REPO_ROOT/home/dot_config/dev-bootstrap/tmux"
-TARGET_TMUX_DIR="$HOME/.config/dev-bootstrap/tmux"
+REPO_TMUX_DIR="$REPO_ROOT/home/dot_config/tmux"
+TARGET_TMUX_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/tmux"
 USER_TMUX_CONF="$HOME/.tmux.conf"
-MANAGED_SOURCE_LINE='source-file ~/.config/dev-bootstrap/tmux/tmux.conf'
-VERIFY_SESSION="devbootstrap_verify"
+MANAGED_SOURCE_LINE='source-file ~/.config/tmux/tmux.conf'
+VERIFY_SESSION="macdev_verify"
 
 append_line_if_missing() {
   local file="$1"
@@ -47,10 +47,10 @@ verify_tmux() {
   log_info "Verifying tmux config parse..."
   cleanup_verify_session
   tmux new-session -d -s "$VERIFY_SESSION"
-  tmux source-file "$HOME/.config/dev-bootstrap/tmux/tmux.conf"
+  tmux source-file "$TARGET_TMUX_DIR/tmux.conf"
   cleanup_verify_session
 
-  log_success "tmux baseline verified."
+  log_success "tmux baseline verified (XDG: $TARGET_TMUX_DIR)."
 }
 
 main() {

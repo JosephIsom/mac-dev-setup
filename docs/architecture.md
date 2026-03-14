@@ -49,16 +49,16 @@ This file is intentionally gitignored.
 ### Current model
 
 - repo-managed source files live under `home/...`
-- bootstrap scripts copy them into `~/.config/dev-bootstrap/...`
-- user-facing shell/editor hooks source those managed files
+- bootstrap scripts copy them into XDG locations: `~/.config/zsh/`, `~/.config/tmux/`, `~/.config/nvim/`, `~/.config/git/`, etc.
+- zsh: `ZDOTDIR=$XDG_CONFIG_HOME/zsh`, with `conf.d/*.zsh` and `~/.zshenv` for env
 
 ### Local override strategy
 
 Use these for personal changes that should not be normalized into the baseline too early:
 
-- `~/.config/dev-bootstrap/zsh/local.zsh`
-- `~/.config/dev-bootstrap/tmux/local.conf`
-- `~/.config/dev-bootstrap/nvim/local.lua`
+- `~/.config/zsh/conf.d/90-local.zsh`
+- `~/.config/tmux/local.conf`
+- `~/.config/nvim/local.lua`
 
 ## Baseline vs Optional Layers
 

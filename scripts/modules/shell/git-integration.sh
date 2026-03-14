@@ -3,16 +3,12 @@ set -euo pipefail
 
 source "$LIB_DIR/common.sh"
 
-REPO_FILE="$REPO_ROOT/home/dot_config/dev-bootstrap/zsh/git.zsh"
-TARGET_FILE="$HOME/.config/dev-bootstrap/zsh/git.zsh"
-
+# Git aliases and gh completion are in zsh conf.d (10-aliases.zsh, 30-completion.zsh).
+# This module verifies that git integration is active in zsh.
 main() {
-  [[ -f "$REPO_FILE" ]] || die "Missing repo-managed file: $REPO_FILE"
-  mkdir -p "$(dirname "$TARGET_FILE")"
-  cp "$REPO_FILE" "$TARGET_FILE"
-
-  zsh -i -c 'source "$HOME/.config/dev-bootstrap/zsh/git.zsh"'
-  log_success "Git terminal integrations installed from repo-managed source."
+  log_info "Verifying git integration in zsh..."
+  zsh -i -c 'alias gs >/dev/null 2>&1' || die "Git alias gs not found in zsh. Run zsh-baseline first."
+  log_success "Git terminal integrations verified (XDG zsh conf.d)."
 }
 
 main "$@"

@@ -3,14 +3,14 @@ set -euo pipefail
 
 source "$LIB_DIR/common.sh"
 
-REPO_GITIGNORE="$REPO_ROOT/home/dot_config/dev-bootstrap/git/ignore"
-BOOTSTRAP_GIT_DIR="$HOME/.config/dev-bootstrap/git"
-BOOTSTRAP_GITIGNORE="$BOOTSTRAP_GIT_DIR/ignore"
+REPO_GITIGNORE="$REPO_ROOT/home/dot_config/git/ignore"
+GIT_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/git"
+GITIGNORE_FILE="$GIT_CONFIG_DIR/ignore"
 
 copy_gitignore() {
-  mkdir -p "$BOOTSTRAP_GIT_DIR"
+  mkdir -p "$GIT_CONFIG_DIR"
   [[ -f "$REPO_GITIGNORE" ]] || die "Missing repo-managed file: $REPO_GITIGNORE"
-  cp "$REPO_GITIGNORE" "$BOOTSTRAP_GITIGNORE"
+  cp "$REPO_GITIGNORE" "$GITIGNORE_FILE"
 }
 
 apply_git_baseline() {
@@ -22,7 +22,7 @@ apply_git_baseline() {
   git config --global fetch.prune true
   git config --global pull.rebase false
   git config --global rerere.enabled true
-  git config --global core.excludesfile "$BOOTSTRAP_GITIGNORE"
+  git config --global core.excludesfile "$GITIGNORE_FILE"
 
   if [[ -n "${GIT_USER_NAME:-}" ]]; then
     git config --global user.name "$GIT_USER_NAME"
@@ -55,7 +55,7 @@ verify_git_config() {
   [[ "$value" == "true" ]] || die "Git rerere.enabled not configured correctly."
 
   value="$(git config --global --get core.excludesfile || true)"
-  [[ "$value" == "$BOOTSTRAP_GITIGNORE" ]] || die "Git core.excludesfile not configured correctly."
+  [[ "$value" == "$GITIGNORE_FILE" ]] || die "Git core.excludesfile not configured correctly."
 
   if [[ -n "${GIT_USER_NAME:-}" ]]; then
     value="$(git config --global --get user.name || true)"
@@ -67,7 +67,7 @@ verify_git_config() {
     [[ "$value" == "$GIT_USER_EMAIL" ]] || die "Git user.email mismatch."
   fi
 
-  log_success "Git baseline configuration verified."
+  log_success "Git baseline configuration verified (XDG: $GITIGNORE_FILE)."
 }
 
 main() {
