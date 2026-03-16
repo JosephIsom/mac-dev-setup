@@ -1,0 +1,21 @@
+gui:
+  theme:
+    activeBorderColor:
+      - blue
+      - bold
+    inactiveBorderColor:
+      - black
+    selectedLineBgColor:
+      - default
+    selectedLineFgColor:
+      - default
+    inactiveViewSelectedLineBgColor:
+      - black
+    commandViewBgColor:
+      - black
+    statusErrorColor:
+      - red
+    statusSuccessColor:
+      - green
+    statusWarningColor:
+      - yellow

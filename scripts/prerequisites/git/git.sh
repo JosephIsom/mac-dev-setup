@@ -48,6 +48,13 @@ apply_git_config() {
   git config --global interactive.diffFilter 'delta --color-only'
   git config --global delta.navigate true
   git config --global delta.line-numbers true
+  git config --global delta.syntax-theme ansi
+  git config --global delta.file-style 'bold blue'
+  git config --global delta.hunk-header-style 'blue'
+  git config --global delta.plus-style 'syntax green'
+  git config --global delta.minus-style 'syntax red'
+  git config --global delta.line-numbers-left-style '8'
+  git config --global delta.line-numbers-right-style '8'
   git config --global merge.conflictstyle zdiff3
 
   if [[ -n "${GIT_USER_NAME:-}" ]]; then
@@ -104,6 +111,9 @@ verify_git_config() {
 
   value="$(git config --global --get delta.line-numbers || true)"
   [[ "$value" == "true" ]] || die "Git delta.line-numbers not configured correctly."
+
+  value="$(git config --global --get delta.syntax-theme || true)"
+  [[ "$value" == "ansi" ]] || die "Git delta.syntax-theme not configured correctly."
 
   value="$(git config --global --get merge.conflictstyle || true)"
   [[ "$value" == "zdiff3" ]] || die "Git merge.conflictstyle not configured correctly."

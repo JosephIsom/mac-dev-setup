@@ -66,7 +66,8 @@ verify_install() {
   [[ -d "$APP_PATH" ]] || die "WezTerm app not found at $APP_PATH after installation."
   [[ -f "$TARGET_WEZTERM_CONFIG" ]] || die "WezTerm config not found at $TARGET_WEZTERM_CONFIG after installation."
   [[ -f "$TARGET_WEZTERM_LOCAL_CONFIG" ]] || die "WezTerm local config not found at $TARGET_WEZTERM_LOCAL_CONFIG after installation."
-  grep -Fq "background = '#1E1E1E'" "$TARGET_WEZTERM_CONFIG" || die "WezTerm config does not set the managed dark background."
+  grep -Fq "local colors_dark =" "$TARGET_WEZTERM_CONFIG" || die "WezTerm config does not define the managed dark palette."
+  grep -Fq "local colors_light =" "$TARGET_WEZTERM_CONFIG" || die "WezTerm config does not define the managed light palette."
   grep -Fq "JetBrainsMono Nerd Font" "$TARGET_WEZTERM_CONFIG" || die "WezTerm config does not set JetBrainsMono Nerd Font."
 }
 

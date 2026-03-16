@@ -18,18 +18,18 @@ $character\
 right_format = """$cmd_duration$time"""
 
 [character]
-success_symbol = "[>](bold green)"
+success_symbol = "[>](bold blue)"
 error_symbol = "[>](bold red)"
 vicmd_symbol = "[<](bold yellow)"
 
 [directory]
-style = "bold cyan"
+style = "bold blue"
 truncation_length = 3
 truncate_to_repo = false
 
 [git_branch]
 symbol = "git "
-style = "bold purple"
+style = "bold magenta"
 
 [git_status]
 style = "bold red"
@@ -41,13 +41,13 @@ symbol = " "
 [cmd_duration]
 min_time = 2000
 format = "[$duration]($style) "
-style = "dimmed yellow"
+style = "yellow"
 
 [time]
 disabled = false
 time_format = "%H:%M"
 format = "[$time]($style)"
-style = "dimmed white"
+style = "bright-black"
 
 [python]
 symbol = "py "

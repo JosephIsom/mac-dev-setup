@@ -6,7 +6,18 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
-config.colors = {
+local function appearance()
+  if wezterm.gui and wezterm.gui.get_appearance then
+    return wezterm.gui.get_appearance()
+  end
+  return 'Dark'
+end
+
+local function is_dark_mode()
+  return appearance():find 'Dark' ~= nil
+end
+
+local colors_dark = {
   foreground = '#DEDEDE',
   background = '#1E1E1E',
   cursor_bg = '#3478F6',
@@ -20,7 +31,7 @@ config.colors = {
     '#F6C944',
     '#3478F6',
     '#9955A3',
-    '#8C8C8C',
+    '#59B7C9',
     '#E9E9E9',
   },
   brights = {
@@ -28,12 +39,43 @@ config.colors = {
     '#EC5F5D',
     '#78B855',
     '#F6C944',
-    '#3478F6',
+    '#6F63D9',
     '#E45C9D',
-    '#9C9C9C',
+    '#5FA79B',
     '#FFFFFF',
   },
 }
+
+local colors_light = {
+  foreground = '#272727',
+  background = '#FFFFFF',
+  cursor_bg = '#3477F7',
+  cursor_fg = '#FFFFFF',
+  selection_bg = '#BAD6FB',
+  selection_fg = '#000000',
+  ansi = {
+    '#272727',
+    '#CE4745',
+    '#78B856',
+    '#F6C94E',
+    '#3477F7',
+    '#8B4292',
+    '#4DAFC3',
+    '#F7F7F7',
+  },
+  brights = {
+    '#7F7F7F',
+    '#CE4745',
+    '#78B856',
+    '#F6C94E',
+    '#6559CC',
+    '#E45C9D',
+    '#5A9B90',
+    '#FFFFFF',
+  },
+}
+
+config.colors = is_dark_mode() and colors_dark or colors_light
 config.font = wezterm.font 'JetBrainsMono Nerd Font'
 config.font_size = 14.0
 config.scrollback_lines = 50000

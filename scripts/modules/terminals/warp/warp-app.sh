@@ -5,10 +5,9 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 APP_PATH="/Applications/Warp.app"
-REPO_WARP_THEME="$REPO_ROOT/scripts/modules/terminals/warp/assets/apple-graphite-dark-mac-dev-setup.yaml"
+REPO_WARP_THEME_DIR="$REPO_ROOT/scripts/modules/terminals/warp/assets"
 TARGET_WARP_DIR="$HOME/.warp"
 TARGET_WARP_THEME_DIR="$TARGET_WARP_DIR/themes"
-TARGET_WARP_THEME="$TARGET_WARP_THEME_DIR/apple-graphite-dark-mac-dev-setup.yaml"
 TARGET_WARP_NOTES="$TARGET_WARP_DIR/bootstrap-notes.txt"
 
 install_app() {
@@ -21,10 +20,10 @@ install_app() {
 }
 
 install_theme() {
-  [[ -f "$REPO_WARP_THEME" ]] || die "Missing repo-managed Warp theme: $REPO_WARP_THEME"
+  [[ -d "$REPO_WARP_THEME_DIR" ]] || die "Missing repo-managed Warp theme directory: $REPO_WARP_THEME_DIR"
 
   mkdir -p "$TARGET_WARP_THEME_DIR"
-  cp "$REPO_WARP_THEME" "$TARGET_WARP_THEME"
+  find "$REPO_WARP_THEME_DIR" -type f -name 'apple-graphite-expanded-*-mac-dev-setup.yaml' -exec cp {} "$TARGET_WARP_THEME_DIR/" \;
 }
 
 write_notes() {
@@ -33,23 +32,31 @@ write_notes() {
   cat > "$TARGET_WARP_NOTES" <<EOF
 Warp bootstrap notes
 
-Installed custom theme:
-  $TARGET_WARP_THEME
+Installed custom themes:
+  $TARGET_WARP_THEME_DIR/apple-graphite-expanded-dark-mac-dev-setup.yaml
+  $TARGET_WARP_THEME_DIR/apple-graphite-expanded-light-mac-dev-setup.yaml
 
 In Warp:
 1. Open Settings > Appearance > Current Theme
-2. Select "Apple Graphite Dark (mac-dev-setup)"
+2. Pick the theme that matches your current macOS appearance:
+   - Apple Graphite Expanded Dark (mac-dev-setup)
+   - Apple Graphite Expanded Light (mac-dev-setup)
 3. Open Settings > Appearance > Text
 4. Set font to "JetBrainsMono Nerd Font"
 5. Set font size to 14
+
+Warp does not currently expose a reliable file-based automatic theme switcher for macOS light/dark mode.
+If you change system appearance later, switch the Warp theme manually to the matching variant.
 EOF
 }
 
 verify_install() {
   [[ -d "$APP_PATH" ]] || die "Warp app not found at $APP_PATH after installation."
-  [[ -f "$TARGET_WARP_THEME" ]] || die "Warp theme not found at $TARGET_WARP_THEME after installation."
+  [[ -f "$TARGET_WARP_THEME_DIR/apple-graphite-expanded-dark-mac-dev-setup.yaml" ]] || die "Warp dark theme not found after installation."
+  [[ -f "$TARGET_WARP_THEME_DIR/apple-graphite-expanded-light-mac-dev-setup.yaml" ]] || die "Warp light theme not found after installation."
   [[ -f "$TARGET_WARP_NOTES" ]] || die "Warp bootstrap notes not found at $TARGET_WARP_NOTES after installation."
-  grep -Fq 'name: Apple Graphite Dark (mac-dev-setup)' "$TARGET_WARP_THEME" || die "Warp theme file is missing the managed theme name."
+  grep -Fq 'name: Apple Graphite Expanded Dark (mac-dev-setup)' "$TARGET_WARP_THEME_DIR/apple-graphite-expanded-dark-mac-dev-setup.yaml" || die "Warp dark theme file is missing the managed theme name."
+  grep -Fq 'name: Apple Graphite Expanded Light (mac-dev-setup)' "$TARGET_WARP_THEME_DIR/apple-graphite-expanded-light-mac-dev-setup.yaml" || die "Warp light theme file is missing the managed theme name."
   grep -Fq "JetBrainsMono Nerd Font" "$TARGET_WARP_NOTES" || die "Warp bootstrap notes do not mention the managed font."
 }
 
@@ -60,7 +67,7 @@ main() {
   verify_install
 
   log_success "Warp installation verified."
-  log_warn "Warp does not currently expose an official file-based settings path for selecting the active theme/font."
+  log_warn "Warp does not currently expose an official file-based settings path for selecting the active light/dark theme automatically."
   log_warn "Use $TARGET_WARP_NOTES to finish the one-time in-app theme and font selection."
 }
 

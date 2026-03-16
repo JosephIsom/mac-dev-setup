@@ -94,8 +94,8 @@ verify_install() {
   [[ -f "$TARGET_GHOSTTY_CONFIG" ]] || die "Ghostty config not found at $TARGET_GHOSTTY_CONFIG after installation."
   [[ -f "$TARGET_GHOSTTY_LOCAL_CONFIG" ]] || die "Ghostty local config not found at $TARGET_GHOSTTY_LOCAL_CONFIG after installation."
   [[ -d "$TARGET_GHOSTTY_THEME_DIR" ]] || die "Ghostty theme directory not found at $TARGET_GHOSTTY_THEME_DIR after installation."
-  [[ -f "$TARGET_GHOSTTY_THEME_DIR/apple-graphite-light.conf" ]] || die "Ghostty theme apple-graphite-light.conf not found after installation."
-  [[ -f "$TARGET_GHOSTTY_THEME_DIR/apple-graphite-dark.conf" ]] || die "Ghostty theme apple-graphite-dark.conf not found after installation."
+  [[ -f "$TARGET_GHOSTTY_THEME_DIR/apple-graphite-expanded-light.conf" ]] || die "Ghostty theme apple-graphite-expanded-light.conf not found after installation."
+  [[ -f "$TARGET_GHOSTTY_THEME_DIR/apple-graphite-expanded-dark.conf" ]] || die "Ghostty theme apple-graphite-expanded-dark.conf not found after installation."
   grep -Fq "font-family = JetBrainsMono Nerd Font" "$TARGET_GHOSTTY_CONFIG" || die "Ghostty config does not set JetBrainsMono Nerd Font."
   grep -Fq "config-file = ?local.conf" "$TARGET_GHOSTTY_CONFIG" || die "Ghostty config does not include local override support."
 }

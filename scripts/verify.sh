@@ -510,13 +510,14 @@ main() {
   run_check_file "$HOME/.config/ghostty/config" "Managed Ghostty config present" fail
   run_check_file "$HOME/.config/ghostty/local.conf" "Ghostty local override template present" fail
   run_check_dir "$HOME/.config/ghostty/themes" "Managed Ghostty theme directory present" fail
-  run_check_file "$HOME/.config/ghostty/themes/apple-graphite-light.conf" "Ghostty Apple Graphite Light theme present" fail
-  run_check_file "$HOME/.config/ghostty/themes/apple-graphite-dark.conf" "Ghostty Apple Graphite Dark theme present" fail
+  run_check_file "$HOME/.config/ghostty/themes/apple-graphite-expanded-light.conf" "Ghostty Apple Graphite Expanded Light theme present" fail
+  run_check_file "$HOME/.config/ghostty/themes/apple-graphite-expanded-dark.conf" "Ghostty Apple Graphite Expanded Dark theme present" fail
   # run_check_dir "/Applications/WezTerm.app" "WezTerm app present" warn
   # run_check_file "$HOME/.config/wezterm/wezterm.lua" "Managed WezTerm config present" fail
   # run_check_file "$HOME/.config/wezterm/local.lua" "WezTerm local override template present" fail
   # run_check_dir "/Applications/Warp.app" "Warp app present" warn
-  # run_check_file "$HOME/.warp/themes/apple-graphite-dark-mac-dev-setup.yaml" "Managed Warp theme present" fail
+  # run_check_file "$HOME/.warp/themes/apple-graphite-expanded-dark-mac-dev-setup.yaml" "Managed Warp dark theme present" fail
+  # run_check_file "$HOME/.warp/themes/apple-graphite-expanded-light-mac-dev-setup.yaml" "Managed Warp light theme present" fail
   # run_check_file "$HOME/.warp/bootstrap-notes.txt" "Warp bootstrap notes present" fail
 
   # AI tooling

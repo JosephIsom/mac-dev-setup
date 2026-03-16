@@ -10,7 +10,7 @@
         {
           "type": "path",
           "style": "plain",
-          "foreground": "#89b4fa",
+          "foreground": "blue",
           "properties": {
             "style": "folder"
           }
@@ -18,7 +18,7 @@
         {
           "type": "git",
           "style": "plain",
-          "foreground": "#cba6f7",
+          "foreground": "magenta",
           "properties": {
             "branch_icon": "git ",
             "fetch_status": true
@@ -33,7 +33,7 @@
         {
           "type": "executiontime",
           "style": "plain",
-          "foreground": "#f9e2af",
+          "foreground": "yellow",
           "properties": {
             "threshold": 2000
           }
@@ -41,7 +41,7 @@
         {
           "type": "time",
           "style": "plain",
-          "foreground": "#a6adc8",
+          "foreground": "darkGray",
           "properties": {
             "time_format": "15:04"
           }
@@ -56,7 +56,7 @@
         {
           "type": "status",
           "style": "plain",
-          "foreground": "#f38ba8",
+          "foreground": "red",
           "properties": {
             "always_enabled": false
           }
@@ -64,7 +64,7 @@
         {
           "type": "text",
           "style": "plain",
-          "foreground": "#89dceb",
+          "foreground": "blue",
           "template": ">"
         }
       ]

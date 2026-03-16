@@ -8,13 +8,15 @@ return {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = {
-      options = {
-        theme = "auto",
-        globalstatus = true,
-        icons_enabled = vim.g.have_nerd_font,
-      },
-    },
+    opts = function()
+      return {
+        options = {
+          theme = require("mac_dev_setup.theme").lualine_theme(),
+          globalstatus = true,
+          icons_enabled = vim.g.have_nerd_font,
+        },
+      }
+    end,
   },
   {
     "lewis6991/gitsigns.nvim",
@@ -94,8 +96,5 @@ return {
         },
       },
     },
-    init = function()
-      vim.cmd.colorscheme("habamax")
-    end,
   },
 }
