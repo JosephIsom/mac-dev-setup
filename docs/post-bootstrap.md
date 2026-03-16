@@ -183,7 +183,7 @@ Warp cannot fully set its active theme/font from files alone.
 After install:
 
 1. Open `Settings > Appearance > Current Theme`.
-2. Choose `Catppuccin Mocha (mac-dev-setup)`.
+2. Choose `Apple Graphite Dark (mac-dev-setup)`.
 3. Open `Settings > Appearance > Text`.
 4. Set font to `JetBrainsMono Nerd Font`.
 5. Set font size to `14`.

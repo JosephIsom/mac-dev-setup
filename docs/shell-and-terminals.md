@@ -49,7 +49,7 @@ This page covers shell-facing modules: command-line tools, shell prompts, tmux, 
 | `terminals/iterm2/iterm2-app.sh` | On | Installs iTerm2 and a managed dynamic profile. | Open iTerm2 and choose the `mac-dev-setup` profile. | [iTerm2](https://iterm2.com/) | Set the managed profile as your default profile if you want the repo’s font and behavior. |
 | `terminals/ghostty/ghostty-app.sh` | On | Installs Ghostty and a managed config plus `local.conf`. | Launch Ghostty; edit `~/.config/ghostty/local.conf` for personal overrides. | [Ghostty](https://ghostty.org/), [Docs](https://ghostty.org/docs) | Keep local changes in `local.conf`. |
 | `terminals/wezterm/wezterm-app.sh` | On | Installs WezTerm and a managed `wezterm.lua` plus local override. | Launch WezTerm; edit `~/.config/wezterm/local.lua` for personal overrides. | [WezTerm](https://wezfurlong.org/wezterm/) | Keep local changes in `local.lua`. |
-| `terminals/warp/warp-app.sh` | On | Installs Warp and a managed theme file. | Launch Warp, pick the installed theme, and set the font. | [Warp](https://www.warp.dev/) | In the app, choose `Catppuccin Mocha (mac-dev-setup)` and set `JetBrainsMono Nerd Font` size 14. |
+| `terminals/warp/warp-app.sh` | On | Installs Warp and a managed theme file. | Launch Warp, pick the installed theme, and set the font. | [Warp](https://www.warp.dev/) | In the app, choose `Apple Graphite Dark (mac-dev-setup)` and set `JetBrainsMono Nerd Font` size 14. |
 
 ## Notes On Shell Integration
 

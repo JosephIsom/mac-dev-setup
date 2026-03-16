@@ -1,0 +1,24 @@
+name: Apple Graphite Dark (mac-dev-setup)
+accent: '#3478f6'
+background: '#1e1e1e'
+foreground: '#dedede'
+details: darker
+terminal_colors:
+  normal:
+    black: '#1b1b1b'
+    red: '#ec5f5d'
+    green: '#78b855'
+    yellow: '#f6c944'
+    blue: '#3478f6'
+    magenta: '#9955a3'
+    cyan: '#8c8c8c'
+    white: '#e9e9e9'
+  bright:
+    black: '#606060'
+    red: '#ec5f5d'
+    green: '#78b855'
+    yellow: '#f6c944'
+    blue: '#3478f6'
+    magenta: '#e45c9d'
+    cyan: '#9c9c9c'
+    white: '#ffffff'

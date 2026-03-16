@@ -23,7 +23,7 @@ require("lazy").setup({
     version = false,
   },
   install = {
-    colorscheme = { "catppuccin" },
+    colorscheme = { "habamax" },
   },
   change_detection = {
     notify = false,

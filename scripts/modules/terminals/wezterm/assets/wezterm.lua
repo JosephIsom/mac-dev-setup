@@ -6,7 +6,34 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
-config.color_scheme = 'Catppuccin Mocha'
+config.colors = {
+  foreground = '#DEDEDE',
+  background = '#1E1E1E',
+  cursor_bg = '#3478F6',
+  cursor_fg = '#1E1E1E',
+  selection_bg = '#476288',
+  selection_fg = '#FFFFFF',
+  ansi = {
+    '#1B1B1B',
+    '#EC5F5D',
+    '#78B855',
+    '#F6C944',
+    '#3478F6',
+    '#9955A3',
+    '#8C8C8C',
+    '#E9E9E9',
+  },
+  brights = {
+    '#606060',
+    '#EC5F5D',
+    '#78B855',
+    '#F6C944',
+    '#3478F6',
+    '#E45C9D',
+    '#9C9C9C',
+    '#FFFFFF',
+  },
+}
 config.font = wezterm.font 'JetBrainsMono Nerd Font'
 config.font_size = 14.0
 config.scrollback_lines = 50000

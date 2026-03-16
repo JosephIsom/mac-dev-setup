@@ -66,7 +66,7 @@ verify_install() {
   [[ -d "$APP_PATH" ]] || die "WezTerm app not found at $APP_PATH after installation."
   [[ -f "$TARGET_WEZTERM_CONFIG" ]] || die "WezTerm config not found at $TARGET_WEZTERM_CONFIG after installation."
   [[ -f "$TARGET_WEZTERM_LOCAL_CONFIG" ]] || die "WezTerm local config not found at $TARGET_WEZTERM_LOCAL_CONFIG after installation."
-  grep -Fq "Catppuccin Mocha" "$TARGET_WEZTERM_CONFIG" || die "WezTerm config does not set Catppuccin Mocha."
+  grep -Fq "background = '#1E1E1E'" "$TARGET_WEZTERM_CONFIG" || die "WezTerm config does not set the managed dark background."
   grep -Fq "JetBrainsMono Nerd Font" "$TARGET_WEZTERM_CONFIG" || die "WezTerm config does not set JetBrainsMono Nerd Font."
 }
 

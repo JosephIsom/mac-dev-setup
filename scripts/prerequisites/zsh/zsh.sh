@@ -18,7 +18,6 @@ ZSH_VENDOR_REPOS=(
   "https://github.com/zsh-users/zsh-completions.git|$TARGET_ZSH_VENDOR_DIR/zsh-completions|zsh-completions"
   "https://github.com/Aloxaf/fzf-tab.git|$TARGET_ZSH_VENDOR_DIR/fzf-tab|fzf-tab"
   "https://github.com/zsh-users/zsh-autosuggestions.git|$TARGET_ZSH_VENDOR_DIR/zsh-autosuggestions|zsh-autosuggestions"
-  "https://github.com/catppuccin/zsh-syntax-highlighting.git|$TARGET_ZSH_VENDOR_DIR/catppuccin-zsh-syntax-highlighting|catppuccin-zsh-syntax-highlighting"
   "https://github.com/zsh-users/zsh-syntax-highlighting.git|$TARGET_ZSH_VENDOR_DIR/zsh-syntax-highlighting|zsh-syntax-highlighting"
 )
 
@@ -120,12 +119,11 @@ verify_zsh_setup() {
   [[ -d "$TARGET_ZSH_VENDOR_DIR/zsh-completions/src" ]] || die "zsh-completions vendor repo not installed."
   [[ -f "$TARGET_ZSH_VENDOR_DIR/fzf-tab/fzf-tab.plugin.zsh" ]] || die "fzf-tab vendor repo not installed."
   [[ -f "$TARGET_ZSH_VENDOR_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] || die "zsh-autosuggestions vendor repo not installed."
-  [[ -f "$TARGET_ZSH_VENDOR_DIR/catppuccin-zsh-syntax-highlighting/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh" ]] || die "Catppuccin syntax-highlighting theme not installed."
   [[ -f "$TARGET_ZSH_VENDOR_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] || die "zsh-syntax-highlighting vendor repo not installed."
   [[ -f "$TARGET_ZSH_PLUGIN_DIR/10-colored-man-pages.zsh" ]] || die "Managed zsh colored-man-pages plugin not installed."
   [[ -f "$TARGET_ZSH_PLUGIN_DIR/y0-fzf-tab.zsh" ]] || die "Managed zsh fzf-tab plugin loader not installed."
   [[ -f "$TARGET_ZSH_PLUGIN_DIR/y1-zsh-autosuggestions.zsh" ]] || die "Managed zsh autosuggestions plugin loader not installed."
-  [[ -f "$TARGET_ZSH_PLUGIN_DIR/zz0-catppuccin-zsh-syntax-highlighting.zsh" ]] || die "Managed Catppuccin syntax-highlighting plugin loader not installed."
+  [[ -f "$TARGET_ZSH_PLUGIN_DIR/zz0-zsh-syntax-highlighting-styles.zsh" ]] || die "Managed zsh syntax-highlighting styles plugin not installed."
   [[ -f "$TARGET_ZSH_PLUGIN_DIR/zz1-zsh-syntax-highlighting.zsh" ]] || die "Managed zsh syntax-highlighting plugin loader not installed."
 
   log_info "Verifying zsh login shell configuration..."

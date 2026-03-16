@@ -1,23 +1,5 @@
 return {
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000,
-    opts = {
-      flavour = "mocha",
-      integrations = {
-        gitsigns = true,
-        telescope = true,
-        treesitter = true,
-        which_key = true,
-      },
-    },
-    config = function(_, opts)
-      require("catppuccin").setup(opts)
-      vim.cmd.colorscheme("catppuccin-mocha")
-    end,
-  },
-  {
     "nvim-tree/nvim-web-devicons",
     lazy = true,
     enabled = vim.g.have_nerd_font,
@@ -28,7 +10,7 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
       options = {
-        theme = "catppuccin",
+        theme = "auto",
         globalstatus = true,
         icons_enabled = vim.g.have_nerd_font,
       },
@@ -112,5 +94,8 @@ return {
         },
       },
     },
+    init = function()
+      vim.cmd.colorscheme("habamax")
+    end,
   },
 }

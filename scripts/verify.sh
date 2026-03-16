@@ -219,7 +219,6 @@ main() {
   run_check_dir "$HOME/.zsh/vendor/zsh-completions" "zsh-completions installed" fail
   run_check_dir "$HOME/.zsh/vendor/fzf-tab" "fzf-tab installed" fail
   run_check_dir "$HOME/.zsh/vendor/zsh-autosuggestions" "zsh-autosuggestions installed" fail
-  run_check_dir "$HOME/.zsh/vendor/catppuccin-zsh-syntax-highlighting" "Catppuccin zsh syntax theme installed" fail
   run_check_dir "$HOME/.zsh/vendor/zsh-syntax-highlighting" "zsh-syntax-highlighting installed" fail
 
   printf '\n'
@@ -517,7 +516,7 @@ main() {
   # run_check_file "$HOME/.config/wezterm/wezterm.lua" "Managed WezTerm config present" fail
   # run_check_file "$HOME/.config/wezterm/local.lua" "WezTerm local override template present" fail
   # run_check_dir "/Applications/Warp.app" "Warp app present" warn
-  # run_check_file "$HOME/.warp/themes/catppuccin-mocha-mac-dev-setup.yaml" "Managed Warp theme present" fail
+  # run_check_file "$HOME/.warp/themes/apple-graphite-dark-mac-dev-setup.yaml" "Managed Warp theme present" fail
   # run_check_file "$HOME/.warp/bootstrap-notes.txt" "Warp bootstrap notes present" fail
 
   # AI tooling

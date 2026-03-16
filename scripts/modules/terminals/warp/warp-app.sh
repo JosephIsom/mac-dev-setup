@@ -5,10 +5,10 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 APP_PATH="/Applications/Warp.app"
-REPO_WARP_THEME="$REPO_ROOT/scripts/modules/terminals/warp/assets/catppuccin-mocha-mac-dev-setup.yaml"
+REPO_WARP_THEME="$REPO_ROOT/scripts/modules/terminals/warp/assets/apple-graphite-dark-mac-dev-setup.yaml"
 TARGET_WARP_DIR="$HOME/.warp"
 TARGET_WARP_THEME_DIR="$TARGET_WARP_DIR/themes"
-TARGET_WARP_THEME="$TARGET_WARP_THEME_DIR/catppuccin-mocha-mac-dev-setup.yaml"
+TARGET_WARP_THEME="$TARGET_WARP_THEME_DIR/apple-graphite-dark-mac-dev-setup.yaml"
 TARGET_WARP_NOTES="$TARGET_WARP_DIR/bootstrap-notes.txt"
 
 install_app() {
@@ -38,7 +38,7 @@ Installed custom theme:
 
 In Warp:
 1. Open Settings > Appearance > Current Theme
-2. Select "Catppuccin Mocha (mac-dev-setup)"
+2. Select "Apple Graphite Dark (mac-dev-setup)"
 3. Open Settings > Appearance > Text
 4. Set font to "JetBrainsMono Nerd Font"
 5. Set font size to 14
@@ -49,7 +49,7 @@ verify_install() {
   [[ -d "$APP_PATH" ]] || die "Warp app not found at $APP_PATH after installation."
   [[ -f "$TARGET_WARP_THEME" ]] || die "Warp theme not found at $TARGET_WARP_THEME after installation."
   [[ -f "$TARGET_WARP_NOTES" ]] || die "Warp bootstrap notes not found at $TARGET_WARP_NOTES after installation."
-  grep -Fq 'name: Catppuccin Mocha (mac-dev-setup)' "$TARGET_WARP_THEME" || die "Warp theme file is missing the managed theme name."
+  grep -Fq 'name: Apple Graphite Dark (mac-dev-setup)' "$TARGET_WARP_THEME" || die "Warp theme file is missing the managed theme name."
   grep -Fq "JetBrainsMono Nerd Font" "$TARGET_WARP_NOTES" || die "Warp bootstrap notes do not mention the managed font."
 }
 
