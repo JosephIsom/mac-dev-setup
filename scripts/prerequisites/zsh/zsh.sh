@@ -11,9 +11,6 @@ TARGET_ZSHRC="$HOME/.zshrc"
 TARGET_ZPROFILE="$HOME/.zprofile"
 TARGET_ZSH_PLUGIN_DIR="$TARGET_ZSH_DIR/plugins"
 TARGET_ZSH_VENDOR_DIR="$TARGET_ZSH_DIR/vendor"
-LEGACY_ZSH_DIR="$HOME/.config/zsh"
-LEGACY_ZSHENV="$HOME/.zshenv"
-LEGACY_ZSHENV_BACKUP="$HOME/.zshenv.mac-dev-setup-xdg.bak"
 ZSH_VENDOR_REPOS=(
   "https://github.com/zsh-users/zsh-completions.git|$TARGET_ZSH_VENDOR_DIR/zsh-completions|zsh-completions"
   "https://github.com/Aloxaf/fzf-tab.git|$TARGET_ZSH_VENDOR_DIR/fzf-tab|fzf-tab"
@@ -60,20 +57,6 @@ backup_if_unmanaged() {
   log_warn "Backed up existing unmanaged file: $dest -> $backup"
 }
 
-copy_dir_contents_if_missing() {
-  local src_dir="$1"
-  local dest_dir="$2"
-
-  [[ -d "$src_dir" ]] || return 0
-  mkdir -p "$dest_dir"
-
-  for f in "$src_dir"/*; do
-    [[ -f "$f" ]] || continue
-    [[ "$(basename "$f")" == ".gitkeep" ]] && continue
-    copy_repo_file_if_missing "$f" "$dest_dir/$(basename "$f")"
-  done
-}
-
 copy_repo_dir_contents() {
   local src_dir="$1"
   local dest_dir="$2"
@@ -87,19 +70,6 @@ copy_repo_dir_contents() {
     [[ "$(basename "$f")" == ".gitkeep" ]] && continue
     copy_repo_file "$f" "$dest_dir/$(basename "$f")"
   done
-}
-
-retire_legacy_zshenv() {
-  [[ -f "$LEGACY_ZSHENV" ]] || return 0
-
-  if grep -Fq "export ZDOTDIR=\"\$XDG_CONFIG_HOME/zsh\"" "$LEGACY_ZSHENV"; then
-    if [[ ! -f "$LEGACY_ZSHENV_BACKUP" ]]; then
-      cp "$LEGACY_ZSHENV" "$LEGACY_ZSHENV_BACKUP"
-      log_warn "Backed up legacy managed ~/.zshenv to $LEGACY_ZSHENV_BACKUP"
-    fi
-    rm -f "$LEGACY_ZSHENV"
-    log_success "Removed legacy managed ~/.zshenv so zsh uses default startup files."
-  fi
 }
 
 sync_zsh_vendor_plugins() {
@@ -146,8 +116,6 @@ main() {
   mkdir -p "$TARGET_ZSH_DIR/completions"
   mkdir -p "$TARGET_ZSH_VENDOR_DIR"
 
-  retire_legacy_zshenv
-
   backup_if_unmanaged "$TARGET_ZPROFILE" "$TARGET_ZPROFILE.pre-mac-dev-setup.bak"
   backup_if_unmanaged "$TARGET_ZSHRC" "$TARGET_ZSHRC.pre-mac-dev-setup.bak"
 
@@ -159,17 +127,12 @@ main() {
     [[ -f "$f" ]] || continue
     base="$(basename "$f")"
     if [[ "$base" == "90-local.zsh" ]]; then
-      if [[ -f "$LEGACY_ZSH_DIR/conf.d/$base" && ! -f "$TARGET_ZSH_DIR/conf.d/$base" ]]; then
-        copy_repo_file_if_missing "$LEGACY_ZSH_DIR/conf.d/$base" "$TARGET_ZSH_DIR/conf.d/$base"
-      fi
       copy_repo_file_if_missing "$f" "$TARGET_ZSH_DIR/conf.d/$base"
     else
       copy_repo_file "$f" "$TARGET_ZSH_DIR/conf.d/$base"
     fi
   done
 
-  copy_dir_contents_if_missing "$LEGACY_ZSH_DIR/completions" "$TARGET_ZSH_DIR/completions"
-  copy_dir_contents_if_missing "$LEGACY_ZSH_DIR/plugins" "$TARGET_ZSH_PLUGIN_DIR"
   copy_repo_dir_contents "$REPO_ZSH_DIR/completions" "$TARGET_ZSH_DIR/completions"
   copy_repo_dir_contents "$REPO_ZSH_PLUGIN_DIR" "$TARGET_ZSH_PLUGIN_DIR"
   sync_zsh_vendor_plugins

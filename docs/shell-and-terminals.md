@@ -36,7 +36,7 @@ This page covers shell-facing modules: command-line tools, shell prompts, tmux, 
 
 | Module | Default | What / why | How to use it | Links | Follow-up |
 | --- | --- | --- | --- | --- | --- |
-| `shell/tmux/tmux.sh` | On | Installs tmux config with a local override file. | Run `tmux`; customize `~/.config/tmux/local.conf` if needed. | [tmux](https://github.com/tmux/tmux), [Wiki](https://github.com/tmux/tmux/wiki) | Edit the local override instead of the managed base. |
+| `shell/tmux/tmux.sh` | On | Installs tmux config with a local override file. | Run `tmux`; customize `~/.tmux.local.conf` if needed. | [tmux](https://github.com/tmux/tmux), [Wiki](https://github.com/tmux/tmux/wiki) | Edit the local override instead of the managed base. |
 | `shell/prompt/p10k/p10k.sh` | Optional | Powerlevel10k prompt. | Enable the module in bootstrap and open a new shell. | [Powerlevel10k](https://github.com/romkatv/powerlevel10k) | Optional. |
 | `shell/prompt/pure/pure.sh` | Optional | Minimal Pure prompt. | Enable the module and reopen the shell. | [Pure](https://github.com/sindresorhus/pure) | Optional. |
 | `shell/prompt/starship/starship.sh` | Optional | Cross-shell prompt. | Enable the module and edit `~/.config/starship.toml` if desired. | [Starship](https://starship.rs/) | Optional. |

@@ -11,7 +11,6 @@ TARGET_TMUX_PLUGIN_DIR="$HOME/.tmux/plugins"
 TPM_DIR="$TARGET_TMUX_PLUGIN_DIR/tpm"
 TMUX_RESURRECT_DIR="$TARGET_TMUX_PLUGIN_DIR/tmux-resurrect"
 TMUX_CONTINUUM_DIR="$TARGET_TMUX_PLUGIN_DIR/tmux-continuum"
-LEGACY_TMUX_LOCAL_CONF="$HOME/.config/tmux/local.conf"
 VERIFY_SOCKET_NAME="macdev-verify"
 VERIFY_SESSION_NAME="macdev_verify"
 
@@ -79,11 +78,6 @@ install_tmux_plugins() {
 install_tmux_config() {
   backup_if_unmanaged "$TARGET_TMUX_CONF" "$TARGET_TMUX_CONF.pre-mac-dev-setup.bak"
   copy_repo_file "$REPO_TMUX_DIR/tmux.conf" "$TARGET_TMUX_CONF"
-
-  if [[ -f "$LEGACY_TMUX_LOCAL_CONF" && ! -f "$TARGET_TMUX_LOCAL_CONF" ]]; then
-    copy_repo_file_if_missing "$LEGACY_TMUX_LOCAL_CONF" "$TARGET_TMUX_LOCAL_CONF"
-  fi
-
   copy_repo_file_if_missing "$REPO_TMUX_DIR/local.conf" "$TARGET_TMUX_LOCAL_CONF"
 }
 
