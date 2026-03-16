@@ -175,9 +175,9 @@ main() {
   # run_script_path "$MODULES_DIR/files/plantuml/plantuml-tooling.sh"
 
   # Desktop apps
-  # run_script_path "$MODULES_DIR/desktop/browsers/google-chrome/google-chrome.sh"
+  run_script_path "$MODULES_DIR/desktop/browsers/google-chrome/google-chrome.sh"
   # run_script_path "$MODULES_DIR/desktop/browsers/firefox/firefox.sh"
-  # run_script_path "$MODULES_DIR/desktop/browsers/duckduckgo/duckduckgo.sh"
+  run_script_path "$MODULES_DIR/desktop/browsers/duckduckgo/duckduckgo.sh"
   run_script_path "$MODULES_DIR/desktop/git-gui/github-desktop/github-desktop.sh"
   # run_script_path "$MODULES_DIR/desktop/cloud-storage/dropbox/dropbox.sh"
   # run_script_path "$MODULES_DIR/desktop/media/spotify/spotify.sh"
@@ -191,7 +191,7 @@ main() {
   run_script_path "$MODULES_DIR/desktop/sql-clients/tablepro/tablepro.sh"
   # run_script_path "$MODULES_DIR/desktop/rest-clients/bruno/bruno.sh"
   # run_script_path "$MODULES_DIR/desktop/rest-clients/hoppscotch/hoppscotch.sh"
-  # run_script_path "$MODULES_DIR/desktop/rest-clients/httpie-desktop/httpie-desktop.sh"
+  run_script_path "$MODULES_DIR/desktop/rest-clients/httpie-desktop/httpie-desktop.sh"
   run_script_path "$MODULES_DIR/desktop/rest-clients/insomnia/insomnia.sh"
   # run_script_path "$MODULES_DIR/desktop/rest-clients/postman/postman.sh"
 
@@ -208,8 +208,6 @@ main() {
   # Editors
   run_script_path "$MODULES_DIR/editors/vscode/vscode-app.sh"
   run_script_path "$MODULES_DIR/editors/vscode/vscode-cli.sh"
-  run_script_path "$MODULES_DIR/editors/vscode/extensions.sh"
-  run_script_path "$MODULES_DIR/editors/vscode/settings.sh"
   run_script_path "$MODULES_DIR/editors/cursor/cursor-app.sh"
   run_script_path "$MODULES_DIR/editors/cursor/cursor-cli.sh"
   run_script_path "$MODULES_DIR/editors/intellij/toolbox.sh"
@@ -234,14 +232,18 @@ main() {
   # AI tooling
   run_script_path "$MODULES_DIR/ai/codex/codex-app.sh"
   run_script_path "$MODULES_DIR/ai/codex/codex-cli.sh"
-  # run_script_path "$MODULES_DIR/ai/aider/aider-cli.sh"
-  # run_script_path "$MODULES_DIR/ai/claude/claude-cli.sh"
+  run_script_path "$MODULES_DIR/ai/aider/aider-cli.sh"
+  run_script_path "$MODULES_DIR/ai/claude/claude-cli.sh"
   run_script_path "$MODULES_DIR/ai/chatgpt/chatgpt-app.sh"
   run_script_path "$MODULES_DIR/ai/continue/continue-cli.sh"
   # run_script_path "$MODULES_DIR/ai/gemini/gemini-cli.sh"
   run_script_path "$MODULES_DIR/ai/github-copilot/github-copilot-cli.sh"
   # run_script_path "$MODULES_DIR/ai/ollama/ollama-cli.sh"
   # run_script_path "$MODULES_DIR/ai/lm-studio/lm-studio-app.sh"
+
+  # Finalize VS Code after all enabled modules have staged their assets.
+  run_script_path "$MODULES_DIR/editors/vscode/extensions.sh"
+  run_script_path "$MODULES_DIR/editors/vscode/settings.sh"
 
   log_success "Bootstrap phase completed."
 }

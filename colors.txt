@@ -1,0 +1,372 @@
+===================================================================================
+===================================================================================
+Dark Theme
+===================================================================================
+===================================================================================
+
+- Basic "Colors":
+Blue: 3478F6
+Purple: 9955A3
+Pink: E45C9D
+Red: EC5F5D
+Orange: E8883A
+Yellow: F6C944
+Green: 78B855
+Graphite: 8C8C8C
+
+
+- Basic "Theme (dark / gray)" Colors, in order from darkest to lightest:
+000000
+151515
+1B1B1B 
+252525  (used as Background of top buttons in Finder on a Finder window that has focus)
+2D2D2D
+333333  (used as Background of top buttons in Finder on a Finder window that does not have focus)
+606060
+737373  (used as Foreground of top buttons in Finder on a Finder window that does not have focus)
+9C9C9C
+E9E9E9  (used as Foreground of top buttons in Finder on a Finder window that has focus)
+EAEAEA
+FFFFFF
+
+
+=======================================================================================
+Main MacOS Top Toolbar
+---------------------------------------------------------------------------------------
+Background - black: 000000
+Foreground - white: FFFFFF
+Foreground - Disabled - gray: 737373
+=======================================================================================
+
+
+=======================================================================================
+Main MacOS Application Window Action Buttons (at the very top)
+---------------------------------------------------------------------------------------
+Close - Red: EC6765
+Minimize - Yellow: F2CA44
+Maximize - Green: 65C466
+=======================================================================================
+
+
+=======================================================================================
+Highlighted / Selected Text
+---------------------------------------------------------------------------------------
+Background - window is the active window: 476288
+Background - window is NOT the active window: 464646
+Foreground: FFFFFF
+=======================================================================================
+
+
+=======================================================================================
+MacOS Settings Window - when it's the active application:
+---------------------------------------------------------------------------------------
+Primary Window Background: 1E1E1E
+Primary Window Foreground - Main Section Headers: E8E8E8
+
+Section / Card - Background: 252525
+Section / Card - Primary Foreground (primary text / icons): DEDEDE
+Section / Card - Secondary Foreground (subtle text / darker text / subtext): 9D9D9D
+
+Section / Card - UI Control Element (buttons, horizontal rules/separators, "off" switches/checkboxes, slider background) - Background: 353535
+Section / Card - UI Control Element (buttons, "off" switches/checkboxes, slider right background) - Foreground: E1E1E1
+Section / Card - UI Control Element (buttons, "on" switches/checkboxes, slider left background) - Foreground: 397BF6
+
+Vertical Separator line / border between main window and side bar (or any/all main window "panels"): 444444
+
+Sidebar (or any other "non main" window panel): Background (darker than main window): 191919
+Sidebar (or any other "non main" window panel) Foreground: DEDEDE
+Sidebar (or any other "non main" window panel) Foreground (subtle text / darker text / subtext): 9D9D9D
+
+Input Box Background: 2F2F2F  (or 3A3A3A)
+Input Box Foreground "shadow text" (subtle) placeholder text): 8D8D8D
+Input Box Foreground (text): DEDEDE
+
+Input Box Border (when active): 36628A  ( This doesn't feel consistent with the other colors (above), though I do like it).
+Default Action / Default Button Background: 254379  ( This doesn't feel consistent with the other colors (above), though I do like it).
+Default Action / Default Button Foreground: FFFFFF
+Disabled Button Background: 232323
+Disabled Button Foreground: 595959
+Button Background: 2D2D2D
+Button Foreground: DFDFDF
+=========================================================================================
+
+
+=======================================================================================
+MacOS Settings Window - when it's not the active application (some other app has focus):
+---------------------------------------------------------------------------------------
+Primary Window Background: 1E1E1E    (same as when app has focus)
+Primary Window Foreground - Main Section Headers: 606060
+
+Section / Card - Background: 252525    (same as when app has focus)
+Section / Card - Primary Foreground (primary text / icons): DEDEDE   (same as when app has focus)
+Section / Card - Secondary Foreground (subtle text / darker text / subtext): 9D9D9D  (same as when app has focus)
+
+Section / Card - UI Control Element (buttons, horizontal rules/separators, "off" switches/checkboxes, slider background) - Background: 353535 (same as when app has focus)
+Section / Card - UI Control Element (buttons, "off" switches/checkboxes, slider right background) - Foreground: E1E1E1 (same as when app has focus)
+Section / Card - UI Control Element (buttons, "on" switches/checkboxes, slider left background) - Foreground: E1E1E1
+
+MacOS Settings Window - Vertical Separator between main window and side bar (or any/all main window "panels"): 444444 (same as when app has focus)
+
+Sidebar (or any other "non main" window panel): 292929
+Sidebar (or any other "non main" window panel) Foreground: DEDEDE (same as when app has focus)
+Sidebar (or any other "non main" window panel) Foreground (subtle text / darker text / subtext): 9D9D9D (same as when app has focus)
+
+Input Box Background: 2F2F2F  (or 3A3A3A)  (same as when app has focus)
+Input Box Foreground "shadow text" (subtle) placeholder text): 8D8D8D  (same as when app has focus)
+Input Box Foreground (text): DEDEDE  (same as when app has focus)
+
+Input Box Border (when active):  ( N/A - On an inactive application window, this is not highlighted, would never be used)
+Default Action / Default Button Background: 232323  ( This doesn't feel consistent with the other colors (above), though I do like it).
+Default Action / Default Button Foreground: 595959
+Disabled Button Background: 232323
+Disabled Button Foreground: 595959
+Button Background: 2D2D2D
+Button Foreground: DFDFDF
+=========================================================================================
+
+
+
+=======================================================================================
+-- Finder Window (file explorer) -- When it is the active window
+---------------------------------------------------------------------------------------
+Finder Main Window Background (darkest): 1B1B1B
+Finder Main Window Background:  1B1B1B
+Finder Sidebar Background: 1B1B1B
+
+** Not Sure: Finder Sidebar Foreground / Text (disabled): 6A6A6A
+
+Finder Sidebar Foreground / Text (default / enabled): 545454
+
+Finder Sidebar Entry / List Item - Background (default): 1B1B1B 
+Finder Sidebar Entry / List Item - Foreground (default): F4F4F4
+Finder Sidebar Entry / List Item - Background (selected item): 292929
+Finder Sidebar Entry / List Item - Selected Item  (text and icon) - Foreground: 158EFF
+Finder Sidebar Foreground / Header Labels: 979797
+
+
+Vertical Separator between main window and side bar (or any/all main window "panels"): 444444
+
+Selected File Icon Background in Finder Window: 313131
+Selected Filename Background in Finder Window: 2458CA
+Selected Filename Foreground in Finder Window: FFFFFF
+Not Selected Filename Foreground in Finder Window: DCDCDC
+
+===================================================================================
+
+
+=======================================================================================
+-- Finder Window (file explorer) -- When it is NOT the active window
+---------------------------------------------------------------------------------------
+Finder Main Window Background (darkest): 1B1B1B
+Finder Main Window Background:  1B1B1B
+Finder Sidebar Background: 282828
+
+** Not Sure: Finder Sidebar Foreground / Text (disabled): 8E8E8E
+
+Finder Sidebar Foreground / Text (default / enabled): 8E8E8E
+
+Finder Sidebar Entry / List Item - Background (default): 282828 
+Finder Sidebar Entry / List Item - Foreground (default): 8E8E8E
+Finder Sidebar Entry / List Item - Background (selected item): 2F2F2F
+Finder Sidebar Entry / List Item - Selected Item  (text and icon) - Foreground: 2360A3
+Finder Sidebar Foreground / Header Labels: 696969
+
+
+Vertical Separator between main window and side bar (or any/all main window "panels"): 3D3D3D
+
+Selected File Icon Background in Finder Window: 313131
+Selected Filename Background in Finder Window: 464746
+Selected Filename Foreground in Finder Window: E2E2E2
+Not Selected Filename Foreground in Finder Window: DCDCDC
+
+===================================================================================
+
+
+===================================================================================
+===================================================================================
+Light Theme
+===================================================================================
+===================================================================================
+
+
+Blue: 3477F7
+Purple: 8B4292
+Pink: E45C9D
+Red: CE4745
+Orange: E88839
+Yellow: F6C94E
+Green: 78B856
+Graphite: 989899
+
+
+Other "greyscale" colors in the light theme:
+000000
+272727
+7F7F7F
+B7B7B7
+D9D9D9
+F7F7F7   
+FFFFFF
+
+
+=======================================================================================
+Main MacOS Top Toolbar
+---------------------------------------------------------------------------------------
+Background - black: 000000
+Foreground - white: FFFFFF
+Foreground - Disabled - gray: 737373
+=======================================================================================
+
+
+=======================================================================================
+Main MacOS Application Window Action Buttons (at the very top)
+---------------------------------------------------------------------------------------
+Close - Red: EC6765
+Minimize - Yellow: F2CA44
+Maximize - Green: 65C466
+=======================================================================================
+
+
+=======================================================================================
+Highlighted / Selected Text 
+---------------------------------------------------------------------------------------
+Background - window is the active window: BAD6FB
+Background - window is NOT the active window: DCDCDC
+Foreground: 000000
+=======================================================================================
+
+
+=======================================================================================
+MacOS Settings Window - when it's the active application:
+---------------------------------------------------------------------------------------
+Primary Window Background: FFFFFF
+Primary Window Foreground - Main Section Headers: 272727
+
+Section / Card - Background: F7F7F7
+Section / Card - Primary Foreground (primary text / icons): 272727
+Section / Card - Secondary Foreground (subtle text / darker text / subtext): 7F7F7F
+
+Section / Card - UI Control Element (buttons, horizontal rules/separators, "off" switches/checkboxes, slider background) - Background: DFDFDF
+Section / Card - UI Control Element (buttons, "off" switches/checkboxes, slider right background) - Foreground: 232323
+(align - blue highlight active) Section / Card - UI Control Element (buttons, "on" switches/checkboxes, slider left background) - Foreground: 3374EE
+
+Vertical Separator line / border between main window and side bar (or any/all main window "panels"): EBEBEB
+
+Sidebar (or any other "non main" window panel): Background (darker than main window): F7F7F7
+Sidebar (or any other "non main" window panel) Foreground: 000000
+Sidebar (or any other "non main" window panel) Foreground (subtle text / darker text / subtext): 6B6B6B
+
+Input Box Background: E1E1E1
+Input Box Foreground "shadow text" (subtle) placeholder text): 717172
+Input Box Foreground (text): 4C4C4C
+
+Input Box Border (when active): 8494E3  ( This doesn't feel consistent with the other colors (above), though I do like it).
+Default Action / Default Button Background: 3478F6
+Default Action / Default Button Foreground: FFFFFF
+Disabled Button Background: F5F5F5
+Disabled Button Foreground: B6B6B6
+Button Background: ECECEC
+Button Foreground: 282828
+=========================================================================================
+
+
+=======================================================================================
+MacOS Settings Window - when it's not the active application (some other app has focus):
+---------------------------------------------------------------------------------------
+Primary Window Background: 1E1E1E    (same as when app has focus)
+Primary Window Foreground - Main Section Headers: 272727  (same as when app has focus)
+
+Section / Card - Background: F7F7F7    (same as when app has focus)
+Section / Card - Primary Foreground (primary text / icons): 272727   (same as when app has focus)
+Section / Card - Secondary Foreground (subtle text / darker text / subtext): 7F7F7F  (same as when app has focus)
+
+Section / Card - UI Control Element (buttons, horizontal rules/separators, "off" switches/checkboxes, slider background) - Background: DFDFDF (same as when app has focus)
+Section / Card - UI Control Element (buttons, "off" switches/checkboxes, slider right background) - Foreground: 232323 (same as when app has focus)
+Section / Card - UI Control Element (buttons, "on" switches/checkboxes, slider left background) - Foreground: DFDFDF
+
+MacOS Settings Window - Vertical Separator between main window and side bar (or any/all main window "panels"): EBEBEB (same as when app has focus)
+
+Sidebar (or any other "non main" window panel): F7F7F7
+Sidebar (or any other "non main" window panel) Foreground: 000000 (same as when app has focus)
+Sidebar (or any other "non main" window panel) Foreground (subtle text / darker text / subtext): 6B6B6B (same as when app has focus)
+
+Input Box Background: E1E1E1  (same as when app has focus)
+Input Box Foreground "shadow text" (subtle) placeholder text): 717172  (same as when app has focus)
+Input Box Foreground (text): 4C4C4C  (same as when app has focus)
+
+Input Box Border (when active):  ( N/A - On an inactive application window, this is not highlighted, would never be used)
+Default Action / Default Button Background: F5F5F5  
+Default Action / Default Button Foreground: B6B6B6
+Disabled Button Background: F5F5F5
+Disabled Button Foreground: B6B6B6
+Button Background: ECECEC
+Button Foreground: 282828
+=========================================================================================
+
+
+=======================================================================================
+-- Finder Window (file explorer) -- When it is the active window
+---------------------------------------------------------------------------------------
+Finder Main Window Background: FFFFFF
+Finder Sidebar Background: F9F9F9
+
+** Not Sure**: Finder Sidebar Foreground / Text (disabled): B3B3B3
+
+Finder Sidebar Foreground / Text Headers (default / enabled): 7F7F7F
+
+Finder Sidebar Entry / List Item - Background (default): F9F9F9 
+Finder Sidebar Entry / List Item - Foreground (default): 191919
+Finder Sidebar Entry / List Item - Background (selected item): EEEEEE
+Finder Sidebar Entry / List Item - Selected Item  (text and icon) - Foreground: 0072F7
+Finder Sidebar Foreground / Header Labels: 7F7F7F
+
+
+Vertical Separator between main window and side bar (or any/all main window "panels"): EEEEEE
+
+Selected File Icon Background in Finder Window: E6E6E6
+Selected Filename Background in Finder Window: 2963D9
+Selected Filename Foreground in Finder Window: FFFFFF
+Not Selected Filename Foreground in Finder Window: DCDCDC
+
+===================================================================================
+
+
+=======================================================================================
+-- Finder Window (file explorer) -- When it is NOT the active window
+---------------------------------------------------------------------------------------
+Finder Main Window Background:  FFFFFF
+Finder Sidebar Background: F7F7F7
+
+** Not Sure: Finder Sidebar Foreground / Text (disabled): 8E8E8E
+
+Finder Sidebar Foreground / Text (default / enabled): 8E8E8E
+
+Finder Sidebar Entry / List Item - Background (default): F7F7F7 
+Finder Sidebar Entry / List Item - Foreground (default): 888888
+Finder Sidebar Entry / List Item - Background (selected item): F2F2F2
+Finder Sidebar Entry / List Item - Selected Item  (text and icon) - Foreground: 76B3F5
+Finder Sidebar Foreground / Header Labels: B7B7B7
+
+
+Vertical Separator between main window and side bar (or any/all main window "panels"): F0F0F0
+
+Selected File Icon Background in Finder Window: E6E6E6
+Selected Filename Background in Finder Window: DBDBDD
+Selected Filename Foreground in Finder Window: 212121
+Not Selected Filename Foreground in Finder Window: 272727
+
+===================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+

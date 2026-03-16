@@ -1,18 +1,49 @@
 # mac-dev-setup managed global gitignore
 
 # macOS Finder / filesystem metadata
+
+.DS*Store
+.AppleDouble
+.LSOverride
+.*\*
+
+# Editor swap / backup files that should stay machine-local
+
+_.swp
+_.swo
+_~
+_.orig
+\*.rej
+
+# IDE / editor-local files that are usually machine-specific
+
+.idea/
+.fleet/
+
+# General
+
 .DS_Store
 .AppleDouble
 .LSOverride
-._*
 
-# Editor swap / backup files that should stay machine-local
-*.swp
-*.swo
-*~
-*.orig
-*.rej
+# Thumbnails
 
-# IDE / editor-local files that are usually machine-specific
-.idea/
-.fleet/
+.\_\*
+
+# Files that might appear in the root of a volume
+
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk

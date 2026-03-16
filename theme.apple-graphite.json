@@ -1,0 +1,260 @@
+{
+  "$schemaVersion": "1.0",
+  "name": "apple-graphite",
+  "themes": {
+    "dark": {
+      "meta": {
+        "id": "apple-graphite-dark",
+        "label": "Apple Graphite Dark",
+        "appearance": "dark"
+      },
+      "palette": {
+        "blue": "#3478F6",
+        "purple": "#9955A3",
+        "pink": "#E45C9D",
+        "red": "#EC5F5D",
+        "orange": "#E8883A",
+        "yellow": "#F6C944",
+        "green": "#78B855",
+        "graphite": "#8C8C8C",
+
+        "gray00": "#000000",
+        "gray05": "#111111",
+        "gray10": "#151515",
+        "gray15": "#1B1B1B",
+        "gray20": "#1E1E1E",
+        "gray25": "#252525",
+        "gray30": "#2D2D2D",
+        "gray35": "#333333",
+        "gray40": "#3A3A3A",
+        "gray50": "#444444",
+        "gray60": "#606060",
+        "gray70": "#737373",
+        "gray80": "#9C9C9C",
+        "gray90": "#DEDEDE",
+        "gray95": "#E9E9E9",
+        "gray97": "#EAEAEA",
+        "gray100": "#FFFFFF",
+
+        "selectionActive": "#476288",
+        "selectionInactive": "#464646",
+        "focusRing": "#3478F6",
+        "link": "#3478F6"
+      },
+      "theme": {
+        "background": {
+          "app": "#1E1E1E",
+          "sidebar": "#191919",
+          "panel": "#252525",
+          "panelAlt": "#2D2D2D",
+          "control": "#353535",
+          "input": "#2F2F2F",
+          "inputAlt": "#3A3A3A",
+          "button": "#2D2D2D",
+          "buttonDisabled": "#232323",
+          "selection": "#476288",
+          "selectionInactive": "#464646",
+          "hover": "#333333",
+          "activeLine": "#252525",
+          "match": "#353535"
+        },
+        "foreground": {
+          "primary": "#DEDEDE",
+          "secondary": "#9D9D9D",
+          "tertiary": "#737373",
+          "disabled": "#595959",
+          "placeholder": "#8D8D8D",
+          "inverse": "#FFFFFF",
+          "heading": "#E8E8E8",
+          "onControl": "#E1E1E1"
+        },
+        "border": {
+          "subtle": "#353535",
+          "default": "#444444",
+          "strong": "#606060",
+          "focus": "#3478F6"
+        },
+        "accent": {
+          "primary": "#3478F6",
+          "secondary": "#9955A3",
+          "selectionText": "#FFFFFF",
+          "buttonDefault": "#3478F6",
+          "buttonDefaultText": "#FFFFFF"
+        },
+        "status": {
+          "red": "#EC5F5D",
+          "orange": "#E8883A",
+          "yellow": "#F6C944",
+          "green": "#78B855",
+          "blue": "#3478F6",
+          "purple": "#9955A3",
+          "pink": "#E45C9D",
+          "graphite": "#8C8C8C"
+        },
+        "ansi": {
+          "black": "#1B1B1B",
+          "red": "#EC5F5D",
+          "green": "#78B855",
+          "yellow": "#F6C944",
+          "blue": "#3478F6",
+          "magenta": "#9955A3",
+          "cyan": "#8C8C8C",
+          "white": "#E9E9E9",
+          "brightBlack": "#606060",
+          "brightRed": "#EC5F5D",
+          "brightGreen": "#78B855",
+          "brightYellow": "#F6C944",
+          "brightBlue": "#3478F6",
+          "brightMagenta": "#E45C9D",
+          "brightCyan": "#9C9C9C",
+          "brightWhite": "#FFFFFF"
+        },
+        "syntax": {
+          "text": "#DEDEDE",
+          "comment": "#737373",
+          "keyword": "#9955A3",
+          "string": "#78B855",
+          "number": "#E8883A",
+          "constant": "#E45C9D",
+          "function": "#3478F6",
+          "type": "#F6C944",
+          "variable": "#DEDEDE",
+          "operator": "#9D9D9D",
+          "error": "#EC5F5D",
+          "warning": "#F6C944",
+          "info": "#3478F6",
+          "success": "#78B855"
+        }
+      }
+    },
+    "light": {
+      "meta": {
+        "id": "apple-graphite-light",
+        "label": "Apple Graphite Light",
+        "appearance": "light"
+      },
+      "palette": {
+        "blue": "#3477F7",
+        "purple": "#8B4292",
+        "pink": "#E45C9D",
+        "red": "#CE4745",
+        "orange": "#E88839",
+        "yellow": "#F6C94E",
+        "green": "#78B856",
+        "graphite": "#989899",
+
+        "gray00": "#000000",
+        "gray10": "#191919",
+        "gray15": "#232323",
+        "gray20": "#272727",
+        "gray30": "#4C4C4C",
+        "gray40": "#6B6B6B",
+        "gray50": "#7F7F7F",
+        "gray55": "#888888",
+        "gray60": "#8E8E8E",
+        "gray70": "#B7B7B7",
+        "gray75": "#D0D0D0",
+        "gray80": "#D9D9D9",
+        "gray85": "#DFDFDF",
+        "gray88": "#E1E1E1",
+        "gray90": "#E6E6E6",
+        "gray92": "#ECECEC",
+        "gray94": "#F0F0F0",
+        "gray95": "#F2F2F2",
+        "gray96": "#F5F5F5",
+        "gray97": "#F7F7F7",
+        "gray98": "#F9F9F9",
+        "gray100": "#FFFFFF",
+
+        "selectionActive": "#BAD6FB",
+        "selectionInactive": "#DCDCDC",
+        "focusRing": "#3477F7",
+        "link": "#3477F7"
+      },
+      "theme": {
+        "background": {
+          "app": "#FFFFFF",
+          "sidebar": "#F7F7F7",
+          "panel": "#F7F7F7",
+          "panelAlt": "#F9F9F9",
+          "control": "#DFDFDF",
+          "input": "#E1E1E1",
+          "button": "#ECECEC",
+          "buttonDisabled": "#F5F5F5",
+          "selection": "#BAD6FB",
+          "selectionInactive": "#DCDCDC",
+          "hover": "#EEEEEE",
+          "activeLine": "#F7F7F7",
+          "match": "#E6EEF9"
+        },
+        "foreground": {
+          "primary": "#272727",
+          "secondary": "#6B6B6B",
+          "tertiary": "#7F7F7F",
+          "disabled": "#B6B6B6",
+          "placeholder": "#717172",
+          "inverse": "#FFFFFF",
+          "heading": "#272727",
+          "onControl": "#232323"
+        },
+        "border": {
+          "subtle": "#EBEBEB",
+          "default": "#EEEEEE",
+          "strong": "#D9D9D9",
+          "focus": "#3477F7"
+        },
+        "accent": {
+          "primary": "#3477F7",
+          "secondary": "#8B4292",
+          "selectionText": "#000000",
+          "buttonDefault": "#3477F7",
+          "buttonDefaultText": "#FFFFFF"
+        },
+        "status": {
+          "red": "#CE4745",
+          "orange": "#E88839",
+          "yellow": "#F6C94E",
+          "green": "#78B856",
+          "blue": "#3477F7",
+          "purple": "#8B4292",
+          "pink": "#E45C9D",
+          "graphite": "#989899"
+        },
+        "ansi": {
+          "black": "#272727",
+          "red": "#CE4745",
+          "green": "#78B856",
+          "yellow": "#F6C94E",
+          "blue": "#3477F7",
+          "magenta": "#8B4292",
+          "cyan": "#989899",
+          "white": "#F7F7F7",
+          "brightBlack": "#7F7F7F",
+          "brightRed": "#CE4745",
+          "brightGreen": "#78B856",
+          "brightYellow": "#F6C94E",
+          "brightBlue": "#3477F7",
+          "brightMagenta": "#E45C9D",
+          "brightCyan": "#B7B7B7",
+          "brightWhite": "#FFFFFF"
+        },
+        "syntax": {
+          "text": "#272727",
+          "comment": "#7F7F7F",
+          "keyword": "#8B4292",
+          "string": "#78B856",
+          "number": "#E88839",
+          "constant": "#E45C9D",
+          "function": "#3477F7",
+          "type": "#CE4745",
+          "variable": "#272727",
+          "operator": "#6B6B6B",
+          "error": "#CE4745",
+          "warning": "#E88839",
+          "info": "#3477F7",
+          "success": "#78B856"
+        }
+      }
+    }
+  }
+}

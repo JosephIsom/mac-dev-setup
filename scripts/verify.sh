@@ -318,18 +318,18 @@ main() {
   run_check_login_zsh 'command -v aws_completer >/dev/null 2>&1' "AWS CLI completer available" warn
   run_check_login_zsh 'complete -p aws 2>/dev/null | grep -F "aws_completer" >/dev/null' "AWS CLI completion registered" warn
   run_check_login_zsh 'if command -v awslocal >/dev/null 2>&1; then complete -p awslocal 2>/dev/null | grep -F "aws_completer" >/dev/null; else exit 1; fi' "AWS CLI Local completion registered" warn
-  run_check_cmd "gcloud" "Google Cloud CLI available" warn
-  run_check_cmd "az" "Azure CLI available" warn
-  run_check_cmd "doctl" "doctl available" warn
-  run_check_cmd "wrangler" "Cloudflare Wrangler available" warn
-  run_check_login_zsh 'command -v fly >/dev/null 2>&1 || command -v flyctl >/dev/null 2>&1' "Fly.io CLI available" warn
-  run_check_file "$HOME/.zsh/plugins/gcloud-plugin.zsh" "Google Cloud zsh plugin present" fail
-  run_check_file "$HOME/.zsh/plugins/doctl-plugin.zsh" "doctl zsh plugin present" fail
-  run_check_file "$HOME/.zsh/plugins/wrangler-plugin.zsh" "Wrangler zsh plugin present" fail
-  run_check_file "$HOME/.zsh/plugins/flyctl-plugin.zsh" "Fly.io zsh plugin present" fail
-  run_check_login_zsh 'doctl completion zsh >/dev/null 2>&1' "doctl completion available" warn
-  run_check_login_zsh 'wrangler complete zsh >/dev/null 2>&1' "Wrangler completion available" warn
-  run_check_login_zsh 'if command -v fly >/dev/null 2>&1; then fly completion zsh >/dev/null 2>&1 || fly version -c zsh >/dev/null 2>&1; elif command -v flyctl >/dev/null 2>&1; then flyctl completion zsh >/dev/null 2>&1 || flyctl version -c zsh >/dev/null 2>&1; else exit 1; fi' "Fly.io completion available" warn
+  # run_check_cmd "gcloud" "Google Cloud CLI available" warn
+  # run_check_cmd "az" "Azure CLI available" warn
+  # run_check_cmd "doctl" "doctl available" warn
+  # run_check_cmd "wrangler" "Cloudflare Wrangler available" warn
+  # run_check_login_zsh 'command -v fly >/dev/null 2>&1 || command -v flyctl >/dev/null 2>&1' "Fly.io CLI available" warn
+  # run_check_file "$HOME/.zsh/plugins/gcloud-plugin.zsh" "Google Cloud zsh plugin present" fail
+  # run_check_file "$HOME/.zsh/plugins/doctl-plugin.zsh" "doctl zsh plugin present" fail
+  # run_check_file "$HOME/.zsh/plugins/wrangler-plugin.zsh" "Wrangler zsh plugin present" fail
+  # run_check_file "$HOME/.zsh/plugins/flyctl-plugin.zsh" "Fly.io zsh plugin present" fail
+  # run_check_login_zsh 'doctl completion zsh >/dev/null 2>&1' "doctl completion available" warn
+  # run_check_login_zsh 'wrangler complete zsh >/dev/null 2>&1' "Wrangler completion available" warn
+  # run_check_login_zsh 'if command -v fly >/dev/null 2>&1; then fly completion zsh >/dev/null 2>&1 || fly version -c zsh >/dev/null 2>&1; elif command -v flyctl >/dev/null 2>&1; then flyctl completion zsh >/dev/null 2>&1 || flyctl version -c zsh >/dev/null 2>&1; else exit 1; fi' "Fly.io completion available" warn
 
   # Containers
   run_check_cmd "colima" "Colima available" fail
@@ -395,6 +395,20 @@ main() {
   run_check_cmd "docker-langserver" "Dockerfile language server available" warn
   run_check_login_zsh 'docker compose version >/dev/null 2>&1' "Docker Compose support available" warn
   run_check_cmd "docker-compose-langserver" "Docker Compose language server available" warn
+  run_check_cmd "graphql-language-service-cli" "GraphQL language tooling available" warn
+  run_check_cmd "groovy" "Groovy available" warn
+  run_check_cmd "groovyc" "Groovy compiler available" warn
+  run_check_cmd "npm-groovy-lint" "npm-groovy-lint available" warn
+  run_check_login_zsh 'command -v groovy-language-server >/dev/null 2>&1' "Groovy language server available" warn
+  run_check_cmd "kotlin" "Kotlin available" warn
+  run_check_cmd "kotlinc" "Kotlin compiler available" warn
+  run_check_cmd "kotlin-language-server" "Kotlin language server available" warn
+  run_check_cmd "ktfmt" "ktfmt available" warn
+  run_check_cmd "detekt" "Detekt available" warn
+  run_check_cmd "spring" "Spring Boot CLI available" warn
+  run_check_file "$HOME/.zsh/plugins/spring-boot-completion.zsh" "Spring Boot CLI zsh completion plugin present" fail
+  run_check_login_zsh 'spring completion zsh >/dev/null 2>&1' "Spring Boot CLI completion available" warn
+  run_check_cmd "ct" "chart-testing available" warn
 
   # Optional language support
   # run_check_cmd "pwsh" "PowerShell available" warn
@@ -405,18 +419,6 @@ main() {
   # run_check_cmd "dotnet" ".NET available" warn
   # run_check_file "$HOME/.zsh/plugins/dotnet-completion.zsh" ".NET zsh completion plugin present" fail
   # run_check_login_zsh 'dotnet completions script zsh >/dev/null 2>&1' ".NET completion available" warn
-  # run_check_cmd "groovy" "Groovy available" warn
-  # run_check_cmd "groovyc" "Groovy compiler available" warn
-  # run_check_cmd "npm-groovy-lint" "npm-groovy-lint available" warn
-  # run_check_login_zsh 'command -v groovy-language-server >/dev/null 2>&1' "Groovy language server available" warn
-  # run_check_cmd "kotlin" "Kotlin available" warn
-  # run_check_cmd "kotlinc" "Kotlin compiler available" warn
-  # run_check_cmd "kotlin-language-server" "Kotlin language server available" warn
-  # run_check_cmd "ktfmt" "ktfmt available" warn
-  # run_check_cmd "detekt" "Detekt available" warn
-  # run_check_cmd "spring" "Spring Boot CLI available" warn
-  # run_check_file "$HOME/.zsh/plugins/spring-boot-completion.zsh" "Spring Boot CLI zsh completion plugin present" fail
-  # run_check_login_zsh 'spring completion zsh >/dev/null 2>&1' "Spring Boot CLI completion available" warn
   # run_check_cmd "php" "PHP available" warn
   # run_check_cmd "composer" "Composer available" warn
   # run_check_cmd "phpactor" "Phpactor available" warn
@@ -438,7 +440,7 @@ main() {
   # run_check_dir "/Applications/Google Chrome.app" "Google Chrome app present" warn
   # run_check_dir "/Applications/Firefox.app" "Firefox app present" warn
   # run_check_dir "/Applications/DuckDuckGo.app" "DuckDuckGo browser app present" warn
-  # run_check_dir "/Applications/GitHub Desktop.app" "GitHub Desktop app present" warn
+  run_check_dir "/Applications/GitHub Desktop.app" "GitHub Desktop app present" warn
   # run_check_dir "/Applications/Dropbox.app" "Dropbox app present" warn
   # run_check_dir "/Applications/Spotify.app" "Spotify app present" warn
   # run_check_dir "/Applications/TablePlus.app" "TablePlus app present" warn
@@ -447,12 +449,12 @@ main() {
   # run_check_dir "/Applications/DBeaver.app" "DBeaver app present" warn
   # run_check_dir "/Applications/Beekeeper Studio.app" "Beekeeper Studio app present" warn
   # run_check_dir "/Applications/Postico.app" "Postico app present" warn
-  # run_check_dir "/Applications/pgAdmin 4.app" "pgAdmin 4 app present" warn
-  # run_check_dir "/Applications/TablePro.app" "TablePro app present" warn
+  run_check_dir "/Applications/pgAdmin 4.app" "pgAdmin 4 app present" warn
+  run_check_dir "/Applications/TablePro.app" "TablePro app present" warn
   # run_check_dir "/Applications/Bruno.app" "Bruno app present" warn
   # run_check_dir "/Applications/Hoppscotch.app" "Hoppscotch app present" warn
   # run_check_dir "/Applications/HTTPie.app" "HTTPie Desktop app present" warn
-  # run_check_dir "/Applications/Insomnia.app" "Insomnia app present" warn
+  run_check_dir "/Applications/Insomnia.app" "Insomnia app present" warn
   # run_check_dir "/Applications/Postman.app" "Postman app present" warn
 
   # Optional secrets and identity
@@ -486,34 +488,37 @@ main() {
   run_check_vscode_extensions_from_manifests warn
   run_check_cmd "idea" "IntelliJ CLI helper available" warn
   run_check_file "$HOME/.config/jetbrains/intellij-ai-notes.txt" "IntelliJ AI setup notes present" warn
-  # run_check_cmd "hx" "Helix editor available" warn
-  # run_check_cmd "nvim" "Neovim available" warn
-  # run_check_file "$HOME/.config/nvim/init.lua" "Managed Neovim init.lua present" fail
-  # run_check_file "$HOME/.config/nvim/lua/mac_dev_setup/local.lua" "Neovim local override file present" fail
-  # run_check_dir "$HOME/.local/share/nvim/lazy/lazy.nvim" "lazy.nvim checkout present" fail
-  # run_check_login_zsh 'nvim --headless "+qa" >/dev/null 2>&1' "Neovim config loads headlessly" warn
-  # run_check_dir "/Applications/Sublime Text.app" "Sublime Text app present" warn
-  # run_check_file "$HOME/.zsh/plugins/sublime-text-path.zsh" "Sublime Text zsh path plugin present" fail
-  # run_check_login_zsh 'command -v subl >/dev/null 2>&1' "Sublime Text CLI available" warn
-  # run_check_dir "/Applications/Zed.app" "Zed editor present" warn
-  # run_check_file "$HOME/.config/zed/bootstrap-notes.txt" "Zed bootstrap notes present" warn
-  # run_check_cmd "zed" "Zed CLI available" warn
+  run_check_cmd "hx" "Helix editor available" warn
+  run_check_cmd "nvim" "Neovim available" warn
+  run_check_file "$HOME/.config/nvim/init.lua" "Managed Neovim init.lua present" fail
+  run_check_file "$HOME/.config/nvim/lua/mac_dev_setup/local.lua" "Neovim local override file present" fail
+  run_check_dir "$HOME/.local/share/nvim/lazy/lazy.nvim" "lazy.nvim checkout present" fail
+  run_check_login_zsh 'nvim --headless "+qa" >/dev/null 2>&1' "Neovim config loads headlessly" warn
+  run_check_dir "/Applications/Sublime Text.app" "Sublime Text app present" warn
+  run_check_file "$HOME/.zsh/plugins/sublime-text-path.zsh" "Sublime Text zsh path plugin present" fail
+  run_check_login_zsh 'command -v subl >/dev/null 2>&1' "Sublime Text CLI available" warn
+  run_check_dir "/Applications/Zed.app" "Zed editor present" warn
+  run_check_file "$HOME/.config/zed/bootstrap-notes.txt" "Zed bootstrap notes present" warn
+  run_check_cmd "zed" "Zed CLI available" warn
   # run_check_dir "/Applications/Kiro.app" "Kiro IDE app present" warn
   # run_check_cmd "kiro-cli" "Kiro CLI available" warn
   # run_check_cmd "kiro" "Kiro command router available" warn
   # run_check_dir "/Applications/Android Studio.app" "Android Studio app present" warn
   # run_check_file "$HOME/.config/android-studio/bootstrap-notes.txt" "Android Studio bootstrap notes present" warn
-  run_check_dir "/Applications/iTerm.app" "iTerm2 app present" warn
-  run_check_file "$HOME/Library/Application Support/iTerm2/DynamicProfiles/00-mac-dev-setup.json" "Managed iTerm2 dynamic profile present" fail
+  # run_check_dir "/Applications/iTerm.app" "iTerm2 app present" warn
+  # run_check_file "$HOME/Library/Application Support/iTerm2/DynamicProfiles/00-mac-dev-setup.json" "Managed iTerm2 dynamic profile present" fail
   run_check_dir "/Applications/Ghostty.app" "Ghostty app present" warn
   run_check_file "$HOME/.config/ghostty/config" "Managed Ghostty config present" fail
   run_check_file "$HOME/.config/ghostty/local.conf" "Ghostty local override template present" fail
-  run_check_dir "/Applications/WezTerm.app" "WezTerm app present" warn
-  run_check_file "$HOME/.config/wezterm/wezterm.lua" "Managed WezTerm config present" fail
-  run_check_file "$HOME/.config/wezterm/local.lua" "WezTerm local override template present" fail
-  run_check_dir "/Applications/Warp.app" "Warp app present" warn
-  run_check_file "$HOME/.warp/themes/catppuccin-mocha-mac-dev-setup.yaml" "Managed Warp theme present" fail
-  run_check_file "$HOME/.warp/bootstrap-notes.txt" "Warp bootstrap notes present" fail
+  run_check_dir "$HOME/.config/ghostty/themes" "Managed Ghostty theme directory present" fail
+  run_check_file "$HOME/.config/ghostty/themes/apple-graphite-light.conf" "Ghostty Apple Graphite Light theme present" fail
+  run_check_file "$HOME/.config/ghostty/themes/apple-graphite-dark.conf" "Ghostty Apple Graphite Dark theme present" fail
+  # run_check_dir "/Applications/WezTerm.app" "WezTerm app present" warn
+  # run_check_file "$HOME/.config/wezterm/wezterm.lua" "Managed WezTerm config present" fail
+  # run_check_file "$HOME/.config/wezterm/local.lua" "WezTerm local override template present" fail
+  # run_check_dir "/Applications/Warp.app" "Warp app present" warn
+  # run_check_file "$HOME/.warp/themes/catppuccin-mocha-mac-dev-setup.yaml" "Managed Warp theme present" fail
+  # run_check_file "$HOME/.warp/bootstrap-notes.txt" "Warp bootstrap notes present" fail
 
   # AI tooling
   run_check_cmd "codex" "Codex CLI available" warn
@@ -526,10 +531,10 @@ main() {
   # run_check_cmd "aider" "Aider CLI available" warn
   # run_check_cmd "claude" "Claude CLI available" warn
   # run_check_file "$HOME/.config/claude/ide-notes.txt" "Claude IDE integration notes present" warn
-  # run_check_dir "/Applications/ChatGPT.app" "ChatGPT app present" warn
-  # run_check_cmd "cn" "Continue CLI available" warn
+  run_check_dir "/Applications/ChatGPT.app" "ChatGPT app present" warn
+  run_check_cmd "cn" "Continue CLI available" warn
   # run_check_cmd "gemini" "Gemini CLI available" warn
-  # run_check_cmd "copilot" "GitHub Copilot CLI available" warn
+  run_check_cmd "copilot" "GitHub Copilot CLI available" warn
   # run_check_cmd "ollama" "Ollama CLI available" warn
   # run_check_dir "/Applications/LM Studio.app" "LM Studio app present" warn
 
