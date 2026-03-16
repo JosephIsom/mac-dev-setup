@@ -1,159 +1,65 @@
 # mac-dev-setup
 
-Automation-first macOS development environment bootstrap.
+`mac-dev-setup` bootstraps a new Mac for software development with a curated command-line environment, editor setup, language runtimes, cloud and container tooling, and optional desktop apps.
 
-## Executive Summary
+The repo is meant to be:
 
-This repository bootstraps a modern macOS development machine with:
+- rerunnable
+- easy to customize by commenting modules in `scripts/bootstrap.sh`
+- friendly to both terminal-first and IDE-first workflows
+- usable as a practical starting point for a brand new development machine
 
-- Homebrew for package installation
-- mise for language/runtime and tool version management
-- uv as the preferred Python dependency workflow
-- pnpm as the preferred JavaScript/TypeScript dependency workflow
-- Colima + Docker CLI + Buildx + Compose instead of Docker Desktop
-- zsh-based terminal setup with repo-managed config
-- VS Code, IntelliJ/Toolbox, tmux, and Neovim support
-- repo-managed dotfiles and config deployed via standard scripts
-- verification tooling to audit machine readiness
-- evaluation-friendly AI tooling support without locking into a single AI workflow
+## What This Sets Up
 
-## What this repo is for
-
-Use this repo when you want:
-
-- a repeatable new-Mac setup
-- profile-driven installation
-- rerunnable bootstrap phases
-- a curated baseline plus opt-in tooling
-- a stable base editor/IDE layer with room to evaluate fast-moving AI tools separately
-
-## Scope
-
-This repository currently covers:
-
-- core machine bootstrap
-- shell and terminal tooling
-- Git, GitHub CLI, and SSH baseline config
-- Python, Node, Go, and Java runtimes
-- language-specific dev tooling
-- container tooling and runtime
-- editor installation and baseline config
-- selected standalone AI tooling installs
-- repo policy files and quality tooling
-- machine verification
-
-It does not try to fully automate:
-
-- every first-launch GUI workflow
-- every personal preference/theme tweak
-- every IDE-specific sign-in flow
-- every AI model/provider choice
-- every macOS defaults opinion
-
-## Profiles
-
-### minimal
-
-Lean bootstrap for a smaller baseline.
-
-Use when you want:
-
-- core package manager and shell baseline
-- Git/GitHub CLI
-- Python baseline
-- minimal quality tools
-- no AI tooling by default
-
-### base
-
-Recommended default profile.
-
-Use when you want:
-
-- core shell/tooling baseline
-- all major runtimes
-- Docker/Colima stack
-- VS Code baseline
-- core quality and dev tooling
-- AI tooling evaluation support enabled by default
-
-### full
-
-Broader workstation profile.
-
-Use when you want:
-
-- all of base
-- IntelliJ/Toolbox path
-- Neovim path
-- more quality tools
-- fuller workstation experience
-- AI tooling evaluation support enabled by default
+- macOS defaults for Finder, Dock, input, and screenshots
+- core prerequisites: Xcode Command Line Tools, Homebrew, fonts, Git, `mise`, SSH, and Zsh
+- shell tooling and terminal apps
+- language runtimes and common formatters, linters, LSPs, and editor integrations
+- cloud, container, Kubernetes, and infrastructure tooling
+- VS Code, IntelliJ Toolbox, Cursor, Windsurf, Neovim, and other optional editors
+- AI CLIs and desktop apps
+- optional desktop apps such as browsers, SQL clients, REST clients, secrets managers, and remote-access tools
 
 ## Quick Start
 
 1. Clone the repo.
-2. Create `config/user.env`.
-3. Choose a profile.
-4. Run bootstrap.
-5. Run verify.
-6. Complete expected GUI/account steps.
-7. Re-run targeted modules if needed.
-
-Example:
+2. Copy `config/user.env.example` to `config/user.env`.
+3. Set your Git identity and any runtime/version overrides you want in `config/user.env`.
+4. Open [scripts/bootstrap.sh](/Users/joe/src/personal/mac-dev-setup/scripts/bootstrap.sh) and comment out anything you do not want installed.
+5. Run bootstrap.
+6. Run verify.
+7. Complete the small number of manual sign-in or first-launch steps called out in the docs.
 
 ```bash
-./scripts/bootstrap.sh --profile base --non-interactive
+./scripts/bootstrap.sh
 ./scripts/verify.sh
 ```
 
-## Key Decisions
+## How Customization Works
 
-- Package installation: Homebrew
-- Runtime/version management: mise
-- Python dependency management: uv-first, pip fallback
-- JS/TS dependency management: pnpm-first, npm fallback
-- Docker runtime on macOS: Colima + Docker CLI stack
-- Shell target: zsh only
-- Environment tools: mise by default, direnv optional and off by default
+- `scripts/prerequisites/prerequisites.sh` always runs the base machine setup.
+- `scripts/bootstrap.sh` is the main install list.
+- Uncommented `run_script_path` lines are enabled.
+- Commented lines are optional.
+- `scripts/verify.sh` should be kept in sync with your enabled modules.
 
-See `docs/tooling-decisions.md` for the full rationale.
+## Read These Next
 
-## Module Registry
+- [Getting Started](docs/getting-started.md)
+- [Prerequisites](docs/prerequisites.md)
+- [Shell And Terminals](docs/shell-and-terminals.md)
+- [Runtimes And Tooling](docs/runtimes-and-tooling.md)
+- [Cloud, Containers, And Infra](docs/cloud-containers-and-infra.md)
+- [Editors And AI](docs/editors-and-ai.md)
+- [Desktop Apps And Services](docs/desktop-apps-and-services.md)
+- [Post-Bootstrap Tasks](docs/post-bootstrap.md)
 
-- Source of truth: `config/modules.yaml`
-- Generated runtime data: `scripts/lib/module-registry-generated.sh`
-- Generated docs: `docs/generated/module-registry.md`
+## What You Usually Edit
 
-When adding or changing modules, regenerate artifacts with:
-
-```bash
-./scripts/generate-module-registry.sh
-```
-
-## Editors and AI
-
-Anchor editors:
-
-- VS Code
-- IntelliJ
-
-Additional supported tools:
-
-- OpenAI Codex app
-- OpenAI Codex CLI
-- Cursor Editor
-- Cursor CLI
-- Windsurf Editor
-
-Current AI posture:
-
-- keep anchor editors stable
-- use native/built-in AI in VS Code and IntelliJ for now
-- install standalone AI tools separately for evaluation
-- do not assume one editor, one model, or one vendor will win long term
-
-See `docs/editors-and-ai.md`.
+- [config/user.env.example](/Users/joe/src/personal/mac-dev-setup/config/user.env.example)
+- [config/user.env](/Users/joe/src/personal/mac-dev-setup/config/user.env)
+- [scripts/bootstrap.sh](/Users/joe/src/personal/mac-dev-setup/scripts/bootstrap.sh)
+- [scripts/verify.sh](/Users/joe/src/personal/mac-dev-setup/scripts/verify.sh)
 
 ## Verification
 
@@ -163,27 +69,15 @@ Use:
 ./scripts/verify.sh
 ```
 
-This checks:
+This checks the managed shell config, installed tools, language runtimes, editor assets, desktop apps, and other files that bootstrap is expected to create.
 
-- core commands present
-- runtimes present
-- Docker stack reachable
-- selected editor CLIs present where applicable
-- selected AI CLIs/apps present where applicable
-- key managed config files exist
+## Scope
 
-Warnings are acceptable for intentionally optional items.
+This documentation focuses on how to use the repo:
 
-See `docs/troubleshooting-and-verification.md`.
+- what each prerequisite or module installs
+- why it is included
+- how to use it after bootstrap
+- which follow-up manual steps are still needed
 
-## Documentation Map
-
-- `docs/architecture.md`
-- `docs/bootstrap-usage.md`
-- `docs/tooling-decisions.md`
-- `docs/editors-and-ai.md`
-- `docs/troubleshooting-and-verification.md`
-
-## Version History
-
-- v1: initial repo docs set created from the consolidated final documentation draft
+It intentionally does not go deep on design history or internal architecture.

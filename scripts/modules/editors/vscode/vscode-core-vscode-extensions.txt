@@ -1,0 +1,20 @@
+# Core editor experience
+EditorConfig.EditorConfig
+eamodio.gitlens
+esbenp.prettier-vscode
+streetsidesoftware.code-spell-checker
+usernamehw.errorlens
+wayou.vscode-todo-highlight
+oderwat.indent-rainbow
+gruntfuggly.todo-tree
+alefragnani.project-manager
+ms-vscode.hexeditor
+pkief.material-icon-theme
+christian-kohler.path-intellisense
+tyriar.sort-lines
+naumovs.color-highlight
+bierner.markdown-preview-github-styles
+donjayamanne.githistory
+GitHub.vscode-pull-request-github
+vscodevim.vim
+openai.chatgpt

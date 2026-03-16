@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "TypeScript: Node Current File",
+      "type": "node",
+      "request": "launch",
+      "program": "${file}",
+      "preLaunchTask": "TypeScript: typecheck",
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    }
+  ]
+}

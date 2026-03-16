@@ -1,0 +1,25 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "JavaScript: npm test",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "test"
+      ],
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "JavaScript: eslint .",
+      "type": "shell",
+      "command": "eslint",
+      "args": [
+        "."
+      ],
+      "group": "build",
+      "problemMatcher": []
+    }
+  ]
+}

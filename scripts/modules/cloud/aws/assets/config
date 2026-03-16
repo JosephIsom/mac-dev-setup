@@ -1,0 +1,10 @@
+# mac-dev-setup AWS CLI config
+# Add your real AWS profiles here as needed.
+
+[default]
+output = json
+region = us-east-1
+
+[profile localstack]
+output = json
+region = us-east-1

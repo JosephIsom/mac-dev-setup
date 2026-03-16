@@ -1,0 +1,15 @@
+{
+  "files.associations": {
+    "*.k8s.yaml": "yaml",
+    "*.k8s.yml": "yaml",
+    "Chart.yaml": "yaml",
+    "values.yaml": "yaml",
+    "values-*.yaml": "yaml"
+  },
+  "yaml.schemas": {
+    "kubernetes": [
+      "*.k8s.yaml",
+      "*.k8s.yml"
+    ]
+  }
+}

@@ -1,0 +1,73 @@
+
+
+claude-code-zsh-completion - Adds completions for Anthropic's Claude Code CLI with support for 120+ languages. Includes dynamic completion for MCP servers, plugins, and session IDs.
+claudecode-completion - Minimal and always up-to-date zsh completions for Claude Code CLI.
+copilot - Adds completions for the GitHub Copilot CLI.
+
+docker (greymd) - Add tab completions for docker and docker-compose.
+fancy-completions - Provides various completions tools, libraries and integrations.
+
+fzf-rg - Add some functionalities to terminal using fzf, bat and ripgrep.
+fzf-tab-completion - Add tab completion for ZSH, bash & applications using GNU Readline.
+fzf-zsh-completions - Fuzzy completions for fzf and ZSH that can be triggered by a trigger sequence that defaults to **.
+
+git-fzf - ZSH plugin that wraps git operations for simplicity and productivity. It also contains completions and combines support for fzf.
+helmfile - Adds autocompletion for helm.
+kubectl-fzf - Fast and powerful fzf-powered autocompletion for kubectl.
+kubectl-plugin - Generates kubectl completion scripts to extend the kubectl auto complete functionality to accomodate for plugin sub-commands.
+npm-run - Autocompletion support for npm run.
+npm-scripts-autocomplete - Shows autocomplete suggestions from scripts found in the current directory's package.json. Works with npm and yarn.
+okta - Provides command line completions for the aws-okta and okta-awscli commands.
+pagerduty - Adds completions for the pagerduty cli
+spring-boot-plugin - Adds autocompletions for spring-boot commands.
+
+
+
+ZSH plugins
+|---- fzf-tab (https://github.com/Aloxaf/fxf-tab)
+|---- colored-man-pages https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/colored-man-pages/colored-man-pages.plugin.zsh
+
+
+
+ZSH Plugins - AWS CLI
+|---- aws cli stuff
+|---- aws cli autocompletions
+
+ZSH Plugins - NPM
+npm-run - Autocompletion support for npm run.
+npm-scripts-autocomplete - Shows autocomplete suggestions from scripts found in the current directory's package.json. Works with npm and yarn.
+
+ZSH Plugins - Okta
+okta - Provides command line completions for the aws-okta and okta-awscli commands.
+
+ZSH Plugins - Docker
+docker (greymd) - Add tab completions for docker and docker-compose.
+
+ZSH Plugins - Kubernetes
+kubectl-fzf - Fast and powerful fzf-powered autocompletion for kubectl.
+kubectl-plugin - Generates kubectl completion scripts to extend the kubectl auto complete functionality to accomodate for plugin sub-commands.
+
+ZSH Plugins - Helm
+helmfile - Adds autocompletion for helm.
+
+ZSH Plugins - AI
+claude-code-zsh-completion - Adds completions for Anthropic's Claude Code CLI with support for 120+ languages. Includes dynamic completion for MCP servers, plugins, and session IDs.
+claudecode-completion - Minimal and always up-to-date zsh completions for Claude Code CLI.
+copilot - Adds completions for the GitHub Copilot CLI.
+
+Aliases:
+alias grep='grep --color=auto'
+alias rg='rg --hidden'
+alias f='fd'
+alias cat='bat'
+
+
+
+
+
+
+
+
+
+
+

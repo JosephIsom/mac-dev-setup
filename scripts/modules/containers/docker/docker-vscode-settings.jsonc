@@ -1,0 +1,13 @@
+{
+  "files.associations": {
+    "Dockerfile*": "dockerfile",
+    "*.dockerfile": "dockerfile",
+    "docker-compose*.yml": "yaml",
+    "docker-compose*.yaml": "yaml",
+    "compose*.yml": "yaml",
+    "compose*.yaml": "yaml"
+  },
+  "[dockerfile]": {
+    "editor.formatOnSave": true
+  }
+}

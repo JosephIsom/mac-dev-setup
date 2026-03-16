@@ -1,0 +1,18 @@
+# mac-dev-setup managed global gitignore
+
+# macOS Finder / filesystem metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Editor swap / backup files that should stay machine-local
+*.swp
+*.swo
+*~
+*.orig
+*.rej
+
+# IDE / editor-local files that are usually machine-specific
+.idea/
+.fleet/

@@ -1,0 +1,33 @@
+# mac-dev-setup managed Ghostty baseline
+#
+# References:
+# - https://ghostty.org/docs/config
+# - https://ghostty.org/docs/config/reference
+#
+# Personal overrides can go in ~/.config/ghostty/local.conf.
+
+# Keep the terminal theme aligned with repo notes.
+theme = Catppuccin Mocha
+
+# Prefer the Nerd Font variant used elsewhere in the setup.
+font-family = JetBrainsMono Nerd Font
+font-size = 14
+
+# Ghostty's shell integration improves prompt handling, titles, and SSH behavior.
+shell-integration = detect
+shell-integration-features = cursor,title,ssh-env,path
+
+# Use the left Option key as Alt while preserving the right Option key for macOS input.
+macos-option-as-alt = left
+
+# Add a bit of breathing room around the grid without fighting tmux.
+window-padding-x = 6
+window-padding-y = 6
+window-padding-balance = true
+
+# Restore windows/tabs on relaunch and keep more terminal history in memory.
+window-save-state = always
+scrollback-limit = 50000000
+
+# Allow machine-local tweaks without forking the managed baseline.
+config-file = ?local.conf

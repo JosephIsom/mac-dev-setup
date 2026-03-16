@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+GROOVY_LANGUAGE_SERVER_JAR="$HOME/.local/share/groovy-language-server/build/libs/groovy-language-server-all.jar"
+
+export PATH="$HOME/.local/share/mise/shims:$PATH"
+
+if [[ ! -f "$GROOVY_LANGUAGE_SERVER_JAR" ]]; then
+  printf '%s\n' "Groovy language server jar not found: $GROOVY_LANGUAGE_SERVER_JAR" >&2
+  exit 1
+fi
+
+if ! command -v java >/dev/null 2>&1; then
+  printf '%s\n' "java is required to run groovy-language-server." >&2
+  exit 1
+fi
+
+exec java -jar "$GROOVY_LANGUAGE_SERVER_JAR" "$@"

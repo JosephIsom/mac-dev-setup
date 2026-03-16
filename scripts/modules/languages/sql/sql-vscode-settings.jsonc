@@ -1,0 +1,10 @@
+{
+  "files.associations": {
+    "*.ddl": "sql",
+    "*.dml": "sql",
+    "*.prc": "sql"
+  },
+  "[sql]": {
+    "editor.formatOnSave": false
+  }
+}

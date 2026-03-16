@@ -1,0 +1,8 @@
+IgnoreUnknown UseKeychain
+
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  HashKnownHosts yes
+  ServerAliveInterval 60
+  ServerAliveCountMax 3

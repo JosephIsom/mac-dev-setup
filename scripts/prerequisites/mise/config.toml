@@ -1,0 +1,24 @@
+[settings]
+color_theme = "catppuccin"
+idiomatic_version_file_enable_tools = [
+  "atmos",
+  "bun",
+  "crystal",
+  "deno",
+  "dotnet",
+  "elixir",
+  "go",
+  "java",
+  "node",
+  "npm",
+  "opentofu",
+  "packer",
+  "pnpm",
+  "python",
+  "ruby",
+  "terraform",
+  "terragrunt",
+  "terramate",
+  "yarn",
+]
+always_keep_download = true

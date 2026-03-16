@@ -1,0 +1,790 @@
+TIER 1 — DEFINITELY INCLUDE
+
+Category: Shell / Scripting 1. Bash
+
+    •	Language: Bash
+    •	File extensions: .sh, .bash
+    •	Runtime/compiler: bash
+    •	Formatter options: shfmt — best: shfmt
+    •	Linter options: ShellCheck — best: ShellCheck
+    •	Autocompletion options: shell-native completion plus editor integration — best: editor shell extension + bash-language-server
+    •	LSP options: bash-language-server — best: bash-language-server
+    •	Debugger options: shell tracing (set -x), bashdb — best: shell tracing for baseline, bashdb if needed
+    •	Package manager options: Homebrew, system package manager — best: Homebrew on macOS
+    •	Other related tooling: direnv, fzf, bat, ripgrep, zoxide
+    •	Recommendation: mandatory on a Mac dev box even if Zsh is your login shell, because so much tooling and bootstrap automation assumes it. Bash/Shell remains one of the most-used language groups in current survey data.  ￼
+
+    2.	Zsh
+
+    •	Language: Zsh
+    •	File extensions: .zsh, .zprofile, .zshrc, .zlogin, .zlogout
+    •	Runtime/compiler: zsh
+    •	Formatter options: shfmt — best: shfmt
+    •	Linter options: ShellCheck — best: ShellCheck
+    •	Autocompletion options: native compinit plus editor shell support — best: editor shell extension + bash-language-server
+    •	LSP options: bash-language-server — best: bash-language-server
+    •	Debugger options: shell tracing, zshdb — best: shell tracing
+    •	Package manager options: Homebrew — best: Homebrew
+    •	Other related tooling: completions, plugin managers optional, prompt engines like Starship or Powerlevel10k
+    •	Recommendation: mandatory for macOS because it is the default interactive shell on modern macOS.
+
+    3.	PowerShell
+
+    •	Language: PowerShell
+    •	File extensions: .ps1, .psm1, .psd1
+    •	Runtime/compiler: pwsh
+    •	Formatter options: PSScriptAnalyzer formatting support, editor formatters — best: PSScriptAnalyzer
+    •	Linter options: PSScriptAnalyzer — best: PSScriptAnalyzer
+    •	Autocompletion options: PowerShell extension/editor support — best: PowerShell extension
+    •	LSP options: PowerShell Editor Services — best: PowerShell Editor Services
+    •	Debugger options: PowerShell Editor Services — best: PowerShell Editor Services
+    •	Package manager options: Homebrew, winget not relevant on Mac — best: Homebrew
+    •	Other related tooling: module ecosystem via PowerShell Gallery
+    •	Recommendation: strong Tier 1 because cross-platform ops and enterprise repos still use it heavily.
+
+Category: Systems / Native 4. C
+
+    •	Language: C
+    •	File extensions: .c, .h
+    •	Runtime/compiler: clang, gcc — best: Apple Clang / LLVM clang on macOS
+    •	Formatter options: clang-format, astyle — best: clang-format
+    •	Linter options: clang-tidy, compiler warnings — best: clang-tidy
+    •	Autocompletion options: clangd editor integration — best: clangd
+    •	LSP options: clangd, ccls — best: clangd
+    •	Debugger options: lldb, gdb — best: lldb on macOS
+    •	Package manager options: Homebrew, Conan, vcpkg — best: Homebrew + Conan or vcpkg as needed
+    •	Other related tooling: cmake, ninja, bear, compiledb
+    •	Recommendation: mandatory for systems work and because a huge amount of developer tooling depends on a sane C/C++ toolchain.
+
+    5.	C++
+
+    •	Language: C++
+    •	File extensions: .cpp, .cc, .cxx, .hpp, .hh, .hxx
+    •	Runtime/compiler: clang++, g++ — best: Apple Clang / LLVM clang++
+    •	Formatter options: clang-format — best: clang-format
+    •	Linter options: clang-tidy — best: clang-tidy
+    •	Autocompletion options: clangd — best: clangd
+    •	LSP options: clangd, ccls — best: clangd
+    •	Debugger options: lldb, gdb — best: lldb
+    •	Package manager options: Conan, vcpkg, Homebrew — best: Conan for project deps; Homebrew for workstation tooling
+    •	Other related tooling: CMake, Ninja, sanitizers, valgrind alternatives, include-what-you-use
+    •	Recommendation: Tier 1 for broad tooling and native development coverage.
+
+    6.	Rust
+
+    •	Language: Rust
+    •	File extensions: .rs
+    •	Runtime/compiler: rustc — best: rustc via rustup
+    •	Formatter options: rustfmt — best: rustfmt
+    •	Linter options: clippy — best: clippy
+    •	Autocompletion options: rust-analyzer — best: rust-analyzer
+    •	LSP options: rust-analyzer — best: rust-analyzer
+    •	Debugger options: lldb, gdb, CodeLLDB — best: CodeLLDB + lldb
+    •	Package manager options: cargo — best: cargo
+    •	Other related tooling: rustup, cargo-audit, cargo-nextest, bacon
+    •	Recommendation: Tier 1 because it is now mainstream enough to justify first-class treatment on a modern workstation. Survey data keeps it in the serious mainstream/dev-tools set.  ￼
+
+    7.	Go
+
+    •	Language: Go
+    •	File extensions: .go
+    •	Runtime/compiler: go toolchain — best: official go
+    •	Formatter options: gofmt, goimports — best: goimports
+    •	Linter options: golangci-lint, staticcheck — best: golangci-lint
+    •	Autocompletion options: gopls — best: gopls
+    •	LSP options: gopls — best: gopls
+    •	Debugger options: delve — best: delve
+    •	Package manager options: Go modules — best: Go modules
+    •	Other related tooling: mockgen, gotests, air, templ as needed
+    •	Recommendation: Tier 1 for backend/cloud/devtools work.
+
+    8.	Swift
+
+    •	Language: Swift
+    •	File extensions: .swift
+    •	Runtime/compiler: swift, swiftc — best: Xcode / official Swift toolchain
+    •	Formatter options: swift-format, SwiftFormat — best: SwiftFormat for day-to-day, swift-format if you want Apple-aligned formatting
+    •	Linter options: SwiftLint — best: SwiftLint
+    •	Autocompletion options: SourceKit-based editor support — best: SourceKit
+    •	LSP options: SourceKit-LSP — best: SourceKit-LSP
+    •	Debugger options: lldb — best: lldb
+    •	Package manager options: Swift Package Manager — best: SwiftPM
+    •	Other related tooling: Xcode command line tools, xcodebuild
+    •	Recommendation: Tier 1 on a Mac even if you are not primarily an Apple-platform developer.
+
+    9.	Objective-C
+
+    •	Language: Objective-C / Objective-C++
+    •	File extensions: .m, .mm, .h
+    •	Runtime/compiler: clang
+    •	Formatter options: clang-format — best: clang-format
+    •	Linter options: compiler warnings, clang-tidy — best: clang-tidy
+    •	Autocompletion options: SourceKit/Xcode tooling, clangd — best: Xcode tooling for Apple-native work, clangd otherwise
+    •	LSP options: clangd — best: clangd
+    •	Debugger options: lldb — best: lldb
+    •	Package manager options: CocoaPods, SwiftPM, Homebrew for tools — best: SwiftPM where possible, CocoaPods only when needed
+    •	Other related tooling: Xcode, xcodebuild
+    •	Recommendation: Tier 1 on Mac if you want real Apple ecosystem coverage.
+
+Category: Python / JVM / .NET / Backend 10. Python
+
+    •	Language: Python
+    •	File extensions: .py, .pyi, .ipynb
+    •	Runtime/compiler: python — best: CPython managed via uv or pyenv/mise
+    •	Formatter options: black, ruff format, yapf — best: ruff format for all-in-one speed, black if you want the most entrenched default
+    •	Linter options: ruff, pylint, flake8 — best: ruff
+    •	Autocompletion options: Pylance/Pyright, Jedi — best: Pylance or Pyright-backed completion
+    •	LSP options: Pyright / basedpyright, python-lsp-server, Jedi — best: Pyright
+    •	Debugger options: debugpy — best: debugpy
+    •	Package manager options: uv, pip, Poetry, Pipenv — best: uv
+    •	Other related tooling: pytest, mypy, tox, nox, pre-commit, Jupyter
+    •	Recommendation: absolute Tier 1. Python is now the most-used language on GitHub and remains one of the top languages in the latest Stack Overflow survey.  ￼
+
+    11.	Java
+
+    •	Language: Java
+    •	File extensions: .java
+    •	Runtime/compiler: JDK / javac — best: Temurin JDK
+    •	Formatter options: google-java-format, Spotless — best: google-java-format
+    •	Linter options: Checkstyle, PMD, SpotBugs, Error Prone — best: Error Prone for code quality, Checkstyle for style
+    •	Autocompletion options: JDT-based tooling — best: Eclipse JDT tooling
+    •	LSP options: Eclipse JDT Language Server — best: JDTLS
+    •	Debugger options: Java Debug Server / IDE Java debugger — best: standard Java debugger via JDT ecosystem
+    •	Package manager options: Maven, Gradle — best: Gradle for modern app work, Maven for broad compatibility
+    •	Other related tooling: jenv/mise, Spotless, JUnit
+    •	Recommendation: Tier 1. Java remains deeply mainstream in current survey data.  ￼
+
+    12.	Kotlin
+
+    •	Language: Kotlin
+    •	File extensions: .kt, .kts
+    •	Runtime/compiler: Kotlin compiler, JDK — best: official Kotlin + Temurin JDK
+    •	Formatter options: ktfmt, ktlint — best: ktfmt for formatting, ktlint if you want combined style enforcement
+    •	Linter options: detekt, ktlint — best: detekt
+    •	Autocompletion options: Kotlin IDE tooling — best: JetBrains Kotlin tooling
+    •	LSP options: Kotlin Language Server — best: Kotlin Language Server for editor-LSP workflows; JetBrains IDE support is stronger overall
+    •	Debugger options: Java debugger / Kotlin IDE debugger — best: JetBrains debugger
+    •	Package manager options: Gradle, Maven — best: Gradle
+    •	Other related tooling: Dokka, KSP, Ktlint/Detekt integration
+    •	Recommendation: Tier 1 because of Android/backend relevance and JVM ecosystem adjacency.
+
+    13.	C#
+
+    •	Language: C#
+    •	File extensions: .cs, .csproj, .sln
+    •	Runtime/compiler: .NET SDK / dotnet — best: official .NET SDK
+    •	Formatter options: dotnet format, CSharpier — best: dotnet format for baseline, CSharpier if you prefer opinionated formatting
+    •	Linter options: Roslyn analyzers, SonarAnalyzer — best: built-in Roslyn analyzers
+    •	Autocompletion options: OmniSharp / C# Dev Kit — best: Roslyn-based modern C# tooling
+    •	LSP options: OmniSharp, C# language server ecosystem — best: OmniSharp or Microsoft C# tooling depending editor
+    •	Debugger options: netcoredbg, VS/VS Code C# debugger — best: official .NET debugger tooling
+    •	Package manager options: NuGet — best: NuGet
+    •	Other related tooling: dotnet test, coverlet, BenchmarkDotNet
+    •	Recommendation: Tier 1. This was one of the biggest omissions in your earlier list, and it remains mainstream.  ￼
+
+    14.	PHP
+
+    •	Language: PHP
+    •	File extensions: .php, .phtml
+    •	Runtime/compiler: php — best: official PHP
+    •	Formatter options: PHP-CS-Fixer, Pint — best: Pint for Laravel-heavy shops, PHP-CS-Fixer for general use
+    •	Linter options: PHPStan, Psalm, built-in php -l — best: PHPStan
+    •	Autocompletion options: Intelephense — best: Intelephense
+    •	LSP options: Intelephense, phpactor — best: Intelephense
+    •	Debugger options: Xdebug — best: Xdebug
+    •	Package manager options: Composer — best: Composer
+    •	Other related tooling: Rector, Pest, PHPUnit
+    •	Recommendation: still Tier 1 for broad real-world repo coverage. PHP remains in the mainstream set in survey data.  ￼
+
+    15.	Ruby
+
+    •	Language: Ruby
+    •	File extensions: .rb, .rake, Gemfile
+    •	Runtime/compiler: Ruby — best: CRuby via mise, rbenv, or asdf
+    •	Formatter options: syntax_tree, rufo, RuboCop formatter — best: syntax_tree if supported; otherwise RuboCop formatter
+    •	Linter options: RuboCop — best: RuboCop
+    •	Autocompletion options: Solargraph editor support — best: Solargraph
+    •	LSP options: Ruby LSP, Solargraph — best: Ruby LSP
+    •	Debugger options: debug gem, rdbg — best: debug / rdbg
+    •	Package manager options: RubyGems, Bundler — best: Bundler
+    •	Other related tooling: rbenv/mise, rubocop-performance, rspec
+    •	Recommendation: Tier 1 if the machine is meant to be broadly useful across common legacy and Rails-heavy environments.
+
+Category: Web / Frontend / Markup / Data 16. JavaScript
+
+    •	Language: JavaScript
+    •	File extensions: .js, .mjs, .cjs, .jsx
+    •	Runtime/compiler: Node.js, browser runtime — best: Node.js LTS
+    •	Formatter options: Prettier, Biome — best: Prettier for broadest compatibility, Biome if you want modern consolidation
+    •	Linter options: ESLint, Biome — best: ESLint today
+    •	Autocompletion options: TypeScript language service — best: TypeScript language service
+    •	LSP options: TypeScript language server — best: TypeScript language server
+    •	Debugger options: Node inspector, Chrome DevTools — best: built-in Node inspector
+    •	Package manager options: pnpm, npm, yarn, bun — best: pnpm
+    •	Other related tooling: tsx, Vitest, Jest, Playwright, ESLint plugins, package-json tooling
+    •	Recommendation: mandatory Tier 1. JavaScript remains one of the top languages in current survey data.  ￼
+
+    17.	TypeScript
+
+    •	Language: TypeScript
+    •	File extensions: .ts, .tsx
+    •	Runtime/compiler: tsc, Node.js, bundlers — best: Node.js LTS + tsc
+    •	Formatter options: Prettier, Biome — best: Prettier today, Biome if standardizing greenfield
+    •	Linter options: ESLint, Biome — best: ESLint
+    •	Autocompletion options: TypeScript language service — best: TypeScript language service
+    •	LSP options: TypeScript language server — best: TypeScript language server
+    •	Debugger options: Node inspector, browser devtools — best: built-in Node inspector
+    •	Package manager options: pnpm, npm, yarn, bun — best: pnpm
+    •	Other related tooling: ts-node, tsx, type-aware ESLint, tsup, vite
+    •	Recommendation: Tier 1. TypeScript remains a top-tier mainstream language.  ￼
+
+    18.	HTML
+
+    •	Language: HTML
+    •	File extensions: .html, .htm
+    •	Runtime/compiler: browser
+    •	Formatter options: Prettier — best: Prettier
+    •	Linter options: HTMLHint, editor validation — best: HTMLHint
+    •	Autocompletion options: editor HTML support — best: built-in/editor HTML extension
+    •	LSP options: HTML language server — best: vscode-html-language-server
+    •	Debugger options: browser devtools — best: browser devtools
+    •	Package manager options: none
+    •	Other related tooling: Emmet, accessibility checkers
+    •	Recommendation: Tier 1 because it underpins web and docs tooling.
+
+    19.	CSS / SCSS / LESS
+
+    •	Language: CSS family
+    •	File extensions: .css, .scss, .sass, .less
+    •	Runtime/compiler: browser; Sass compiler for SCSS/Sass — best: Dart Sass for SCSS/Sass
+    •	Formatter options: Prettier — best: Prettier
+    •	Linter options: Stylelint — best: Stylelint
+    •	Autocompletion options: editor CSS support — best: built-in/editor CSS support
+    •	LSP options: CSS language server — best: vscode-css-language-server
+    •	Debugger options: browser devtools — best: browser devtools
+    •	Package manager options: pnpm/npm for tooling — best: pnpm
+    •	Other related tooling: PostCSS, Autoprefixer
+    •	Recommendation: Tier 1.
+
+    20.	SQL
+
+    •	Language: SQL
+    •	File extensions: .sql
+    •	Runtime/compiler: database engine specific
+    •	Formatter options: sqlfluff, sqlfmt, pgFormatter — best: sqlfluff
+    •	Linter options: sqlfluff — best: sqlfluff
+    •	Autocompletion options: DB-aware editor extensions — best: SQLTools or JetBrains DB tooling
+    •	LSP options: sqls, database-specific tools — best: sqls for generic LSP
+    •	Debugger options: database-native tools / query plans — best: DB-native tooling
+    •	Package manager options: n/a
+    •	Other related tooling: migration tools, DB clients, explain-plan tooling
+    •	Recommendation: Tier 1 because SQL remains one of the most-used developer languages in survey data.  ￼
+
+    21.	JSON / YAML / TOML / XML / Markdown / CSV
+
+    •	Language/filetypes:
+    •	JSON: .json, .jsonc
+    •	YAML: .yaml, .yml
+    •	TOML: .toml
+    •	XML: .xml
+    •	Markdown: .md, .markdown
+    •	CSV: .csv
+    •	Runtime/compiler: n/a
+    •	Formatter options:
+    •	JSON/Markdown/YAML/TOML: Prettier — best: Prettier
+    •	XML: xmlformat, xmllint — best: xmllint or project-specific formatter
+    •	CSV: csv-aware tools — best: no universal formatter; use csvlint/editor tooling
+    •	Linter options:
+    •	YAML: yamllint
+    •	Markdown: markdownlint
+    •	JSON: schema validation/editor support
+    •	XML: xmllint
+    •	CSV: csvlint
+    •	Best choices: yamllint, markdownlint, xmllint
+    •	Autocompletion options: schema-aware editor support
+    •	LSP options:
+    •	JSON LS, YAML LS, TOML/crates support, XML tools, marksman for Markdown
+    •	Best choices: JSON LS, YAML LS, marksman
+    •	Debugger options: n/a
+    •	Package manager options: n/a
+    •	Other related tooling: yq, jq, xq, dasel, Mermaid/Markdown preview, spreadsheet viewers
+    •	Recommendation: Tier 1 because these config/docs/data formats are workstation-critical.
+
+TIER 2 — STRONGLY INCLUDE
+
+Category: Frontend / UI / JS-adjacent 22. Vue
+
+    •	Language/filetype: Vue SFC
+    •	File extensions: .vue
+    •	Runtime/compiler: Node.js toolchain + browser
+    •	Formatter options: Prettier — best: Prettier
+    •	Linter options: ESLint with Vue plugin — best: ESLint
+    •	Autocompletion options: Volar — best: Volar
+    •	LSP options: Volar / vue-language-server — best: Volar
+    •	Debugger options: browser devtools — best: browser devtools
+    •	Package manager options: pnpm, npm, yarn — best: pnpm
+    •	Other related tooling: Vite, Vue TSC
+    •	Recommendation: Tier 2 because it is common enough to deserve first-class support on an “ultimate workstation.”
+
+    23.	Svelte
+
+    •	Language/filetype: Svelte
+    •	File extensions: .svelte
+    •	Runtime/compiler: Node.js + Svelte compiler
+    •	Formatter options: Prettier — best: Prettier
+    •	Linter options: ESLint — best: ESLint
+    •	Autocompletion options: Svelte extension support — best: Svelte editor tooling
+    •	LSP options: svelte-language-server — best: svelte-language-server
+    •	Debugger options: browser devtools
+    •	Package manager options: pnpm — best: pnpm
+    •	Other related tooling: Vite, SvelteKit
+    •	Recommendation: Tier 2.
+
+    24.	GraphQL
+
+    •	Language/filetype: GraphQL
+    •	File extensions: .graphql, .gql
+    •	Runtime/compiler: framework-specific
+    •	Formatter options: Prettier — best: Prettier
+    •	Linter options: GraphQL ESLint — best: GraphQL ESLint
+    •	Autocompletion options: GraphQL editor tooling — best: GraphQL extension ecosystem
+    •	LSP options: GraphQL language service / GraphQL LS — best: GraphQL LS
+    •	Debugger options: API tooling / IDE integrations
+    •	Package manager options: pnpm/npm — best: pnpm
+    •	Other related tooling: codegen, schema registry tooling
+    •	Recommendation: Tier 2 because modern web/API shops use it enough to justify support.
+
+Category: JVM / Backend / Data 25. Gradle / Groovy / Gradle Kotlin DSL
+
+    •	Language/filetypes:
+    •	Groovy: .groovy
+    •	Gradle: .gradle
+    •	Gradle Kotlin DSL: .gradle.kts
+    •	Runtime/compiler: JDK, Gradle
+    •	Formatter options:
+    •	Groovy: Spotless/Prettier plugins/editor tools — best: Spotless where available
+    •	Gradle Kotlin DSL: ktfmt/ktlint — best: ktfmt
+    •	Linter options: CodeNarc for Groovy — best: CodeNarc
+    •	Autocompletion options: Gradle/IDE tooling — best: JetBrains/Gradle-aware tooling
+    •	LSP options: Groovy LSPs exist but IDE support is stronger — best: IDE-native support
+    •	Debugger options: JVM debugger
+    •	Package manager options: Gradle dependency management — best: Gradle
+    •	Other related tooling: wrapper support, build scans
+    •	Recommendation: Tier 2 because even if you do not write Groovy apps, you will encounter Gradle files constantly.
+
+    26.	Scala
+
+    •	Language: Scala
+    •	File extensions: .scala, .sc
+    •	Runtime/compiler: JDK, Scala compiler — best: official Scala + JDK
+    •	Formatter options: Scalafmt — best: Scalafmt
+    •	Linter options: Scalafix — best: Scalafix
+    •	Autocompletion options: Metals — best: Metals
+    •	LSP options: Metals — best: Metals
+    •	Debugger options: JVM debugger — best: Metals/IDE debugger
+    •	Package manager options: sbt, Mill — best: sbt
+    •	Other related tooling: Bloop
+    •	Recommendation: Tier 2 for serious JVM breadth.
+
+    27.	Dart
+
+    •	Language: Dart
+    •	File extensions: .dart
+    •	Runtime/compiler: Dart SDK, Flutter toolchain — best: official Dart SDK
+    •	Formatter options: dart format — best: dart format
+    •	Linter options: dart analyze — best: dart analyze
+    •	Autocompletion options: Dart/Flutter extension — best: official Dart tooling
+    •	LSP options: Dart analysis server — best: official Dart analysis server
+    •	Debugger options: Dart/Flutter debugger — best: official Dart/Flutter debugger
+    •	Package manager options: pub — best: pub
+    •	Other related tooling: Flutter, build_runner
+    •	Recommendation: Tier 2 because Flutter keeps Dart relevant.
+
+    28.	R
+
+    •	Language: R
+    •	File extensions: .R, .Rmd
+    •	Runtime/compiler: R
+    •	Formatter options: styler — best: styler
+    •	Linter options: lintr — best: lintr
+    •	Autocompletion options: languageserver-backed editor support — best: R extension ecosystem
+    •	LSP options: languageserver — best: languageserver
+    •	Debugger options: R debugger / IDE integrations — best: IDE-native debugging
+    •	Package manager options: CRAN, renv, pak — best: renv for projects, pak for installs
+    •	Other related tooling: quarto, knitr, tidyverse, radian
+    •	Recommendation: Tier 2 because data/science work still matters on a broad workstation, and R remains present in current usage data.  ￼
+
+    29.	Lua
+
+    •	Language: Lua
+    •	File extensions: .lua
+    •	Runtime/compiler: lua, LuaJIT — best: lua plus LuaJIT when project-specific
+    •	Formatter options: stylua — best: stylua
+    •	Linter options: luacheck — best: luacheck
+    •	Autocompletion options: Lua LS tooling — best: Lua LS
+    •	LSP options: Lua Language Server — best: Lua LS
+    •	Debugger options: local-lua-debugger, EmmyLua debugger — best: local-lua-debugger
+    •	Package manager options: LuaRocks — best: LuaRocks
+    •	Other related tooling: Neovim ecosystem, game scripting
+    •	Recommendation: Tier 2 because of Neovim and tooling ecosystem relevance.
+
+    30.	Zig
+
+    •	Language: Zig
+    •	File extensions: .zig
+    •	Runtime/compiler: Zig compiler — best: official Zig
+    •	Formatter options: zig fmt — best: zig fmt
+    •	Linter options: compiler diagnostics / community tooling — best: compiler diagnostics
+    •	Autocompletion options: zls — best: zls
+    •	LSP options: zls — best: zls
+    •	Debugger options: lldb, gdb — best: lldb
+    •	Package manager options: Zig build/package tooling — best: built-in Zig tooling
+    •	Other related tooling: language-specific build system
+    •	Recommendation: Tier 2 because it is gaining enough traction to justify support on a modern workstation.
+
+    31.	Dockerfile / Container tooling
+
+    •	Language/filetype: Dockerfile
+    •	File extensions: Dockerfile, .dockerfile
+    •	Runtime/compiler: Docker / compatible container runtime
+    •	Formatter options: minimal; editor formatting — best: editor formatting
+    •	Linter options: Hadolint — best: Hadolint
+    •	Autocompletion options: Docker editor tooling — best: Docker extension
+    •	LSP options: Docker language server — best: Docker LS/editor tooling
+    •	Debugger options: container runtime tools
+    •	Package manager options: n/a
+    •	Other related tooling: Colima, Docker CLI, buildx, compose
+    •	Recommendation: Tier 2 because dev environments and CI depend on it.
+
+    32.	Terraform / HCL
+
+    •	Language: HCL / Terraform
+    •	File extensions: .tf, .tfvars, .hcl
+    •	Runtime/compiler: Terraform/OpenTofu CLI
+    •	Formatter options: terraform fmt / tofu fmt — best: official fmt
+    •	Linter options: tflint, tfsec, Checkov — best: tflint
+    •	Autocompletion options: Terraform extension/editor support
+    •	LSP options: terraform-ls — best: terraform-ls
+    •	Debugger options: CLI plan/apply workflow; no traditional debugger
+    •	Package manager options: Terraform registry
+    •	Other related tooling: Terragrunt, Checkov, policy tools
+    •	Recommendation: Tier 2 because infrastructure-as-code is common enough to justify it; HCL has had visible growth in GitHub’s Octoverse reporting.  ￼
+
+    33.	Protocol Buffers
+
+    •	Language/filetype: Protobuf
+    •	File extensions: .proto
+    •	Runtime/compiler: protoc
+    •	Formatter options: buf format, clang-format in some shops — best: buf format
+    •	Linter options: buf lint — best: buf lint
+    •	Autocompletion options: protobuf editor tooling
+    •	LSP options: community protobuf LS — best: buf/editor tooling rather than betting heavily on LSP
+    •	Debugger options: n/a
+    •	Package manager options: Buf registry / protoc plugins
+    •	Other related tooling: buf, code generation plugins
+    •	Recommendation: Tier 2 for polyglot service work.
+
+    34.	Make / CMake
+
+    •	Language/filetypes:
+    •	Make: Makefile
+    •	CMake: CMakeLists.txt, .cmake
+    •	Runtime/compiler: make, cmake
+    •	Formatter options:
+    •	Make: none standardized
+    •	CMake: cmake-format — best: cmake-format
+    •	Linter options:
+    •	Make: basic syntax/editor support
+    •	CMake: cmakelint — best: cmakelint
+    •	Autocompletion options: editor plugins
+    •	LSP options: neocmakelsp, CMake tools/editor support — best: CMake editor tooling
+    •	Debugger options: n/a
+    •	Package manager options: Homebrew for workstation tools
+    •	Other related tooling: Ninja, Bear, compiledb
+    •	Recommendation: Tier 2 because native toolchains depend on them.
+
+TIER 3 — OPTIONAL BUT WORTHWHILE
+
+Category: Functional / Niche / Specialized 35. Elixir
+
+    •	Language: Elixir
+    •	File extensions: .ex, .exs
+    •	Runtime/compiler: Erlang/OTP + Elixir
+    •	Formatter options: mix format — best: mix format
+    •	Linter options: Credo — best: Credo
+    •	Autocompletion options: ElixirLS — best: ElixirLS
+    •	LSP options: ElixirLS, Next LS — best: ElixirLS
+    •	Debugger options: Elixir debugger / IDE integrations — best: ElixirLS/IDE workflow
+    •	Package manager options: Hex, Mix — best: Mix/Hex
+    •	Other related tooling: Dialyzer
+    •	Recommendation: Tier 3; useful but not baseline.
+
+    36.	Erlang
+
+    •	Language: Erlang
+    •	File extensions: .erl, .hrl
+    •	Runtime/compiler: Erlang/OTP
+    •	Formatter options: erlfmt — best: erlfmt
+    •	Linter options: elp, compiler checks, Dialyzer — best: Dialyzer + compiler checks
+    •	Autocompletion options: Erlang LS — best: Erlang LS
+    •	LSP options: Erlang LS — best: Erlang LS
+    •	Debugger options: Erlang debugger — best: OTP debugger
+    •	Package manager options: rebar3 — best: rebar3
+    •	Other related tooling: Dialyzer
+    •	Recommendation: Tier 3.
+
+    37.	Clojure
+
+    •	Language: Clojure
+    •	File extensions: .clj, .cljs, .cljc, .edn
+    •	Runtime/compiler: JVM, Clojure CLI
+    •	Formatter options: zprint, cljfmt — best: zprint
+    •	Linter options: clj-kondo, eastwood — best: clj-kondo
+    •	Autocompletion options: clojure-lsp / Calva tooling — best: clojure-lsp
+    •	LSP options: clojure-lsp — best: clojure-lsp
+    •	Debugger options: REPL-first workflow, IDE integrations — best: REPL workflow
+    •	Package manager options: Clojure CLI, Leiningen — best: Clojure CLI
+    •	Other related tooling: nREPL, babashka
+    •	Recommendation: Tier 3.
+
+    38.	Haskell
+
+    •	Language: Haskell
+    •	File extensions: .hs, .lhs
+    •	Runtime/compiler: GHC — best: GHC via GHCup
+    •	Formatter options: fourmolu, ormolu — best: fourmolu
+    •	Linter options: HLint — best: HLint
+    •	Autocompletion options: Haskell Language Server — best: HLS
+    •	LSP options: Haskell Language Server — best: HLS
+    •	Debugger options: GHCi/debugger tooling — best: GHCi workflow
+    •	Package manager options: Cabal, Stack — best: GHCup + Cabal
+    •	Other related tooling: hoogle
+    •	Recommendation: Tier 3.
+
+    39.	OCaml
+
+    •	Language: OCaml
+    •	File extensions: .ml, .mli
+    •	Runtime/compiler: OCaml compiler — best: opam-managed OCaml
+    •	Formatter options: ocamlformat — best: ocamlformat
+    •	Linter options: compiler warnings, Merlin ecosystem — best: compiler warnings + Merlin/LS support
+    •	Autocompletion options: OCaml LSP + Merlin — best: OCaml LSP
+    •	LSP options: OCaml LSP — best: OCaml LSP
+    •	Debugger options: ocamldebug, dune tooling — best: dune/IDE workflow
+    •	Package manager options: opam — best: opam
+    •	Other related tooling: dune
+    •	Recommendation: Tier 3.
+
+    40.	F#
+
+    •	Language: F#
+    •	File extensions: .fs, .fsi, .fsx
+    •	Runtime/compiler: .NET SDK
+    •	Formatter options: Fantomas — best: Fantomas
+    •	Linter options: compiler analyzers / FSharpLint — best: FSharpLint
+    •	Autocompletion options: Ionide — best: Ionide
+    •	LSP options: fsautocomplete — best: fsautocomplete / Ionide
+    •	Debugger options: .NET debugger
+    •	Package manager options: NuGet — best: NuGet
+    •	Other related tooling: dotnet fsi
+    •	Recommendation: Tier 3.
+
+    41.	Assembly
+
+    •	Language: Assembly
+    •	File extensions: .s, .S, .asm
+    •	Runtime/compiler: assembler varies by target
+    •	Formatter options: project-specific or none
+    •	Linter options: assembler diagnostics
+    •	Autocompletion options: asm editor tooling
+    •	LSP options: asm-lsp — best: asm-lsp
+    •	Debugger options: lldb, gdb, target-specific debuggers — best: target-specific
+    •	Package manager options: target-specific
+    •	Other related tooling: objdump, nm, readelf/otool
+    •	Recommendation: Tier 3 because it is useful, but not universal.
+
+    42.	Nix
+
+    •	Language: Nix
+    •	File extensions: .nix
+    •	Runtime/compiler: Nix
+    •	Formatter options: nix fmt, alejandra, nixpkgs-fmt — best: alejandra
+    •	Linter options: statix, deadnix — best: statix + deadnix
+    •	Autocompletion options: nixd editor tooling — best: nixd
+    •	LSP options: nixd, nil — best: nixd
+    •	Debugger options: n/a
+    •	Package manager options: Nix flakes / channels
+    •	Other related tooling: direnv integration
+    •	Recommendation: Tier 3 because dev-environment reproducibility is increasingly relevant.
+
+    43.	Fish
+
+    •	Language: Fish shell
+    •	File extensions: .fish
+    •	Runtime/compiler: fish
+    •	Formatter options: built-in formatting/editor support
+    •	Linter options: basic syntax checks
+    •	Autocompletion options: native fish completions
+    •	LSP options: fish-lsp/community tooling — best: shell support is less standardized here
+    •	Debugger options: tracing / interactive testing
+    •	Package manager options: Homebrew
+    •	Other related tooling: fisher
+    •	Recommendation: Tier 3. Nice to have, not mandatory.
+
+TIER 4 — OPTIONAL AND COULD BE IGNORED FOR NOW
+
+Category: Long-tail / Specialized / Emerging 44. Perl
+
+    •	Language: Perl
+    •	File extensions: .pl, .pm, .t
+    •	Runtime/compiler: Perl
+    •	Formatter options: perltidy — best: perltidy
+    •	Linter options: Perl::Critic — best: Perl::Critic
+    •	Autocompletion options: Perl Navigator/editor support
+    •	LSP options: Perl Navigator — best: Perl Navigator
+    •	Debugger options: Perl debugger
+    •	Package manager options: CPAN / cpanm — best: cpanminus
+    •	Other related tooling: prove
+    •	Recommendation: useful for breadth, but easy to defer.
+
+    45.	Gleam
+
+    •	Language: Gleam
+    •	File extensions: .gleam
+    •	Runtime/compiler: Gleam + Erlang/OTP target
+    •	Formatter options: gleam format — best: official formatter
+    •	Linter options: compiler checks
+    •	Autocompletion options: gleam language server
+    •	LSP options: gleam LS — best: gleam LS
+    •	Debugger options: target-runtime tooling
+    •	Package manager options: gleam package tooling
+    •	Other related tooling: rebar integration
+    •	Recommendation: interesting, but optional for now.
+
+    46.	Mojo
+
+    •	Language: Mojo
+    •	File extensions: .mojo
+    •	Runtime/compiler: Mojo toolchain
+    •	Formatter options: official tooling evolving
+    •	Linter options: evolving ecosystem
+    •	Autocompletion options: editor support evolving
+    •	LSP options: evolving
+    •	Debugger options: evolving
+    •	Package manager options: toolchain-specific
+    •	Other related tooling: Python interop story
+    •	Recommendation: watchlist only.
+
+    47.	Julia
+
+    •	Language: Julia
+    •	File extensions: .jl
+    •	Runtime/compiler: Julia
+    •	Formatter options: JuliaFormatter — best: JuliaFormatter
+    •	Linter options: StaticLint — best: StaticLint
+    •	Autocompletion options: Julia extension/editor tooling
+    •	LSP options: LanguageServer.jl — best: LanguageServer.jl
+    •	Debugger options: Julia debugger
+    •	Package manager options: Pkg — best: Pkg
+    •	Other related tooling: Pluto, IJulia
+    •	Recommendation: can be ignored unless you expect scientific-computing repos.
+
+    48.	Haxe / Elm / Crystal / Nim / D / Fortran / COBOL
+
+    •	Recommendation: all real, all potentially useful in niche contexts, none worth first-class default treatment on a general-purpose modern Mac workstation unless you already know you need them.
+
+Cross-cutting “other related tooling” I would standardize across many categories
+• Universal format/lint orchestration:
+• pre-commit
+• editorconfig
+• mise or equivalent runtime manager
+• Search / workflow:
+• ripgrep, fd, fzf, bat, jq, yq
+• Build / task:
+• make, cmake, ninja, just
+• Containers / infra:
+• Docker CLI or equivalent, Colima, kubectl, Helm
+• Editor protocol support:
+• LSP-capable editor, DAP-capable debugger support
+• These are not language-specific, but they materially improve almost every language workflow.
+
+comprehensive:
+
+OpenAPI
+Files: openapi.yaml, openapi.json
+Why: extremely common for REST/API-first repos, and the OpenAPI Initiative is still actively evolving the spec. I’d treat this as first-class, not “just YAML.” Sources: OpenAPI Initiative, OpenAPI spec
+AsyncAPI
+Files: asyncapi.yaml, asyncapi.json
+Why: the event-driven counterpart to OpenAPI; increasingly relevant for Kafka/pubsub/websocket-heavy systems. Source: AsyncAPI docs
+JSON Schema
+Files: _.schema.json, schema-bearing JSON/YAML
+Why: this is a major missing piece. A lot of modern config, API, and tooling ecosystems rely on JSON Schema validation. Source: JSON Schema
+CUE
+Files: .cue
+Why: increasingly useful for config, validation, schema, and policy workflows. This is one of the strongest “new-ish but serious” additions. Source: CUE docs
+Rego / OPA
+Files: .rego
+Why: policy-as-code is now common enough in infra/platform/security work to justify explicit support. Source: OPA docs
+Helm Chart templating
+Files: Chart.yaml, values.yaml, templates/_.yaml, templates/\*.tpl
+Why: Helm charts are not just “YAML”; they’re effectively their own templating language/workflow. Source: Helm chart templates
+Ansible
+Files: playbook.yml, roles/\*\*, galaxy.yml
+Why: if you want “ultimate workstation” coverage, Ansible is a notable omission. Source: Ansible Lint docs
+Jsonnet
+Files: .jsonnet, .libsonnet
+Why: still common in infra/config-heavy environments.
+Bicep
+Files: .bicep
+Why: if Azure is in scope, Bicep should probably be present.
+Jupyter / notebooks
+Files: .ipynb
+Why: you mention notebooks under Python, but I’d elevate notebook tooling to a first-class concern because current GitHub usage keeps showing strong notebook growth. Source: GitHub Octoverse 2025
+A few file formats / config types I’d explicitly support with linters/formatters/LSPs:
+
+.env / dotenv files
+ini / .editorconfig
+Taskfile.yml and justfile
+Docker Compose YAML
+GitHub Actions workflows
+Mermaid
+AsciiDoc
+PlantUML
+TOML with proper taplo support, not just generic formatting
+Helm-templated YAML separately from plain YAML
+OpenAPI / AsyncAPI separately from plain YAML/JSON
+A few language/runtime additions worth considering:
+
+Bun
+Not a language, but increasingly relevant in JS/TS workflows.
+Nushell
+If you want shell breadth beyond Bash/Zsh/Fish.
+MATLAB
+Still common enough in some engineering/scientific environments.
+Solidity
+Only if you want web3 breadth.
+GDScript
+Only if you want game-dev breadth.
+
+- .env / dotenv files
+- ini / .editorconfig
+- Taskfile.yml and justfile
+- Docker Compose YAML
+- GitHub Actions workflows
+- Mermaid
+- AsciiDoc
+- PlantUML
+- TOML with proper taplo support, not just generic formatting
+- Helm-templated YAML separately from plain YAML
+- OpenAPI / AsyncAPI separately from plain YAML/JSON
+
+- OpenAPI (openapi.yaml, openapi.json)
+- AsyncAPI (asyncapi.yaml, asyncapi.json)
+- JSON Schema (\*.schema.json, schema-bearing JSON/YAML)
+- CUE (.cue)
+- Rego / OPA (.rego)
+  Helm Chart templating (Chart.yaml, values.yaml, templates/_.- yaml, templates/_.tpl)
+- Ansible (playbook.yml, roles/\*\*, galaxy.yml)
+- Jsonnet (.jsonnet, .libsonnet)
+- Bicep (.bicep)
+- Jupyter / notebooks (.ipynb)

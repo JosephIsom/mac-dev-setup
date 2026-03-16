@@ -1,0 +1,25 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Tilt: up",
+      "type": "shell",
+      "command": "tilt",
+      "args": [
+        "up"
+      ],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Tilt: down",
+      "type": "shell",
+      "command": "tilt",
+      "args": [
+        "down"
+      ],
+      "group": "none",
+      "problemMatcher": []
+    }
+  ]
+}

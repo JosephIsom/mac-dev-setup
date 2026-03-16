@@ -1,0 +1,65 @@
+add_newline = true
+command_timeout = 1000
+
+format = """
+$directory\
+$git_branch\
+$git_status\
+$fill\
+$python\
+$nodejs\
+$golang\
+$java\
+$docker_context\
+$line_break\
+$character\
+"""
+
+right_format = """$cmd_duration$time"""
+
+[character]
+success_symbol = "[>](bold green)"
+error_symbol = "[>](bold red)"
+vicmd_symbol = "[<](bold yellow)"
+
+[directory]
+style = "bold cyan"
+truncation_length = 3
+truncate_to_repo = false
+
+[git_branch]
+symbol = "git "
+style = "bold purple"
+
+[git_status]
+style = "bold red"
+format = "([$all_status$ahead_behind]($style) )"
+
+[fill]
+symbol = " "
+
+[cmd_duration]
+min_time = 2000
+format = "[$duration]($style) "
+style = "dimmed yellow"
+
+[time]
+disabled = false
+time_format = "%H:%M"
+format = "[$time]($style)"
+style = "dimmed white"
+
+[python]
+symbol = "py "
+
+[nodejs]
+symbol = "node "
+
+[golang]
+symbol = "go "
+
+[java]
+symbol = "java "
+
+[docker_context]
+symbol = "docker "

@@ -1,0 +1,15 @@
+{
+  "mac-dev-setup.managed": true,
+  "editor.formatOnSave": true,
+  "editor.rulers": [100],
+  "editor.tabSize": 2,
+  "editor.fontFamily": "JetBrainsMono Nerd Font, JetBrains Mono, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.renderWhitespace": "selection",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
+  "terminal.integrated.shellIntegration.enabled": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "vim.useSystemClipboard": true
+}

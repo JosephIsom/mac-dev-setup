@@ -1,0 +1,1 @@
+ms-kubernetes-tools.kind-vscode
