@@ -1,0 +1,14 @@
+# Managed by mac-dev-setup local-edge.
+# Safe to edit locally. setup will not overwrite a changed file.
+#
+# Host-facing services should bind to loopback ports on the host or via Docker or Colima.
+
+journal.localhost {
+	import localhost_site_defaults
+	reverse_proxy 127.0.0.1:18080
+}
+
+notes.localhost {
+	import localhost_site_defaults
+	reverse_proxy 127.0.0.1:18081
+}

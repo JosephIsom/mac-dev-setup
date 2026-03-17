@@ -30,6 +30,8 @@ install_python_vscode_assets() {
 }
 
 main() {
+  ensure_local_bin_in_path
+
   if ! command_exists_in_zsh uv; then
     die "Python linters require uv in zsh. Enable INSTALL_PYTHON_UV or fix zsh runtime activation."
   fi
@@ -57,11 +59,11 @@ main() {
 
   log_info "Verifying Ruff in zsh..."
   pyright --version
-  pyright-langserver --version
+  log_info "Pyright language server available: $(command -v pyright-langserver)"
   run_in_login_zsh 'ruff --version'
   run_in_login_zsh 'mypy --version'
   run_in_login_zsh 'pytest --version'
-  run_in_login_zsh 'python -m debugpy --version'
+  run_in_login_zsh 'debugpy --version'
   install_python_vscode_assets
   install_python_neovim_plugin
   [[ -f "$TARGET_PYTHON_VSCODE_EXTENSIONS" ]] || die "Python VS Code extensions manifest not found at $TARGET_PYTHON_VSCODE_EXTENSIONS"

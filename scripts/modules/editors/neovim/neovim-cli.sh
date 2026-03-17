@@ -49,6 +49,8 @@ copy_repo_file_if_missing() {
 }
 
 install_config() {
+  local lua_file
+
   [[ -f "$REPO_NVIM_INIT" ]] || die "Missing repo-managed Neovim init.lua: $REPO_NVIM_INIT"
   [[ -d "$REPO_NVIM_LUA_DIR" ]] || die "Missing repo-managed Neovim Lua config directory: $REPO_NVIM_LUA_DIR"
 
@@ -56,6 +58,11 @@ install_config() {
 
   mkdir -p "$TARGET_NVIM_LUA_DIR/config" "$TARGET_NVIM_PLUGIN_DIR"
   cp "$REPO_NVIM_INIT" "$TARGET_NVIM_INIT"
+  for lua_file in "$REPO_NVIM_LUA_DIR/"*.lua; do
+    [[ -f "$lua_file" ]] || continue
+    [[ "$(basename "$lua_file")" == "local.lua" ]] && continue
+    cp "$lua_file" "$TARGET_NVIM_LUA_DIR/"
+  done
   cp -R "$REPO_NVIM_LUA_DIR/config/." "$TARGET_NVIM_LUA_DIR/config/"
   cp -R "$REPO_NVIM_LUA_DIR/plugins/." "$TARGET_NVIM_PLUGIN_DIR/"
   copy_repo_file_if_missing "$REPO_NVIM_LUA_DIR/local.lua" "$TARGET_NVIM_LOCAL_FILE"
@@ -87,6 +94,7 @@ verify_install() {
   [[ -f "$TARGET_NVIM_INIT" ]] || die "Neovim init.lua not found at $TARGET_NVIM_INIT after installation."
   [[ -f "$TARGET_NVIM_LUA_DIR/config/lazy.lua" ]] || die "Neovim lazy.nvim config not found after installation."
   [[ -f "$TARGET_NVIM_LUA_DIR/plugins/ui.lua" ]] || die "Neovim baseline UI plugin spec not found after installation."
+  [[ -f "$TARGET_NVIM_LUA_DIR/theme.lua" ]] || die "Neovim theme module not found at $TARGET_NVIM_LUA_DIR/theme.lua after installation."
   [[ -f "$TARGET_NVIM_LOCAL_FILE" ]] || die "Neovim local override file not found at $TARGET_NVIM_LOCAL_FILE after installation."
   [[ -d "$LAZY_DIR" ]] || die "lazy.nvim checkout not found at $LAZY_DIR after installation."
   grep -Fq "$MANAGED_MARKER" "$TARGET_NVIM_INIT" || die "Neovim init.lua is missing the managed marker."

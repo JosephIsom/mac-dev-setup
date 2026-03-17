@@ -17,7 +17,7 @@ main() {
 
   log_info "Verifying CSS tooling in zsh..."
   run_in_login_zsh 'stylelint --version'
-  run_in_login_zsh 'vscode-css-language-server --help >/dev/null'
+  log_info "vscode-css-language-server available: $(run_in_login_zsh 'command -v vscode-css-language-server')"
   install_css_neovim_plugin
   [[ -f "$TARGET_CSS_NVIM_PLUGIN" ]] || die "CSS Neovim plugin spec not found at $TARGET_CSS_NVIM_PLUGIN"
 

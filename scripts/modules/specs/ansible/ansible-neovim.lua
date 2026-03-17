@@ -1,7 +1,6 @@
 return {
   {
-    name = "mac-dev-setup-ansible",
-    lazy = false,
+    "mfussenegger/nvim-lint",
     init = function()
       vim.filetype.add({
         pattern = {
@@ -15,9 +14,6 @@ return {
         },
       })
     end,
-  },
-  {
-    "mfussenegger/nvim-lint",
     opts = function(_, opts)
       return require("mac_dev_setup.config.tooling").extend_linters(opts, {
         ansible = { "ansible_lint" },

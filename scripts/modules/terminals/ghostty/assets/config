@@ -7,7 +7,7 @@
 # Personal overrides can go in ~/.config/ghostty/local.conf.
 
 # Keep the terminal theme aligned with repo notes and system appearance when supported.
-theme = light:apple-graphite-expanded-light,dark:apple-graphite-expanded-dark
+theme = light:apple-graphite-expanded-light.conf,dark:apple-graphite-expanded-dark.conf
 
 # Prefer the Nerd Font variant used elsewhere in the setup.
 font-family = JetBrainsMono Nerd Font

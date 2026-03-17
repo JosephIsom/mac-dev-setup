@@ -121,6 +121,7 @@ main() {
   run_script_path "$MODULES_DIR/containers/docker/docker-cli.sh"
   run_script_path "$MODULES_DIR/containers/buildx/buildx.sh"
   run_script_path "$MODULES_DIR/containers/compose/compose.sh"
+  run_script_path "$MODULES_DIR/containers/caddy/caddy.sh"
   run_script_path "$MODULES_DIR/containers/kind/kind.sh"
   run_script_path "$MODULES_DIR/containers/kubectl/kubectl.sh"
   run_script_path "$MODULES_DIR/containers/helm/helm.sh"

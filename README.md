@@ -2,6 +2,8 @@
 
 `mac-dev-setup` bootstraps a new Mac for software development with a curated command-line environment, editor setup, language runtimes, cloud and container tooling, and optional desktop apps.
 
+It also includes an optional `local-edge/` capability for a host-installed Caddy front door, local HTTPS, `.localhost` routing, and kind ingress bridging. That flow is separate from the main bootstrap on purpose.
+
 The repo is meant to be:
 
 - rerunnable
@@ -16,6 +18,7 @@ The repo is meant to be:
 - shell tooling and terminal apps
 - language runtimes and common formatters, linters, LSPs, and editor integrations
 - cloud, container, Kubernetes, and infrastructure tooling
+- host-installed Caddy as an installable module for optional local edge/proxy work
 - VS Code, IntelliJ Toolbox, Cursor, Windsurf, Neovim, and other optional editors
 - AI CLIs and desktop apps
 - optional desktop apps such as browsers, SQL clients, REST clients, secrets managers, and remote-access tools
@@ -35,6 +38,20 @@ The repo is meant to be:
 ./scripts/verify.sh
 ```
 
+## Optional Local Edge
+
+The main bootstrap installs tools and prerequisites, including the `caddy` module. It does not configure or start the local edge stack.
+
+Use the separate entrypoint when you explicitly want the local laptop edge setup:
+
+```bash
+./scripts/bootstrap-local-edge.sh setup
+```
+
+That opt-in flow is the only path that provisions the managed local-edge config. It stages the managed Caddy and kind config, validates the Caddyfile, and prints the next commands for starting Caddy, trusting the local CA, creating the kind cluster, and running the examples.
+
+After `setup`, the other `bootstrap-local-edge` commands operate on the managed local-edge environment. The main bootstrap never invokes that provisioning flow.
+
 ## How Customization Works
 
 - `scripts/prerequisites/prerequisites.sh` always runs the base machine setup.
@@ -50,6 +67,7 @@ The repo is meant to be:
 - [Shell And Terminals](docs/shell-and-terminals.md)
 - [Runtimes And Tooling](docs/runtimes-and-tooling.md)
 - [Cloud, Containers, And Infra](docs/cloud-containers-and-infra.md)
+- [Local Edge](docs/local-edge.md)
 - [Editors And AI](docs/editors-and-ai.md)
 - [Desktop Apps And Services](docs/desktop-apps-and-services.md)
 - [Post-Bootstrap Tasks](docs/post-bootstrap.md)

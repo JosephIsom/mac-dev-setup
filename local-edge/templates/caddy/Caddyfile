@@ -1,0 +1,22 @@
+# Managed by mac-dev-setup local-edge.
+# Safe to edit locally. setup will not overwrite a changed file.
+
+{
+	admin __LOCAL_EDGE_CADDY_ADMIN_ADDRESS__
+}
+
+(localhost_site_defaults) {
+	tls internal
+	encode zstd gzip
+	header {
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+	}
+}
+
+local-edge.localhost {
+	import localhost_site_defaults
+	respond "mac-dev-setup local edge is ready" 200
+}
+
+import __LOCAL_EDGE_CADDY_SITES_DIR__/*.caddy

@@ -92,6 +92,14 @@ After enabling any AI module:
 - open VS Code if the module staged extensions or settings
 - re-run `scripts/modules/editors/vscode/extensions.sh` and `scripts/modules/editors/vscode/settings.sh` if you enabled the AI module after your first bootstrap
 
+For GitHub Copilot in VS Code specifically:
+
+1. Open VS Code.
+2. Sign in to GitHub from inside VS Code if prompted.
+3. Enable Copilot on the GitHub account you want to use.
+4. Let VS Code finish installing or activating the Copilot extensions it needs.
+5. Open the Copilot or Chat UI once to confirm it is active.
+
 ### Ollama And LM Studio
 
 For local model workflows:

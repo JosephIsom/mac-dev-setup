@@ -30,6 +30,7 @@ Edit [config/user.env.example](/Users/joe/src/personal/mac-dev-setup/config/user
 - `COLIMA_MEMORY`
 - `COLIMA_DISK`
 - runtime versions such as `PYTHON_VERSION`, `NODE_VERSION`, `GO_VERSION`, `JAVA_VERSION`
+- optional local-edge overrides such as `LOCAL_EDGE_KIND_CLUSTER_NAME` and the ingress ports if you want to change them before running local-edge setup
 
 `mise` uses these values when installing runtimes.
 
@@ -54,6 +55,8 @@ Bootstrap does three main things:
 1. Runs the base prerequisites.
 2. Runs each enabled module in order.
 3. Stages or writes managed config files for Zsh, Neovim, VS Code, terminals, and related tools.
+
+It now also installs the `caddy` binary through the normal modules list, but it still does not configure the optional local edge stack for you.
 
 ## 5. Run Verification
 
@@ -113,3 +116,13 @@ After bootstrap, common manual steps are:
 - pick the managed Warp theme and font if you enabled Warp
 
 The complete list is in [Post-Bootstrap Tasks](post-bootstrap.md).
+
+## Optional: Set Up Local Edge
+
+If you want a local HTTPS front door with `.localhost` hostnames, host-installed Caddy, and kind ingress routing, run the dedicated opt-in entrypoint after bootstrap:
+
+```bash
+./scripts/bootstrap-local-edge.sh setup
+```
+
+That flow lives under [`local-edge/`](/Users/joe/src/personal/mac-dev-setup/local-edge) and is intentionally separate from the base machine bootstrap. It is also the only command path that provisions the managed Caddyfile link, local-edge config files, and kind edge config. Other `bootstrap-local-edge` subcommands expect setup to have already been completed.

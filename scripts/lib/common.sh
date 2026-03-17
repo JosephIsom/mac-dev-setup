@@ -106,6 +106,12 @@ brew_install_formula() {
 brew_install_cask() {
   local cask="$1"
   ensure_brew_available
+
+  if brew list --cask "$cask" >/dev/null 2>&1; then
+    log_info "Homebrew cask already installed: $cask"
+    return 0
+  fi
+
   log_info "Installing/upgrading Homebrew cask: $cask"
   brew install --cask "$cask"
 }

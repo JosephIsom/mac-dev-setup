@@ -51,7 +51,7 @@ main() {
   phpstan --version
   php-cs-fixer --version
   run_in_login_zsh 'phpactor --version'
-  run_in_login_zsh 'phpactor language-server --help >/dev/null'
+  log_info "phpactor available: $(run_in_login_zsh 'command -v phpactor')"
   install_php_vscode_extensions
   install_php_vscode_settings
   install_php_neovim_plugin

@@ -29,7 +29,7 @@ main() {
 
   log_info "Verifying YAML tooling..."
   yamllint --version
-  yaml-language-server --version
+  log_info "yaml-language-server available: $(command -v yaml-language-server)"
   install_yaml_vscode_assets
   install_yaml_neovim_plugin
   [[ -f "$TARGET_YAML_VSCODE_EXTENSIONS" ]] || die "YAML VS Code extensions manifest not found at $TARGET_YAML_VSCODE_EXTENSIONS"

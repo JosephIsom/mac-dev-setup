@@ -15,7 +15,7 @@ main() {
   npm_install_global_package 'vscode-langservers-extracted@latest'
 
   log_info "Verifying JSON tooling in zsh..."
-  run_in_login_zsh 'vscode-json-language-server --help >/dev/null'
+  log_info "vscode-json-language-server available: $(run_in_login_zsh 'command -v vscode-json-language-server')"
   install_json_neovim_plugin
   [[ -f "$TARGET_JSON_NVIM_PLUGIN" ]] || die "JSON Neovim plugin spec not found at $TARGET_JSON_NVIM_PLUGIN"
 

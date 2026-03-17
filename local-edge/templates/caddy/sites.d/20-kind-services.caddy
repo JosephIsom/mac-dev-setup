@@ -1,0 +1,14 @@
+# Managed by mac-dev-setup local-edge.
+# Safe to edit locally. setup will not overwrite a changed file.
+#
+# kind-backed services route through the kind ingress entrypoint on alternate host ports
+# so that Caddy can remain the only process owning 80 and 443.
+
+work-demo.localhost {
+	import localhost_site_defaults
+	reverse_proxy http://127.0.0.1:__LOCAL_EDGE_KIND_INGRESS_HTTP_PORT__ {
+		header_up Host {host}
+		header_up X-Forwarded-Host {host}
+		header_up X-Forwarded-Proto {scheme}
+	}
+}

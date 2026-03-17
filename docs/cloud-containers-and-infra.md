@@ -40,6 +40,7 @@ These bundle related provider tools so you can enable a whole provider stack at 
 | `containers/docker/docker-cli.sh` | On | Docker CLI plus completion and VS Code tasks/settings. | Use `docker build`, `docker run`, `docker ps`. | [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/) | Requires a working container runtime such as Colima. |
 | `containers/buildx/buildx.sh` | On | Docker Buildx plugin. | Use `docker buildx build` for multi-platform or advanced builds. | [Buildx](https://docs.docker.com/buildx/working-with-buildx/) | None. |
 | `containers/compose/compose.sh` | On | Docker Compose CLI plugin. | Use `docker compose up`, `docker compose down`. | [Docker Compose](https://docs.docker.com/compose/) | None. |
+| `containers/caddy/caddy.sh` | On | Installs host-native Caddy for optional local edge and reverse proxy work. | Use the binary directly, or pair it with the dedicated [`local-edge/`](/Users/joe/src/personal/mac-dev-setup/local-edge) flow. | [Caddy](https://caddyserver.com/) | Bootstrap only installs the Caddy tool. Local edge provisioning still requires `./scripts/bootstrap-local-edge.sh setup`. |
 | `containers/kind/kind.sh` | On | Local Kubernetes clusters in Docker. | Use `kind create cluster`, `kind delete cluster`. | [kind](https://kind.sigs.k8s.io/) | None. |
 | `containers/kubectl/kubectl.sh` | On | Kubernetes CLI plus completion and VS Code settings. | Use `kubectl get pods`, `kubectl apply -f`, `kubectl config get-contexts`. | [kubectl](https://kubernetes.io/docs/reference/kubectl/) | None. |
 | `containers/helm/helm.sh` | On | Helm CLI plus completion. | Use `helm repo add`, `helm install`, `helm upgrade`. | [Helm](https://helm.sh/) | None. |
@@ -70,3 +71,5 @@ Infrastructure and spec-focused modules are documented in [Runtimes And Tooling]
 - Bicep
 
 Use that page when you want formatter, linter, LSP, and editor-integration details.
+
+For the optional laptop edge stack that combines host-installed Caddy, `.localhost`, local TLS, Docker or host services, and kind ingress routing, see [Local Edge](local-edge.md).

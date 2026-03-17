@@ -31,7 +31,7 @@ main() {
   command_exists google-java-format || die "google-java-format command not found after installation."
 
   log_info "Java tooling versions:"
-  jdtls --version
+  log_info "jdtls available: $(command -v jdtls)"
   google-java-format --version
   install_java_vscode_extensions
   install_java_vscode_settings

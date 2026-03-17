@@ -15,10 +15,12 @@ log_info "Checking repository structure..."
 
 required_paths=(
   "scripts/bootstrap.sh"
+  "scripts/bootstrap-local-edge.sh"
   "scripts/lib/common.sh"
   "scripts/prerequisites/prerequisites.sh"
   "scripts/prerequisites"
   "scripts/modules"
+  "local-edge"
   "config/user.env.example"
 )
 
@@ -43,6 +45,21 @@ while IFS= read -r raw_path; do
 done < <(
   sed -n 's/^[[:space:]]*#\{0,1\}[[:space:]]*run_script_path "\(.*\)".*/\1/p' \
     "$REPO_ROOT/scripts/bootstrap.sh"
+)
+
+log_info "Checking local-edge entrypoint references..."
+
+while IFS= read -r script_name; do
+  if [[ -z "$script_name" ]]; then
+    continue
+  fi
+
+  if [[ ! -e "$REPO_ROOT/local-edge/scripts/$script_name" ]]; then
+    die "Local-edge entrypoint references missing script: local-edge/scripts/$script_name"
+  fi
+done < <(
+  sed -n 's/.*run_local_edge_script "\([^"]*\)".*/\1/p' \
+    "$REPO_ROOT/scripts/bootstrap-local-edge.sh"
 )
 
 log_success "Repository structure looks valid."

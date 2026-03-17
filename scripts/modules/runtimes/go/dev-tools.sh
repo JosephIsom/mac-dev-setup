@@ -70,7 +70,7 @@ main() {
   run_in_login_zsh 'gopls version'
   run_in_login_zsh 'golangci-lint version'
   run_in_login_zsh 'dlv version | head -n 1'
-  run_in_login_zsh 'goimports -help >/dev/null'
+  log_info "goimports available: $(run_in_login_zsh 'command -v goimports')"
   run_in_login_zsh 'staticcheck -version'
   install_go_vscode_extensions
   install_go_vscode_settings

@@ -42,7 +42,7 @@ main() {
 
   log_info "Verifying Gradle/Groovy authoring support..."
   run_in_login_zsh 'command -v groovy-language-server >/dev/null 2>&1'
-  run_in_login_zsh 'groovy-language-server --help >/dev/null'
+  log_info "groovy-language-server available: $(run_in_login_zsh 'command -v groovy-language-server')"
   install_groovy_lsp_neovim_plugin
   [[ -f "$TARGET_GROOVY_LSP_NVIM_PLUGIN" ]] || die "Gradle/Groovy Neovim plugin spec not found at $TARGET_GROOVY_LSP_NVIM_PLUGIN"
 

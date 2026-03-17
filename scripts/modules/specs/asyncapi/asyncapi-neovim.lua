@@ -1,7 +1,6 @@
 return {
   {
-    name = "mac-dev-setup-asyncapi",
-    lazy = false,
+    "neovim/nvim-lspconfig",
     init = function()
       vim.filetype.add({
         pattern = {
@@ -28,9 +27,6 @@ return {
         desc = "Validate current AsyncAPI document",
       })
     end,
-  },
-  {
-    "neovim/nvim-lspconfig",
     opts = function(_, opts)
       return require("mac_dev_setup.config.tooling").extend_servers(opts, {
         jsonls = {

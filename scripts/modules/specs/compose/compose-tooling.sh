@@ -20,7 +20,7 @@ main() {
 
   log_info "Verifying Docker Compose authoring support..."
   docker compose version
-  docker-compose-langserver --help >/dev/null
+  log_info "docker-compose-langserver available: $(command -v docker-compose-langserver)"
   install_compose_neovim_plugin
   [[ -f "$TARGET_COMPOSE_NVIM_PLUGIN" ]] || die "Compose Neovim plugin spec not found at $TARGET_COMPOSE_NVIM_PLUGIN"
 

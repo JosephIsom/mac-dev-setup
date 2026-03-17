@@ -1,7 +1,6 @@
 return {
   {
-    name = "mac-dev-setup-notebooks",
-    lazy = false,
+    "folke/which-key.nvim",
     init = function()
       vim.filetype.add({
         extension = {

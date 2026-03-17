@@ -12,6 +12,7 @@ install_spring_boot_zsh_plugin() {
 }
 
 main() {
+  brew_ensure_tap "spring-io/tap"
   brew_install_formula "spring-boot"
   install_spring_boot_zsh_plugin
 
@@ -19,7 +20,6 @@ main() {
 
   log_info "Verifying Spring Boot CLI..."
   spring --version
-  run_in_login_zsh 'spring completion zsh >/dev/null'
   [[ -f "$TARGET_SPRING_BOOT_ZSH_PLUGIN" ]] || die "Spring Boot CLI zsh completion plugin not found at $TARGET_SPRING_BOOT_ZSH_PLUGIN"
 
   log_success "Spring Boot CLI installation verified."

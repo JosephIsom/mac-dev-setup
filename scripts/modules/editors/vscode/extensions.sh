@@ -19,6 +19,18 @@ warn_if_vscode_running() {
   fi
 }
 
+is_soft_optional_extension() {
+  local ext="$1"
+
+  case "$ext" in
+    github.copilot|github.copilot-chat)
+      return 0
+      ;;
+  esac
+
+  return 1
+}
+
 collect_extensions() {
   local manifest_path
   local extension_id
@@ -38,7 +50,7 @@ collect_extensions() {
         continue
       fi
 
-      printf '%s\n' "$extension_id"
+      printf '%s\n' "$extension_id" | tr '[:upper:]' '[:lower:]'
     done < "$manifest_path"
   done | sort -u
 }
@@ -59,7 +71,13 @@ verify_extensions() {
   log_info "Verifying installed VS Code extensions..."
   while IFS= read -r ext; do
     [[ -n "$ext" ]] || continue
-    if ! run_in_login_zsh "code --list-extensions | grep -Fx '$ext' >/dev/null"; then
+    if ! run_in_login_zsh "code --list-extensions | grep -Fxi '$ext' >/dev/null"; then
+      if is_soft_optional_extension "$ext"; then
+        log_warn "VS Code extension not currently installed: $ext"
+        log_warn "GitHub Copilot may require VS Code sign-in/setup and can auto-install required pieces later."
+        continue
+      fi
+
       die "Expected VS Code extension not installed: $ext"
     fi
   done < <(collect_extensions)

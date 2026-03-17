@@ -336,6 +336,7 @@ main() {
   run_check_file "$HOME/.zsh/plugins/docker-completion.zsh" "Docker zsh completion plugin present" fail
   run_check_file "$HOME/.config/mac-dev-setup/vscode/templates/tasks/docker-vscode-tasks.jsonc" "Docker VS Code tasks template present" warn
   run_check_login_zsh 'docker completion zsh >/dev/null 2>&1' "Docker completion available" warn
+  run_check_cmd "caddy" "Caddy available" warn
   run_check_cmd "kind" "kind available" warn
   run_check_cmd "kubectl" "kubectl available" warn
   run_check_file "$HOME/.zsh/plugins/kubectl-completion.zsh" "kubectl zsh completion plugin present" fail

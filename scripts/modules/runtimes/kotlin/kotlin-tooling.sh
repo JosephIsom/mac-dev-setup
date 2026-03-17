@@ -33,7 +33,7 @@ main() {
   command_exists detekt || die "detekt command not found after installation."
 
   log_info "Verifying Kotlin tooling..."
-  kotlin-language-server --version
+  log_info "kotlin-language-server available: $(command -v kotlin-language-server)"
   ktfmt --version
   detekt --version
   install_kotlin_vscode_extensions

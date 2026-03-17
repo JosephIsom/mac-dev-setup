@@ -1,7 +1,6 @@
 return {
   {
-    name = "mac-dev-setup-jsonnet",
-    lazy = false,
+    "stevearc/conform.nvim",
     init = function()
       vim.filetype.add({
         extension = {
@@ -10,9 +9,6 @@ return {
         },
       })
     end,
-  },
-  {
-    "stevearc/conform.nvim",
     opts = function(_, opts)
       return require("mac_dev_setup.config.tooling").extend_formatters(opts, {
         jsonnet = { "jsonnetfmt" },

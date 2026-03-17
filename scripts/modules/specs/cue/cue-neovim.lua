@@ -1,7 +1,6 @@
 return {
   {
-    name = "mac-dev-setup-cue",
-    lazy = false,
+    "neovim/nvim-lspconfig",
     init = function()
       vim.filetype.add({
         extension = {
@@ -9,9 +8,6 @@ return {
         },
       })
     end,
-  },
-  {
-    "neovim/nvim-lspconfig",
     opts = function(_, opts)
       return require("mac_dev_setup.config.tooling").extend_servers(opts, {
         cue_lsp = {

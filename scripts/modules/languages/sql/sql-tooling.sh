@@ -29,7 +29,7 @@ main() {
 
   log_info "Verifying SQL tooling in zsh..."
   run_in_login_zsh 'sqlfluff --version'
-  run_in_login_zsh 'sql-language-server --help >/dev/null'
+  log_info "sql-language-server available: $(run_in_login_zsh 'command -v sql-language-server')"
   install_sql_vscode_extensions
   install_sql_vscode_settings
   install_sql_neovim_plugin

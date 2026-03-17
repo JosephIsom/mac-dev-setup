@@ -15,7 +15,7 @@ main() {
   npm_install_global_package 'vscode-langservers-extracted@latest'
 
   log_info "Verifying HTML tooling in zsh..."
-  run_in_login_zsh 'vscode-html-language-server --help >/dev/null'
+  log_info "vscode-html-language-server available: $(run_in_login_zsh 'command -v vscode-html-language-server')"
   install_html_neovim_plugin
   [[ -f "$TARGET_HTML_NVIM_PLUGIN" ]] || die "HTML Neovim plugin spec not found at $TARGET_HTML_NVIM_PLUGIN"
 

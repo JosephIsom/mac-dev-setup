@@ -4,7 +4,6 @@ set -euo pipefail
 # shellcheck disable=SC1091
 source "$LIB_DIR/common.sh"
 
-APP_PATH="/Applications/Ghostty.app"
 REPO_GHOSTTY_CONFIG="$REPO_ROOT/scripts/modules/terminals/ghostty/assets/config"
 REPO_GHOSTTY_LOCAL_CONFIG="$REPO_ROOT/scripts/modules/terminals/ghostty/assets/local.conf"
 REPO_GHOSTTY_THEME_DIR="$REPO_ROOT/scripts/modules/terminals/ghostty/assets/theme"
@@ -12,6 +11,21 @@ TARGET_GHOSTTY_DIR="$HOME/.config/ghostty"
 TARGET_GHOSTTY_CONFIG="$TARGET_GHOSTTY_DIR/config"
 TARGET_GHOSTTY_LOCAL_CONFIG="$TARGET_GHOSTTY_DIR/local.conf"
 TARGET_GHOSTTY_THEME_DIR="$TARGET_GHOSTTY_DIR/themes"
+
+find_ghostty_app() {
+  local candidate
+
+  for candidate in \
+    "/Applications/Ghostty.app" \
+    "$HOME/Applications/Ghostty.app"; do
+    if [[ -d "$candidate" ]]; then
+      printf '%s\n' "$candidate"
+      return 0
+    fi
+  done
+
+  return 1
+}
 
 backup_if_unmanaged() {
   local dest="$1"
@@ -63,12 +77,23 @@ backup_if_different() {
 }
 
 install_app() {
-  if [[ -d "$APP_PATH" ]]; then
-    log_warn "Ghostty already exists at $APP_PATH. Leaving the existing app in place."
+  local app_path=""
+
+  if app_path="$(find_ghostty_app 2>/dev/null)"; then
+    log_warn "Ghostty already exists at $app_path. Leaving the existing app in place."
     return 0
   fi
 
   brew_install_cask "ghostty"
+
+  if brew list --cask "ghostty" >/dev/null 2>&1; then
+    app_path="$(find_ghostty_app 2>/dev/null || true)"
+    if [[ -z "$app_path" ]]; then
+      log_warn "Homebrew reports ghostty is installed, but the app bundle was not found in a standard Applications directory."
+      log_info "Reinstalling Ghostty cask to restore the app bundle..."
+      brew reinstall --cask "ghostty"
+    fi
+  fi
 }
 
 install_config() {
@@ -90,7 +115,10 @@ install_config() {
 }
 
 verify_install() {
-  [[ -d "$APP_PATH" ]] || die "Ghostty app not found at $APP_PATH after installation."
+  local app_path=""
+
+  app_path="$(find_ghostty_app 2>/dev/null || true)"
+  [[ -n "$app_path" ]] || die "Ghostty app not found in /Applications or ~/Applications after installation."
   [[ -f "$TARGET_GHOSTTY_CONFIG" ]] || die "Ghostty config not found at $TARGET_GHOSTTY_CONFIG after installation."
   [[ -f "$TARGET_GHOSTTY_LOCAL_CONFIG" ]] || die "Ghostty local config not found at $TARGET_GHOSTTY_LOCAL_CONFIG after installation."
   [[ -d "$TARGET_GHOSTTY_THEME_DIR" ]] || die "Ghostty theme directory not found at $TARGET_GHOSTTY_THEME_DIR after installation."
@@ -98,6 +126,8 @@ verify_install() {
   [[ -f "$TARGET_GHOSTTY_THEME_DIR/apple-graphite-expanded-dark.conf" ]] || die "Ghostty theme apple-graphite-expanded-dark.conf not found after installation."
   grep -Fq "font-family = JetBrainsMono Nerd Font" "$TARGET_GHOSTTY_CONFIG" || die "Ghostty config does not set JetBrainsMono Nerd Font."
   grep -Fq "config-file = ?local.conf" "$TARGET_GHOSTTY_CONFIG" || die "Ghostty config does not include local override support."
+
+  log_info "Ghostty app verified at $app_path"
 }
 
 main() {

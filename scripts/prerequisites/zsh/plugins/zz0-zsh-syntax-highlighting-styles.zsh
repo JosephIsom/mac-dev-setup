@@ -2,6 +2,9 @@
 # shellcheck disable=SC2034,SC2154
 # zsh-syntax-highlighting styles (mac-dev-setup)
 
+typeset -ga ZSH_HIGHLIGHT_HIGHLIGHTERS
+typeset -gA ZSH_HIGHLIGHT_STYLES
+
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 ZSH_HIGHLIGHT_STYLES[default]='none'
 ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=1'

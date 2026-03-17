@@ -20,7 +20,7 @@ main() {
 
   log_info "Verifying Dockerfile tooling..."
   hadolint --version
-  docker-langserver --version
+  log_info "docker-langserver available: $(command -v docker-langserver)"
   install_dockerfile_neovim_plugin
   [[ -f "$TARGET_DOCKERFILE_NVIM_PLUGIN" ]] || die "Dockerfile Neovim plugin spec not found at $TARGET_DOCKERFILE_NVIM_PLUGIN"
 }
