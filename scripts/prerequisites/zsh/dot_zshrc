@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 # shellcheck disable=SC1090
-# Interactive zsh config (mac-dev-setup)
+# Interactive zsh config
 
 export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=50000

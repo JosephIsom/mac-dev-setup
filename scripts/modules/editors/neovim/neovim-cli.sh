@@ -94,7 +94,6 @@ verify_install() {
   [[ -f "$TARGET_NVIM_INIT" ]] || die "Neovim init.lua not found at $TARGET_NVIM_INIT after installation."
   [[ -f "$TARGET_NVIM_LUA_DIR/config/lazy.lua" ]] || die "Neovim lazy.nvim config not found after installation."
   [[ -f "$TARGET_NVIM_LUA_DIR/plugins/ui.lua" ]] || die "Neovim baseline UI plugin spec not found after installation."
-  [[ -f "$TARGET_NVIM_LUA_DIR/theme.lua" ]] || die "Neovim theme module not found at $TARGET_NVIM_LUA_DIR/theme.lua after installation."
   [[ -f "$TARGET_NVIM_LOCAL_FILE" ]] || die "Neovim local override file not found at $TARGET_NVIM_LOCAL_FILE after installation."
   [[ -d "$LAZY_DIR" ]] || die "lazy.nvim checkout not found at $LAZY_DIR after installation."
   grep -Fq "$MANAGED_MARKER" "$TARGET_NVIM_INIT" || die "Neovim init.lua is missing the managed marker."

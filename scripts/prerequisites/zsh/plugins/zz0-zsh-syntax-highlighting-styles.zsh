@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 # shellcheck disable=SC2034,SC2154
-# zsh-syntax-highlighting styles (mac-dev-setup)
+# zsh-syntax-highlighting styles
 
 typeset -ga ZSH_HIGHLIGHT_HIGHLIGHTERS
 typeset -gA ZSH_HIGHLIGHT_STYLES

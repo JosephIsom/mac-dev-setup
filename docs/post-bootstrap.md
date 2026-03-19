@@ -186,14 +186,12 @@ If you enabled Testcontainers Desktop:
 
 ### Warp
 
-Warp cannot fully set its active theme/font from files alone.
+Warp cannot fully set its active appearance/font from files alone.
 
 After install:
 
 1. Open `Settings > Appearance > Current Theme`.
-2. Choose the variant that matches your current macOS appearance:
-   - `Apple Graphite Expanded Dark (mac-dev-setup)`
-   - `Apple Graphite Expanded Light (mac-dev-setup)`
+2. Choose any built-in theme you prefer.
 3. Open `Settings > Appearance > Text`.
 4. Set font to `JetBrainsMono Nerd Font`.
 5. Set font size to `14`.
@@ -217,25 +215,16 @@ These are fully file-configured by the repo, but both intentionally preserve a l
 
 Put personal tweaks there instead of editing the managed base file.
 
-## Theme Follow-Up
+## Appearance Follow-Up
 
-These are themed automatically by the repo:
+The repo no longer installs a custom cross-app theme.
 
-- Ghostty
-- WezTerm
-- VS Code
-- Neovim
-- shell prompts and shell highlighting
-- tmux
-- `fzf`, `bat`, `delta`, `lazygit`, and `lazydocker`
+If you want a consistent look after bootstrap, these still need one-time app-level appearance choices:
 
-These still need manual app-level theming:
-
-- Warp: choose the matching Apple Graphite Expanded light or dark theme in-app
-- iTerm2: if enabled, set the managed profile as default and switch profiles manually if you keep separate light/dark variants
-- Zed: choose a matching light/dark appearance in Settings
-- Sublime Text: choose the closest UI theme and color scheme manually
+- Warp: pick any built-in theme you prefer in-app
+- iTerm2: if enabled, set the managed profile as default if you want the repo-managed font and baseline behavior
+- Zed: choose light/dark appearance in Settings
+- Sublime Text: choose your preferred UI theme and color scheme manually
 - IntelliJ / Android Studio / JetBrains IDEs: choose light/dark appearance in-app and keep `JetBrainsMono Nerd Font`
 - Cursor and Windsurf: choose light/dark appearance in-app and keep `JetBrainsMono Nerd Font`
-- Helix: set a matching theme manually if you use it regularly, since live macOS appearance switching is not automated there yet
-- `bottom` and `k9s`: tune them manually if you want exact Apple Graphite Expanded colors; they otherwise mostly follow the terminal palette
+- Helix: set a theme manually if you use it regularly, since live macOS appearance switching is not automated there yet
