@@ -11,7 +11,7 @@ return {
     opts = function()
       return {
         options = {
-          theme = "auto",
+          theme = require("mac_dev_setup.theme").lualine_theme(),
           globalstatus = true,
           icons_enabled = vim.g.have_nerd_font,
         },

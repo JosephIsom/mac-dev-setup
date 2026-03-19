@@ -6,6 +6,9 @@
 #
 # Personal overrides can go in ~/.config/ghostty/local.conf.
 
+# Use the repo-managed Islands Dark theme for a consistent terminal palette.
+theme = islands-dark.conf
+
 # Prefer the Nerd Font variant used elsewhere in the setup.
 font-family = JetBrainsMono Nerd Font
 font-size = 14

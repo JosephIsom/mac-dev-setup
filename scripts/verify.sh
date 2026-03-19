@@ -252,6 +252,7 @@ main() {
   run_check_cmd "wget" "wget available" warn
   run_check_cmd "tldr" "tldr available" warn
   run_check_cmd "btm" "bottom available" warn
+  run_check_file "$HOME/.config/bottom/bottom.toml" "bottom config present" fail
   run_check_cmd "lazygit" "lazygit available" warn
   run_check_cmd "lazydocker" "lazydocker available" warn
   run_check_cmd "jwt" "jwt-cli available" warn
@@ -345,6 +346,8 @@ main() {
   run_check_file "$HOME/.zsh/plugins/helm-completion.zsh" "Helm zsh completion plugin present" fail
   run_check_login_zsh 'helm completion zsh >/dev/null 2>&1' "Helm completion available" warn
   run_check_cmd "k9s" "k9s available" warn
+  run_check_file "$HOME/Library/Application Support/k9s/config.yaml" "k9s config present" fail
+  run_check_file "$HOME/Library/Application Support/k9s/skins/islands-dark.yaml" "k9s Islands Dark skin present" fail
   run_check_cmd "tilt" "Tilt available" warn
   run_check_file "$HOME/.config/mac-dev-setup/vscode/templates/tasks/tilt-vscode-tasks.jsonc" "Tilt VS Code tasks template present" warn
   run_check_cmd "kubectx" "kubectx available" warn
@@ -489,9 +492,12 @@ main() {
   run_check_cmd "idea" "IntelliJ CLI helper available" warn
   run_check_file "$HOME/.config/jetbrains/intellij-ai-notes.txt" "IntelliJ AI setup notes present" warn
   run_check_cmd "hx" "Helix editor available" warn
+  run_check_file "$HOME/.config/helix/config.toml" "Helix config present" fail
+  run_check_file "$HOME/.config/helix/themes/islands_dark.toml" "Helix Islands Dark theme present" fail
   run_check_cmd "nvim" "Neovim available" warn
   run_check_file "$HOME/.config/nvim/init.lua" "Managed Neovim init.lua present" fail
   run_check_file "$HOME/.config/nvim/lua/mac_dev_setup/local.lua" "Neovim local override file present" fail
+  run_check_file "$HOME/.config/nvim/lua/mac_dev_setup/theme.lua" "Neovim Islands Dark theme module present" fail
   run_check_dir "$HOME/.local/share/nvim/lazy/lazy.nvim" "lazy.nvim checkout present" fail
   run_check_login_zsh 'nvim --headless "+qa" >/dev/null 2>&1' "Neovim config loads headlessly" warn
   run_check_dir "/Applications/Sublime Text.app" "Sublime Text app present" warn
@@ -510,10 +516,13 @@ main() {
   run_check_dir "/Applications/Ghostty.app" "Ghostty app present" warn
   run_check_file "$HOME/.config/ghostty/config" "Managed Ghostty config present" fail
   run_check_file "$HOME/.config/ghostty/local.conf" "Ghostty local override template present" fail
+  run_check_dir "$HOME/.config/ghostty/themes" "Ghostty theme directory present" fail
+  run_check_file "$HOME/.config/ghostty/themes/islands-dark.conf" "Ghostty Islands Dark theme present" fail
   # run_check_dir "/Applications/WezTerm.app" "WezTerm app present" warn
   # run_check_file "$HOME/.config/wezterm/wezterm.lua" "Managed WezTerm config present" fail
   # run_check_file "$HOME/.config/wezterm/local.lua" "WezTerm local override template present" fail
   # run_check_dir "/Applications/Warp.app" "Warp app present" warn
+  # run_check_file "$HOME/.warp/themes/islands-dark-mac-dev-setup.yaml" "Warp Islands Dark theme present" fail
   # run_check_file "$HOME/.warp/bootstrap-notes.txt" "Warp bootstrap notes present" fail
 
   # AI tooling
@@ -523,7 +532,9 @@ main() {
   run_check_cursor_cli "Cursor CLI available" warn
   run_check_dir "/Applications/Codex.app" "Codex app present" warn
   run_check_dir "/Applications/Cursor.app" "Cursor editor present" warn
+  run_check_file "$HOME/Library/Application Support/Cursor/User/settings.json" "Managed Cursor settings present" fail
   run_check_dir "/Applications/Windsurf.app" "Windsurf editor present" warn
+  run_check_file "$HOME/Library/Application Support/Windsurf/User/settings.json" "Managed Windsurf settings present" fail
   # run_check_cmd "aider" "Aider CLI available" warn
   # run_check_cmd "claude" "Claude CLI available" warn
   # run_check_file "$HOME/.config/claude/ide-notes.txt" "Claude IDE integration notes present" warn

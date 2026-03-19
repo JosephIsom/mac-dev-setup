@@ -1,0 +1,122 @@
+inherits = "base16_default_dark"
+
+"ui.background" = "bg"
+"ui.background.separator" = "border"
+"ui.cursor" = { fg = "bg", bg = "cursor" }
+"ui.cursor.normal" = { fg = "bg", bg = "cursor" }
+"ui.cursor.insert" = { fg = "bg", bg = "cursor" }
+"ui.cursor.select" = { fg = "bg", bg = "cursor" }
+"ui.cursor.match" = { fg = "bg", bg = "blue" }
+"ui.cursorline.primary" = { bg = "bg_alt" }
+"ui.selection" = { bg = "selection" }
+"ui.linenr" = "line_nr"
+"ui.linenr.selected" = { fg = "line_nr_active", modifiers = ["bold"] }
+"ui.statusline" = { fg = "fg", bg = "bg_panel" }
+"ui.statusline.inactive" = { fg = "muted", bg = "bg_subtle" }
+"ui.statusline.normal" = { fg = "bg", bg = "blue", modifiers = ["bold"] }
+"ui.statusline.insert" = { fg = "bg", bg = "green", modifiers = ["bold"] }
+"ui.statusline.select" = { fg = "bg", bg = "magenta", modifiers = ["bold"] }
+"ui.bufferline" = { fg = "muted", bg = "bg" }
+"ui.bufferline.active" = { fg = "fg_bright", bg = "bg_subtle", modifiers = ["bold"] }
+"ui.popup" = { fg = "fg", bg = "bg_panel" }
+"ui.window" = "border"
+"ui.help" = { fg = "fg", bg = "bg_panel" }
+"ui.text" = "fg"
+"ui.text.focus" = { fg = "fg_bright", bg = "bg_subtle" }
+"ui.text.inactive" = "muted"
+"ui.text.info" = "blue"
+"ui.text.directory" = "blue"
+"ui.virtual.ruler" = "bg_emphasis"
+"ui.virtual.whitespace" = "muted"
+"ui.virtual.indent-guide" = "bg_emphasis"
+"ui.virtual.inlay-hint" = { fg = "soft", bg = "bg_emphasis" }
+"ui.virtual.inlay-hint.parameter" = { fg = "soft", bg = "bg_emphasis" }
+"ui.virtual.inlay-hint.type" = { fg = "soft", bg = "bg_emphasis" }
+"ui.menu" = { fg = "fg", bg = "bg_panel" }
+"ui.menu.selected" = { fg = "fg_bright", bg = "bg_subtle" }
+"ui.highlight" = { bg = "search" }
+"ui.cursorline.secondary" = { bg = "bg_alt" }
+"warning" = "yellow_bright"
+"error" = "red"
+"info" = "blue"
+"hint" = "cyan"
+"diagnostic" = { underline = { color = "muted", style = "curl" } }
+"diagnostic.hint" = { underline = { color = "cyan", style = "curl" } }
+"diagnostic.info" = { underline = { color = "blue", style = "curl" } }
+"diagnostic.warning" = { underline = { color = "yellow", style = "curl" } }
+"diagnostic.error" = { underline = { color = "red", style = "curl" } }
+
+"comment" = { fg = "comment", modifiers = ["italic"] }
+"comment.documentation" = { fg = "doc_comment", modifiers = ["italic"] }
+"constant" = "magenta"
+"constant.builtin" = "orange"
+"constant.character.escape" = "orange"
+"constant.numeric" = "cyan"
+"string" = "green"
+"string.regexp" = "cyan_bright"
+"string.special" = "orange"
+"variable" = "fg"
+"variable.builtin" = "orange"
+"variable.parameter" = "fg"
+"variable.other.member" = "magenta"
+"label" = "gold"
+"punctuation" = "fg"
+"punctuation.delimiter" = "fg"
+"punctuation.bracket" = "fg"
+"keyword" = "orange"
+"keyword.control" = "orange"
+"keyword.control.return" = "orange"
+"keyword.operator" = "fg"
+"keyword.directive" = "olive"
+"keyword.storage" = "orange"
+"operator" = "fg"
+"function" = "blue"
+"function.method" = "blue"
+"function.macro" = "olive"
+"tag" = "gold"
+"namespace" = "teal"
+"special" = "olive"
+"attribute" = "olive"
+"type" = "fg"
+"type.parameter" = "teal"
+"constructor" = "fg"
+"markup.heading" = { fg = "blue", modifiers = ["bold"] }
+"markup.bold" = { fg = "fg_bright", modifiers = ["bold"] }
+"markup.italic" = { fg = "fg_bright", modifiers = ["italic"] }
+"markup.link.url" = { fg = "blue", modifiers = ["underlined"] }
+"markup.link.label" = "blue"
+"markup.raw" = "green"
+"diff.plus" = "green"
+"diff.minus" = "red"
+"diff.delta" = "blue"
+
+[palette]
+bg = "#191A1C"
+bg_alt = "#1F2024"
+bg_panel = "#27282B"
+bg_subtle = "#2B2D30"
+bg_emphasis = "#393B40"
+fg = "#BCBEC4"
+fg_bright = "#DFE1E5"
+cursor = "#CED0D6"
+muted = "#6F737A"
+soft = "#868A91"
+line_nr = "#4B5059"
+line_nr_active = "#A1A3AB"
+border = "#43454A"
+selection = "#373B39"
+search = "#2D543F"
+comment = "#7A7E85"
+doc_comment = "#5F826B"
+blue = "#56A8F5"
+green = "#6AAB73"
+yellow = "#E0BB65"
+yellow_bright = "#F2C55C"
+red = "#F75464"
+magenta = "#C77DBB"
+cyan = "#2AACB8"
+cyan_bright = "#42C3D4"
+orange = "#CF8E6D"
+gold = "#D5B778"
+olive = "#B3AE60"
+teal = "#16BAAC"

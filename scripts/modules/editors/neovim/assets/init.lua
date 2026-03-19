@@ -7,6 +7,7 @@ vim.g.maplocalleader = " "
 vim.g.have_nerd_font = true
 
 require("mac_dev_setup.config.options")
+require("mac_dev_setup.theme").apply()
 require("mac_dev_setup.config.keymaps")
 require("mac_dev_setup.config.autocmds")
 require("mac_dev_setup.config.lsp")

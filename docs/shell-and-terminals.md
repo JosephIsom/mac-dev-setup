@@ -20,7 +20,7 @@ This page covers shell-facing modules: command-line tools, shell prompts, tmux, 
 | `shell/cli/tree/tree.sh` | On | Directory tree output. | Run `tree`. | [tree](https://formulae.brew.sh/formula/tree) | None. |
 | `shell/cli/wget/wget.sh` | On | Non-browser downloads and mirroring. | Run `wget <url>`. | [GNU Wget](https://www.gnu.org/software/wget/) | None. |
 | `shell/cli/tldr/tldr.sh` | On | Practical command examples. | Run `tldr git`, `tldr docker`, and similar. | [tldr pages](https://tldr.sh/) | None. |
-| `shell/cli/bottom/bottom.sh` | On | Modern process monitor. | Run `btm`. | [bottom](https://github.com/ClementTsang/bottom) | None. |
+| `shell/cli/bottom/bottom.sh` | On | Modern process monitor with a managed Islands Dark config. | Run `btm`. | [bottom](https://github.com/ClementTsang/bottom) | Tweak `~/.config/bottom/bottom.toml` only if you want to diverge from the shared palette. |
 | `shell/cli/lazygit/lazygit.sh` | On | Full-screen Git TUI. | Run `lazygit` inside a repo. | [lazygit](https://github.com/jesseduffield/lazygit) | None. |
 | `shell/cli/lazydocker/lazydocker.sh` | On | Docker and container TUI. | Run `lazydocker`. | [lazydocker](https://github.com/jesseduffield/lazydocker) | Docker/Colima must already be working. |
 | `shell/cli/jwt-cli/jwt-cli.sh` | On | JWT inspection and decoding. | Run `jwt decode <token>`. | [jwt-cli](https://github.com/mike-engel/jwt-cli) | None. |
@@ -47,9 +47,9 @@ This page covers shell-facing modules: command-line tools, shell prompts, tmux, 
 | Module | Default | What / why | How to use it | Links | Follow-up |
 | --- | --- | --- | --- | --- | --- |
 | `terminals/iterm2/iterm2-app.sh` | On | Installs iTerm2 and a managed dynamic profile. | Open iTerm2 and choose the `mac-dev-setup` profile. | [iTerm2](https://iterm2.com/) | Set the managed profile as your default profile if you want the repo’s font and behavior. |
-| `terminals/ghostty/ghostty-app.sh` | On | Installs Ghostty and a managed config plus `local.conf`. | Launch Ghostty; edit `~/.config/ghostty/local.conf` for personal overrides. | [Ghostty](https://ghostty.org/), [Docs](https://ghostty.org/docs) | Keep local changes in `local.conf`. |
-| `terminals/wezterm/wezterm-app.sh` | On | Installs WezTerm and a managed `wezterm.lua` plus local override. | Launch WezTerm; edit `~/.config/wezterm/local.lua` for personal overrides. | [WezTerm](https://wezfurlong.org/wezterm/) | Keep local changes in `local.lua`. |
-| `terminals/warp/warp-app.sh` | On | Installs Warp and writes a short bootstrap note for appearance/font setup. | Launch Warp, choose a built-in theme you like, and set the font. | [Warp](https://www.warp.dev/) | Set `JetBrainsMono Nerd Font` size 14 in the app if you want it to match the rest of the setup. |
+| `terminals/ghostty/ghostty-app.sh` | On | Installs Ghostty, the managed Islands Dark theme, and `local.conf`. | Launch Ghostty; edit `~/.config/ghostty/local.conf` for personal overrides. | [Ghostty](https://ghostty.org/), [Docs](https://ghostty.org/docs) | Keep local changes in `local.conf`; the base config/theme are repo-managed. |
+| `terminals/wezterm/wezterm-app.sh` | On | Installs WezTerm with a managed Islands Dark palette and local override. | Launch WezTerm; edit `~/.config/wezterm/local.lua` for personal overrides. | [WezTerm](https://wezfurlong.org/wezterm/) | Keep local changes in `local.lua`. |
+| `terminals/warp/warp-app.sh` | On | Installs Warp and a managed Islands Dark custom theme file. | Launch Warp, pick `Islands Dark (mac-dev-setup)`, and set the font. | [Warp](https://www.warp.dev/) | Set `JetBrainsMono Nerd Font` size 14 in the app. |
 
 ## Notes On Shell Integration
 

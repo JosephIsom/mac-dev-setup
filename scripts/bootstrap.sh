@@ -245,6 +245,7 @@ main() {
   # Finalize VS Code after all enabled modules have staged their assets.
   run_script_path "$MODULES_DIR/editors/vscode/extensions.sh"
   run_script_path "$MODULES_DIR/editors/vscode/settings.sh"
+  run_script_path "$MODULES_DIR/theme/theme-followup.sh"
 
   log_success "Bootstrap phase completed."
 }

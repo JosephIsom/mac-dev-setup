@@ -1,0 +1,24 @@
+name: Islands Dark (mac-dev-setup)
+accent: "#548af7"
+background: "#191a1c"
+details: darker
+foreground: "#bcbec4"
+terminal_colors:
+  bright:
+    black: "#6f737a"
+    blue: "#70aeff"
+    cyan: "#42c3d4"
+    green: "#73bd79"
+    magenta: "#cf84cf"
+    red: "#fa6675"
+    white: "#ced0d6"
+    yellow: "#f2c55c"
+  normal:
+    black: "#191a1c"
+    blue: "#56a8f5"
+    cyan: "#2aacb8"
+    green: "#6aab73"
+    magenta: "#c77dbb"
+    red: "#f75464"
+    white: "#bcbec4"
+    yellow: "#e0bb65"

@@ -44,7 +44,7 @@ These bundle related provider tools so you can enable a whole provider stack at 
 | `containers/kind/kind.sh` | On | Local Kubernetes clusters in Docker. | Use `kind create cluster`, `kind delete cluster`. | [kind](https://kind.sigs.k8s.io/) | None. |
 | `containers/kubectl/kubectl.sh` | On | Kubernetes CLI plus completion and VS Code settings. | Use `kubectl get pods`, `kubectl apply -f`, `kubectl config get-contexts`. | [kubectl](https://kubernetes.io/docs/reference/kubectl/) | None. |
 | `containers/helm/helm.sh` | On | Helm CLI plus completion. | Use `helm repo add`, `helm install`, `helm upgrade`. | [Helm](https://helm.sh/) | None. |
-| `containers/k9s/k9s.sh` | On | TUI for Kubernetes clusters. | Run `k9s`. | [k9s](https://k9scli.io/) | None. |
+| `containers/k9s/k9s.sh` | On | TUI for Kubernetes clusters with a managed Islands Dark skin. | Run `k9s`. | [k9s](https://k9scli.io/) | The repo installs the skin under `~/Library/Application Support/k9s/skins`. |
 | `containers/tilt/tilt.sh` | On | Tilt for local Kubernetes dev loops, plus VS Code assets. | Use `tilt up` in Tilt-based projects. | [Tilt](https://tilt.dev/) | None. |
 | `containers/kubectx/kubectx.sh` | On | Fast context/namespace switching. | Use `kubectx` and `kubens`. | [kubectx](https://github.com/ahmetb/kubectx) | None. |
 | `containers/stern/stern.sh` | On | Tail logs from multiple pods. | Use `stern <pod-selector>`. | [stern](https://github.com/stern/stern) | None. |

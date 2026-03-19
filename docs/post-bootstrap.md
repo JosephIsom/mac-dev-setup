@@ -191,7 +191,7 @@ Warp cannot fully set its active appearance/font from files alone.
 After install:
 
 1. Open `Settings > Appearance > Current Theme`.
-2. Choose any built-in theme you prefer.
+2. Choose `Islands Dark (mac-dev-setup)`.
 3. Open `Settings > Appearance > Text`.
 4. Set font to `JetBrainsMono Nerd Font`.
 5. Set font size to `14`.
@@ -217,14 +217,14 @@ Put personal tweaks there instead of editing the managed base file.
 
 ## Appearance Follow-Up
 
-The repo no longer installs a custom cross-app theme.
+The repo now installs a shared `Islands Dark` theme/palette anywhere the managed setup can do so safely.
 
 If you want a consistent look after bootstrap, these still need one-time app-level appearance choices:
 
-- Warp: pick any built-in theme you prefer in-app
+- Warp: pick `Islands Dark (mac-dev-setup)` in-app
 - iTerm2: if enabled, set the managed profile as default if you want the repo-managed font and baseline behavior
 - Zed: choose light/dark appearance in Settings
 - Sublime Text: choose your preferred UI theme and color scheme manually
 - IntelliJ / Android Studio / JetBrains IDEs: choose light/dark appearance in-app and keep `JetBrainsMono Nerd Font`
-- Cursor and Windsurf: choose light/dark appearance in-app and keep `JetBrainsMono Nerd Font`
-- Helix: set a theme manually if you use it regularly, since live macOS appearance switching is not automated there yet
+- Cursor and Windsurf: the repo now writes matching editor settings automatically
+- Helix: the repo now installs `islands_dark` automatically

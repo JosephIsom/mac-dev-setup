@@ -67,6 +67,7 @@ verify_install() {
   [[ -f "$TARGET_WEZTERM_CONFIG" ]] || die "WezTerm config not found at $TARGET_WEZTERM_CONFIG after installation."
   [[ -f "$TARGET_WEZTERM_LOCAL_CONFIG" ]] || die "WezTerm local config not found at $TARGET_WEZTERM_LOCAL_CONFIG after installation."
   grep -Fq "JetBrainsMono Nerd Font" "$TARGET_WEZTERM_CONFIG" || die "WezTerm config does not set JetBrainsMono Nerd Font."
+  grep -Fq "config.colors = {" "$TARGET_WEZTERM_CONFIG" || die "WezTerm config does not define the managed Islands Dark palette."
 }
 
 main() {

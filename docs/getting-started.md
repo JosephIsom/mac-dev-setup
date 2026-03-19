@@ -113,7 +113,7 @@ After bootstrap, common manual steps are:
 - open Android Studio and complete the SDK setup wizard
 - sign in to 1Password or Bitwarden if you enabled them
 - sign in to Tailscale or ngrok if you enabled them
-- pick the managed Warp theme and font if you enabled Warp
+- pick `Islands Dark (mac-dev-setup)` and the managed font if you enabled Warp
 
 The complete list is in [Post-Bootstrap Tasks](post-bootstrap.md).
 
