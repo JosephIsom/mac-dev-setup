@@ -5,6 +5,7 @@ if [[ -r "$HOME/.config/pure/config.zsh" ]]; then
   source "$HOME/.config/pure/config.zsh"
 fi
 
-autoload -U promptinit
-promptinit
+setopt prompt_subst
+
+autoload -U promptinit; promptinit
 prompt pure
