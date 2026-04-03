@@ -143,15 +143,11 @@ brew_install_and_verify_command() {
   log_success "$label installation verified."
 }
 
-ensure_mise_available() {
-  command_exists mise || die "mise command is required but not available."
-}
-
 mise_use_global() {
   local tool="$1"
   local version="$2"
 
-  ensure_mise_available
+  command_exists mise || die "mise command is required but not available."
   log_info "Installing/updating via mise: ${tool}@${version}"
   mise use -g "${tool}@${version}"
   mise reshim >/dev/null 2>&1 || true

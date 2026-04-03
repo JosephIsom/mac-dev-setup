@@ -4,6 +4,8 @@ set -euo pipefail
 # shellcheck disable=SC1091
 source "$LIB_DIR/common.sh"
 
+# FIXME: What about "bre3w services start colima" instead of "colima start"? Is there a difference? Should we use the brew services approach instead (as documented at work)?
+
 main() {
   command_exists colima || die "colima-start requires Colima to be installed."
 
