@@ -25,10 +25,10 @@ main() {
   log_info "Running optional modules. Comment out any line in scripts/bootstrap.sh that you do not want."
 
   # macOS defaults
-  run_script_path "$MODULES_DIR/macos/finder/finder.sh"
-  run_script_path "$MODULES_DIR/macos/dock/dock.sh"
-  run_script_path "$MODULES_DIR/macos/input/input.sh"
-  run_script_path "$MODULES_DIR/macos/screenshots/screenshots.sh"
+  # run_script_path "$MODULES_DIR/macos/finder.sh"
+  # run_script_path "$MODULES_DIR/macos/dock.sh"
+  # run_script_path "$MODULES_DIR/macos/input.sh"
+  # run_script_path "$MODULES_DIR/macos/screenshots.sh"
 
   # Accounts and identity
   !Review:  run_script_path "$MODULES_DIR/accounts/github/github-ssh.sh"

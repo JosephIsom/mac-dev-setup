@@ -6,6 +6,8 @@ source "$LIB_DIR/common.sh"
 
 SCREENSHOT_DIR="$HOME/Pictures/Screenshots"
 
+# TODO: Incomplete - research the items I want in here.
+
 main() {
   log_info "Applying screenshot defaults..."
   mkdir -p "$SCREENSHOT_DIR"

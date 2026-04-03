@@ -4,6 +4,8 @@ set -euo pipefail
 # shellcheck disable=SC1091
 source "$LIB_DIR/common.sh"
 
+# TODO: Incomplete - research the items I want in here.
+
 main() {
   log_info "Applying keyboard and input defaults..."
   defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
