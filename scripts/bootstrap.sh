@@ -24,7 +24,7 @@ main() {
 
   log_info "Running optional modules. Comment out any line in scripts/bootstrap.sh that you do not want."
 
-  # macOS defaults
+  # macOS defaults - FIXME: Reveiew, refine, and complete these modules.
   # run_script_path "$MODULES_DIR/macos/finder.sh"
   # run_script_path "$MODULES_DIR/macos/dock.sh"
   # run_script_path "$MODULES_DIR/macos/input.sh"
@@ -49,7 +49,7 @@ main() {
   # run_script_path "$MODULES_DIR/shell/cli/direnv/direnv.sh"
   run_script_path "$MODULES_DIR/shell/cli/tree/tree.sh"
   # run_script_path "$MODULES_DIR/shell/cli/wget/wget.sh"
-  run_script_path "$MODULES_DIR/shell/cli/tldr/tldr.sh"
+  run_script_path "$MODULES_DIR/shell/cli/tldr/tldr.sh" # Note that tldr is deprecated and tlrc is actually installed by this script.
   # run_script_path "$MODULES_DIR/shell/cli/bottom/bottom.sh"
   run_script_path "$MODULES_DIR/shell/cli/lazygit/lazygit.sh"
   run_script_path "$MODULES_DIR/shell/cli/lazydocker/lazydocker.sh"
@@ -69,18 +69,24 @@ main() {
   # run_script_path "$MODULES_DIR/shell/prompt/oh-my-posh/oh-my-posh.sh"
 
   # Language runtimes and tooling
-  run_script_path "$MODULES_DIR/runtimes/python/python-runtime.sh"
-  run_script_path "$MODULES_DIR/runtimes/python/uv.sh"
-  run_script_path "$MODULES_DIR/runtimes/python/linters.sh"
   run_script_path "$MODULES_DIR/runtimes/node/node-runtime.sh"
   run_script_path "$MODULES_DIR/runtimes/node/npm-completion.sh"
   run_script_path "$MODULES_DIR/runtimes/node/pnpm.sh"
   run_script_path "$MODULES_DIR/runtimes/node/yarn.sh"
   run_script_path "$MODULES_DIR/runtimes/node/typescript.sh"
+  run_script_path "$MODULES_DIR/runtimes/python/python-runtime.sh"
+  run_script_path "$MODULES_DIR/runtimes/python/uv.sh"
+  run_script_path "$MODULES_DIR/runtimes/python/linters.sh"
   run_script_path "$MODULES_DIR/runtimes/go/go-runtime.sh"
   run_script_path "$MODULES_DIR/runtimes/go/dev-tools.sh"
+
   run_script_path "$MODULES_DIR/runtimes/java/java-runtime.sh"
   run_script_path "$MODULES_DIR/runtimes/java/java-tooling.sh"
+  run_script_path "$MODULES_DIR/runtimes/groovy/groovy-runtime.sh"
+  run_script_path "$MODULES_DIR/runtimes/groovy/groovy-tooling.sh"
+  run_script_path "$MODULES_DIR/runtimes/kotlin/kotlin-runtime.sh"
+  run_script_path "$MODULES_DIR/runtimes/kotlin/kotlin-tooling.sh"
+
   run_script_path "$MODULES_DIR/runtimes/lua/lua-runtime.sh"
   run_script_path "$MODULES_DIR/runtimes/lua/lua-tooling.sh"
   # run_script_path "$MODULES_DIR/runtimes/swift/swift-tooling.sh"
@@ -90,16 +96,10 @@ main() {
   run_script_path "$MODULES_DIR/build/jvm/gradle.sh"
 
   # Optional runtimes and language ecosystems
-  # run_script_path "$MODULES_DIR/runtimes/powershell/powershell-runtime.sh"
-  # run_script_path "$MODULES_DIR/runtimes/powershell/powershell-tooling.sh"
   # run_script_path "$MODULES_DIR/runtimes/rust/rust-runtime.sh"
   # run_script_path "$MODULES_DIR/runtimes/rust/rust-tooling.sh"
   # run_script_path "$MODULES_DIR/runtimes/bun/bun-runtime.sh"
-  # run_script_path "$MODULES_DIR/runtimes/dotnet/dotnet-runtime.sh"
-  run_script_path "$MODULES_DIR/runtimes/groovy/groovy-runtime.sh"
-  run_script_path "$MODULES_DIR/runtimes/groovy/groovy-tooling.sh"
-  run_script_path "$MODULES_DIR/runtimes/kotlin/kotlin-runtime.sh"
-  run_script_path "$MODULES_DIR/runtimes/kotlin/kotlin-tooling.sh"
+
   # run_script_path "$MODULES_DIR/runtimes/java/spring-boot.sh"
   # run_script_path "$MODULES_DIR/runtimes/php/php-runtime.sh"
   # run_script_path "$MODULES_DIR/runtimes/php/php-tooling.sh"
@@ -165,15 +165,11 @@ main() {
   run_script_path "$MODULES_DIR/languages/graphql/graphql-tooling.sh"
   run_script_path "$MODULES_DIR/languages/gradle-groovy/gradle-groovy-tooling.sh"
   # run_script_path "$MODULES_DIR/runtimes/python/python-notebook-tooling.sh"
-  # run_script_path "$MODULES_DIR/specs/cue/cue-tooling.sh"
-  # run_script_path "$MODULES_DIR/specs/rego-opa/rego-opa-tooling.sh"
   run_script_path "$MODULES_DIR/specs/helm/helm-tooling.sh"
-  # run_script_path "$MODULES_DIR/specs/ansible/ansible-tooling.sh"
+  run_script_path "$MODULES_DIR/files/mermaid/mermaid-tooling.sh"
   # run_script_path "$MODULES_DIR/specs/jsonnet/jsonnet-tooling.sh"
-  # run_script_path "$MODULES_DIR/specs/bicep/bicep-tooling.sh"
-  # run_script_path "$MODULES_DIR/files/mermaid/mermaid-tooling.sh"
-  # run_script_path "$MODULES_DIR/files/asciidoc/asciidoc-tooling.sh"
-  # run_script_path "$MODULES_DIR/files/plantuml/plantuml-tooling.sh"
+
+
 
   # Desktop apps
   run_script_path "$MODULES_DIR/desktop/browsers/google-chrome/google-chrome.sh"
