@@ -41,8 +41,11 @@ Open [scripts/bootstrap.sh](/Users/joe/src/personal/mac-dev-setup/scripts/bootst
 - Leave uncommented lines enabled.
 - Comment out anything you do not want.
 - Most optional modules are already commented out.
+- The C/C++ baseline is enabled by default; optional extras such as `cppcheck`, `gdb`, `ccache`, and `meson` stay commented out until you want them.
 
 Then open [scripts/verify.sh](/Users/joe/src/personal/mac-dev-setup/scripts/verify.sh) and comment out checks that do not match your enabled module list.
+
+For Python specifically, the default tooling line keeps `pyright` enabled. If you want to try Astral `ty` instead, comment out the `runtimes/python/linters.sh` line, uncomment `runtimes/python/ty.sh`, then make the matching change in the Python section of `scripts/verify.sh`.
 
 ## 4. Run Bootstrap
 

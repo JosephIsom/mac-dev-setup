@@ -42,6 +42,7 @@
     "pytest",
     "recents",
     "rego",
+    "rerunnable",
     "reshim",
     "SAVEHIST",
     "shellenv",

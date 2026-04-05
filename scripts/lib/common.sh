@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+COMMON_SH_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="${REPO_ROOT:-$(cd "$COMMON_SH_DIR/../.." && pwd)}"
+LIB_DIR="${LIB_DIR:-$REPO_ROOT/scripts/lib}"
+CONFIG_DIR="${CONFIG_DIR:-$REPO_ROOT/config}"
+MODULES_DIR="${MODULES_DIR:-$REPO_ROOT/scripts/modules}"
+PREREQUISITES_DIR="${PREREQUISITES_DIR:-$REPO_ROOT/scripts/prerequisites}"
+
+export REPO_ROOT LIB_DIR CONFIG_DIR MODULES_DIR PREREQUISITES_DIR
+
 log() {
   printf '%s\n' "$*"
 }

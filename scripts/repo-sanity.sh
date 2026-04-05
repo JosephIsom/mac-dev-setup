@@ -1,15 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO_ROOT="${REPO_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
-LIB_DIR="${LIB_DIR:-$REPO_ROOT/scripts/lib}"
-
 # shellcheck disable=SC1091
-source "$LIB_DIR/common.sh"
-
-CONFIG_DIR="${CONFIG_DIR:-$REPO_ROOT/config}"
-MODULES_DIR="${MODULES_DIR:-$REPO_ROOT/scripts/modules}"
-PREREQUISITES_DIR="${PREREQUISITES_DIR:-$REPO_ROOT/scripts/prerequisites}"
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh"
 
 log_info "Checking repository structure..."
 

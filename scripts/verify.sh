@@ -1,15 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-LIB_DIR="$REPO_ROOT/scripts/lib"
-CONFIG_DIR="$REPO_ROOT/config"
-MODULES_DIR="$REPO_ROOT/scripts/modules"
-PREREQUISITES_DIR="$REPO_ROOT/scripts/prerequisites"
-export REPO_ROOT LIB_DIR CONFIG_DIR MODULES_DIR PREREQUISITES_DIR
-
 # shellcheck disable=SC1091
-source "$LIB_DIR/common.sh"
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh"
 
 PASS_COUNT=0
 WARN_COUNT=0
@@ -274,6 +267,7 @@ main() {
   run_check_cmd "uv" "uv available" fail
   run_check_cmd "pyright" "Pyright available" warn
   run_check_cmd "pyright-langserver" "Pyright language server available" warn
+  # run_check_cmd "ty" "ty available" warn
   run_check_file "$HOME/.config/mac-dev-setup/vscode/templates/tasks/python-vscode-tasks.jsonc" "Python VS Code tasks template present" warn
   run_check_file "$HOME/.config/mac-dev-setup/vscode/templates/launch/python-vscode-launch.jsonc" "Python VS Code launch template present" warn
   run_check_file "$HOME/.config/mac-dev-setup/vscode/templates/workspace/python-vscode-workspace.code-workspace" "Python VS Code workspace template present" warn
@@ -303,6 +297,18 @@ main() {
   run_check_login_zsh 'xcrun sourcekit-lsp --help >/dev/null 2>&1' "sourcekit-lsp available" warn
   run_check_cmd "swiftlint" "SwiftLint available" warn
   run_check_cmd "swiftformat" "SwiftFormat available" warn
+  run_check_login_zsh 'xcrun --find clang >/dev/null 2>&1' "Apple clang available via xcrun" fail
+  run_check_login_zsh 'xcrun --find clang++ >/dev/null 2>&1' "Apple clang++ available via xcrun" fail
+  run_check_login_zsh 'xcrun --find lldb >/dev/null 2>&1' "lldb available via xcrun" fail
+  run_check_login_zsh 'command -v clangd >/dev/null 2>&1' "clangd available" fail
+  run_check_login_zsh 'command -v clang-format >/dev/null 2>&1' "clang-format available" fail
+  run_check_login_zsh 'command -v clang-tidy >/dev/null 2>&1' "clang-tidy available" fail
+  run_check_login_zsh 'command -v cmake >/dev/null 2>&1' "cmake available for C/C++ workflow" fail
+  run_check_login_zsh 'command -v ninja >/dev/null 2>&1' "ninja available for C/C++ workflow" fail
+  run_check_file "$HOME/.zsh/plugins/c-cpp-llvm-path.zsh" "C/C++ llvm path plugin present" fail
+  run_check_file "$HOME/.config/mac-dev-setup/vscode/extensions/c-cpp-vscode-extensions.txt" "C/C++ VS Code extensions manifest present" warn
+  run_check_file "$HOME/.config/mac-dev-setup/vscode/settings/c-cpp-vscode-settings.jsonc" "C/C++ VS Code settings fragment present" warn
+  run_check_file "$HOME/.config/nvim/lua/mac_dev_setup/plugins/languages_c_cpp.lua" "C/C++ Neovim plugin spec present" warn
 
   # Cloud
   run_check_cmd "aws" "AWS CLI available" warn
@@ -427,6 +433,10 @@ main() {
   # run_check_cmd "phpactor" "Phpactor available" warn
   # run_check_cmd "phpstan" "PHPStan available" warn
   # run_check_cmd "php-cs-fixer" "PHP CS Fixer available" warn
+  # run_check_cmd "cppcheck" "cppcheck available" warn
+  # run_check_cmd "gdb" "gdb available" warn
+  # run_check_cmd "ccache" "ccache available" warn
+  # run_check_cmd "meson" "Meson available" warn
   # run_check_cmd "zig" "Zig available" warn
   # run_check_cmd "zls" "Zig language server available" warn
   # run_check_cmd "jupyter" "Jupyter available" warn

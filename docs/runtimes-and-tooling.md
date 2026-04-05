@@ -8,7 +8,8 @@ This page covers runtimes, build tools, language tooling, file-format tooling, a
 | --- | --- | --- | --- | --- | --- |
 | `runtimes/python/python-runtime.sh` | On | Python runtime via `mise`. | Use `python`, `python3`, and project-local virtual environments or `uv`. | [Python](https://www.python.org/), [mise Python](https://mise.jdx.dev/lang/python.html) | Set `PYTHON_VERSION` if you do not want `latest`. |
 | `runtimes/python/uv.sh` | On | `uv` for Python package, tool, and environment management. | Use `uv init`, `uv sync`, `uv tool install`. | [uv](https://docs.astral.sh/uv/) | None. |
-| `runtimes/python/linters.sh` | On | Python quality and editor stack through `pyright`, `ruff`, `mypy`, `pytest`, and `debugpy`, plus VS Code and Neovim assets. | Use the CLIs directly or rely on the staged editor integration. | [Pyright](https://github.com/microsoft/pyright), [Ruff](https://docs.astral.sh/ruff/), [mypy](https://mypy-lang.org/), [pytest](https://docs.pytest.org/), [debugpy](https://github.com/microsoft/debugpy) | None. |
+| `runtimes/python/linters.sh` | On | Python quality and editor stack through `pyright`, `ruff`, `mypy`, `pytest`, and `debugpy`, plus VS Code and Neovim assets. | Use the CLIs directly or rely on the staged editor integration. `pyright` remains the default fast type-checker option. | [Pyright](https://github.com/microsoft/pyright), [Ruff](https://docs.astral.sh/ruff/), [mypy](https://mypy-lang.org/), [pytest](https://docs.pytest.org/), [debugpy](https://github.com/microsoft/debugpy) | Comment out this line in bootstrap and enable `runtimes/python/ty.sh` if you want `ty` instead. |
+| `runtimes/python/ty.sh` | Optional | Alternative Python quality and editor stack through `ty`, `ruff`, `mypy`, `pytest`, and `debugpy`, plus VS Code and Neovim assets. | Use this instead of `runtimes/python/linters.sh` when you want Astral `ty` in the fast type-checker/editor slot. | [ty](https://docs.astral.sh/ty/), [Ruff](https://docs.astral.sh/ruff/), [mypy](https://mypy-lang.org/) | Install it by uncommenting the bootstrap line and commenting out `runtimes/python/linters.sh`. |
 | `runtimes/node/node-runtime.sh` | On | Node.js via `mise`, plus npm and Corepack. | Use `node`, `npm`, and Corepack-managed package managers. | [Node.js](https://nodejs.org/), [Corepack](https://nodejs.org/api/corepack.html) | Set `NODE_VERSION` if needed. |
 | `runtimes/node/npm-completion.sh` | On | Adds shell completion for npm. | Use tab completion for npm commands and scripts. | [npm CLI](https://docs.npmjs.com/cli/) | None. |
 | `runtimes/node/pnpm.sh` | On | `pnpm` via Corepack. | Use `pnpm install`, `pnpm dev`, and `pnpm dlx`. | [pnpm](https://pnpm.io/) | None. |
@@ -54,9 +55,14 @@ This page covers runtimes, build tools, language tooling, file-format tooling, a
 | `languages/typescript/typescript-tooling.sh` | On | `typescript`, `typescript-language-server`, VS Code tasks/launch config, Neovim LSP. | Use `tsc`, `typescript-language-server`, and editor integration. | [TypeScript](https://www.typescriptlang.org/), [typescript-language-server](https://github.com/typescript-language-server/typescript-language-server) | None. |
 | `languages/sql/sql-tooling.sh` | On | `sqlfluff`, `sql-language-server`, VS Code, Neovim. | Use `sqlfluff lint/fix` and your editor for SQL completion. | [SQLFluff](https://sqlfluff.com/), [sql-language-server](https://github.com/joe-re/sql-language-server) | None. |
 | `languages/protobuf/protobuf-tooling.sh` | On | `protoc`, `buf`, Neovim. | Use `buf lint`, `buf format`, `protoc`. | [Protocol Buffers](https://protobuf.dev/), [Buf](https://buf.build/) | None. |
+| `languages/c-cpp/c-cpp-tooling.sh` | On | Apple `clang`, `clang++`, and `lldb` through Xcode Command Line Tools, plus Homebrew `cmake`, `ninja`, and `llvm` for `clangd`, `clang-format`, `clang-tidy`, VS Code, and Neovim. | Use CMake with `-DCMAKE_EXPORT_COMPILE_COMMANDS=ON`, build with Ninja, and let `clangd` drive editor intelligence. | [Xcode Command Line Tools](https://developer.apple.com/xcode/resources/), [CMake](https://cmake.org/), [Ninja](https://ninja-build.org/), [LLVM](https://llvm.org/) | Homebrew LLVM is added to login-shell PATH so Apple `clang` stays primary while `clangd` and related tools stay available. |
 | `languages/vue/vue-tooling.sh` | Optional | `vue-language-server`, `vue-tsc`, VS Code, Neovim. | Use Volar-based editor support and `vue-tsc`. | [Vue](https://vuejs.org/), [Volar](https://github.com/vuejs/language-tools) | Optional. |
 | `languages/svelte/svelte-tooling.sh` | Optional | Svelte language server, VS Code, Neovim. | Use Svelte editor tooling and project package scripts. | [Svelte](https://svelte.dev/), [Svelte for VS Code](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode) | Optional. |
 | `languages/graphql/graphql-tooling.sh` | Optional | GraphQL language server, VS Code, Neovim. | Use GraphQL editor validation and schema-aware completion. | [GraphQL](https://graphql.org/), [GraphQL LSP](https://the-guild.dev/graphql/eslint/docs/commands/graphql-language-service-cli) | Optional. |
+| `languages/c-cpp/cppcheck.sh` | Optional | Extra static analysis through `cppcheck`. | Run `cppcheck` in projects where you want another static-analysis pass alongside `clang-tidy`. | [Cppcheck](https://cppcheck.sourceforge.io/) | Optional. |
+| `languages/c-cpp/gdb.sh` | Optional | GNU Debugger. | Use it only if you specifically need `gdb` instead of Apple `lldb`. | [GDB](https://www.gnu.org/software/gdb/) | macOS still requires manual codesigning and debugger entitlements before `gdb` works smoothly. |
+| `languages/c-cpp/ccache.sh` | Optional | Compiler output caching through `ccache`. | Use it in larger native builds to reduce rebuild times. | [ccache](https://ccache.dev/) | Optional. |
+| `languages/c-cpp/meson.sh` | Optional | Meson build system. | Use `meson setup` / `meson compile` for Meson-based native projects. | [Meson](https://mesonbuild.com/) | Optional. |
 | `languages/gradle-groovy/gradle-groovy-tooling.sh` | Optional | Groovy language server built from source, Neovim. | Use the managed `groovy-language-server` wrapper in editors. | [Groovy Language Server](https://github.com/GroovyLanguageServer/groovy-language-server) | This upstream project does not publish stable tags/branches, so the repo intentionally treats it as an exception. |
 | `files/formatting/formatting-tooling.sh` | On | Shared `prettier` baseline and editor settings. | Use `prettier` directly or through editor format-on-save. | [Prettier](https://prettier.io/) | None. |
 | `files/html/html-tooling.sh` | On | HTML language server and Neovim support. | Use editor formatting and HTML language features. | [VS Code HTML Language Features](https://github.com/microsoft/vscode-html-languageservice) | None. |
@@ -107,3 +113,32 @@ For many languages, the repo stages three kinds of assets automatically:
 - VS Code reusable task, launch, or workspace templates where they help
 
 That means language modules are not only “install the CLI”; they also make the editor setup consistent with the machine tooling.
+
+## Python Tooling Notes
+
+- `uv` remains the Python package, tool, and environment workflow layer in this repo.
+- `ruff` remains the Python linter and formatter. The managed VS Code Python settings now point formatting and fix-on-save to the Ruff extension to match the installed CLI tooling.
+- `mypy` remains in the baseline stack as a second, deeper static-analysis pass.
+- `pyright` and `ty` are treated as alternatives for the fast type-checking and editor-language-service role.
+- The default bootstrap path keeps `pyright` enabled through `runtimes/python/linters.sh`.
+- To switch to `ty`, comment out `runtimes/python/linters.sh`, uncomment `runtimes/python/ty.sh`, then make the matching swap in the Python section of `scripts/verify.sh`.
+- The repo keeps `pyright` installed through Homebrew because that is the existing module behavior. `ty` is installed with `uv tool install` to stay aligned with the repo's Python-tooling workflow and Astral's recommended global install path.
+
+## C And C++ Workflow Notes
+
+- Xcode Command Line Tools are required because they provide the macOS SDK, system headers, Apple `clang`, Apple `clang++`, and `lldb`.
+- Homebrew `llvm` is still installed because the Apple toolchain does not ship the full editor-oriented LLVM CLI set that modern C/C++ workflows expect, especially `clangd`, `clang-format`, and `clang-tidy`.
+- The repo appends Homebrew LLVM to the login-shell PATH with a managed Zsh plugin. That keeps Apple `clang` first for normal macOS builds while still making `clangd` and the other LLVM tools available.
+- On modern macOS, prefer native `compile_commands.json` generation over `bear`. The repo intentionally omits `bear` because Apple’s built-in toolchain is no longer a reliable target for build interception.
+- For CMake-based projects, generate `compile_commands.json` directly:
+
+```bash
+cmake -S . -B build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+cmake --build build
+```
+
+- `clangd` automatically looks for `compile_commands.json` in common build directories such as `build/`. If your project uses a non-standard build directory, set that in the project-local editor config instead of changing the global baseline.
+- Neovim uses `clangd` as the primary C/C++ LSP and wires in `clang-format` plus `clang-tidy`.
+- VS Code stages the `clangd` extension and CMake Tools. For the cleanest LLVM-style workflow, use `clangd` as the language engine and disable Microsoft C/C++ IntelliSense in workspaces where the two conflict.
+- `clang-format` covers formatting, `clang-tidy` covers semantic linting and refactoring hints, `cppcheck` is an optional extra analysis pass, and `lldb` is the default debugger on macOS.
+- `gdb` stays optional because it adds macOS-specific codesigning friction and is not part of the default happy path.

@@ -16,7 +16,7 @@ The repo is meant to be:
 - macOS defaults for Finder, Dock, input, and screenshots
 - core prerequisites: Xcode Command Line Tools, Homebrew, fonts, Git, `mise`, SSH, and Zsh
 - shell tooling and terminal apps
-- language runtimes and common formatters, linters, LSPs, and editor integrations
+- language runtimes and common formatters, linters, LSPs, and editor integrations, including a macOS C/C++ baseline built on Xcode Command Line Tools plus Homebrew LLVM tooling
 - cloud, container, Kubernetes, and infrastructure tooling
 - host-installed Caddy as an installable module for optional local edge/proxy work
 - VS Code, IntelliJ Toolbox, Cursor, Windsurf, Neovim, and other optional editors
