@@ -95,7 +95,7 @@ This page covers runtimes, build tools, language tooling, file-format tooling, a
 | `specs/rego-opa/rego-opa-tooling.sh` | Optional | `opa`, `regal`, Neovim. | Use `opa fmt`, `opa test`, and `regal`. | [OPA](https://www.openpolicyagent.org/), [Regal](https://github.com/styrainc/regal) | Optional. |
 | `specs/helm/helm-tooling.sh` | Optional | Helm chart authoring support for editors. | Use it when you write Helm charts, not just run Helm CLI commands. | [Helm](https://helm.sh/) | Optional. |
 | `specs/ansible/ansible-tooling.sh` | Optional | `ansible-lint`, `ansible-playbook`, Neovim. | Use it in playbook-driven repos. | [Ansible](https://www.ansible.com/), [ansible-lint](https://ansible.readthedocs.io/projects/lint/) | Optional. |
-| `specs/jsonnet/jsonnet-tooling.sh` | Optional | Jsonnet tooling and Neovim support. | Use `jsonnet` and related tooling in config repos. | [Jsonnet](https://jsonnet.org/) | Optional. |
+| `specs/jsonnet/jsonnet-tooling.sh` | On | Jsonnet CLI, `jsonnet-bundler`, and Neovim support. | Use `jsonnet` for evaluation and formatting, and `jb` for Jsonnet dependency management. | [Jsonnet](https://jsonnet.org/), [jsonnet-bundler](https://github.com/jsonnet-bundler/jsonnet-bundler) | None. |
 | `specs/bicep/bicep-tooling.sh` | Optional | Bicep tooling and Neovim support. | Use it for Azure IaC repos. | [Bicep](https://learn.microsoft.com/azure/azure-resource-manager/bicep/) | Optional. |
 
 ## Notebook Support

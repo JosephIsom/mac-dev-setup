@@ -10,6 +10,7 @@ This page covers shell-facing modules: command-line tools, shell prompts, tmux, 
 | `shell/cli/fzf/fzf.sh` | On | Adds fuzzy finding in shell workflows. | Use `fzf` directly or through tools that integrate with it. | [fzf](https://github.com/junegunn/fzf) | None. |
 | `shell/cli/git-fzf/git-fzf.sh` | On | Adds `forgit`-style fuzzy Git helpers. | Use interactive Git helpers such as add, branch, or log pickers from the shell. | [forgit](https://github.com/wfxr/forgit) | None. |
 | `shell/cli/zoxide/zoxide.sh` | On | Smarter directory jumping. | Use `z <partial-name>` after visiting a few directories. | [zoxide](https://github.com/ajeetdsouza/zoxide) | None. |
+| `shell/cli/atuin/atuin.sh` | On | Installs Atuin CLI, the Atuin Desktop app, a managed zsh hook, and bootstrap notes. | Use `atuin search`, `atuin status`, and the desktop app for shell-history and runbook workflows. | [Atuin](https://atuin.sh/), [Atuin Desktop](https://atuin.sh/) | Optional sync: run `atuin login` or `atuin register` after install. |
 | `shell/cli/eza/eza.sh` | On | Modern `ls` replacement with icons and tree views. | Use the shell aliases `ls`, `ll`, `la`, `lt`. | [eza](https://github.com/eza-community/eza) | None. |
 | `shell/cli/bat/bat.sh` | On | Better `cat` with syntax highlighting and paging. | Run `bat <file>`. | [bat](https://github.com/sharkdp/bat) | None. |
 | `shell/cli/ripgrep/ripgrep.sh` | On | Fast code search. | Run `rg pattern`. | [ripgrep](https://github.com/BurntSushi/ripgrep) | None. |
@@ -28,6 +29,7 @@ This page covers shell-facing modules: command-line tools, shell prompts, tmux, 
 | `shell/cli/watch/watch.sh` | On | Repeat a command on an interval. | Run `watch -n 2 command`. | [watch](https://formulae.brew.sh/formula/watch) | None. |
 | `shell/cli/curl/curl.sh` | On | Homebrew `curl` and PATH management. | Use `curl` for APIs, installers, and downloads. | [curl](https://curl.se/) | None. |
 | `shell/cli/httpie/httpie.sh` | On | Friendly HTTP CLI client. | Use `http` for REST and API debugging. | [HTTPie CLI](https://httpie.io/cli) | None. |
+| `shell/cli/pre-commit/pre-commit.sh` | On | Installs `pre-commit` for commit-time hook automation using the repo's Python tooling flow. | Use `pre-commit install`, `pre-commit run --all-files`, and repo-local hook configs. | [pre-commit](https://pre-commit.com/) | Requires `uv`, which is already part of the default Python baseline in this repo. |
 | `shell/cli/make/make.sh` | On | GNU Make on macOS with path helpers. | Use `make` or `gmake` depending the project. | [GNU Make](https://www.gnu.org/software/make/) | None. |
 | `shell/cli/cmake/cmake.sh` | On | C/C++ and cross-platform build configuration. | Use `cmake` and `ctest` in native projects. | [CMake](https://cmake.org/) | None. |
 | `shell/cli/premake/premake.sh` | On | Alternative project generator/build scripting tool. | Use `premake` / `premake5` if your project relies on it. | [Premake](https://premake.github.io/) | None. |

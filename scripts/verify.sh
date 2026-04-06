@@ -234,6 +234,9 @@ main() {
   run_check_dir "$HOME/.zsh/vendor/forgit" "forgit vendor checkout present" fail
   run_check_login_zsh 'typeset -f forgit::add >/dev/null 2>&1' "git-fzf integration available" warn
   run_check_cmd "zoxide" "zoxide available" warn
+  run_check_cmd "atuin" "Atuin CLI available" warn
+  run_check_file "$HOME/.zsh/plugins/atuin-plugin.zsh" "Atuin zsh plugin present" fail
+  run_check_login_zsh 'atuin init zsh >/dev/null 2>&1' "Atuin shell integration available" warn
   run_check_cmd "eza" "eza available" warn
   run_check_cmd "bat" "bat available" warn
   run_check_cmd "rg" "ripgrep available" warn
@@ -241,11 +244,14 @@ main() {
   run_check_cmd "jq" "jq available" warn
   run_check_cmd "yq" "yq available" warn
   run_check_cmd "direnv" "direnv available" warn
+  run_check_file "$HOME/.zsh/plugins/direnv-plugin.zsh" "direnv zsh plugin present" fail
+  run_check_login_zsh 'direnv hook zsh >/dev/null 2>&1' "direnv shell integration available" warn
   run_check_cmd "tree" "tree available" warn
   run_check_cmd "wget" "wget available" warn
   run_check_cmd "tldr" "tldr available" warn
   run_check_cmd "btm" "bottom available" warn
   run_check_file "$HOME/.config/bottom/bottom.toml" "bottom config present" fail
+  run_check_cmd "pre-commit" "pre-commit available" warn
   run_check_cmd "lazygit" "lazygit available" warn
   run_check_cmd "lazydocker" "lazydocker available" warn
   run_check_cmd "jwt" "jwt-cli available" warn
@@ -396,6 +402,9 @@ main() {
   run_check_cmd "redocly" "OpenAPI CLI available" warn
   run_check_cmd "asyncapi" "AsyncAPI CLI available" warn
   run_check_cmd "ajv" "JSON Schema CLI available" warn
+  run_check_cmd "jsonnet" "Jsonnet available" warn
+  run_check_cmd "jb" "jsonnet-bundler available" warn
+  run_check_file "$HOME/.config/nvim/lua/mac_dev_setup/plugins/specs_jsonnet.lua" "Jsonnet Neovim plugin spec present" warn
   run_check_cmd "terraform" "Terraform available" warn
   run_check_file "$HOME/.zsh/plugins/terraform-completion.zsh" "Terraform zsh completion plugin present" fail
   run_check_cmd "tflint" "tflint available" warn
@@ -453,6 +462,7 @@ main() {
   # run_check_dir "/Applications/Google Chrome.app" "Google Chrome app present" warn
   # run_check_dir "/Applications/Firefox.app" "Firefox app present" warn
   # run_check_dir "/Applications/DuckDuckGo.app" "DuckDuckGo browser app present" warn
+  run_check_dir "/Applications/Atuin.app" "Atuin Desktop app present" warn
   run_check_dir "/Applications/GitHub Desktop.app" "GitHub Desktop app present" warn
   # run_check_dir "/Applications/Dropbox.app" "Dropbox app present" warn
   # run_check_dir "/Applications/Spotify.app" "Spotify app present" warn
@@ -519,8 +529,8 @@ main() {
   # run_check_dir "/Applications/Kiro.app" "Kiro IDE app present" warn
   # run_check_cmd "kiro-cli" "Kiro CLI available" warn
   # run_check_cmd "kiro" "Kiro command router available" warn
-  # run_check_dir "/Applications/Android Studio.app" "Android Studio app present" warn
-  # run_check_file "$HOME/.config/android-studio/bootstrap-notes.txt" "Android Studio bootstrap notes present" warn
+  run_check_dir "/Applications/Android Studio.app" "Android Studio app present" warn
+  run_check_file "$HOME/.config/android-studio/bootstrap-notes.txt" "Android Studio bootstrap notes present" warn
   # run_check_dir "/Applications/iTerm.app" "iTerm2 app present" warn
   # run_check_file "$HOME/Library/Application Support/iTerm2/DynamicProfiles/00-mac-dev-setup.json" "Managed iTerm2 dynamic profile present" fail
   run_check_dir "/Applications/Ghostty.app" "Ghostty app present" warn

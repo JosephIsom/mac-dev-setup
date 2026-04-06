@@ -33,8 +33,9 @@ main() {
   # Configure source control identity and authentication
   !Review:  run_script_path "$MODULES_DIR/accounts/github/github-ssh.sh"
 
+
   # --------------------------------------------------------------------------------------------------
-  # Shell and terminal workflow
+  # Shell and command-line workflow
   # --------------------------------------------------------------------------------------------------
 
   # Set up terminal session management
@@ -46,6 +47,7 @@ main() {
   run_script_path "$MODULES_DIR/shell/cli/ripgrep/ripgrep.sh"
   run_script_path "$MODULES_DIR/shell/cli/fd/fd.sh"
   run_script_path "$MODULES_DIR/shell/cli/zoxide/zoxide.sh"
+  run_script_path "$MODULES_DIR/shell/cli/atuin/atuin.sh"
   run_script_path "$MODULES_DIR/shell/cli/tree/tree.sh"
   run_script_path "$MODULES_DIR/shell/cli/tldr/tldr.sh" # Note that tldr is deprecated and tlrc is actually installed by this script.
 
@@ -54,19 +56,17 @@ main() {
   run_script_path "$MODULES_DIR/shell/cli/bat/bat.sh"
   run_script_path "$MODULES_DIR/shell/cli/watch/watch.sh"
 
-  # Set up network and request utilities
+  # Set up network and transfer utilities
   run_script_path "$MODULES_DIR/shell/cli/curl/curl.sh"
   # run_script_path "$MODULES_DIR/shell/cli/wget/wget.sh"
-  # run_script_path "$MODULES_DIR/shell/cli/httpie/httpie.sh"
 
   # Set up environment and shell helper tools
   # run_script_path "$MODULES_DIR/shell/cli/direnv/direnv.sh"
   # run_script_path "$MODULES_DIR/shell/cli/bottom/bottom.sh"
 
-  # Set up local build utilities
-  # run_script_path "$MODULES_DIR/shell/cli/make/make.sh"
-  # run_script_path "$MODULES_DIR/shell/cli/cmake/cmake.sh"
-  # run_script_path "$MODULES_DIR/shell/cli/premake/premake.sh"
+  # Set up shell script authoring tools
+  run_script_path "$MODULES_DIR/files/shell-scripts/shell-scripts-tooling.sh"
+
 
   # --------------------------------------------------------------------------------------------------
   # Prompt and terminal appearance workflow
@@ -78,14 +78,16 @@ main() {
   # run_script_path "$MODULES_DIR/shell/prompt/starship/starship.sh"
   # run_script_path "$MODULES_DIR/shell/prompt/oh-my-posh/oh-my-posh.sh"
 
+
   # --------------------------------------------------------------------------------------------------
   # Git and GitHub workflow
   # --------------------------------------------------------------------------------------------------
 
   # Set up GitHub command-line access
-  !Review:  run_script_path "$MODULES_DIR/shell/cli/github/github-cli.sh"
+  Review:  run_script_path "$MODULES_DIR/shell/cli/github/github-cli.sh"
 
   # Set up Git-focused terminal tools
+  run_script_path "$MODULES_DIR/shell/cli/pre-commit/pre-commit.sh"
   run_script_path "$MODULES_DIR/shell/cli/lazygit/lazygit.sh"
   run_script_path "$MODULES_DIR/shell/cli/delta/delta.sh"
 
@@ -94,6 +96,8 @@ main() {
 
   # Set up repository automation and CI authoring tools
   run_script_path "$MODULES_DIR/specs/github-actions/github-actions-tooling.sh"
+  run_script_path "$MODULES_DIR/specs/jsonnet/jsonnet-tooling.sh"
+
 
   # --------------------------------------------------------------------------------------------------
   # Programming language workflow
@@ -170,11 +174,26 @@ main() {
   # run_script_path "$MODULES_DIR/runtimes/rust/rust-runtime.sh"
   # run_script_path "$MODULES_DIR/runtimes/rust/rust-tooling.sh"
 
+
   # --------------------------------------------------------------------------------------------------
-  # API and structured data workflow
+  # Build and project automation workflow
   # --------------------------------------------------------------------------------------------------
 
-  # Set up API query and contract tooling
+  # Set up general build and task automation tools
+  # run_script_path "$MODULES_DIR/shell/cli/make/make.sh"
+  run_script_path "$MODULES_DIR/files/taskfile/taskfile-tooling.sh"
+  run_script_path "$MODULES_DIR/files/justfile/justfile-tooling.sh"
+
+  # Set up native project and build generation tools
+  # run_script_path "$MODULES_DIR/shell/cli/cmake/cmake.sh"
+  # run_script_path "$MODULES_DIR/shell/cli/premake/premake.sh"
+
+
+  # --------------------------------------------------------------------------------------------------
+  # API contract and structured data workflow
+  # --------------------------------------------------------------------------------------------------
+
+  # Set up API contract and schema tooling
   run_script_path "$MODULES_DIR/languages/graphql/graphql-tooling.sh"
   run_script_path "$MODULES_DIR/languages/protobuf/protobuf-tooling.sh"
   run_script_path "$MODULES_DIR/specs/openapi/openapi-tooling.sh"
@@ -186,12 +205,14 @@ main() {
   run_script_path "$MODULES_DIR/shell/cli/jq/jq.sh"
   run_script_path "$MODULES_DIR/shell/cli/yq/yq.sh"
 
-  # Set up API client tools
+  # Set up API request and client tools
+  # run_script_path "$MODULES_DIR/shell/cli/httpie/httpie.sh"
   # run_script_path "$MODULES_DIR/desktop/rest-clients/bruno/bruno.sh"
   # run_script_path "$MODULES_DIR/desktop/rest-clients/hoppscotch/hoppscotch.sh"
   run_script_path "$MODULES_DIR/desktop/rest-clients/httpie-desktop/httpie-desktop.sh"
   run_script_path "$MODULES_DIR/desktop/rest-clients/insomnia/insomnia.sh"
   # run_script_path "$MODULES_DIR/desktop/rest-clients/postman/postman.sh"
+
 
   # --------------------------------------------------------------------------------------------------
   # Container and local platform workflow
@@ -206,9 +227,10 @@ main() {
   # run_script_path "$MODULES_DIR/containers/colima/colima-start.sh"
   # run_script_path "$MODULES_DIR/containers/docker/docker-verify.sh"
 
-  # Set up container definition and orchestration authoring tools
+  # Set up container definition and platform authoring tools
   # run_script_path "$MODULES_DIR/specs/dockerfile/dockerfile-tooling.sh"
   # run_script_path "$MODULES_DIR/specs/compose/compose-tooling.sh"
+  run_script_path "$MODULES_DIR/specs/helm/helm-tooling.sh"
   # run_script_path "$MODULES_DIR/containers/kind/kind.sh"
   # run_script_path "$MODULES_DIR/containers/kubectl/kubectl.sh"
   # run_script_path "$MODULES_DIR/containers/helm/helm.sh"
@@ -222,14 +244,13 @@ main() {
   # Set up container-focused terminal tools
   run_script_path "$MODULES_DIR/shell/cli/lazydocker/lazydocker.sh"
 
+
   # --------------------------------------------------------------------------------------------------
   # Infrastructure and delivery workflow
   # --------------------------------------------------------------------------------------------------
 
   # Set up infrastructure definition tooling
   run_script_path "$MODULES_DIR/specs/terraform-hcl/terraform-hcl-tooling.sh"
-  run_script_path "$MODULES_DIR/specs/helm/helm-tooling.sh"
-  # run_script_path "$MODULES_DIR/specs/jsonnet/jsonnet-tooling.sh"
 
   # Set up cloud platform command-line tools
   run_script_path "$MODULES_DIR/cloud/aws/aws.sh"
@@ -239,6 +260,7 @@ main() {
   # run_script_path "$MODULES_DIR/cloud/cloudflare/cloudflare.sh"
   # run_script_path "$MODULES_DIR/cloud/flyio/flyio.sh"
 
+
   # --------------------------------------------------------------------------------------------------
   # Frontend and web application workflow
   # --------------------------------------------------------------------------------------------------
@@ -247,28 +269,27 @@ main() {
   run_script_path "$MODULES_DIR/languages/vue/vue-tooling.sh"
   run_script_path "$MODULES_DIR/languages/svelte/svelte-tooling.sh"
 
-  # --------------------------------------------------------------------------------------------------
-  # General file and automation workflow
-  # --------------------------------------------------------------------------------------------------
-
-  # Set up markup, config, and documentation tooling
-  run_script_path "$MODULES_DIR/files/formatting/formatting-tooling.sh"
+  # Set up web markup and styling tools
   run_script_path "$MODULES_DIR/files/html/html-tooling.sh"
   run_script_path "$MODULES_DIR/files/css/css-tooling.sh"
+
+
+  # --------------------------------------------------------------------------------------------------
+  # Configuration, documentation, and structured file workflow
+  # --------------------------------------------------------------------------------------------------
+
+  # Set up formatting, markup, and structured file tools
+  run_script_path "$MODULES_DIR/files/formatting/formatting-tooling.sh"
   run_script_path "$MODULES_DIR/files/json/json-tooling.sh"
   run_script_path "$MODULES_DIR/files/markdown/markdown-tooling.sh"
   run_script_path "$MODULES_DIR/files/yaml/yaml-tooling.sh"
   run_script_path "$MODULES_DIR/files/toml/toml-tooling.sh"
-  run_script_path "$MODULES_DIR/files/shell-scripts/shell-scripts-tooling.sh"
   run_script_path "$MODULES_DIR/files/ini-editorconfig/ini-editorconfig-tooling.sh"
   run_script_path "$MODULES_DIR/files/dotenv/dotenv-tooling.sh"
 
-  # Set up task runner tooling
-  run_script_path "$MODULES_DIR/files/taskfile/taskfile-tooling.sh"
-  run_script_path "$MODULES_DIR/files/justfile/justfile-tooling.sh"
-
   # Set up diagram authoring tooling
   run_script_path "$MODULES_DIR/files/mermaid/mermaid-tooling.sh"
+
 
   # --------------------------------------------------------------------------------------------------
   # Development environment workflow
@@ -288,21 +309,21 @@ main() {
   run_script_path "$MODULES_DIR/editors/intellij/ai.sh"
   run_script_path "$MODULES_DIR/editors/intellij/intellij-cli.sh"
 
-  # Set up other editors
-  # run_script_path "$MODULES_DIR/editors/windsurf/windsurf-app.sh"
-  # run_script_path "$MODULES_DIR/editors/android-studio/android-studio-app.sh"
+  # Set up other editors and IDEs
   # run_script_path "$MODULES_DIR/editors/helix/helix-cli.sh"
   run_script_path "$MODULES_DIR/editors/neovim/neovim-cli.sh"
   run_script_path "$MODULES_DIR/editors/sublime-text/sublime-text-app.sh"
+  run_script_path "$MODULES_DIR/editors/android-studio/android-studio-app.sh"
   # run_script_path "$MODULES_DIR/editors/zed/zed-app.sh"
   # run_script_path "$MODULES_DIR/editors/kiro/kiro-app.sh"
   # run_script_path "$MODULES_DIR/editors/kiro/kiro-cli.sh"
+  # run_script_path "$MODULES_DIR/editors/windsurf/windsurf-app.sh"
 
   # --------------------------------------------------------------------------------------------------
   # Database workflow
   # --------------------------------------------------------------------------------------------------
 
-  # Set up SQL tooling
+  # Set up SQL authoring tools
   run_script_path "$MODULES_DIR/languages/sql/sql-tooling.sh"
 
   # Set up database client applications
@@ -315,14 +336,16 @@ main() {
   run_script_path "$MODULES_DIR/desktop/sql-clients/pgadmin4/pgadmin4.sh"
   run_script_path "$MODULES_DIR/desktop/sql-clients/tablepro/tablepro.sh"
 
+
   # --------------------------------------------------------------------------------------------------
-  # Browser and web access workflow
+  # Web access and browser workflow
   # --------------------------------------------------------------------------------------------------
 
   # Set up web browsers
   run_script_path "$MODULES_DIR/desktop/browsers/google-chrome/google-chrome.sh"
   # run_script_path "$MODULES_DIR/desktop/browsers/firefox/firefox.sh"
   run_script_path "$MODULES_DIR/desktop/browsers/duckduckgo/duckduckgo.sh"
+
 
   # --------------------------------------------------------------------------------------------------
   # Secrets and secure access workflow
@@ -334,6 +357,7 @@ main() {
   # run_script_path "$MODULES_DIR/secrets/bitwarden/bitwarden-app.sh"
   # run_script_path "$MODULES_DIR/secrets/bitwarden/bitwarden-cli.sh"
 
+
   # --------------------------------------------------------------------------------------------------
   # Remote connectivity workflow
   # --------------------------------------------------------------------------------------------------
@@ -342,8 +366,9 @@ main() {
   # run_script_path "$MODULES_DIR/remote-access/tailscale/tailscale.sh"
   # run_script_path "$MODULES_DIR/remote-access/ngrok/ngrok.sh"
 
+
   # --------------------------------------------------------------------------------------------------
-  # Terminal application workflow
+  # Terminal emulator workflow
   # --------------------------------------------------------------------------------------------------
 
   # Set up terminal applications
@@ -351,6 +376,7 @@ main() {
   run_script_path "$MODULES_DIR/terminals/ghostty/ghostty-app.sh"
   # run_script_path "$MODULES_DIR/terminals/wezterm/wezterm-app.sh"
   # run_script_path "$MODULES_DIR/terminals/warp/warp-app.sh"
+
 
   # --------------------------------------------------------------------------------------------------
   # AI assistant workflow
@@ -368,13 +394,16 @@ main() {
   # run_script_path "$MODULES_DIR/ai/ollama/ollama-cli.sh"
   # run_script_path "$MODULES_DIR/ai/lm-studio/lm-studio-app.sh"
 
+
   # ------------------------------------------------------------------------------------------------
   # Finalize VS Code after all enabled modules have staged their assets.
   # ------------------------------------------------------------------------------------------------
   run_script_path "$MODULES_DIR/editors/vscode/extensions.sh"
   run_script_path "$MODULES_DIR/editors/vscode/settings.sh"
 
-
+  # ------------------------------------------------------------------------------------------------
+  # Generate followup notes for next steps and configurations based on the modules that were run.
+  # ------------------------------------------------------------------------------------------------
   run_script_path "$MODULES_DIR/theme/theme-followup.sh"
 
   log_success "Bootstrap phase completed."
