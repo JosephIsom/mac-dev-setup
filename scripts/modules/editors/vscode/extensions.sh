@@ -5,8 +5,8 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_VSCODE_CORE_EXTENSIONS="$REPO_ROOT/scripts/modules/editors/vscode/vscode-core-vscode-extensions.txt"
-TARGET_VSCODE_CORE_EXTENSIONS="$HOME/.config/mac-dev-setup/vscode/extensions/vscode-core-vscode-extensions.txt"
-VSCODE_EXTENSIONS_DIR="$HOME/.config/mac-dev-setup/vscode/extensions"
+TARGET_VSCODE_CORE_EXTENSIONS="$HOME/.config/vscode/extensions/vscode-core-vscode-extensions.txt"
+VSCODE_EXTENSIONS_DIR="$HOME/.config/vscode/extensions"
 
 install_vscode_core_extensions_manifest() {
   install_managed_vscode_extensions_manifest "$REPO_VSCODE_CORE_EXTENSIONS" "$(basename "$TARGET_VSCODE_CORE_EXTENSIONS")" >/dev/null

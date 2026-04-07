@@ -5,7 +5,7 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_OPENAPI_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/specs/openapi/openapi-neovim.lua"
-TARGET_OPENAPI_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/specs_openapi.lua"
+TARGET_OPENAPI_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/specs_openapi.lua"
 
 install_openapi_neovim_plugin() {
   install_managed_nvim_plugin "$REPO_OPENAPI_NVIM_PLUGIN" "$(basename "$TARGET_OPENAPI_NVIM_PLUGIN")" >/dev/null

@@ -20,7 +20,7 @@ FONT_CASKS=(
   font-roboto-mono-nerd-font
 )
 USER_FONTS_DIR="$HOME/Library/Fonts"
-FONT_BACKUP_DIR="$HOME/.config/mac-dev-setup/backups/fonts"
+FONT_BACKUP_DIR="$HOME/.config/fonts/backups"
 
 font_globs_for_cask() {
   local cask="$1"

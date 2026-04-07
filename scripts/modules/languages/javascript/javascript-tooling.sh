@@ -5,13 +5,13 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_JAVASCRIPT_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/languages/javascript/javascript-neovim.lua"
-TARGET_JAVASCRIPT_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/languages_javascript.lua"
+TARGET_JAVASCRIPT_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/languages_javascript.lua"
 REPO_JAVASCRIPT_VSCODE_EXTENSIONS="$REPO_ROOT/scripts/modules/languages/javascript/javascript-vscode-extensions.txt"
-TARGET_JAVASCRIPT_VSCODE_EXTENSIONS="$HOME/.config/mac-dev-setup/vscode/extensions/javascript-vscode-extensions.txt"
+TARGET_JAVASCRIPT_VSCODE_EXTENSIONS="$HOME/.config/vscode/extensions/javascript-vscode-extensions.txt"
 REPO_JAVASCRIPT_VSCODE_SETTINGS="$REPO_ROOT/scripts/modules/languages/javascript/javascript-vscode-settings.jsonc"
-TARGET_JAVASCRIPT_VSCODE_SETTINGS="$HOME/.config/mac-dev-setup/vscode/settings/javascript-vscode-settings.jsonc"
+TARGET_JAVASCRIPT_VSCODE_SETTINGS="$HOME/.config/vscode/settings/javascript-vscode-settings.jsonc"
 REPO_JAVASCRIPT_VSCODE_TASKS_TEMPLATE="$REPO_ROOT/scripts/modules/languages/javascript/javascript-vscode-tasks.jsonc"
-TARGET_JAVASCRIPT_VSCODE_TASKS_TEMPLATE="$HOME/.config/mac-dev-setup/vscode/templates/tasks/javascript-vscode-tasks.jsonc"
+TARGET_JAVASCRIPT_VSCODE_TASKS_TEMPLATE="$HOME/.config/vscode/templates/tasks/javascript-vscode-tasks.jsonc"
 
 install_javascript_neovim_plugin() {
   install_managed_nvim_plugin "$REPO_JAVASCRIPT_NVIM_PLUGIN" "$(basename "$TARGET_JAVASCRIPT_NVIM_PLUGIN")" >/dev/null

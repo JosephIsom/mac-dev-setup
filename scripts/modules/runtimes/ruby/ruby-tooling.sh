@@ -5,11 +5,11 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_RUBY_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/runtimes/ruby/ruby-neovim.lua"
-TARGET_RUBY_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/runtimes_ruby.lua"
+TARGET_RUBY_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/runtimes_ruby.lua"
 REPO_RUBY_VSCODE_EXTENSIONS="$REPO_ROOT/scripts/modules/runtimes/ruby/ruby-vscode-extensions.txt"
-TARGET_RUBY_VSCODE_EXTENSIONS="$HOME/.config/mac-dev-setup/vscode/extensions/ruby-vscode-extensions.txt"
+TARGET_RUBY_VSCODE_EXTENSIONS="$HOME/.config/vscode/extensions/ruby-vscode-extensions.txt"
 REPO_RUBY_VSCODE_SETTINGS="$REPO_ROOT/scripts/modules/runtimes/ruby/ruby-vscode-settings.jsonc"
-TARGET_RUBY_VSCODE_SETTINGS="$HOME/.config/mac-dev-setup/vscode/settings/ruby-vscode-settings.jsonc"
+TARGET_RUBY_VSCODE_SETTINGS="$HOME/.config/vscode/settings/ruby-vscode-settings.jsonc"
 
 install_ruby_neovim_plugin() {
   install_managed_nvim_plugin "$REPO_RUBY_NVIM_PLUGIN" "$(basename "$TARGET_RUBY_NVIM_PLUGIN")" >/dev/null

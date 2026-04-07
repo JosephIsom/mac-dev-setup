@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 # shellcheck disable=SC2154
-# Core shell functions (mac-dev-setup)
+# Core shell functions
 
 # Create a directory and immediately enter it.
 mkcd() {

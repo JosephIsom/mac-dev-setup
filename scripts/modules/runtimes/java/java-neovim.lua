@@ -14,7 +14,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
-      return require("mac_dev_setup.config.tooling").extend_servers(opts, {
+      return require("user.config.tooling").extend_servers(opts, {
         jdtls = {
           cmd = { "jdtls" },
         },
@@ -24,7 +24,7 @@ return {
   {
     "stevearc/conform.nvim",
     opts = function(_, opts)
-      return require("mac_dev_setup.config.tooling").extend_formatters(opts, {
+      return require("user.config.tooling").extend_formatters(opts, {
         java = { "google-java-format" },
       })
     end,

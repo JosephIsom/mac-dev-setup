@@ -5,7 +5,7 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_JSONNET_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/specs/jsonnet/jsonnet-neovim.lua"
-TARGET_JSONNET_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/specs_jsonnet.lua"
+TARGET_JSONNET_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/specs_jsonnet.lua"
 
 install_jsonnet_neovim_plugin() {
   install_managed_nvim_plugin "$REPO_JSONNET_NVIM_PLUGIN" "$(basename "$TARGET_JSONNET_NVIM_PLUGIN")" >/dev/null

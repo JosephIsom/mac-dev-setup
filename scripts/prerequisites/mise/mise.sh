@@ -7,7 +7,7 @@ source "$LIB_DIR/common.sh"
 REPO_MISE_CONFIG="$REPO_ROOT/scripts/prerequisites/mise/config.toml"
 MISE_CONFIG_DIR="$HOME/.config/mise"
 MISE_GLOBAL_CONFIG="$MISE_CONFIG_DIR/config.toml"
-MISE_GLOBAL_CONFIG_BACKUP="$MISE_CONFIG_DIR/config.toml.pre-mac-dev-setup.bak"
+MISE_GLOBAL_CONFIG_BACKUP="$MISE_CONFIG_DIR/config.toml.pre-bootstrap.bak"
 
 backup_existing_mise_config() {
   [[ -f "$MISE_GLOBAL_CONFIG" ]] || return 0

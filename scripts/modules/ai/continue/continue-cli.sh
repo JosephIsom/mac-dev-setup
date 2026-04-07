@@ -5,9 +5,9 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_CONTINUE_VSCODE_EXTENSIONS="$REPO_ROOT/scripts/modules/ai/continue/continue-vscode-extensions.txt"
-TARGET_CONTINUE_VSCODE_EXTENSIONS="$HOME/.config/mac-dev-setup/vscode/extensions/continue-vscode-extensions.txt"
+TARGET_CONTINUE_VSCODE_EXTENSIONS="$HOME/.config/vscode/extensions/continue-vscode-extensions.txt"
 REPO_CONTINUE_VSCODE_SETTINGS="$REPO_ROOT/scripts/modules/ai/continue/continue-vscode-settings.jsonc"
-TARGET_CONTINUE_VSCODE_SETTINGS="$HOME/.config/mac-dev-setup/vscode/settings/continue-vscode-settings.jsonc"
+TARGET_CONTINUE_VSCODE_SETTINGS="$HOME/.config/vscode/settings/continue-vscode-settings.jsonc"
 
 install_continue_vscode_extensions() {
   install_managed_vscode_extensions_manifest "$REPO_CONTINUE_VSCODE_EXTENSIONS" "$(basename "$TARGET_CONTINUE_VSCODE_EXTENSIONS")" >/dev/null

@@ -1,5 +1,5 @@
 # shellcheck shell=bash
-# Fly.io CLI integration (mac-dev-setup)
+# Fly.io CLI integration
 
 if ! command -v fly >/dev/null 2>&1 && command -v flyctl >/dev/null 2>&1; then
   alias fly=flyctl

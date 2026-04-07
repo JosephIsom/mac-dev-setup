@@ -2,7 +2,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
-      return require("mac_dev_setup.config.tooling").extend_servers(opts, {
+      return require("user.config.tooling").extend_servers(opts, {
         dockerls = {
           cmd = { "docker-langserver", "--stdio" },
         },
@@ -12,7 +12,7 @@ return {
   {
     "mfussenegger/nvim-lint",
     opts = function(_, opts)
-      return require("mac_dev_setup.config.tooling").extend_linters(opts, {
+      return require("user.config.tooling").extend_linters(opts, {
         dockerfile = { "hadolint" },
       })
     end,

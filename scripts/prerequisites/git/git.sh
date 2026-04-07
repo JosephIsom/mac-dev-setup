@@ -8,7 +8,7 @@ REPO_GITIGNORE="$REPO_ROOT/scripts/prerequisites/git/ignore"
 REPO_GIT_ZSH_PLUGIN="$REPO_ROOT/scripts/prerequisites/git/git-aliases.zsh"
 TARGET_GIT_CONFIG_DIR="$HOME/.config/git"
 GITIGNORE_FILE="$TARGET_GIT_CONFIG_DIR/ignore"
-GITIGNORE_BACKUP_FILE="$GITIGNORE_FILE.pre-mac-dev-setup.bak"
+GITIGNORE_BACKUP_FILE="$GITIGNORE_FILE.pre-bootstrap.bak"
 TARGET_GIT_ZSH_PLUGIN="$HOME/.zsh/plugins/git-aliases.zsh"
 
 copy_gitignore() {
@@ -16,7 +16,7 @@ copy_gitignore() {
 
   mkdir -p "$TARGET_GIT_CONFIG_DIR"
 
-  if [[ -f "$GITIGNORE_FILE" ]] && ! grep -Fq "mac-dev-setup managed global gitignore" "$GITIGNORE_FILE"; then
+  if [[ -f "$GITIGNORE_FILE" ]] && ! grep -Fq "managed global gitignore" "$GITIGNORE_FILE"; then
     if [[ ! -f "$GITIGNORE_BACKUP_FILE" ]]; then
       cp "$GITIGNORE_FILE" "$GITIGNORE_BACKUP_FILE"
       log_warn "Backed up existing unmanaged global gitignore to $GITIGNORE_BACKUP_FILE"

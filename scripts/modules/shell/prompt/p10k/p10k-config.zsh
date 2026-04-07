@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 # shellcheck disable=SC2034
-# mac-dev-setup managed Powerlevel10k config
+# managed Powerlevel10k config
 typeset -g POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 typeset -g POWERLEVEL9K_MODE=nerdfont-complete
 typeset -g POWERLEVEL9K_PROMPT_ADD_NEWLINE=true

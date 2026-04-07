@@ -6,19 +6,19 @@ source "$LIB_DIR/common.sh"
 
 REPO_NVIM_ASSETS_DIR="$REPO_ROOT/scripts/modules/editors/neovim/assets"
 REPO_NVIM_INIT="$REPO_NVIM_ASSETS_DIR/init.lua"
-REPO_NVIM_LUA_DIR="$REPO_NVIM_ASSETS_DIR/lua/mac_dev_setup"
+REPO_NVIM_LUA_DIR="$REPO_NVIM_ASSETS_DIR/lua/user"
 
 TARGET_NVIM_DIR="$HOME/.config/nvim"
 TARGET_NVIM_INIT="$TARGET_NVIM_DIR/init.lua"
-TARGET_NVIM_LUA_DIR="$TARGET_NVIM_DIR/lua/mac_dev_setup"
+TARGET_NVIM_LUA_DIR="$TARGET_NVIM_DIR/lua/user"
 TARGET_NVIM_LOCAL_FILE="$TARGET_NVIM_LUA_DIR/local.lua"
 TARGET_NVIM_PLUGIN_DIR="$TARGET_NVIM_LUA_DIR/plugins"
 
 LAZY_DIR="$HOME/.local/share/nvim/lazy/lazy.nvim"
-MANAGED_MARKER="mac-dev-setup managed Neovim baseline"
+MANAGED_MARKER="managed Neovim baseline"
 
 backup_if_unmanaged() {
-  local backup_dir="$TARGET_NVIM_DIR.pre-mac-dev-setup.bak"
+  local backup_dir="$TARGET_NVIM_DIR.pre-bootstrap.bak"
 
   [[ -f "$TARGET_NVIM_INIT" ]] || return 0
   grep -Fq "$MANAGED_MARKER" "$TARGET_NVIM_INIT" && return 0

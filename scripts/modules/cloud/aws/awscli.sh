@@ -7,7 +7,7 @@ source "$LIB_DIR/common.sh"
 REPO_AWS_ZSH_PLUGIN="$REPO_ROOT/scripts/modules/cloud/aws/aws-completion.zsh"
 TARGET_AWS_ZSH_PLUGIN="$HOME/.zsh/plugins/aws-completion.zsh"
 REPO_AWS_VSCODE_EXTENSIONS="$REPO_ROOT/scripts/modules/cloud/aws/aws-vscode-extensions.txt"
-TARGET_AWS_VSCODE_EXTENSIONS="$HOME/.config/mac-dev-setup/vscode/extensions/aws-vscode-extensions.txt"
+TARGET_AWS_VSCODE_EXTENSIONS="$HOME/.config/vscode/extensions/aws-vscode-extensions.txt"
 
 install_aws_zsh_plugin() {
   install_managed_zsh_plugin "$REPO_AWS_ZSH_PLUGIN" "$(basename "$TARGET_AWS_ZSH_PLUGIN")" >/dev/null

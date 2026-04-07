@@ -7,12 +7,12 @@ source "$LIB_DIR/common.sh"
 REPO_STARSHIP_PLUGIN="$REPO_ROOT/scripts/modules/shell/prompt/starship/starship-plugin.zsh"
 REPO_STARSHIP_CONFIG="$REPO_ROOT/scripts/modules/shell/prompt/starship/starship.toml"
 TARGET_PROMPT_PLUGIN="$HOME/.zsh/plugins/50-prompt.zsh"
-TARGET_PROMPT_PLUGIN_BACKUP="$TARGET_PROMPT_PLUGIN.pre-mac-dev-setup.bak"
+TARGET_PROMPT_PLUGIN_BACKUP="$TARGET_PROMPT_PLUGIN.pre-bootstrap.bak"
 TARGET_STARSHIP_CONFIG="$HOME/.config/starship.toml"
 
 backup_unmanaged_prompt_plugin() {
   [[ -f "$TARGET_PROMPT_PLUGIN" ]] || return 0
-  grep -Fq "mac-dev-setup managed prompt loader" "$TARGET_PROMPT_PLUGIN" && return 0
+  grep -Fq "managed prompt loader" "$TARGET_PROMPT_PLUGIN" && return 0
 
   if [[ -f "$TARGET_PROMPT_PLUGIN_BACKUP" ]]; then
     log_warn "Overwriting $TARGET_PROMPT_PLUGIN using existing backup at $TARGET_PROMPT_PLUGIN_BACKUP"

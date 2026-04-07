@@ -28,7 +28,7 @@ return {
       })
     end,
     opts = function(_, opts)
-      return require("mac_dev_setup.config.tooling").extend_servers(opts, {
+      return require("user.config.tooling").extend_servers(opts, {
         jsonls = {
           filetypes = { "json", "jsonc", "json.asyncapi" },
         },
@@ -41,7 +41,7 @@ return {
   {
     "stevearc/conform.nvim",
     opts = function(_, opts)
-      return require("mac_dev_setup.config.tooling").extend_formatters(opts, {
+      return require("user.config.tooling").extend_formatters(opts, {
         ["json.asyncapi"] = { "prettier" },
         ["yaml.asyncapi"] = { "prettier" },
       })

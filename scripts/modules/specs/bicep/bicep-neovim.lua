@@ -9,7 +9,7 @@ return {
       })
     end,
     opts = function(_, opts)
-      return require("mac_dev_setup.config.tooling").extend_formatters(opts, {
+      return require("user.config.tooling").extend_formatters(opts, {
         bicep = { "bicep" },
       })
     end,

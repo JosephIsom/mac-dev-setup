@@ -1,4 +1,4 @@
-local group = vim.api.nvim_create_augroup("mac-dev-setup-lsp", { clear = true })
+local group = vim.api.nvim_create_augroup("user-lsp", { clear = true })
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
   border = "rounded",
@@ -32,7 +32,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("<leader>ws", vim.lsp.buf.workspace_symbol, "Workspace symbols")
 
     if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-      local highlight_group = vim.api.nvim_create_augroup("mac-dev-setup-lsp-highlight", { clear = false })
+      local highlight_group = vim.api.nvim_create_augroup("user-lsp-highlight", { clear = false })
 
       vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
         buffer = event.buf,

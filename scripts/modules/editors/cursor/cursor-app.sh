@@ -8,10 +8,10 @@ APP_PATH="/Applications/Cursor.app"
 REPO_CURSOR_SETTINGS="$REPO_ROOT/scripts/modules/editors/vscode/vscode-core-vscode-settings.jsonc"
 TARGET_CURSOR_USER_DIR="$HOME/Library/Application Support/Cursor/User"
 TARGET_CURSOR_SETTINGS="$TARGET_CURSOR_USER_DIR/settings.json"
-CURSOR_MANAGED_MARKER='"mac-dev-setup.managed": true'
+CURSOR_MANAGED_MARKER='"user.settings": true'
 
 backup_if_unmanaged() {
-  local backup_file="$TARGET_CURSOR_SETTINGS.pre-mac-dev-setup.bak"
+  local backup_file="$TARGET_CURSOR_SETTINGS.pre-bootstrap.bak"
 
   [[ -f "$TARGET_CURSOR_SETTINGS" ]] || return 0
   grep -Fq "$CURSOR_MANAGED_MARKER" "$TARGET_CURSOR_SETTINGS" && return 0

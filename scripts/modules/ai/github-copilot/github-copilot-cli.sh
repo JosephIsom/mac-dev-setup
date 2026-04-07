@@ -5,9 +5,9 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_GITHUB_COPILOT_VSCODE_EXTENSIONS="$REPO_ROOT/scripts/modules/ai/github-copilot/github-copilot-vscode-extensions.txt"
-TARGET_GITHUB_COPILOT_VSCODE_EXTENSIONS="$HOME/.config/mac-dev-setup/vscode/extensions/github-copilot-vscode-extensions.txt"
+TARGET_GITHUB_COPILOT_VSCODE_EXTENSIONS="$HOME/.config/vscode/extensions/github-copilot-vscode-extensions.txt"
 REPO_GITHUB_COPILOT_VSCODE_SETTINGS="$REPO_ROOT/scripts/modules/ai/github-copilot/github-copilot-vscode-settings.jsonc"
-TARGET_GITHUB_COPILOT_VSCODE_SETTINGS="$HOME/.config/mac-dev-setup/vscode/settings/github-copilot-vscode-settings.jsonc"
+TARGET_GITHUB_COPILOT_VSCODE_SETTINGS="$HOME/.config/vscode/settings/github-copilot-vscode-settings.jsonc"
 
 install_github_copilot_vscode_extensions() {
   install_managed_vscode_extensions_manifest "$REPO_GITHUB_COPILOT_VSCODE_EXTENSIONS" "$(basename "$TARGET_GITHUB_COPILOT_VSCODE_EXTENSIONS")" >/dev/null

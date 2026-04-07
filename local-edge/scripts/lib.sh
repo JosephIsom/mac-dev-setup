@@ -35,14 +35,14 @@ load_local_edge_environment() {
   CADDY_ROOT_CERT="$CADDY_DATA_HOME/caddy/pki/authorities/local/root.crt"
   CADDY_SERVICE_CADDYFILE="$BREW_PREFIX/etc/Caddyfile"
 
-  LOCAL_EDGE_STATE_DIR="$HOME/.config/mac-dev-setup/local-edge"
+  LOCAL_EDGE_STATE_DIR="$HOME/.config/local-edge"
   LOCAL_EDGE_CADDY_DIR="$LOCAL_EDGE_STATE_DIR/caddy"
   LOCAL_EDGE_CADDY_SITES_DIR="$LOCAL_EDGE_CADDY_DIR/sites.d"
   LOCAL_EDGE_KIND_DIR="$LOCAL_EDGE_STATE_DIR/kind"
   LOCAL_EDGE_RUNTIME_DIR="$LOCAL_EDGE_STATE_DIR/runtime"
   LOCAL_EDGE_BACKUPS_DIR="$LOCAL_EDGE_STATE_DIR/backups"
   LOCAL_EDGE_CADDY_BACKUPS_DIR="$LOCAL_EDGE_BACKUPS_DIR/caddy"
-  LOCAL_EDGE_ARCHIVE_ROOT="$HOME/.config/mac-dev-setup/local-edge-archives"
+  LOCAL_EDGE_ARCHIVE_ROOT="$HOME/.config/local-edge-archives"
   LOCAL_EDGE_MANAGED_CADDYFILE="$LOCAL_EDGE_CADDY_DIR/Caddyfile"
   LOCAL_EDGE_MANAGED_KIND_CONFIG="$LOCAL_EDGE_KIND_DIR/kind-edge.yaml"
   LOCAL_EDGE_CADDY_LINK_STATE_FILE="$LOCAL_EDGE_RUNTIME_DIR/homebrew-caddyfile-state"
@@ -108,8 +108,8 @@ require_local_edge_setup() {
   local command_label="${1:-this command}"
 
   local_edge_setup_completed || die "local-edge has not been set up yet for $command_label. Run ./scripts/bootstrap-local-edge.sh setup first."
-  [[ -f "$LOCAL_EDGE_MANAGED_CADDYFILE" ]] || die "Managed Caddyfile missing at $LOCAL_EDGE_MANAGED_CADDYFILE. Re-run ./scripts/bootstrap-local-edge.sh setup."
-  [[ -f "$LOCAL_EDGE_MANAGED_KIND_CONFIG" ]] || die "Managed kind config missing at $LOCAL_EDGE_MANAGED_KIND_CONFIG. Re-run ./scripts/bootstrap-local-edge.sh setup."
+  [[ -f "$LOCAL_EDGE_MANAGED_CADDYFILE" ]] || die "Local-edge Caddyfile missing at $LOCAL_EDGE_MANAGED_CADDYFILE. Re-run ./scripts/bootstrap-local-edge.sh setup."
+  [[ -f "$LOCAL_EDGE_MANAGED_KIND_CONFIG" ]] || die "Local-edge kind config missing at $LOCAL_EDGE_MANAGED_KIND_CONFIG. Re-run ./scripts/bootstrap-local-edge.sh setup."
   managed_caddy_link_active || die "Homebrew's live Caddyfile is not linked to the managed local-edge config. Re-run ./scripts/bootstrap-local-edge.sh setup."
 }
 
@@ -258,7 +258,7 @@ run_managed_caddy() {
 
 validate_managed_caddyfile() {
   require_caddy_installed
-  [[ -f "$LOCAL_EDGE_MANAGED_CADDYFILE" ]] || die "Managed Caddyfile not found at $LOCAL_EDGE_MANAGED_CADDYFILE. Run ./scripts/bootstrap-local-edge.sh setup first."
+  [[ -f "$LOCAL_EDGE_MANAGED_CADDYFILE" ]] || die "Local-edge Caddyfile not found at $LOCAL_EDGE_MANAGED_CADDYFILE. Run ./scripts/bootstrap-local-edge.sh setup first."
   run_managed_caddy validate --config "$LOCAL_EDGE_MANAGED_CADDYFILE"
 }
 
@@ -291,7 +291,7 @@ Next steps:
   ./scripts/bootstrap-local-edge.sh examples up
   ./scripts/bootstrap-local-edge.sh smoke-test --include-kind --insecure
 
-Managed local-edge state:
+Local-edge state:
   Caddy config: $LOCAL_EDGE_MANAGED_CADDYFILE
   Kind config:  $LOCAL_EDGE_MANAGED_KIND_CONFIG
   Backups:      $LOCAL_EDGE_BACKUPS_DIR

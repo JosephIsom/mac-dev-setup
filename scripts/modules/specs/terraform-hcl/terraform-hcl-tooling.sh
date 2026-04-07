@@ -5,13 +5,13 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_TERRAFORM_HCL_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/specs/terraform-hcl/terraform-hcl-neovim.lua"
-TARGET_TERRAFORM_HCL_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/specs_terraform_hcl.lua"
+TARGET_TERRAFORM_HCL_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/specs_terraform_hcl.lua"
 REPO_TERRAFORM_ZSH_PLUGIN="$REPO_ROOT/scripts/modules/specs/terraform-hcl/terraform-completion.zsh"
 TARGET_TERRAFORM_ZSH_PLUGIN="$HOME/.zsh/plugins/terraform-completion.zsh"
 REPO_TERRAFORM_HCL_VSCODE_EXTENSIONS="$REPO_ROOT/scripts/modules/specs/terraform-hcl/terraform-hcl-vscode-extensions.txt"
-TARGET_TERRAFORM_HCL_VSCODE_EXTENSIONS="$HOME/.config/mac-dev-setup/vscode/extensions/terraform-hcl-vscode-extensions.txt"
+TARGET_TERRAFORM_HCL_VSCODE_EXTENSIONS="$HOME/.config/vscode/extensions/terraform-hcl-vscode-extensions.txt"
 REPO_TERRAFORM_HCL_VSCODE_SETTINGS="$REPO_ROOT/scripts/modules/specs/terraform-hcl/terraform-hcl-vscode-settings.jsonc"
-TARGET_TERRAFORM_HCL_VSCODE_SETTINGS="$HOME/.config/mac-dev-setup/vscode/settings/terraform-hcl-vscode-settings.jsonc"
+TARGET_TERRAFORM_HCL_VSCODE_SETTINGS="$HOME/.config/vscode/settings/terraform-hcl-vscode-settings.jsonc"
 
 install_terraform_hcl_neovim_plugin() {
   install_managed_nvim_plugin "$REPO_TERRAFORM_HCL_NVIM_PLUGIN" "$(basename "$TARGET_TERRAFORM_HCL_NVIM_PLUGIN")" >/dev/null

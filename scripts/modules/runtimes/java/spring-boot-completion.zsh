@@ -1,5 +1,5 @@
 # shellcheck shell=bash
-# Spring Boot CLI completion (mac-dev-setup)
+# Spring Boot CLI completion
 # Homebrew installs Spring Boot zsh completions into its shared site-functions
 # directory, which is already loaded by the managed zsh baseline. This file
 # remains as a managed placeholder so the module still owns its zsh integration

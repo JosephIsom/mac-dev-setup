@@ -34,7 +34,7 @@ return {
         },
       } or {}
 
-      opts = require("mac_dev_setup.config.tooling").extend_servers(opts, {
+      opts = require("user.config.tooling").extend_servers(opts, {
         ts_ls = {
           init_options = {
             plugins = ts_plugin,
@@ -44,7 +44,7 @@ return {
         vue_ls = {},
       })
 
-      return require("mac_dev_setup.config.tooling").extend_formatters(opts, {
+      return require("user.config.tooling").extend_formatters(opts, {
         vue = { "prettier" },
       })
     end,

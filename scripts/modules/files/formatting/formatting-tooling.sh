@@ -5,9 +5,9 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_FORMATTING_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/files/formatting/formatting-neovim.lua"
-TARGET_FORMATTING_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/files_formatting.lua"
+TARGET_FORMATTING_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/files_formatting.lua"
 REPO_FORMATTING_VSCODE_SETTINGS="$REPO_ROOT/scripts/modules/files/formatting/formatting-vscode-settings.jsonc"
-TARGET_FORMATTING_VSCODE_SETTINGS="$HOME/.config/mac-dev-setup/vscode/settings/formatting-vscode-settings.jsonc"
+TARGET_FORMATTING_VSCODE_SETTINGS="$HOME/.config/vscode/settings/formatting-vscode-settings.jsonc"
 
 install_formatting_neovim_plugin() {
   install_managed_nvim_plugin "$REPO_FORMATTING_NVIM_PLUGIN" "$(basename "$TARGET_FORMATTING_NVIM_PLUGIN")" >/dev/null

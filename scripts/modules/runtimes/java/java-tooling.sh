@@ -5,11 +5,11 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_JAVA_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/runtimes/java/java-neovim.lua"
-TARGET_JAVA_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/runtimes_java.lua"
+TARGET_JAVA_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/runtimes_java.lua"
 REPO_JAVA_VSCODE_EXTENSIONS="$REPO_ROOT/scripts/modules/runtimes/java/java-vscode-extensions.txt"
-TARGET_JAVA_VSCODE_EXTENSIONS="$HOME/.config/mac-dev-setup/vscode/extensions/java-vscode-extensions.txt"
+TARGET_JAVA_VSCODE_EXTENSIONS="$HOME/.config/vscode/extensions/java-vscode-extensions.txt"
 REPO_JAVA_VSCODE_SETTINGS="$REPO_ROOT/scripts/modules/runtimes/java/java-vscode-settings.jsonc"
-TARGET_JAVA_VSCODE_SETTINGS="$HOME/.config/mac-dev-setup/vscode/settings/java-vscode-settings.jsonc"
+TARGET_JAVA_VSCODE_SETTINGS="$HOME/.config/vscode/settings/java-vscode-settings.jsonc"
 
 install_java_neovim_plugin() {
   install_managed_nvim_plugin "$REPO_JAVA_NVIM_PLUGIN" "$(basename "$TARGET_JAVA_NVIM_PLUGIN")" >/dev/null

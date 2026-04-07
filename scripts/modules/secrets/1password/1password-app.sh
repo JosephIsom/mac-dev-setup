@@ -27,7 +27,7 @@ SSH agent:
 - Enable the SSH agent and follow the app's setup flow
 
 Important:
-- mac-dev-setup already enables Apple Keychain support for OpenSSH in ~/.ssh/config
+- the bootstrap already enables Apple Keychain support for OpenSSH in ~/.ssh/config
 - 1Password SSH agent is an alternative workflow, not a required replacement
 EOF
 }

@@ -7,9 +7,9 @@ source "$LIB_DIR/common.sh"
 REPO_DOTNET_ZSH_PLUGIN="$REPO_ROOT/scripts/modules/runtimes/dotnet/dotnet-completion.zsh"
 TARGET_DOTNET_ZSH_PLUGIN="$HOME/.zsh/plugins/dotnet-completion.zsh"
 REPO_DOTNET_VSCODE_EXTENSIONS="$REPO_ROOT/scripts/modules/runtimes/dotnet/dotnet-vscode-extensions.txt"
-TARGET_DOTNET_VSCODE_EXTENSIONS="$HOME/.config/mac-dev-setup/vscode/extensions/dotnet-vscode-extensions.txt"
+TARGET_DOTNET_VSCODE_EXTENSIONS="$HOME/.config/vscode/extensions/dotnet-vscode-extensions.txt"
 REPO_DOTNET_VSCODE_SETTINGS="$REPO_ROOT/scripts/modules/runtimes/dotnet/dotnet-vscode-settings.jsonc"
-TARGET_DOTNET_VSCODE_SETTINGS="$HOME/.config/mac-dev-setup/vscode/settings/dotnet-vscode-settings.jsonc"
+TARGET_DOTNET_VSCODE_SETTINGS="$HOME/.config/vscode/settings/dotnet-vscode-settings.jsonc"
 
 install_dotnet_zsh_plugin() {
   install_managed_zsh_plugin "$REPO_DOTNET_ZSH_PLUGIN" "$(basename "$TARGET_DOTNET_ZSH_PLUGIN")" >/dev/null

@@ -1,7 +1,7 @@
 {
   "Profiles": [
     {
-      "Name": "mac-dev-setup",
+      "Name": "Islands Dark",
       "Guid": "8A4A6C8C-0F44-4C3B-BD78-7C6A7F1F1A10",
       "Dynamic Profile Parent Name": "Default",
       "Terminal Type": "xterm-256color",

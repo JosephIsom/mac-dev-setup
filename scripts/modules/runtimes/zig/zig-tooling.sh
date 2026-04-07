@@ -5,7 +5,7 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_ZIG_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/runtimes/zig/zig-neovim.lua"
-TARGET_ZIG_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/runtimes_zig.lua"
+TARGET_ZIG_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/runtimes_zig.lua"
 
 install_zig_neovim_plugin() {
   install_managed_nvim_plugin "$REPO_ZIG_NVIM_PLUGIN" "$(basename "$TARGET_ZIG_NVIM_PLUGIN")" >/dev/null

@@ -5,11 +5,11 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_TILT_VSCODE_EXTENSIONS="$REPO_ROOT/scripts/modules/containers/tilt/tilt-vscode-extensions.txt"
-TARGET_TILT_VSCODE_EXTENSIONS="$HOME/.config/mac-dev-setup/vscode/extensions/tilt-vscode-extensions.txt"
+TARGET_TILT_VSCODE_EXTENSIONS="$HOME/.config/vscode/extensions/tilt-vscode-extensions.txt"
 REPO_TILT_VSCODE_SETTINGS="$REPO_ROOT/scripts/modules/containers/tilt/tilt-vscode-settings.jsonc"
-TARGET_TILT_VSCODE_SETTINGS="$HOME/.config/mac-dev-setup/vscode/settings/tilt-vscode-settings.jsonc"
+TARGET_TILT_VSCODE_SETTINGS="$HOME/.config/vscode/settings/tilt-vscode-settings.jsonc"
 REPO_TILT_VSCODE_TASKS_TEMPLATE="$REPO_ROOT/scripts/modules/containers/tilt/tilt-vscode-tasks.jsonc"
-TARGET_TILT_VSCODE_TASKS_TEMPLATE="$HOME/.config/mac-dev-setup/vscode/templates/tasks/tilt-vscode-tasks.jsonc"
+TARGET_TILT_VSCODE_TASKS_TEMPLATE="$HOME/.config/vscode/templates/tasks/tilt-vscode-tasks.jsonc"
 
 install_tilt_vscode_extensions() {
   install_managed_vscode_extensions_manifest "$REPO_TILT_VSCODE_EXTENSIONS" "$(basename "$TARGET_TILT_VSCODE_EXTENSIONS")" >/dev/null

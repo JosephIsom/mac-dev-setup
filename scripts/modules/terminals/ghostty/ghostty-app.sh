@@ -32,7 +32,7 @@ backup_if_unmanaged() {
   local backup="$2"
 
   [[ -f "$dest" ]] || return 0
-  grep -Fq "mac-dev-setup managed Ghostty baseline" "$dest" && return 0
+  grep -Fq "managed Ghostty baseline" "$dest" && return 0
 
   if [[ -f "$backup" ]]; then
     log_warn "Overwriting $dest using existing backup at $backup"
@@ -101,7 +101,7 @@ install_config() {
   [[ -f "$REPO_GHOSTTY_LOCAL_CONFIG" ]] || die "Missing repo-managed Ghostty local config template: $REPO_GHOSTTY_LOCAL_CONFIG"
   [[ -d "$REPO_GHOSTTY_THEME_DIR" ]] || die "Missing repo-managed Ghostty theme directory: $REPO_GHOSTTY_THEME_DIR"
   mkdir -p "$TARGET_GHOSTTY_DIR"
-  backup_if_unmanaged "$TARGET_GHOSTTY_CONFIG" "$TARGET_GHOSTTY_CONFIG.pre-mac-dev-setup.bak"
+  backup_if_unmanaged "$TARGET_GHOSTTY_CONFIG" "$TARGET_GHOSTTY_CONFIG.pre-bootstrap.bak"
   cp "$REPO_GHOSTTY_CONFIG" "$TARGET_GHOSTTY_CONFIG"
   copy_repo_file_if_missing "$REPO_GHOSTTY_LOCAL_CONFIG" "$TARGET_GHOSTTY_LOCAL_CONFIG"
 
@@ -109,7 +109,7 @@ install_config() {
   while IFS= read -r -d '' theme_file; do
     local target_theme
     target_theme="$TARGET_GHOSTTY_THEME_DIR/$(basename "$theme_file")"
-    backup_if_different "$theme_file" "$target_theme" "$target_theme.pre-mac-dev-setup.bak"
+    backup_if_different "$theme_file" "$target_theme" "$target_theme.pre-bootstrap.bak"
     cp "$theme_file" "$target_theme"
   done < <(find "$REPO_GHOSTTY_THEME_DIR" -type f -name '*.conf' -print0 | sort -z)
 }

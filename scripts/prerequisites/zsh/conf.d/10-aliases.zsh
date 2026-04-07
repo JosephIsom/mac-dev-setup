@@ -1,5 +1,5 @@
 # shellcheck shell=bash
-# Aliases (mac-dev-setup)
+# Aliases
 alias c='clear'
 alias cls='clear'
 alias ..='cd ..'

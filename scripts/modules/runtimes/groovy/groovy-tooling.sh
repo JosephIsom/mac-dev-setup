@@ -5,7 +5,7 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_GROOVY_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/runtimes/groovy/groovy-neovim.lua"
-TARGET_GROOVY_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/runtimes_groovy.lua"
+TARGET_GROOVY_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/runtimes_groovy.lua"
 
 install_groovy_neovim_plugin() {
   install_managed_nvim_plugin "$REPO_GROOVY_NVIM_PLUGIN" "$(basename "$TARGET_GROOVY_NVIM_PLUGIN")" >/dev/null

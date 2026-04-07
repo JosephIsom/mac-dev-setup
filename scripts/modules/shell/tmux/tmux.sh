@@ -42,8 +42,8 @@ copy_repo_file_if_missing() {
 is_managed_tmux_conf() {
   local dest="$1"
 
-  grep -Fq "mac-dev-setup managed tmux baseline" "$dest" || \
-    grep -Fq "mac-dev-setup managed tmux config" "$dest"
+  grep -Fq "managed tmux baseline" "$dest" || \
+    grep -Fq "managed tmux config" "$dest"
 }
 
 backup_if_unmanaged() {
@@ -76,7 +76,7 @@ install_tmux_plugins() {
 }
 
 install_tmux_config() {
-  backup_if_unmanaged "$TARGET_TMUX_CONF" "$TARGET_TMUX_CONF.pre-mac-dev-setup.bak"
+  backup_if_unmanaged "$TARGET_TMUX_CONF" "$TARGET_TMUX_CONF.pre-bootstrap.bak"
   copy_repo_file "$REPO_TMUX_DIR/tmux.conf" "$TARGET_TMUX_CONF"
   copy_repo_file_if_missing "$REPO_TMUX_DIR/local.conf" "$TARGET_TMUX_LOCAL_CONF"
 }

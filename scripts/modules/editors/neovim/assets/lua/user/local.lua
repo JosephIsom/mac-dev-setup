@@ -6,5 +6,5 @@
 -- vim.opt.guicursor = ""
 --
 -- Future module-owned plugin specs can be dropped into:
---   ~/.config/nvim/lua/mac_dev_setup/plugins/
+--   ~/.config/nvim/lua/user/plugins/
 

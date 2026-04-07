@@ -5,17 +5,17 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_GO_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/runtimes/go/go-neovim.lua"
-TARGET_GO_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/runtimes_go.lua"
+TARGET_GO_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/runtimes_go.lua"
 REPO_GO_VSCODE_EXTENSIONS="$REPO_ROOT/scripts/modules/runtimes/go/go-vscode-extensions.txt"
-TARGET_GO_VSCODE_EXTENSIONS="$HOME/.config/mac-dev-setup/vscode/extensions/go-vscode-extensions.txt"
+TARGET_GO_VSCODE_EXTENSIONS="$HOME/.config/vscode/extensions/go-vscode-extensions.txt"
 REPO_GO_VSCODE_SETTINGS="$REPO_ROOT/scripts/modules/runtimes/go/go-vscode-settings.jsonc"
-TARGET_GO_VSCODE_SETTINGS="$HOME/.config/mac-dev-setup/vscode/settings/go-vscode-settings.jsonc"
+TARGET_GO_VSCODE_SETTINGS="$HOME/.config/vscode/settings/go-vscode-settings.jsonc"
 REPO_GO_VSCODE_TASKS_TEMPLATE="$REPO_ROOT/scripts/modules/runtimes/go/go-vscode-tasks.jsonc"
-TARGET_GO_VSCODE_TASKS_TEMPLATE="$HOME/.config/mac-dev-setup/vscode/templates/tasks/go-vscode-tasks.jsonc"
+TARGET_GO_VSCODE_TASKS_TEMPLATE="$HOME/.config/vscode/templates/tasks/go-vscode-tasks.jsonc"
 REPO_GO_VSCODE_LAUNCH_TEMPLATE="$REPO_ROOT/scripts/modules/runtimes/go/go-vscode-launch.jsonc"
-TARGET_GO_VSCODE_LAUNCH_TEMPLATE="$HOME/.config/mac-dev-setup/vscode/templates/launch/go-vscode-launch.jsonc"
+TARGET_GO_VSCODE_LAUNCH_TEMPLATE="$HOME/.config/vscode/templates/launch/go-vscode-launch.jsonc"
 REPO_GO_VSCODE_WORKSPACE_TEMPLATE="$REPO_ROOT/scripts/modules/runtimes/go/go-vscode-workspace.code-workspace"
-TARGET_GO_VSCODE_WORKSPACE_TEMPLATE="$HOME/.config/mac-dev-setup/vscode/templates/workspace/go-vscode-workspace.code-workspace"
+TARGET_GO_VSCODE_WORKSPACE_TEMPLATE="$HOME/.config/vscode/templates/workspace/go-vscode-workspace.code-workspace"
 
 install_go_neovim_plugin() {
   install_managed_nvim_plugin "$REPO_GO_NVIM_PLUGIN" "$(basename "$TARGET_GO_NVIM_PLUGIN")" >/dev/null

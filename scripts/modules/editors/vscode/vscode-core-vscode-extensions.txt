@@ -5,7 +5,6 @@ esbenp.prettier-vscode
 streetsidesoftware.code-spell-checker
 usernamehw.errorlens
 wayou.vscode-todo-highlight
-oderwat.indent-rainbow
 gruntfuggly.todo-tree
 alefragnani.project-manager
 ms-vscode.hexeditor

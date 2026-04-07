@@ -2,12 +2,12 @@
 
 PYTHON_MODULES_DIR="$REPO_ROOT/scripts/modules/runtimes/python"
 
-TARGET_PYTHON_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/runtimes_python.lua"
-TARGET_PYTHON_VSCODE_EXTENSIONS="$HOME/.config/mac-dev-setup/vscode/extensions/python-vscode-extensions.txt"
-TARGET_PYTHON_VSCODE_SETTINGS="$HOME/.config/mac-dev-setup/vscode/settings/python-vscode-settings.jsonc"
-TARGET_PYTHON_VSCODE_TASKS_TEMPLATE="$HOME/.config/mac-dev-setup/vscode/templates/tasks/python-vscode-tasks.jsonc"
-TARGET_PYTHON_VSCODE_LAUNCH_TEMPLATE="$HOME/.config/mac-dev-setup/vscode/templates/launch/python-vscode-launch.jsonc"
-TARGET_PYTHON_VSCODE_WORKSPACE_TEMPLATE="$HOME/.config/mac-dev-setup/vscode/templates/workspace/python-vscode-workspace.code-workspace"
+TARGET_PYTHON_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/runtimes_python.lua"
+TARGET_PYTHON_VSCODE_EXTENSIONS="$HOME/.config/vscode/extensions/python-vscode-extensions.txt"
+TARGET_PYTHON_VSCODE_SETTINGS="$HOME/.config/vscode/settings/python-vscode-settings.jsonc"
+TARGET_PYTHON_VSCODE_TASKS_TEMPLATE="$HOME/.config/vscode/templates/tasks/python-vscode-tasks.jsonc"
+TARGET_PYTHON_VSCODE_LAUNCH_TEMPLATE="$HOME/.config/vscode/templates/launch/python-vscode-launch.jsonc"
+TARGET_PYTHON_VSCODE_WORKSPACE_TEMPLATE="$HOME/.config/vscode/templates/workspace/python-vscode-workspace.code-workspace"
 
 REPO_PYTHON_VSCODE_TASKS_TEMPLATE="$PYTHON_MODULES_DIR/python-vscode-tasks.jsonc"
 REPO_PYTHON_VSCODE_LAUNCH_TEMPLATE="$PYTHON_MODULES_DIR/python-vscode-launch.jsonc"

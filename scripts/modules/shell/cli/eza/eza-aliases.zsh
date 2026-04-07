@@ -1,5 +1,5 @@
 # shellcheck shell=bash
-# eza aliases (mac-dev-setup)
+# eza aliases
 alias ls='eza --icons=auto'
 alias l='eza -1'
 alias la='eza -la --icons=auto'

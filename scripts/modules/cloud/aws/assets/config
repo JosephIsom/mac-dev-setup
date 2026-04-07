@@ -1,4 +1,4 @@
-# mac-dev-setup AWS CLI config
+# AWS CLI config
 # Add your real AWS profiles here as needed.
 
 [default]

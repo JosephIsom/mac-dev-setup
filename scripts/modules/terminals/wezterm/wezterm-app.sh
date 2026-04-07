@@ -16,7 +16,7 @@ backup_if_unmanaged() {
   local backup="$2"
 
   [[ -f "$dest" ]] || return 0
-  grep -Fq "mac-dev-setup managed WezTerm baseline" "$dest" && return 0
+  grep -Fq "managed WezTerm baseline" "$dest" && return 0
 
   if [[ -f "$backup" ]]; then
     log_warn "Overwriting $dest using existing backup at $backup"
@@ -57,7 +57,7 @@ install_config() {
   [[ -f "$REPO_WEZTERM_LOCAL_CONFIG" ]] || die "Missing repo-managed WezTerm local config template: $REPO_WEZTERM_LOCAL_CONFIG"
 
   mkdir -p "$TARGET_WEZTERM_DIR"
-  backup_if_unmanaged "$TARGET_WEZTERM_CONFIG" "$TARGET_WEZTERM_CONFIG.pre-mac-dev-setup.bak"
+  backup_if_unmanaged "$TARGET_WEZTERM_CONFIG" "$TARGET_WEZTERM_CONFIG.pre-bootstrap.bak"
   cp "$REPO_WEZTERM_CONFIG" "$TARGET_WEZTERM_CONFIG"
   copy_repo_file_if_missing "$REPO_WEZTERM_LOCAL_CONFIG" "$TARGET_WEZTERM_LOCAL_CONFIG"
 }

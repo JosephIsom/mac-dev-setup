@@ -17,16 +17,16 @@ The repo ships an explicit `kind install-ingress-nginx` helper for a common exam
 ## Config Model
 
 - Repo-owned templates live in `local-edge/templates/`.
-- The operator-owned working copies live in `~/.config/mac-dev-setup/local-edge/`.
+- The operator-owned working copies live in `~/.config/local-edge/`.
 - `setup` is the only command that creates or relinks managed local-edge config.
 - `setup` creates working copies only when absent.
 - If a working copy already differs, setup leaves it alone and logs a warning instead of overwriting it.
 
 ## Homebrew Caddy Integration
 
-Homebrew's service expects a live `Caddyfile` under the Homebrew prefix. The setup flow links that live path to the managed `~/.config/mac-dev-setup/local-edge/caddy/Caddyfile`.
+Homebrew's service expects a live `Caddyfile` under the Homebrew prefix. The setup flow links that live path to the managed `~/.config/local-edge/caddy/Caddyfile`.
 
-If a Homebrew `Caddyfile` already exists, setup moves it into `~/.config/mac-dev-setup/local-edge/backups/caddy/` before linking the managed one. `safe-reset` uses that recorded backup to restore the prior file when possible.
+If a Homebrew `Caddyfile` already exists, setup moves it into `~/.config/local-edge/backups/caddy/` before linking the managed one. `safe-reset` uses that recorded backup to restore the prior file when possible.
 
 ## Why kind Uses `8080` And `8443`
 

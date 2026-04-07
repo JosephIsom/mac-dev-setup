@@ -6,13 +6,13 @@ source "$LIB_DIR/common.sh"
 
 VSCODE_USER_DIR="$HOME/Library/Application Support/Code/User"
 SETTINGS_FILE="$VSCODE_USER_DIR/settings.json"
-MANAGED_MARKER='"mac-dev-setup.managed": true'
+MANAGED_MARKER='"user.settings": true'
 REPO_VSCODE_CORE_SETTINGS="$REPO_ROOT/scripts/modules/editors/vscode/vscode-core-vscode-settings.jsonc"
-TARGET_VSCODE_CORE_SETTINGS="$HOME/.config/mac-dev-setup/vscode/settings/vscode-core-vscode-settings.jsonc"
-VSCODE_SETTINGS_DIR="$HOME/.config/mac-dev-setup/vscode/settings"
+TARGET_VSCODE_CORE_SETTINGS="$HOME/.config/vscode/settings/vscode-core-vscode-settings.jsonc"
+VSCODE_SETTINGS_DIR="$HOME/.config/vscode/settings"
 
 backup_if_unmanaged() {
-  local backup_file="$SETTINGS_FILE.pre-mac-dev-setup.bak"
+  local backup_file="$SETTINGS_FILE.pre-bootstrap.bak"
 
   [[ -f "$SETTINGS_FILE" ]] || return 0
   grep -Fq "$MANAGED_MARKER" "$SETTINGS_FILE" && return 0

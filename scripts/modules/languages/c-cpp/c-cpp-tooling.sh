@@ -7,11 +7,11 @@ source "$LIB_DIR/common.sh"
 REPO_C_CPP_ZSH_PLUGIN="$REPO_ROOT/scripts/modules/languages/c-cpp/c-cpp-llvm-path.zsh"
 TARGET_C_CPP_ZSH_PLUGIN="$HOME/.zsh/plugins/c-cpp-llvm-path.zsh"
 REPO_C_CPP_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/languages/c-cpp/c-cpp-neovim.lua"
-TARGET_C_CPP_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/languages_c_cpp.lua"
+TARGET_C_CPP_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/languages_c_cpp.lua"
 REPO_C_CPP_VSCODE_EXTENSIONS="$REPO_ROOT/scripts/modules/languages/c-cpp/c-cpp-vscode-extensions.txt"
-TARGET_C_CPP_VSCODE_EXTENSIONS="$HOME/.config/mac-dev-setup/vscode/extensions/c-cpp-vscode-extensions.txt"
+TARGET_C_CPP_VSCODE_EXTENSIONS="$HOME/.config/vscode/extensions/c-cpp-vscode-extensions.txt"
 REPO_C_CPP_VSCODE_SETTINGS="$REPO_ROOT/scripts/modules/languages/c-cpp/c-cpp-vscode-settings.jsonc"
-TARGET_C_CPP_VSCODE_SETTINGS="$HOME/.config/mac-dev-setup/vscode/settings/c-cpp-vscode-settings.jsonc"
+TARGET_C_CPP_VSCODE_SETTINGS="$HOME/.config/vscode/settings/c-cpp-vscode-settings.jsonc"
 
 install_c_cpp_zsh_plugin() {
   install_managed_zsh_plugin "$REPO_C_CPP_ZSH_PLUGIN" "$(basename "$TARGET_C_CPP_ZSH_PLUGIN")" >/dev/null

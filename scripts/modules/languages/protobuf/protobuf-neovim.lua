@@ -10,7 +10,7 @@ return {
         stdin = false,
       }
 
-      return require("mac_dev_setup.config.tooling").extend_formatters(opts, {
+      return require("user.config.tooling").extend_formatters(opts, {
         proto = { "buf_format" },
       })
     end,
@@ -18,7 +18,7 @@ return {
   {
     "mfussenegger/nvim-lint",
     opts = function(_, opts)
-      return require("mac_dev_setup.config.tooling").extend_linters(opts, {
+      return require("user.config.tooling").extend_linters(opts, {
         proto = { "buf_lint" },
       })
     end,

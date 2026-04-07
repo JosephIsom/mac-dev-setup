@@ -5,7 +5,7 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_LAZYGIT_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/shell/cli/lazygit/neovim-lazygit.lua"
-TARGET_LAZYGIT_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/shell_cli_lazygit.lua"
+TARGET_LAZYGIT_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/shell_cli_lazygit.lua"
 REPO_LAZYGIT_CONFIG="$REPO_ROOT/scripts/modules/shell/cli/lazygit/assets/config.yml"
 TARGET_LAZYGIT_CONFIG_DIR="$HOME/.config/lazygit"
 TARGET_LAZYGIT_CONFIG="$TARGET_LAZYGIT_CONFIG_DIR/config.yml"

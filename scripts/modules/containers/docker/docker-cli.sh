@@ -7,11 +7,11 @@ source "$LIB_DIR/common.sh"
 REPO_DOCKER_ZSH_PLUGIN="$REPO_ROOT/scripts/modules/containers/docker/docker-completion.zsh"
 TARGET_DOCKER_ZSH_PLUGIN="$HOME/.zsh/plugins/docker-completion.zsh"
 REPO_DOCKER_VSCODE_EXTENSIONS="$REPO_ROOT/scripts/modules/containers/docker/docker-vscode-extensions.txt"
-TARGET_DOCKER_VSCODE_EXTENSIONS="$HOME/.config/mac-dev-setup/vscode/extensions/docker-vscode-extensions.txt"
+TARGET_DOCKER_VSCODE_EXTENSIONS="$HOME/.config/vscode/extensions/docker-vscode-extensions.txt"
 REPO_DOCKER_VSCODE_SETTINGS="$REPO_ROOT/scripts/modules/containers/docker/docker-vscode-settings.jsonc"
-TARGET_DOCKER_VSCODE_SETTINGS="$HOME/.config/mac-dev-setup/vscode/settings/docker-vscode-settings.jsonc"
+TARGET_DOCKER_VSCODE_SETTINGS="$HOME/.config/vscode/settings/docker-vscode-settings.jsonc"
 REPO_DOCKER_VSCODE_TASKS_TEMPLATE="$REPO_ROOT/scripts/modules/containers/docker/docker-vscode-tasks.jsonc"
-TARGET_DOCKER_VSCODE_TASKS_TEMPLATE="$HOME/.config/mac-dev-setup/vscode/templates/tasks/docker-vscode-tasks.jsonc"
+TARGET_DOCKER_VSCODE_TASKS_TEMPLATE="$HOME/.config/vscode/templates/tasks/docker-vscode-tasks.jsonc"
 
 install_docker_zsh_plugin() {
   install_managed_zsh_plugin "$REPO_DOCKER_ZSH_PLUGIN" "$(basename "$TARGET_DOCKER_ZSH_PLUGIN")" >/dev/null

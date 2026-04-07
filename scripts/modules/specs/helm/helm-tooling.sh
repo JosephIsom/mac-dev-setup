@@ -5,7 +5,7 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_HELM_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/specs/helm/helm-neovim.lua"
-TARGET_HELM_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/specs_helm.lua"
+TARGET_HELM_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/specs_helm.lua"
 
 install_helm_neovim_plugin() {
   install_managed_nvim_plugin "$REPO_HELM_NVIM_PLUGIN" "$(basename "$TARGET_HELM_NVIM_PLUGIN")" >/dev/null

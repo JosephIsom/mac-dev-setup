@@ -4,7 +4,7 @@
 
 - Confirm setup has been completed with `./scripts/bootstrap-local-edge.sh setup`.
 - Run `./scripts/bootstrap-local-edge.sh caddy validate`.
-- Confirm Homebrew's live `Caddyfile` points at `~/.config/mac-dev-setup/local-edge/caddy/Caddyfile`.
+- Confirm Homebrew's live `Caddyfile` points at `~/.config/local-edge/caddy/Caddyfile`.
 - Retry with `./scripts/bootstrap-local-edge.sh caddy start --sudo-service` if your machine rejects privileged ports for a user launchd service.
 
 ## Browsers Warn About The Certificate
@@ -41,4 +41,4 @@ That command:
 - tears down the example workloads
 - deletes the managed kind cluster
 - restores the prior Homebrew `Caddyfile` when it was backed up
-- archives the managed `~/.config/mac-dev-setup/local-edge` state instead of deleting it outright
+- archives the managed `~/.config/local-edge` state instead of deleting it outright

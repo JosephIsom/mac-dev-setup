@@ -5,7 +5,7 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_BICEP_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/specs/bicep/bicep-neovim.lua"
-TARGET_BICEP_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/specs_bicep.lua"
+TARGET_BICEP_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/specs_bicep.lua"
 
 install_bicep_neovim_plugin() {
   install_managed_nvim_plugin "$REPO_BICEP_NVIM_PLUGIN" "$(basename "$TARGET_BICEP_NVIM_PLUGIN")" >/dev/null

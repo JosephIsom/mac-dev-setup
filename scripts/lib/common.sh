@@ -275,7 +275,7 @@ install_managed_zsh_plugin() {
 install_managed_nvim_plugin() {
   local src="$1"
   local target_name="${2:-$(basename "$src")}"
-  local target_dir="$HOME/.config/nvim/lua/mac_dev_setup/plugins"
+  local target_dir="$HOME/.config/nvim/lua/user/plugins"
   local target_path="$target_dir/$target_name"
 
   [[ -f "$src" ]] || die "Missing repo-managed Neovim plugin spec: $src"
@@ -289,7 +289,7 @@ install_managed_nvim_plugin() {
 install_managed_vscode_extensions_manifest() {
   local src="$1"
   local target_name="${2:-$(basename "$src")}"
-  local target_dir="$HOME/.config/mac-dev-setup/vscode/extensions"
+  local target_dir="$HOME/.config/vscode/extensions"
   local target_path="$target_dir/$target_name"
 
   [[ -f "$src" ]] || die "Missing repo-managed VS Code extensions manifest: $src"
@@ -303,7 +303,7 @@ install_managed_vscode_extensions_manifest() {
 install_managed_vscode_settings_fragment() {
   local src="$1"
   local target_name="${2:-$(basename "$src")}"
-  local target_dir="$HOME/.config/mac-dev-setup/vscode/settings"
+  local target_dir="$HOME/.config/vscode/settings"
   local target_path="$target_dir/$target_name"
 
   [[ -f "$src" ]] || die "Missing repo-managed VS Code settings fragment: $src"
@@ -318,7 +318,7 @@ install_managed_vscode_template() {
   local src="$1"
   local category="$2"
   local target_name="${3:-$(basename "$src")}"
-  local target_dir="$HOME/.config/mac-dev-setup/vscode/templates/$category"
+  local target_dir="$HOME/.config/vscode/templates/$category"
   local target_path="$target_dir/$target_name"
 
   [[ -f "$src" ]] || die "Missing repo-managed VS Code template: $src"
@@ -330,7 +330,7 @@ install_managed_vscode_template() {
 }
 
 reset_managed_vscode_state() {
-  local vscode_root="$HOME/.config/mac-dev-setup/vscode"
+  local vscode_root="$HOME/.config/vscode"
 
   log_info "Resetting managed VS Code staged state"
 

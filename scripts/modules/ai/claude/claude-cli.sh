@@ -7,9 +7,9 @@ source "$LIB_DIR/common.sh"
 NOTES_DIR="$HOME/.config/claude"
 NOTES_FILE="$NOTES_DIR/ide-notes.txt"
 REPO_CLAUDE_VSCODE_EXTENSIONS="$REPO_ROOT/scripts/modules/ai/claude/claude-vscode-extensions.txt"
-TARGET_CLAUDE_VSCODE_EXTENSIONS="$HOME/.config/mac-dev-setup/vscode/extensions/claude-vscode-extensions.txt"
+TARGET_CLAUDE_VSCODE_EXTENSIONS="$HOME/.config/vscode/extensions/claude-vscode-extensions.txt"
 REPO_CLAUDE_VSCODE_SETTINGS="$REPO_ROOT/scripts/modules/ai/claude/claude-vscode-settings.jsonc"
-TARGET_CLAUDE_VSCODE_SETTINGS="$HOME/.config/mac-dev-setup/vscode/settings/claude-vscode-settings.jsonc"
+TARGET_CLAUDE_VSCODE_SETTINGS="$HOME/.config/vscode/settings/claude-vscode-settings.jsonc"
 
 write_claude_notes() {
   mkdir -p "$NOTES_DIR"

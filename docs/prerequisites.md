@@ -1,6 +1,6 @@
 # Prerequisites
 
-These scripts always run through [scripts/prerequisites/prerequisites.sh](/Users/joe/src/personal/mac-dev-setup/scripts/prerequisites/prerequisites.sh).
+These scripts always run through [scripts/prerequisites/prerequisites.sh](../scripts/prerequisites/prerequisites.sh).
 
 ## Always-On Prerequisites
 
@@ -23,7 +23,7 @@ The Git prerequisite sets a practical default machine config:
 - safer merge conflict rendering
 - global ignores for common local-only files
 
-Useful shell aliases live in [scripts/prerequisites/git/git-aliases.zsh](/Users/joe/src/personal/mac-dev-setup/scripts/prerequisites/git/git-aliases.zsh), including `gs`, `gsw`, `gswc`, `grs`, and `gc`.
+Useful shell aliases live in [scripts/prerequisites/git/git-aliases.zsh](../scripts/prerequisites/git/git-aliases.zsh), including `gs`, `gsw`, `gswc`, `grs`, and `gc`.
 
 ## Zsh Baseline
 
@@ -35,16 +35,16 @@ The Zsh prerequisite installs:
 
 Important files:
 
-- [scripts/prerequisites/zsh/conf.d/00-path.zsh](/Users/joe/src/personal/mac-dev-setup/scripts/prerequisites/zsh/conf.d/00-path.zsh)
-- [scripts/prerequisites/zsh/conf.d/10-aliases.zsh](/Users/joe/src/personal/mac-dev-setup/scripts/prerequisites/zsh/conf.d/10-aliases.zsh)
-- [scripts/prerequisites/zsh/conf.d/15-functions.zsh](/Users/joe/src/personal/mac-dev-setup/scripts/prerequisites/zsh/conf.d/15-functions.zsh)
-- [scripts/prerequisites/zsh/conf.d/20-bindings.zsh](/Users/joe/src/personal/mac-dev-setup/scripts/prerequisites/zsh/conf.d/20-bindings.zsh)
-- [scripts/prerequisites/zsh/conf.d/30-completion.zsh](/Users/joe/src/personal/mac-dev-setup/scripts/prerequisites/zsh/conf.d/30-completion.zsh)
-- [scripts/prerequisites/zsh/conf.d/90-local.zsh](/Users/joe/src/personal/mac-dev-setup/scripts/prerequisites/zsh/conf.d/90-local.zsh)
+- [scripts/prerequisites/zsh/conf.d/00-path.zsh](../scripts/prerequisites/zsh/conf.d/00-path.zsh)
+- [scripts/prerequisites/zsh/conf.d/10-aliases.zsh](../scripts/prerequisites/zsh/conf.d/10-aliases.zsh)
+- [scripts/prerequisites/zsh/conf.d/15-functions.zsh](../scripts/prerequisites/zsh/conf.d/15-functions.zsh)
+- [scripts/prerequisites/zsh/conf.d/20-bindings.zsh](../scripts/prerequisites/zsh/conf.d/20-bindings.zsh)
+- [scripts/prerequisites/zsh/conf.d/30-completion.zsh](../scripts/prerequisites/zsh/conf.d/30-completion.zsh)
+- [scripts/prerequisites/zsh/conf.d/90-local.zsh](../scripts/prerequisites/zsh/conf.d/90-local.zsh)
 
 ## User Config Values
 
-The main configuration surface is [config/user.env.example](/Users/joe/src/personal/mac-dev-setup/config/user.env.example):
+The main configuration surface is [config/user.env.example](../config/user.env.example):
 
 - Git identity
 - Colima resources

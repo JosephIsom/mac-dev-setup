@@ -46,7 +46,7 @@ backup_if_unmanaged() {
   local backup="$2"
 
   [[ -f "$dest" ]] || return 0
-  grep -Fq "mac-dev-setup" "$dest" && return 0
+  grep -Fq "bootstrap zsh config" "$dest" && return 0
 
   if [[ -f "$backup" ]]; then
     log_warn "Overwriting $dest using existing backup at $backup"
@@ -116,8 +116,8 @@ main() {
   mkdir -p "$TARGET_ZSH_DIR/completions"
   mkdir -p "$TARGET_ZSH_VENDOR_DIR"
 
-  backup_if_unmanaged "$TARGET_ZPROFILE" "$TARGET_ZPROFILE.pre-mac-dev-setup.bak"
-  backup_if_unmanaged "$TARGET_ZSHRC" "$TARGET_ZSHRC.pre-mac-dev-setup.bak"
+  backup_if_unmanaged "$TARGET_ZPROFILE" "$TARGET_ZPROFILE.pre-bootstrap.bak"
+  backup_if_unmanaged "$TARGET_ZSHRC" "$TARGET_ZSHRC.pre-bootstrap.bak"
 
   copy_repo_file "$REPO_ZSH_DIR/dot_zprofile" "$TARGET_ZPROFILE"
   copy_repo_file "$REPO_ZSH_DIR/dot_zshrc" "$TARGET_ZSHRC"

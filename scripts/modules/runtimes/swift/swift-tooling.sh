@@ -5,11 +5,11 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_SWIFT_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/runtimes/swift/swift-neovim.lua"
-TARGET_SWIFT_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/runtimes_swift.lua"
+TARGET_SWIFT_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/runtimes_swift.lua"
 REPO_SWIFT_VSCODE_EXTENSIONS="$REPO_ROOT/scripts/modules/runtimes/swift/swift-vscode-extensions.txt"
-TARGET_SWIFT_VSCODE_EXTENSIONS="$HOME/.config/mac-dev-setup/vscode/extensions/swift-vscode-extensions.txt"
+TARGET_SWIFT_VSCODE_EXTENSIONS="$HOME/.config/vscode/extensions/swift-vscode-extensions.txt"
 REPO_SWIFT_VSCODE_SETTINGS="$REPO_ROOT/scripts/modules/runtimes/swift/swift-vscode-settings.jsonc"
-TARGET_SWIFT_VSCODE_SETTINGS="$HOME/.config/mac-dev-setup/vscode/settings/swift-vscode-settings.jsonc"
+TARGET_SWIFT_VSCODE_SETTINGS="$HOME/.config/vscode/settings/swift-vscode-settings.jsonc"
 
 install_swift_neovim_plugin() {
   install_managed_nvim_plugin "$REPO_SWIFT_NVIM_PLUGIN" "$(basename "$TARGET_SWIFT_NVIM_PLUGIN")" >/dev/null

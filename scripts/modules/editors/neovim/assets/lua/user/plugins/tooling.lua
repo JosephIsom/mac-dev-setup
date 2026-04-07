@@ -54,7 +54,7 @@ return {
 
       lint.linters_by_ft = opts.linters_by_ft or {}
 
-      local group = vim.api.nvim_create_augroup("mac-dev-setup-lint", { clear = true })
+      local group = vim.api.nvim_create_augroup("user-lint", { clear = true })
       vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave", "BufEnter" }, {
         group = group,
         callback = function(args)

@@ -1,5 +1,5 @@
 # shellcheck shell=bash
-# PATH and env: Homebrew, mise (mac-dev-setup)
+# PATH and env: Homebrew, mise
 # Homebrew is initialized in ~/.zprofile for login shells. Only re-run shellenv
 # here when brew is not already available, which keeps interactive shell startup
 # lighter while still handling non-login shells correctly.

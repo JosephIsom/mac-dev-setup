@@ -4,7 +4,7 @@ set -euo pipefail
 # shellcheck disable=SC1091
 source "$LIB_DIR/common.sh"
 
-NOTES_DIR="$HOME/.config/mac-dev-setup"
+NOTES_DIR="$HOME/.config"
 NOTES_FILE="$NOTES_DIR/theme-followup.txt"
 
 main() {
@@ -33,7 +33,7 @@ Manual follow-up where app-level theming is still required:
 
 Warp:
 - Open Settings > Appearance > Current Theme
-- Pick Islands Dark (mac-dev-setup)
+- Pick Islands Dark
 - Set font to JetBrainsMono Nerd Font, size 14
 
 Zed:

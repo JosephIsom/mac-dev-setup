@@ -1,3 +1,3 @@
 # shellcheck shell=bash
-# Premake alias (mac-dev-setup)
+# Premake alias
 alias premake='premake5'

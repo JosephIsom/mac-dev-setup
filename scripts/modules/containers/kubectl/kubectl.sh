@@ -7,9 +7,9 @@ source "$LIB_DIR/common.sh"
 REPO_KUBECTL_ZSH_PLUGIN="$REPO_ROOT/scripts/modules/containers/kubectl/kubectl-completion.zsh"
 TARGET_KUBECTL_ZSH_PLUGIN="$HOME/.zsh/plugins/kubectl-completion.zsh"
 REPO_KUBECTL_VSCODE_EXTENSIONS="$REPO_ROOT/scripts/modules/containers/kubectl/kubectl-vscode-extensions.txt"
-TARGET_KUBECTL_VSCODE_EXTENSIONS="$HOME/.config/mac-dev-setup/vscode/extensions/kubectl-vscode-extensions.txt"
+TARGET_KUBECTL_VSCODE_EXTENSIONS="$HOME/.config/vscode/extensions/kubectl-vscode-extensions.txt"
 REPO_KUBECTL_VSCODE_SETTINGS="$REPO_ROOT/scripts/modules/containers/kubectl/kubectl-vscode-settings.jsonc"
-TARGET_KUBECTL_VSCODE_SETTINGS="$HOME/.config/mac-dev-setup/vscode/settings/kubectl-vscode-settings.jsonc"
+TARGET_KUBECTL_VSCODE_SETTINGS="$HOME/.config/vscode/settings/kubectl-vscode-settings.jsonc"
 
 install_kubectl_zsh_plugin() {
   install_managed_zsh_plugin "$REPO_KUBECTL_ZSH_PLUGIN" "$(basename "$TARGET_KUBECTL_ZSH_PLUGIN")" >/dev/null

@@ -1,6 +1,6 @@
-# mac-dev-setup
+# Mac Development Setup
 
-`mac-dev-setup` bootstraps a new Mac for software development with a curated command-line environment, editor setup, language runtimes, cloud and container tooling, and optional desktop apps.
+This repo bootstraps a new Mac for software development with a curated command-line environment, editor setup, language runtimes, cloud and container tooling, and optional desktop apps.
 
 It also includes an optional `local-edge/` capability for a host-installed Caddy front door, local HTTPS, `.localhost` routing, and kind ingress bridging. That flow is separate from the main bootstrap on purpose.
 
@@ -28,7 +28,7 @@ The repo is meant to be:
 1. Clone the repo.
 2. Copy `config/user.env.example` to `config/user.env`.
 3. Set your Git identity and any runtime/version overrides you want in `config/user.env`.
-4. Open [scripts/bootstrap.sh](/Users/joe/src/personal/mac-dev-setup/scripts/bootstrap.sh) and comment out anything you do not want installed.
+4. Open [scripts/bootstrap.sh](./scripts/bootstrap.sh) and comment out anything you do not want installed.
 5. Run bootstrap.
 6. Run verify.
 7. Complete the small number of manual sign-in or first-launch steps called out in the docs.
@@ -74,10 +74,10 @@ After `setup`, the other `bootstrap-local-edge` commands operate on the managed 
 
 ## What You Usually Edit
 
-- [config/user.env.example](/Users/joe/src/personal/mac-dev-setup/config/user.env.example)
-- [config/user.env](/Users/joe/src/personal/mac-dev-setup/config/user.env)
-- [scripts/bootstrap.sh](/Users/joe/src/personal/mac-dev-setup/scripts/bootstrap.sh)
-- [scripts/verify.sh](/Users/joe/src/personal/mac-dev-setup/scripts/verify.sh)
+- [config/user.env.example](./config/user.env.example)
+- [config/user.env](./config/user.env)
+- [scripts/bootstrap.sh](./scripts/bootstrap.sh)
+- [scripts/verify.sh](./scripts/verify.sh)
 
 ## Verification
 

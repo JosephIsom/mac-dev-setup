@@ -5,11 +5,11 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_GRAPHQL_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/languages/graphql/graphql-neovim.lua"
-TARGET_GRAPHQL_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/languages_graphql.lua"
+TARGET_GRAPHQL_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/languages_graphql.lua"
 REPO_GRAPHQL_VSCODE_EXTENSIONS="$REPO_ROOT/scripts/modules/languages/graphql/graphql-vscode-extensions.txt"
-TARGET_GRAPHQL_VSCODE_EXTENSIONS="$HOME/.config/mac-dev-setup/vscode/extensions/graphql-vscode-extensions.txt"
+TARGET_GRAPHQL_VSCODE_EXTENSIONS="$HOME/.config/vscode/extensions/graphql-vscode-extensions.txt"
 REPO_GRAPHQL_VSCODE_SETTINGS="$REPO_ROOT/scripts/modules/languages/graphql/graphql-vscode-settings.jsonc"
-TARGET_GRAPHQL_VSCODE_SETTINGS="$HOME/.config/mac-dev-setup/vscode/settings/graphql-vscode-settings.jsonc"
+TARGET_GRAPHQL_VSCODE_SETTINGS="$HOME/.config/vscode/settings/graphql-vscode-settings.jsonc"
 
 install_graphql_neovim_plugin() {
   install_managed_nvim_plugin "$REPO_GRAPHQL_NVIM_PLUGIN" "$(basename "$TARGET_GRAPHQL_NVIM_PLUGIN")" >/dev/null

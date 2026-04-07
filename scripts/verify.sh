@@ -125,13 +125,13 @@ run_check_brew_cask() {
 }
 
 run_check_vscode_extensions_from_manifests() {
-  local manifests_dir="$HOME/.config/mac-dev-setup/vscode/extensions"
+  local manifests_dir="$HOME/.config/vscode/extensions"
   local manifest_path
   local extension_id
   local severity="${1:-warn}"
 
   if [[ ! -d "$manifests_dir" ]]; then
-    record_by_severity "$severity" "Managed VS Code extension manifests present"
+    record_by_severity "$severity" "VS Code extension manifests present"
     return 0
   fi
 
@@ -186,7 +186,7 @@ main() {
 
   printf '\n'
   printf '========================================\n'
-  printf 'mac-dev-setup verify\n'
+  printf 'Bootstrap verify\n'
   printf '========================================\n'
   printf '\n'
 
@@ -194,7 +194,7 @@ main() {
   run_check_cmd "brew" "Homebrew available" fail
   run_check_cmd "git" "Git available" fail
   run_check_cmd "mise" "mise available" fail
-  run_check_file "$HOME/.zshrc" "Managed zsh bootstrap present" fail
+  run_check_file "$HOME/.zshrc" "Zsh bootstrap present" fail
   run_check_file "$HOME/.ssh/config" "SSH config present" fail
   run_check_brew_cask "font-fira-code" "Fira Code font installed" fail
   run_check_brew_cask "font-fira-code-nerd-font" "Fira Code Nerd Font installed" fail
@@ -263,7 +263,7 @@ main() {
   run_check_cmd "cmake" "cmake available" warn
   run_check_cmd "premake5" "premake available" warn
   run_check_cmd "tmux" "tmux available" warn
-  run_check_file "$HOME/.tmux.conf" "Managed tmux config present" fail
+  run_check_file "$HOME/.tmux.conf" "tmux config present" fail
   run_check_dir "$HOME/.tmux/plugins/tpm" "TPM installed" fail
   run_check_dir "$HOME/.tmux/plugins/tmux-resurrect" "tmux-resurrect installed" fail
   run_check_dir "$HOME/.tmux/plugins/tmux-continuum" "tmux-continuum installed" fail
@@ -274,22 +274,22 @@ main() {
   run_check_cmd "pyright" "Pyright available" warn
   run_check_cmd "pyright-langserver" "Pyright language server available" warn
   # run_check_cmd "ty" "ty available" warn
-  run_check_file "$HOME/.config/mac-dev-setup/vscode/templates/tasks/python-vscode-tasks.jsonc" "Python VS Code tasks template present" warn
-  run_check_file "$HOME/.config/mac-dev-setup/vscode/templates/launch/python-vscode-launch.jsonc" "Python VS Code launch template present" warn
-  run_check_file "$HOME/.config/mac-dev-setup/vscode/templates/workspace/python-vscode-workspace.code-workspace" "Python VS Code workspace template present" warn
+  run_check_file "$HOME/.config/vscode/templates/tasks/python-vscode-tasks.jsonc" "Python VS Code tasks template present" warn
+  run_check_file "$HOME/.config/vscode/templates/launch/python-vscode-launch.jsonc" "Python VS Code launch template present" warn
+  run_check_file "$HOME/.config/vscode/templates/workspace/python-vscode-workspace.code-workspace" "Python VS Code workspace template present" warn
   run_check_cmd "node" "Node available" fail
   run_check_cmd "npm" "npm available" fail
   run_check_file "$HOME/.zsh/plugins/npm-completion.zsh" "npm zsh completion plugin present" fail
   run_check_login_zsh 'npm completion >/dev/null 2>&1' "npm completion available" warn
   run_check_cmd "pnpm" "pnpm available" fail
   run_check_cmd "yarn" "Yarn available" fail
-  run_check_file "$HOME/.config/mac-dev-setup/vscode/templates/tasks/javascript-vscode-tasks.jsonc" "JavaScript VS Code tasks template present" warn
-  run_check_file "$HOME/.config/mac-dev-setup/vscode/templates/tasks/typescript-vscode-tasks.jsonc" "TypeScript VS Code tasks template present" warn
-  run_check_file "$HOME/.config/mac-dev-setup/vscode/templates/launch/typescript-vscode-launch.jsonc" "TypeScript VS Code launch template present" warn
+  run_check_file "$HOME/.config/vscode/templates/tasks/javascript-vscode-tasks.jsonc" "JavaScript VS Code tasks template present" warn
+  run_check_file "$HOME/.config/vscode/templates/tasks/typescript-vscode-tasks.jsonc" "TypeScript VS Code tasks template present" warn
+  run_check_file "$HOME/.config/vscode/templates/launch/typescript-vscode-launch.jsonc" "TypeScript VS Code launch template present" warn
   run_check_cmd "go" "Go available" fail
-  run_check_file "$HOME/.config/mac-dev-setup/vscode/templates/tasks/go-vscode-tasks.jsonc" "Go VS Code tasks template present" warn
-  run_check_file "$HOME/.config/mac-dev-setup/vscode/templates/launch/go-vscode-launch.jsonc" "Go VS Code launch template present" warn
-  run_check_file "$HOME/.config/mac-dev-setup/vscode/templates/workspace/go-vscode-workspace.code-workspace" "Go VS Code workspace template present" warn
+  run_check_file "$HOME/.config/vscode/templates/tasks/go-vscode-tasks.jsonc" "Go VS Code tasks template present" warn
+  run_check_file "$HOME/.config/vscode/templates/launch/go-vscode-launch.jsonc" "Go VS Code launch template present" warn
+  run_check_file "$HOME/.config/vscode/templates/workspace/go-vscode-workspace.code-workspace" "Go VS Code workspace template present" warn
   run_check_cmd "java" "Java available" fail
   run_check_cmd "jdtls" "Java language server available" warn
   run_check_cmd "google-java-format" "google-java-format available" warn
@@ -312,9 +312,9 @@ main() {
   run_check_login_zsh 'command -v cmake >/dev/null 2>&1' "cmake available for C/C++ workflow" fail
   run_check_login_zsh 'command -v ninja >/dev/null 2>&1' "ninja available for C/C++ workflow" fail
   run_check_file "$HOME/.zsh/plugins/c-cpp-llvm-path.zsh" "C/C++ llvm path plugin present" fail
-  run_check_file "$HOME/.config/mac-dev-setup/vscode/extensions/c-cpp-vscode-extensions.txt" "C/C++ VS Code extensions manifest present" warn
-  run_check_file "$HOME/.config/mac-dev-setup/vscode/settings/c-cpp-vscode-settings.jsonc" "C/C++ VS Code settings fragment present" warn
-  run_check_file "$HOME/.config/nvim/lua/mac_dev_setup/plugins/languages_c_cpp.lua" "C/C++ Neovim plugin spec present" warn
+  run_check_file "$HOME/.config/vscode/extensions/c-cpp-vscode-extensions.txt" "C/C++ VS Code extensions manifest present" warn
+  run_check_file "$HOME/.config/vscode/settings/c-cpp-vscode-settings.jsonc" "C/C++ VS Code settings fragment present" warn
+  run_check_file "$HOME/.config/nvim/lua/user/plugins/languages_c_cpp.lua" "C/C++ Neovim plugin spec present" warn
 
   # Cloud
   run_check_cmd "aws" "AWS CLI available" warn
@@ -347,7 +347,7 @@ main() {
   run_check_cmd "colima" "Colima available" fail
   run_check_cmd "docker" "Docker CLI available" fail
   run_check_file "$HOME/.zsh/plugins/docker-completion.zsh" "Docker zsh completion plugin present" fail
-  run_check_file "$HOME/.config/mac-dev-setup/vscode/templates/tasks/docker-vscode-tasks.jsonc" "Docker VS Code tasks template present" warn
+  run_check_file "$HOME/.config/vscode/templates/tasks/docker-vscode-tasks.jsonc" "Docker VS Code tasks template present" warn
   run_check_login_zsh 'docker completion zsh >/dev/null 2>&1' "Docker completion available" warn
   run_check_cmd "caddy" "Caddy available" warn
   run_check_cmd "kind" "kind available" warn
@@ -361,7 +361,7 @@ main() {
   run_check_file "$HOME/Library/Application Support/k9s/config.yaml" "k9s config present" fail
   run_check_file "$HOME/Library/Application Support/k9s/skins/islands-dark.yaml" "k9s Islands Dark skin present" fail
   run_check_cmd "tilt" "Tilt available" warn
-  run_check_file "$HOME/.config/mac-dev-setup/vscode/templates/tasks/tilt-vscode-tasks.jsonc" "Tilt VS Code tasks template present" warn
+  run_check_file "$HOME/.config/vscode/templates/tasks/tilt-vscode-tasks.jsonc" "Tilt VS Code tasks template present" warn
   run_check_cmd "kubectx" "kubectx available" warn
   run_check_cmd "stern" "stern available" warn
   run_check_cmd "ctlptl" "ctlptl available" warn
@@ -404,7 +404,7 @@ main() {
   run_check_cmd "ajv" "JSON Schema CLI available" warn
   run_check_cmd "jsonnet" "Jsonnet available" warn
   run_check_cmd "jb" "jsonnet-bundler available" warn
-  run_check_file "$HOME/.config/nvim/lua/mac_dev_setup/plugins/specs_jsonnet.lua" "Jsonnet Neovim plugin spec present" warn
+  run_check_file "$HOME/.config/nvim/lua/user/plugins/specs_jsonnet.lua" "Jsonnet Neovim plugin spec present" warn
   run_check_cmd "terraform" "Terraform available" warn
   run_check_file "$HOME/.zsh/plugins/terraform-completion.zsh" "Terraform zsh completion plugin present" fail
   run_check_cmd "tflint" "tflint available" warn
@@ -505,9 +505,9 @@ main() {
 
   # Editors
   run_check_cmd "code" "VS Code CLI available" warn
-  run_check_file "$HOME/.config/mac-dev-setup/vscode/extensions/vscode-core-vscode-extensions.txt" "VS Code core extensions manifest present" fail
-  run_check_file "$HOME/.config/mac-dev-setup/vscode/settings/vscode-core-vscode-settings.jsonc" "VS Code core settings fragment present" fail
-  run_check_file "$HOME/Library/Application Support/Code/User/settings.json" "Managed VS Code settings present" fail
+  run_check_file "$HOME/.config/vscode/extensions/vscode-core-vscode-extensions.txt" "VS Code core extensions manifest present" fail
+  run_check_file "$HOME/.config/vscode/settings/vscode-core-vscode-settings.jsonc" "VS Code core settings fragment present" fail
+  run_check_file "$HOME/Library/Application Support/Code/User/settings.json" "VS Code settings present" fail
   run_check_vscode_extensions_from_manifests warn
   run_check_cmd "idea" "IntelliJ CLI helper available" warn
   run_check_file "$HOME/.config/jetbrains/intellij-ai-notes.txt" "IntelliJ AI setup notes present" warn
@@ -515,9 +515,9 @@ main() {
   run_check_file "$HOME/.config/helix/config.toml" "Helix config present" fail
   run_check_file "$HOME/.config/helix/themes/islands_dark.toml" "Helix Islands Dark theme present" fail
   run_check_cmd "nvim" "Neovim available" warn
-  run_check_file "$HOME/.config/nvim/init.lua" "Managed Neovim init.lua present" fail
-  run_check_file "$HOME/.config/nvim/lua/mac_dev_setup/local.lua" "Neovim local override file present" fail
-  run_check_file "$HOME/.config/nvim/lua/mac_dev_setup/theme.lua" "Neovim Islands Dark theme module present" fail
+  run_check_file "$HOME/.config/nvim/init.lua" "Neovim init.lua present" fail
+  run_check_file "$HOME/.config/nvim/lua/user/local.lua" "Neovim local override file present" fail
+  run_check_file "$HOME/.config/nvim/lua/user/theme.lua" "Neovim Islands Dark theme module present" fail
   run_check_dir "$HOME/.local/share/nvim/lazy/lazy.nvim" "lazy.nvim checkout present" fail
   run_check_login_zsh 'nvim --headless "+qa" >/dev/null 2>&1' "Neovim config loads headlessly" warn
   run_check_dir "/Applications/Sublime Text.app" "Sublime Text app present" warn
@@ -532,17 +532,17 @@ main() {
   run_check_dir "/Applications/Android Studio.app" "Android Studio app present" warn
   run_check_file "$HOME/.config/android-studio/bootstrap-notes.txt" "Android Studio bootstrap notes present" warn
   # run_check_dir "/Applications/iTerm.app" "iTerm2 app present" warn
-  # run_check_file "$HOME/Library/Application Support/iTerm2/DynamicProfiles/00-mac-dev-setup.json" "Managed iTerm2 dynamic profile present" fail
+  # run_check_file "$HOME/Library/Application Support/iTerm2/DynamicProfiles/00-islands-dark.json" "iTerm2 dynamic profile present" fail
   run_check_dir "/Applications/Ghostty.app" "Ghostty app present" warn
-  run_check_file "$HOME/.config/ghostty/config" "Managed Ghostty config present" fail
+  run_check_file "$HOME/.config/ghostty/config" "Ghostty config present" fail
   run_check_file "$HOME/.config/ghostty/local.conf" "Ghostty local override template present" fail
   run_check_dir "$HOME/.config/ghostty/themes" "Ghostty theme directory present" fail
   run_check_file "$HOME/.config/ghostty/themes/islands-dark.conf" "Ghostty Islands Dark theme present" fail
   # run_check_dir "/Applications/WezTerm.app" "WezTerm app present" warn
-  # run_check_file "$HOME/.config/wezterm/wezterm.lua" "Managed WezTerm config present" fail
+  # run_check_file "$HOME/.config/wezterm/wezterm.lua" "WezTerm config present" fail
   # run_check_file "$HOME/.config/wezterm/local.lua" "WezTerm local override template present" fail
   # run_check_dir "/Applications/Warp.app" "Warp app present" warn
-  # run_check_file "$HOME/.warp/themes/islands-dark-mac-dev-setup.yaml" "Warp Islands Dark theme present" fail
+  # run_check_file "$HOME/.warp/themes/islands-dark.yaml" "Warp Islands Dark theme present" fail
   # run_check_file "$HOME/.warp/bootstrap-notes.txt" "Warp bootstrap notes present" fail
 
   # AI tooling
@@ -552,9 +552,9 @@ main() {
   run_check_cursor_cli "Cursor CLI available" warn
   run_check_dir "/Applications/Codex.app" "Codex app present" warn
   run_check_dir "/Applications/Cursor.app" "Cursor editor present" warn
-  run_check_file "$HOME/Library/Application Support/Cursor/User/settings.json" "Managed Cursor settings present" fail
+  run_check_file "$HOME/Library/Application Support/Cursor/User/settings.json" "Cursor settings present" fail
   run_check_dir "/Applications/Windsurf.app" "Windsurf editor present" warn
-  run_check_file "$HOME/Library/Application Support/Windsurf/User/settings.json" "Managed Windsurf settings present" fail
+  run_check_file "$HOME/Library/Application Support/Windsurf/User/settings.json" "Windsurf settings present" fail
   # run_check_cmd "aider" "Aider CLI available" warn
   # run_check_cmd "claude" "Claude CLI available" warn
   # run_check_file "$HOME/.config/claude/ide-notes.txt" "Claude IDE integration notes present" warn

@@ -11,7 +11,7 @@
 
 ```bash
 git clone <your-fork-or-copy-url>
-cd mac-dev-setup
+cd <repo-directory>
 ```
 
 ## 2. Create Your User Config
@@ -22,7 +22,7 @@ Copy the example file:
 cp config/user.env.example config/user.env
 ```
 
-Edit [config/user.env.example](/Users/joe/src/personal/mac-dev-setup/config/user.env.example) values in your real `config/user.env`:
+Edit [config/user.env.example](../config/user.env.example) values in your real `config/user.env`:
 
 - `GIT_USER_NAME`
 - `GIT_USER_EMAIL`
@@ -36,14 +36,14 @@ Edit [config/user.env.example](/Users/joe/src/personal/mac-dev-setup/config/user
 
 ## 3. Choose What To Install
 
-Open [scripts/bootstrap.sh](/Users/joe/src/personal/mac-dev-setup/scripts/bootstrap.sh).
+Open [scripts/bootstrap.sh](../scripts/bootstrap.sh).
 
 - Leave uncommented lines enabled.
 - Comment out anything you do not want.
 - Most optional modules are already commented out.
 - The C/C++ baseline is enabled by default; optional extras such as `cppcheck`, `gdb`, `ccache`, and `meson` stay commented out until you want them.
 
-Then open [scripts/verify.sh](/Users/joe/src/personal/mac-dev-setup/scripts/verify.sh) and comment out checks that do not match your enabled module list.
+Then open [scripts/verify.sh](../scripts/verify.sh) and comment out checks that do not match your enabled module list.
 
 For Python specifically, the default tooling line keeps `pyright` enabled. If you want to try Astral `ty` instead, comment out the `runtimes/python/linters.sh` line, uncomment `runtimes/python/ty.sh`, then make the matching change in the Python section of `scripts/verify.sh`.
 
@@ -85,7 +85,7 @@ bash scripts/modules/editors/vscode/extensions.sh
 
 This is the fastest way to recover after enabling a new module or fixing a failed install.
 
-## 7. Understand The Managed Config Model
+## 7. Understand The Installed Config Model
 
 The repo owns baseline config for:
 
@@ -104,7 +104,7 @@ Examples:
 
 - Ghostty keeps `~/.config/ghostty/local.conf`
 - WezTerm keeps `~/.config/wezterm/local.lua`
-- Neovim keeps `~/.config/nvim/lua/mac_dev_setup/local.lua`
+- Neovim keeps `~/.config/nvim/lua/user/local.lua`
 
 ## 8. Know The Main Follow-Up Tasks
 
@@ -116,7 +116,7 @@ After bootstrap, common manual steps are:
 - open Android Studio and complete the SDK setup wizard
 - sign in to 1Password or Bitwarden if you enabled them
 - sign in to Tailscale or ngrok if you enabled them
-- pick `Islands Dark (mac-dev-setup)` and the managed font if you enabled Warp
+- pick `Islands Dark` and the managed font if you enabled Warp
 
 The complete list is in [Post-Bootstrap Tasks](post-bootstrap.md).
 
@@ -128,4 +128,4 @@ If you want a local HTTPS front door with `.localhost` hostnames, host-installed
 ./scripts/bootstrap-local-edge.sh setup
 ```
 
-That flow lives under [`local-edge/`](/Users/joe/src/personal/mac-dev-setup/local-edge) and is intentionally separate from the base machine bootstrap. It is also the only command path that provisions the managed Caddyfile link, local-edge config files, and kind edge config. Other `bootstrap-local-edge` subcommands expect setup to have already been completed.
+That flow lives under [`local-edge/`](../local-edge) and is intentionally separate from the base machine bootstrap. It is also the only command path that provisions the managed Caddyfile link, local-edge config files, and kind edge config. Other `bootstrap-local-edge` subcommands expect setup to have already been completed.

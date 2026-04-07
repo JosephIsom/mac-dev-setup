@@ -1,4 +1,4 @@
-local group = vim.api.nvim_create_augroup("mac-dev-setup", { clear = true })
+local group = vim.api.nvim_create_augroup("user", { clear = true })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking text",

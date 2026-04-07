@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 # shellcheck disable=SC1090
-# Plugins (mac-dev-setup)
+# Plugins
 # Ordering convention:
 # 00-49: core prerequisites and shared shell UX
 # 50-79: module-owned tool plugins and completions

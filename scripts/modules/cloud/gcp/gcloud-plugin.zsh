@@ -1,5 +1,5 @@
 # shellcheck shell=bash
-# Google Cloud CLI integration (mac-dev-setup)
+# Google Cloud CLI integration
 
 if [[ -d /opt/homebrew/share/google-cloud-sdk/bin ]]; then
   path=(/opt/homebrew/share/google-cloud-sdk/bin "${path[@]}")

@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 # shellcheck disable=SC2034
-# mac-dev-setup managed Pure config
+# managed Pure config
 PURE_CMD_MAX_EXEC_TIME=10
 PURE_GIT_PULL=1
 PURE_GIT_UNTRACKED_DIRTY=1

@@ -1,4 +1,4 @@
--- mac-dev-setup managed WezTerm baseline
+-- managed WezTerm baseline
 local wezterm = require 'wezterm'
 local config = {}
 

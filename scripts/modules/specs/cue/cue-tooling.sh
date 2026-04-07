@@ -5,7 +5,7 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_CUE_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/specs/cue/cue-neovim.lua"
-TARGET_CUE_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/specs_cue.lua"
+TARGET_CUE_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/specs_cue.lua"
 
 install_cue_neovim_plugin() {
   install_managed_nvim_plugin "$REPO_CUE_NVIM_PLUGIN" "$(basename "$TARGET_CUE_NVIM_PLUGIN")" >/dev/null

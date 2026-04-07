@@ -48,10 +48,10 @@ This page covers shell-facing modules: command-line tools, shell prompts, tmux, 
 
 | Module | Default | What / why | How to use it | Links | Follow-up |
 | --- | --- | --- | --- | --- | --- |
-| `terminals/iterm2/iterm2-app.sh` | On | Installs iTerm2 and a managed dynamic profile. | Open iTerm2 and choose the `mac-dev-setup` profile. | [iTerm2](https://iterm2.com/) | Set the managed profile as your default profile if you want the repo’s font and behavior. |
+| `terminals/iterm2/iterm2-app.sh` | On | Installs iTerm2 and a managed dynamic profile. | Open iTerm2 and choose the `Islands Dark` profile. | [iTerm2](https://iterm2.com/) | Set the managed profile as your default profile if you want the repo’s font and behavior. |
 | `terminals/ghostty/ghostty-app.sh` | On | Installs Ghostty, the managed Islands Dark theme, and `local.conf`. | Launch Ghostty; edit `~/.config/ghostty/local.conf` for personal overrides. | [Ghostty](https://ghostty.org/), [Docs](https://ghostty.org/docs) | Keep local changes in `local.conf`; the base config/theme are repo-managed. |
 | `terminals/wezterm/wezterm-app.sh` | On | Installs WezTerm with a managed Islands Dark palette and local override. | Launch WezTerm; edit `~/.config/wezterm/local.lua` for personal overrides. | [WezTerm](https://wezfurlong.org/wezterm/) | Keep local changes in `local.lua`. |
-| `terminals/warp/warp-app.sh` | On | Installs Warp and a managed Islands Dark custom theme file. | Launch Warp, pick `Islands Dark (mac-dev-setup)`, and set the font. | [Warp](https://www.warp.dev/) | Set `JetBrainsMono Nerd Font` size 14 in the app. |
+| `terminals/warp/warp-app.sh` | On | Installs Warp and a managed Islands Dark custom theme file. | Launch Warp, pick `Islands Dark`, and set the font. | [Warp](https://www.warp.dev/) | Set `JetBrainsMono Nerd Font` size 14 in the app. |
 
 ## Notes On Shell Integration
 

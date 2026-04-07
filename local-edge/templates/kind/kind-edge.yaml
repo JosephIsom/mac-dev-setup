@@ -1,4 +1,4 @@
-# Managed by mac-dev-setup local-edge.
+# Local edge configuration.
 # Safe to edit locally. setup will not overwrite a changed file.
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4

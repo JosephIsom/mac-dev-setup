@@ -5,7 +5,7 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_REGO_OPA_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/specs/rego-opa/rego-opa-neovim.lua"
-TARGET_REGO_OPA_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/specs_rego_opa.lua"
+TARGET_REGO_OPA_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/specs_rego_opa.lua"
 
 install_rego_opa_neovim_plugin() {
   install_managed_nvim_plugin "$REPO_REGO_OPA_NVIM_PLUGIN" "$(basename "$TARGET_REGO_OPA_NVIM_PLUGIN")" >/dev/null

@@ -5,11 +5,11 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_SVELTE_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/languages/svelte/svelte-neovim.lua"
-TARGET_SVELTE_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/languages_svelte.lua"
+TARGET_SVELTE_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/languages_svelte.lua"
 REPO_SVELTE_VSCODE_EXTENSIONS="$REPO_ROOT/scripts/modules/languages/svelte/svelte-vscode-extensions.txt"
-TARGET_SVELTE_VSCODE_EXTENSIONS="$HOME/.config/mac-dev-setup/vscode/extensions/svelte-vscode-extensions.txt"
+TARGET_SVELTE_VSCODE_EXTENSIONS="$HOME/.config/vscode/extensions/svelte-vscode-extensions.txt"
 REPO_SVELTE_VSCODE_SETTINGS="$REPO_ROOT/scripts/modules/languages/svelte/svelte-vscode-settings.jsonc"
-TARGET_SVELTE_VSCODE_SETTINGS="$HOME/.config/mac-dev-setup/vscode/settings/svelte-vscode-settings.jsonc"
+TARGET_SVELTE_VSCODE_SETTINGS="$HOME/.config/vscode/settings/svelte-vscode-settings.jsonc"
 
 install_svelte_neovim_plugin() {
   install_managed_nvim_plugin "$REPO_SVELTE_NVIM_PLUGIN" "$(basename "$TARGET_SVELTE_NVIM_PLUGIN")" >/dev/null

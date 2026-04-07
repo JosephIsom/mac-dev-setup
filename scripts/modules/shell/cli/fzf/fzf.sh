@@ -8,7 +8,7 @@ REPO_FZF_PLUGIN="$REPO_ROOT/scripts/modules/shell/cli/fzf/fzf-plugin.zsh"
 TARGET_ZSH_PLUGIN_DIR="$HOME/.zsh/plugins"
 TARGET_FZF_PLUGIN="$TARGET_ZSH_PLUGIN_DIR/fzf-plugin.zsh"
 REPO_FZF_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/shell/cli/fzf/neovim-fzf.lua"
-TARGET_NVIM_PLUGIN_DIR="$HOME/.config/nvim/lua/mac_dev_setup/plugins"
+TARGET_NVIM_PLUGIN_DIR="$HOME/.config/nvim/lua/user/plugins"
 TARGET_FZF_NVIM_PLUGIN="$TARGET_NVIM_PLUGIN_DIR/shell_cli_fzf.lua"
 
 install_fzf_plugin() {

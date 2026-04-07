@@ -29,17 +29,17 @@ After `./scripts/bootstrap-local-edge.sh setup` has completed, the rest of the `
 - `docs/`: architecture notes and troubleshooting
 - `examples/`: Docker and Kubernetes sample workloads
 - `scripts/`: the opt-in command surface and helper scripts
-- `templates/`: repo-owned templates copied into `~/.config/mac-dev-setup/local-edge`
+- `templates/`: repo-owned templates copied into `~/.config/local-edge`
 
-## Managed State
+## Installed State
 
 The setup flow creates or manages:
 
-- `~/.config/mac-dev-setup/local-edge/caddy/Caddyfile`
-- `~/.config/mac-dev-setup/local-edge/caddy/sites.d/*.caddy`
-- `~/.config/mac-dev-setup/local-edge/kind/kind-edge.yaml`
-- `~/.config/mac-dev-setup/local-edge/backups/`
-- `~/.config/mac-dev-setup/local-edge/runtime/homebrew-caddyfile-state`
+- `~/.config/local-edge/caddy/Caddyfile`
+- `~/.config/local-edge/caddy/sites.d/*.caddy`
+- `~/.config/local-edge/kind/kind-edge.yaml`
+- `~/.config/local-edge/backups/`
+- `~/.config/local-edge/runtime/homebrew-caddyfile-state`
 - Homebrew's live `Caddyfile` path at `/opt/homebrew/etc/Caddyfile` or `/usr/local/etc/Caddyfile`, backed up before replacement when needed
 
 Setup does not modify `/etc/hosts`.
@@ -84,7 +84,7 @@ Use `--insecure` on the smoke test until the CA has been trusted.
 ## Adding Personal Services
 
 1. Run the host process or Docker workload on a loopback port such as `127.0.0.1:18100`.
-2. Add a new site block to `~/.config/mac-dev-setup/local-edge/caddy/sites.d/10-host-services.caddy`.
+2. Add a new site block to `~/.config/local-edge/caddy/sites.d/10-host-services.caddy`.
 3. Reload Caddy with `./scripts/bootstrap-local-edge.sh caddy reload`.
 
 Example:
@@ -101,7 +101,7 @@ dashboard.localhost {
 1. Expose the workload inside kind with a `Service`.
 2. Install the ingress controller you want to use inside kind.
 3. Add a Kubernetes `Ingress` for a `.localhost` hostname.
-4. Add the hostname to `~/.config/mac-dev-setup/local-edge/caddy/sites.d/20-kind-services.caddy`.
+4. Add the hostname to `~/.config/local-edge/caddy/sites.d/20-kind-services.caddy`.
 5. Reload Caddy.
 
 The repo includes `./scripts/bootstrap-local-edge.sh kind install-ingress-nginx` as a concrete example helper, but that controller choice stays explicit rather than being auto-enabled during setup.
@@ -145,5 +145,5 @@ spec:
 ## Reset And Troubleshooting
 
 - `./scripts/bootstrap-local-edge.sh safe-reset` stops the managed pieces, archives the managed state, and restores the previous Homebrew `Caddyfile` when one was backed up
-- [Architecture Notes](/Users/joe/src/personal/mac-dev-setup/local-edge/docs/architecture.md)
-- [Troubleshooting](/Users/joe/src/personal/mac-dev-setup/local-edge/docs/troubleshooting.md)
+- [Architecture Notes](./local-edge/docs/architecture.md)
+- [Troubleshooting](./local-edge/docs/troubleshooting.md)

@@ -20,7 +20,7 @@ Run:
 ./scripts/bootstrap-local-edge.sh setup
 ```
 
-That stages the managed Caddyfile and kind config under `~/.config/mac-dev-setup/local-edge`, links Homebrew's active `Caddyfile` to the managed version with backup-safe behavior, validates the config, and prints the follow-up commands.
+That stages the managed Caddyfile and kind config under `~/.config/local-edge`, links Homebrew's active `Caddyfile` to the managed version with backup-safe behavior, validates the config, and prints the follow-up commands.
 
 `setup` is the only command that provisions or relinks the managed local-edge config. The other `bootstrap-local-edge` commands are operational commands that expect setup to have already run.
 
@@ -40,6 +40,6 @@ That stages the managed Caddyfile and kind config under `~/.config/mac-dev-setup
 
 ## Read Next
 
-- [local-edge README](/Users/joe/src/personal/mac-dev-setup/local-edge/README.md)
-- [Architecture Notes](/Users/joe/src/personal/mac-dev-setup/local-edge/docs/architecture.md)
-- [Troubleshooting](/Users/joe/src/personal/mac-dev-setup/local-edge/docs/troubleshooting.md)
+- [local-edge README](../local-edge/README.md)
+- [Architecture Notes](../local-edge/docs/architecture.md)
+- [Troubleshooting](../local-edge/docs/troubleshooting.md)

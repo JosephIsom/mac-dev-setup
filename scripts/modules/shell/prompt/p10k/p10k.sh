@@ -7,14 +7,14 @@ source "$LIB_DIR/common.sh"
 REPO_P10K_PLUGIN="$REPO_ROOT/scripts/modules/shell/prompt/p10k/p10k-plugin.zsh"
 REPO_P10K_CONFIG="$REPO_ROOT/scripts/modules/shell/prompt/p10k/p10k-config.zsh"
 TARGET_PROMPT_PLUGIN="$HOME/.zsh/plugins/50-prompt.zsh"
-TARGET_PROMPT_PLUGIN_BACKUP="$TARGET_PROMPT_PLUGIN.pre-mac-dev-setup.bak"
+TARGET_PROMPT_PLUGIN_BACKUP="$TARGET_PROMPT_PLUGIN.pre-bootstrap.bak"
 TARGET_P10K_DIR="$HOME/.local/share/powerlevel10k"
 TARGET_P10K_THEME="$TARGET_P10K_DIR/powerlevel10k.zsh-theme"
 TARGET_P10K_CONFIG="$HOME/.p10k.zsh"
 
 backup_unmanaged_prompt_plugin() {
   [[ -f "$TARGET_PROMPT_PLUGIN" ]] || return 0
-  grep -Fq "mac-dev-setup managed prompt loader" "$TARGET_PROMPT_PLUGIN" && return 0
+  grep -Fq "managed prompt loader" "$TARGET_PROMPT_PLUGIN" && return 0
 
   if [[ -f "$TARGET_PROMPT_PLUGIN_BACKUP" ]]; then
     log_warn "Overwriting $TARGET_PROMPT_PLUGIN using existing backup at $TARGET_PROMPT_PLUGIN_BACKUP"

@@ -5,9 +5,9 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_MARKDOWN_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/files/markdown/markdown-neovim.lua"
-TARGET_MARKDOWN_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/files_markdown.lua"
+TARGET_MARKDOWN_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/files_markdown.lua"
 REPO_MARKDOWN_VSCODE_EXTENSIONS="$REPO_ROOT/scripts/modules/files/markdown/markdown-vscode-extensions.txt"
-TARGET_MARKDOWN_VSCODE_EXTENSIONS="$HOME/.config/mac-dev-setup/vscode/extensions/markdown-vscode-extensions.txt"
+TARGET_MARKDOWN_VSCODE_EXTENSIONS="$HOME/.config/vscode/extensions/markdown-vscode-extensions.txt"
 
 install_markdown_neovim_plugin() {
   install_managed_nvim_plugin "$REPO_MARKDOWN_NVIM_PLUGIN" "$(basename "$TARGET_MARKDOWN_NVIM_PLUGIN")" >/dev/null

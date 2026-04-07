@@ -5,11 +5,11 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_KOTLIN_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/runtimes/kotlin/kotlin-neovim.lua"
-TARGET_KOTLIN_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/runtimes_kotlin.lua"
+TARGET_KOTLIN_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/runtimes_kotlin.lua"
 REPO_KOTLIN_VSCODE_EXTENSIONS="$REPO_ROOT/scripts/modules/runtimes/kotlin/kotlin-vscode-extensions.txt"
-TARGET_KOTLIN_VSCODE_EXTENSIONS="$HOME/.config/mac-dev-setup/vscode/extensions/kotlin-vscode-extensions.txt"
+TARGET_KOTLIN_VSCODE_EXTENSIONS="$HOME/.config/vscode/extensions/kotlin-vscode-extensions.txt"
 REPO_KOTLIN_VSCODE_SETTINGS="$REPO_ROOT/scripts/modules/runtimes/kotlin/kotlin-vscode-settings.jsonc"
-TARGET_KOTLIN_VSCODE_SETTINGS="$HOME/.config/mac-dev-setup/vscode/settings/kotlin-vscode-settings.jsonc"
+TARGET_KOTLIN_VSCODE_SETTINGS="$HOME/.config/vscode/settings/kotlin-vscode-settings.jsonc"
 
 install_kotlin_neovim_plugin() {
   install_managed_nvim_plugin "$REPO_KOTLIN_NVIM_PLUGIN" "$(basename "$TARGET_KOTLIN_NVIM_PLUGIN")" >/dev/null

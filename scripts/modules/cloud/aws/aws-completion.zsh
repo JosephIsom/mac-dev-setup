@@ -1,5 +1,5 @@
 # shellcheck shell=bash
-# AWS CLI completion (mac-dev-setup)
+# AWS CLI completion
 if command -v aws_completer >/dev/null 2>&1; then
   if ! typeset -f complete >/dev/null 2>&1; then
     autoload -Uz +X bashcompinit

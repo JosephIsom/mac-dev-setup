@@ -8,7 +8,7 @@ REPO_SSH_CONFIG="$REPO_ROOT/scripts/prerequisites/ssh/config"
 TARGET_SSH_DIR="$HOME/.ssh"
 TARGET_SSH_CONFIG_DIR="$TARGET_SSH_DIR/config.d"
 TARGET_SSH_CONFIG="$TARGET_SSH_DIR/config"
-TARGET_BASELINE_CONFIG="$TARGET_SSH_CONFIG_DIR/00-mac-dev-setup.conf"
+TARGET_BASELINE_CONFIG="$TARGET_SSH_CONFIG_DIR/00-bootstrap.conf"
 
 ensure_ssh_layout() {
   mkdir -p "$TARGET_SSH_DIR"
@@ -25,7 +25,7 @@ ensure_ssh_tools_available() {
 sync_main_ssh_config() {
   local temp_config=""
 
-  temp_config="$(mktemp "${TMPDIR:-/tmp}/mac-dev-setup-ssh-config.XXXXXX")"
+  temp_config="$(mktemp "${TMPDIR:-/tmp}/bootstrap-ssh-config.XXXXXX")"
 
   {
     cat <<'EOF'

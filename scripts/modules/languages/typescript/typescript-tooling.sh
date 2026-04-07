@@ -5,13 +5,13 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_TYPESCRIPT_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/languages/typescript/typescript-neovim.lua"
-TARGET_TYPESCRIPT_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/languages_typescript.lua"
+TARGET_TYPESCRIPT_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/languages_typescript.lua"
 REPO_TYPESCRIPT_VSCODE_SETTINGS="$REPO_ROOT/scripts/modules/languages/typescript/typescript-vscode-settings.jsonc"
-TARGET_TYPESCRIPT_VSCODE_SETTINGS="$HOME/.config/mac-dev-setup/vscode/settings/typescript-vscode-settings.jsonc"
+TARGET_TYPESCRIPT_VSCODE_SETTINGS="$HOME/.config/vscode/settings/typescript-vscode-settings.jsonc"
 REPO_TYPESCRIPT_VSCODE_TASKS_TEMPLATE="$REPO_ROOT/scripts/modules/languages/typescript/typescript-vscode-tasks.jsonc"
-TARGET_TYPESCRIPT_VSCODE_TASKS_TEMPLATE="$HOME/.config/mac-dev-setup/vscode/templates/tasks/typescript-vscode-tasks.jsonc"
+TARGET_TYPESCRIPT_VSCODE_TASKS_TEMPLATE="$HOME/.config/vscode/templates/tasks/typescript-vscode-tasks.jsonc"
 REPO_TYPESCRIPT_VSCODE_LAUNCH_TEMPLATE="$REPO_ROOT/scripts/modules/languages/typescript/typescript-vscode-launch.jsonc"
-TARGET_TYPESCRIPT_VSCODE_LAUNCH_TEMPLATE="$HOME/.config/mac-dev-setup/vscode/templates/launch/typescript-vscode-launch.jsonc"
+TARGET_TYPESCRIPT_VSCODE_LAUNCH_TEMPLATE="$HOME/.config/vscode/templates/launch/typescript-vscode-launch.jsonc"
 
 install_typescript_neovim_plugin() {
   install_managed_nvim_plugin "$REPO_TYPESCRIPT_NVIM_PLUGIN" "$(basename "$TARGET_TYPESCRIPT_NVIM_PLUGIN")" >/dev/null

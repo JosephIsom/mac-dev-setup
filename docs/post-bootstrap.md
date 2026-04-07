@@ -64,7 +64,7 @@ If you enabled Neovim:
 - `lazy.nvim` is bootstrapped automatically
 - the initial plugin sync runs during install
 
-Use `~/.config/nvim/lua/mac_dev_setup/local.lua` for personal overrides.
+Use `~/.config/nvim/lua/user/local.lua` for personal overrides.
 
 ## AI Tools
 
@@ -191,14 +191,14 @@ Warp cannot fully set its active appearance/font from files alone.
 After install:
 
 1. Open `Settings > Appearance > Current Theme`.
-2. Choose `Islands Dark (mac-dev-setup)`.
+2. Choose `Islands Dark`.
 3. Open `Settings > Appearance > Text`.
 4. Set font to `JetBrainsMono Nerd Font`.
 5. Set font size to `14`.
 
 ### iTerm2
 
-If you enabled iTerm2, the repo installs a dynamic profile named `mac-dev-setup`.
+If you enabled iTerm2, the repo installs a dynamic profile named `Islands Dark`.
 
 If you want that profile to become your normal default:
 
@@ -221,7 +221,7 @@ The repo now installs a shared `Islands Dark` theme/palette anywhere the managed
 
 If you want a consistent look after bootstrap, these still need one-time app-level appearance choices:
 
-- Warp: pick `Islands Dark (mac-dev-setup)` in-app
+- Warp: pick `Islands Dark` in-app
 - iTerm2: if enabled, set the managed profile as default if you want the repo-managed font and baseline behavior
 - Zed: choose light/dark appearance in Settings
 - Sublime Text: choose your preferred UI theme and color scheme manually

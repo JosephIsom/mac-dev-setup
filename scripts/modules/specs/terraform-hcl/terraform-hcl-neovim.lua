@@ -2,7 +2,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
-      return require("mac_dev_setup.config.tooling").extend_servers(opts, {
+      return require("user.config.tooling").extend_servers(opts, {
         terraformls = {},
       })
     end,
@@ -10,7 +10,7 @@ return {
   {
     "stevearc/conform.nvim",
     opts = function(_, opts)
-      return require("mac_dev_setup.config.tooling").extend_formatters(opts, {
+      return require("user.config.tooling").extend_formatters(opts, {
         hcl = { "terraform_fmt" },
         terraform = { "terraform_fmt" },
         ["terraform-vars"] = { "terraform_fmt" },
@@ -20,7 +20,7 @@ return {
   {
     "mfussenegger/nvim-lint",
     opts = function(_, opts)
-      return require("mac_dev_setup.config.tooling").extend_linters(opts, {
+      return require("user.config.tooling").extend_linters(opts, {
         terraform = { "tflint" },
         ["terraform-vars"] = { "tflint" },
       })

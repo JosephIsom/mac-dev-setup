@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 # shellcheck disable=SC2296
-# Base completions (mac-dev-setup)
+# Base completions
 zmodload zsh/complist
 
 mkdir -p "$HOME/.zsh/cache"

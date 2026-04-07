@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 # shellcheck disable=SC1091,SC2016
-# fzf-tab integration (mac-dev-setup)
+# fzf-tab integration
 if [[ -r "$HOME/.zsh/vendor/fzf-tab/fzf-tab.plugin.zsh" ]]; then
   source "$HOME/.zsh/vendor/fzf-tab/fzf-tab.plugin.zsh"
 

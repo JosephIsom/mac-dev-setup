@@ -15,7 +15,7 @@ return {
       })
     end,
     opts = function(_, opts)
-      return require("mac_dev_setup.config.tooling").extend_linters(opts, {
+      return require("user.config.tooling").extend_linters(opts, {
         ansible = { "ansible_lint" },
         ["yaml.ansible"] = { "ansible_lint" },
       })
@@ -24,7 +24,7 @@ return {
   {
     "stevearc/conform.nvim",
     opts = function(_, opts)
-      return require("mac_dev_setup.config.tooling").extend_formatters(opts, {
+      return require("user.config.tooling").extend_formatters(opts, {
         ansible = { "ansible-lint" },
         ["yaml.ansible"] = { "ansible-lint" },
       })

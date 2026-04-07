@@ -10,7 +10,7 @@ main() {
   load_local_edge_environment
   require_local_edge_setup "caddy validate"
   validate_managed_caddyfile
-  log_success "Managed local-edge Caddy config is valid."
+  log_success "Local-edge Caddy config is valid."
 }
 
 main "$@"

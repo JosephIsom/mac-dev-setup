@@ -5,7 +5,7 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_ASCIIDOC_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/files/asciidoc/asciidoc-neovim.lua"
-TARGET_ASCIIDOC_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/files_asciidoc.lua"
+TARGET_ASCIIDOC_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/files_asciidoc.lua"
 
 install_asciidoc_neovim_plugin() {
   install_managed_nvim_plugin "$REPO_ASCIIDOC_NVIM_PLUGIN" "$(basename "$TARGET_ASCIIDOC_NVIM_PLUGIN")" >/dev/null

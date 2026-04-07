@@ -8,10 +8,10 @@ APP_PATH="/Applications/Windsurf.app"
 REPO_WINDSURF_SETTINGS="$REPO_ROOT/scripts/modules/editors/vscode/vscode-core-vscode-settings.jsonc"
 TARGET_WINDSURF_USER_DIR="$HOME/Library/Application Support/Windsurf/User"
 TARGET_WINDSURF_SETTINGS="$TARGET_WINDSURF_USER_DIR/settings.json"
-WINDSURF_MANAGED_MARKER='"mac-dev-setup.managed": true'
+WINDSURF_MANAGED_MARKER='"user.settings": true'
 
 backup_if_unmanaged() {
-  local backup_file="$TARGET_WINDSURF_SETTINGS.pre-mac-dev-setup.bak"
+  local backup_file="$TARGET_WINDSURF_SETTINGS.pre-bootstrap.bak"
 
   [[ -f "$TARGET_WINDSURF_SETTINGS" ]] || return 0
   grep -Fq "$WINDSURF_MANAGED_MARKER" "$TARGET_WINDSURF_SETTINGS" && return 0

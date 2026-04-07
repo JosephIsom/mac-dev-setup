@@ -49,7 +49,7 @@ Additional extensions come from enabled language, container, cloud, and AI modul
 | `editors/windsurf/windsurf-app.sh` | On | Installs Windsurf and writes managed Islands Dark settings. | Launch Windsurf normally. | [Windsurf](https://windsurf.com/) | Sign in if needed. |
 | `editors/android-studio/android-studio-app.sh` | On | Installs Android Studio and writes setup notes. | Use it for Android SDK, emulator, and Android IDE workflows. | [Android Studio](https://developer.android.com/studio) | Complete the Setup Wizard and install SDK/emulator components. |
 | `editors/helix/helix-cli.sh` | Optional | Installs Helix plus a managed Islands Dark theme/config. | Run `hx`. | [Helix](https://helix-editor.com/) | Use `:theme islands_dark` in an existing session if needed. |
-| `editors/neovim/neovim-cli.sh` | Optional | Installs Neovim, managed baseline config, `lazy.nvim`, and syncs plugins. | Run `nvim`; put personal edits in `~/.config/nvim/lua/mac_dev_setup/local.lua`. | [Neovim](https://neovim.io/), [lazy.nvim](https://github.com/folke/lazy.nvim) | The repo owns the baseline; keep personal changes in `local.lua`. |
+| `editors/neovim/neovim-cli.sh` | Optional | Installs Neovim, managed baseline config, `lazy.nvim`, and syncs plugins. | Run `nvim`; put personal edits in `~/.config/nvim/lua/user/local.lua`. | [Neovim](https://neovim.io/), [lazy.nvim](https://github.com/folke/lazy.nvim) | The repo owns the baseline; keep personal changes in `local.lua`. |
 | `editors/sublime-text/sublime-text-app.sh` | Optional | Installs Sublime Text and enables `subl`. | Use `subl .` or launch the app. | [Sublime Text](https://www.sublimetext.com/) | None. |
 | `editors/zed/zed-app.sh` | Optional | Installs Zed and writes CLI setup notes. | Launch Zed normally. | [Zed](https://zed.dev/) | Open Zed and run `cli: install` from the command palette to install the `zed` CLI. |
 | `editors/kiro/kiro-app.sh` | Optional | Installs Kiro IDE. | Launch the app normally. | [Kiro](https://kiro.dev/) | Optional. |
@@ -82,7 +82,7 @@ That means enabling a runtime or tool can automatically add:
 
 - the right VS Code extension
 - matching editor settings
-- reusable template files under `~/.config/mac-dev-setup/vscode/templates`
+- reusable template files under `~/.config/vscode/templates`
 
 ## Neovim
 
@@ -93,4 +93,4 @@ Neovim is optional, but once enabled it gets:
 - shared UI/editor plugins
 - module-owned language/tool specs
 
-Use `~/.config/nvim/lua/mac_dev_setup/local.lua` for local overrides.
+Use `~/.config/nvim/lua/user/local.lua` for local overrides.

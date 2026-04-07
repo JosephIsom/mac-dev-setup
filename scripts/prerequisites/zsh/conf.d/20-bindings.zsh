@@ -1,5 +1,5 @@
 # shellcheck shell=bash
-# Key bindings (mac-dev-setup)
+# Key bindings
 bindkey -e
 
 # Use Ctrl+Left / Ctrl+Right to move by words in common terminals.

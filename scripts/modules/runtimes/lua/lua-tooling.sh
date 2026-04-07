@@ -5,9 +5,9 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_LUA_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/runtimes/lua/lua-neovim.lua"
-TARGET_LUA_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/runtimes_lua.lua"
+TARGET_LUA_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/runtimes_lua.lua"
 REPO_LUA_VSCODE_EXTENSIONS="$REPO_ROOT/scripts/modules/runtimes/lua/lua-vscode-extensions.txt"
-TARGET_LUA_VSCODE_EXTENSIONS="$HOME/.config/mac-dev-setup/vscode/extensions/lua-vscode-extensions.txt"
+TARGET_LUA_VSCODE_EXTENSIONS="$HOME/.config/vscode/extensions/lua-vscode-extensions.txt"
 
 install_lua_neovim_plugin() {
   install_managed_nvim_plugin "$REPO_LUA_NVIM_PLUGIN" "$(basename "$TARGET_LUA_NVIM_PLUGIN")" >/dev/null

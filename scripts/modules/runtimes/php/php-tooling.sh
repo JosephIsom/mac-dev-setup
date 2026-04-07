@@ -5,11 +5,11 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_PHP_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/runtimes/php/php-neovim.lua"
-TARGET_PHP_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/runtimes_php.lua"
+TARGET_PHP_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/runtimes_php.lua"
 REPO_PHP_VSCODE_EXTENSIONS="$REPO_ROOT/scripts/modules/runtimes/php/php-vscode-extensions.txt"
-TARGET_PHP_VSCODE_EXTENSIONS="$HOME/.config/mac-dev-setup/vscode/extensions/php-vscode-extensions.txt"
+TARGET_PHP_VSCODE_EXTENSIONS="$HOME/.config/vscode/extensions/php-vscode-extensions.txt"
 REPO_PHP_VSCODE_SETTINGS="$REPO_ROOT/scripts/modules/runtimes/php/php-vscode-settings.jsonc"
-TARGET_PHP_VSCODE_SETTINGS="$HOME/.config/mac-dev-setup/vscode/settings/php-vscode-settings.jsonc"
+TARGET_PHP_VSCODE_SETTINGS="$HOME/.config/vscode/settings/php-vscode-settings.jsonc"
 
 install_php_neovim_plugin() {
   install_managed_nvim_plugin "$REPO_PHP_NVIM_PLUGIN" "$(basename "$TARGET_PHP_NVIM_PLUGIN")" >/dev/null

@@ -5,11 +5,11 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_GITHUB_ACTIONS_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/specs/github-actions/github-actions-neovim.lua"
-TARGET_GITHUB_ACTIONS_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/specs_github_actions.lua"
+TARGET_GITHUB_ACTIONS_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/specs_github_actions.lua"
 REPO_GITHUB_ACTIONS_VSCODE_EXTENSIONS="$REPO_ROOT/scripts/modules/specs/github-actions/github-actions-vscode-extensions.txt"
-TARGET_GITHUB_ACTIONS_VSCODE_EXTENSIONS="$HOME/.config/mac-dev-setup/vscode/extensions/github-actions-vscode-extensions.txt"
+TARGET_GITHUB_ACTIONS_VSCODE_EXTENSIONS="$HOME/.config/vscode/extensions/github-actions-vscode-extensions.txt"
 REPO_GITHUB_ACTIONS_VSCODE_SETTINGS="$REPO_ROOT/scripts/modules/specs/github-actions/github-actions-vscode-settings.jsonc"
-TARGET_GITHUB_ACTIONS_VSCODE_SETTINGS="$HOME/.config/mac-dev-setup/vscode/settings/github-actions-vscode-settings.jsonc"
+TARGET_GITHUB_ACTIONS_VSCODE_SETTINGS="$HOME/.config/vscode/settings/github-actions-vscode-settings.jsonc"
 
 install_github_actions_neovim_plugin() {
   install_managed_nvim_plugin "$REPO_GITHUB_ACTIONS_NVIM_PLUGIN" "$(basename "$TARGET_GITHUB_ACTIONS_NVIM_PLUGIN")" >/dev/null

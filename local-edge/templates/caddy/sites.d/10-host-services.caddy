@@ -1,4 +1,4 @@
-# Managed by mac-dev-setup local-edge.
+# Local edge configuration.
 # Safe to edit locally. setup will not overwrite a changed file.
 #
 # Host-facing services should bind to loopback ports on the host or via Docker or Colima.

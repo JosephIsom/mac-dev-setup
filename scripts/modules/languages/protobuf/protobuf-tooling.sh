@@ -5,7 +5,7 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_PROTOBUF_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/languages/protobuf/protobuf-neovim.lua"
-TARGET_PROTOBUF_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/languages_protobuf.lua"
+TARGET_PROTOBUF_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/languages_protobuf.lua"
 
 install_protobuf_neovim_plugin() {
   install_managed_nvim_plugin "$REPO_PROTOBUF_NVIM_PLUGIN" "$(basename "$TARGET_PROTOBUF_NVIM_PLUGIN")" >/dev/null

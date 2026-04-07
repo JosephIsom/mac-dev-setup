@@ -10,7 +10,7 @@ TARGET_GLS_DIR="$HOME/.local/share/groovy-language-server"
 TARGET_GLS_BIN_DIR="$HOME/.local/bin"
 TARGET_GLS_BIN="$TARGET_GLS_BIN_DIR/groovy-language-server"
 TARGET_GLS_JAR="$TARGET_GLS_DIR/build/libs/groovy-language-server-all.jar"
-TARGET_GROOVY_LSP_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/languages_gradle_groovy.lua"
+TARGET_GROOVY_LSP_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/languages_gradle_groovy.lua"
 
 install_wrapper() {
   [[ -f "$REPO_GLS_WRAPPER" ]] || die "Missing Groovy language server wrapper: $REPO_GLS_WRAPPER"

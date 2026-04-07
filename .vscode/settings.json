@@ -1,6 +1,7 @@
 {
   "cSpell.words": [
     "asyncapi",
+    "atuin",
     "autohide",
     "bitwarden",
     "buildx",
@@ -27,6 +28,7 @@
     "kiro",
     "kubectx",
     "langserver",
+    "lazydocker",
     "lspconfig",
     "luacheck",
     "mfussenegger",

@@ -5,11 +5,11 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_RUST_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/runtimes/rust/rust-neovim.lua"
-TARGET_RUST_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/runtimes_rust.lua"
+TARGET_RUST_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/runtimes_rust.lua"
 REPO_RUST_VSCODE_EXTENSIONS="$REPO_ROOT/scripts/modules/runtimes/rust/rust-vscode-extensions.txt"
-TARGET_RUST_VSCODE_EXTENSIONS="$HOME/.config/mac-dev-setup/vscode/extensions/rust-vscode-extensions.txt"
+TARGET_RUST_VSCODE_EXTENSIONS="$HOME/.config/vscode/extensions/rust-vscode-extensions.txt"
 REPO_RUST_VSCODE_SETTINGS="$REPO_ROOT/scripts/modules/runtimes/rust/rust-vscode-settings.jsonc"
-TARGET_RUST_VSCODE_SETTINGS="$HOME/.config/mac-dev-setup/vscode/settings/rust-vscode-settings.jsonc"
+TARGET_RUST_VSCODE_SETTINGS="$HOME/.config/vscode/settings/rust-vscode-settings.jsonc"
 
 install_rust_neovim_plugin() {
   install_managed_nvim_plugin "$REPO_RUST_NVIM_PLUGIN" "$(basename "$TARGET_RUST_NVIM_PLUGIN")" >/dev/null

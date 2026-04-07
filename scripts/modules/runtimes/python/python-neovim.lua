@@ -2,7 +2,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
-      return require("mac_dev_setup.config.tooling").extend_servers(opts, {
+      return require("user.config.tooling").extend_servers(opts, {
         pyright = {},
       })
     end,
@@ -10,7 +10,7 @@ return {
   {
     "stevearc/conform.nvim",
     opts = function(_, opts)
-      return require("mac_dev_setup.config.tooling").extend_formatters(opts, {
+      return require("user.config.tooling").extend_formatters(opts, {
         python = { "ruff_fix", "ruff_format" },
       })
     end,
@@ -18,7 +18,7 @@ return {
   {
     "mfussenegger/nvim-lint",
     opts = function(_, opts)
-      return require("mac_dev_setup.config.tooling").extend_linters(opts, {
+      return require("user.config.tooling").extend_linters(opts, {
         python = { "ruff", "mypy" },
       })
     end,

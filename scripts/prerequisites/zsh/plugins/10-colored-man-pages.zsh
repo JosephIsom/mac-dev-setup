@@ -1,5 +1,5 @@
 # shellcheck shell=bash
-# colored man pages (mac-dev-setup)
+# colored man pages
 if command -v tput >/dev/null 2>&1; then
   LESS_TERMCAP_mb="$(tput bold; tput setaf 3)"
   LESS_TERMCAP_md="$(tput bold; tput setaf 6)"

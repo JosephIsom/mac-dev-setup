@@ -5,11 +5,11 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_YAML_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/files/yaml/yaml-neovim.lua"
-TARGET_YAML_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/files_yaml.lua"
+TARGET_YAML_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/files_yaml.lua"
 REPO_YAML_VSCODE_EXTENSIONS="$REPO_ROOT/scripts/modules/files/yaml/yaml-vscode-extensions.txt"
-TARGET_YAML_VSCODE_EXTENSIONS="$HOME/.config/mac-dev-setup/vscode/extensions/yaml-vscode-extensions.txt"
+TARGET_YAML_VSCODE_EXTENSIONS="$HOME/.config/vscode/extensions/yaml-vscode-extensions.txt"
 REPO_YAML_VSCODE_SETTINGS="$REPO_ROOT/scripts/modules/files/yaml/yaml-vscode-settings.jsonc"
-TARGET_YAML_VSCODE_SETTINGS="$HOME/.config/mac-dev-setup/vscode/settings/yaml-vscode-settings.jsonc"
+TARGET_YAML_VSCODE_SETTINGS="$HOME/.config/vscode/settings/yaml-vscode-settings.jsonc"
 
 install_yaml_neovim_plugin() {
   install_managed_nvim_plugin "$REPO_YAML_NVIM_PLUGIN" "$(basename "$TARGET_YAML_NVIM_PLUGIN")" >/dev/null

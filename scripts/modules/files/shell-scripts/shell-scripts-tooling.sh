@@ -5,7 +5,7 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_SHELL_SCRIPTS_NVIM_PLUGIN="$REPO_ROOT/scripts/modules/files/shell-scripts/shell-scripts-neovim.lua"
-TARGET_SHELL_SCRIPTS_NVIM_PLUGIN="$HOME/.config/nvim/lua/mac_dev_setup/plugins/files_shell_scripts.lua"
+TARGET_SHELL_SCRIPTS_NVIM_PLUGIN="$HOME/.config/nvim/lua/user/plugins/files_shell_scripts.lua"
 
 install_shell_scripts_neovim_plugin() {
   install_managed_nvim_plugin "$REPO_SHELL_SCRIPTS_NVIM_PLUGIN" "$(basename "$TARGET_SHELL_SCRIPTS_NVIM_PLUGIN")" >/dev/null

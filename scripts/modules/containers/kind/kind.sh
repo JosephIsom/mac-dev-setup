@@ -5,7 +5,7 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_KIND_VSCODE_EXTENSIONS="$REPO_ROOT/scripts/modules/containers/kind/kind-vscode-extensions.txt"
-TARGET_KIND_VSCODE_EXTENSIONS="$HOME/.config/mac-dev-setup/vscode/extensions/kind-vscode-extensions.txt"
+TARGET_KIND_VSCODE_EXTENSIONS="$HOME/.config/vscode/extensions/kind-vscode-extensions.txt"
 
 install_kind_vscode_extensions() {
   install_managed_vscode_extensions_manifest "$REPO_KIND_VSCODE_EXTENSIONS" "$(basename "$TARGET_KIND_VSCODE_EXTENSIONS")" >/dev/null

@@ -1,3 +1,4 @@
+# bootstrap zsh config
 # Login shell initialization
 # Ensure Homebrew is in PATH for login shells
 if [[ -x /opt/homebrew/bin/brew ]]; then

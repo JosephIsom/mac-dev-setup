@@ -9,7 +9,7 @@ return {
       })
     end,
     opts = function(_, opts)
-      return require("mac_dev_setup.config.tooling").extend_servers(opts, {
+      return require("user.config.tooling").extend_servers(opts, {
         cue_lsp = {
           cmd = { "cue", "lsp", "serve" },
           filetypes = { "cue" },
@@ -28,7 +28,7 @@ return {
         stdin = false,
       }
 
-      return require("mac_dev_setup.config.tooling").extend_formatters(opts, {
+      return require("user.config.tooling").extend_formatters(opts, {
         cue = { "cue_fmt" },
       })
     end,
@@ -36,7 +36,7 @@ return {
   {
     "mfussenegger/nvim-lint",
     opts = function(_, opts)
-      return require("mac_dev_setup.config.tooling").extend_linters(opts, {
+      return require("user.config.tooling").extend_linters(opts, {
         cue = { "cue" },
       })
     end,

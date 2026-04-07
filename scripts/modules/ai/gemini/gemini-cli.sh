@@ -5,9 +5,9 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 REPO_GEMINI_VSCODE_EXTENSIONS="$REPO_ROOT/scripts/modules/ai/gemini/gemini-vscode-extensions.txt"
-TARGET_GEMINI_VSCODE_EXTENSIONS="$HOME/.config/mac-dev-setup/vscode/extensions/gemini-vscode-extensions.txt"
+TARGET_GEMINI_VSCODE_EXTENSIONS="$HOME/.config/vscode/extensions/gemini-vscode-extensions.txt"
 REPO_GEMINI_VSCODE_SETTINGS="$REPO_ROOT/scripts/modules/ai/gemini/gemini-vscode-settings.jsonc"
-TARGET_GEMINI_VSCODE_SETTINGS="$HOME/.config/mac-dev-setup/vscode/settings/gemini-vscode-settings.jsonc"
+TARGET_GEMINI_VSCODE_SETTINGS="$HOME/.config/vscode/settings/gemini-vscode-settings.jsonc"
 
 install_gemini_vscode_extensions() {
   install_managed_vscode_extensions_manifest "$REPO_GEMINI_VSCODE_EXTENSIONS" "$(basename "$TARGET_GEMINI_VSCODE_EXTENSIONS")" >/dev/null
