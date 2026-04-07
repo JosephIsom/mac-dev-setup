@@ -31,7 +31,7 @@ main() {
   # --------------------------------------------------------------------------------------------------
 
   # Configure source control identity and authentication
-  !Review:  run_script_path "$MODULES_DIR/accounts/github/github-ssh.sh"
+  # run_script_path "$MODULES_DIR/accounts/github/github-ssh.sh"
 
 
   # --------------------------------------------------------------------------------------------------
@@ -47,7 +47,7 @@ main() {
   run_script_path "$MODULES_DIR/shell/cli/ripgrep/ripgrep.sh"
   run_script_path "$MODULES_DIR/shell/cli/fd/fd.sh"
   run_script_path "$MODULES_DIR/shell/cli/zoxide/zoxide.sh"
-  run_script_path "$MODULES_DIR/shell/cli/atuin/atuin.sh"
+  # run_script_path "$MODULES_DIR/shell/cli/atuin/atuin.sh"
   run_script_path "$MODULES_DIR/shell/cli/tree/tree.sh"
   run_script_path "$MODULES_DIR/shell/cli/tldr/tldr.sh" # Note that tldr is deprecated and tlrc is actually installed by this script.
 
@@ -84,7 +84,7 @@ main() {
   # --------------------------------------------------------------------------------------------------
 
   # Set up GitHub command-line access
-  Review:  run_script_path "$MODULES_DIR/shell/cli/github/github-cli.sh"
+  run_script_path "$MODULES_DIR/shell/cli/github/github-cli.sh"
 
   # Set up Git-focused terminal tools
   run_script_path "$MODULES_DIR/shell/cli/pre-commit/pre-commit.sh"
@@ -96,7 +96,6 @@ main() {
 
   # Set up repository automation and CI authoring tools
   run_script_path "$MODULES_DIR/specs/github-actions/github-actions-tooling.sh"
-  run_script_path "$MODULES_DIR/specs/jsonnet/jsonnet-tooling.sh"
 
 
   # --------------------------------------------------------------------------------------------------
@@ -104,7 +103,7 @@ main() {
   # --------------------------------------------------------------------------------------------------
 
   # Set up C and C++ tooling
-  run_script_path "$MODULES_DIR/languages/c-cpp/c-cpp-tooling.sh"
+  # run_script_path "$MODULES_DIR/languages/c-cpp/c-cpp-tooling.sh"
   # run_script_path "$MODULES_DIR/languages/c-cpp/cppcheck.sh"
   # run_script_path "$MODULES_DIR/languages/c-cpp/gdb.sh"
   # run_script_path "$MODULES_DIR/languages/c-cpp/ccache.sh"
@@ -171,8 +170,8 @@ main() {
   # run_script_path "$MODULES_DIR/runtimes/swift/swift-tooling.sh"
 
   # Set up Rust runtime and tooling
-  # run_script_path "$MODULES_DIR/runtimes/rust/rust-runtime.sh"
-  # run_script_path "$MODULES_DIR/runtimes/rust/rust-tooling.sh"
+  run_script_path "$MODULES_DIR/runtimes/rust/rust-runtime.sh"
+  run_script_path "$MODULES_DIR/runtimes/rust/rust-tooling.sh"
 
 
   # --------------------------------------------------------------------------------------------------
@@ -180,7 +179,7 @@ main() {
   # --------------------------------------------------------------------------------------------------
 
   # Set up general build and task automation tools
-  # run_script_path "$MODULES_DIR/shell/cli/make/make.sh"
+  run_script_path "$MODULES_DIR/shell/cli/make/make.sh"
   run_script_path "$MODULES_DIR/files/taskfile/taskfile-tooling.sh"
   run_script_path "$MODULES_DIR/files/justfile/justfile-tooling.sh"
 
@@ -199,6 +198,7 @@ main() {
   run_script_path "$MODULES_DIR/specs/openapi/openapi-tooling.sh"
   # run_script_path "$MODULES_DIR/specs/asyncapi/asyncapi-tooling.sh"
   run_script_path "$MODULES_DIR/specs/json-schema/json-schema-tooling.sh"
+  run_script_path "$MODULES_DIR/specs/jsonnet/jsonnet-tooling.sh"
 
   # Set up data inspection and transformation tools
   run_script_path "$MODULES_DIR/shell/cli/jwt-cli/jwt-cli.sh"
@@ -206,7 +206,7 @@ main() {
   run_script_path "$MODULES_DIR/shell/cli/yq/yq.sh"
 
   # Set up API request and client tools
-  # run_script_path "$MODULES_DIR/shell/cli/httpie/httpie.sh"
+  run_script_path "$MODULES_DIR/shell/cli/httpie/httpie.sh"
   # run_script_path "$MODULES_DIR/desktop/rest-clients/bruno/bruno.sh"
   # run_script_path "$MODULES_DIR/desktop/rest-clients/hoppscotch/hoppscotch.sh"
   run_script_path "$MODULES_DIR/desktop/rest-clients/httpie-desktop/httpie-desktop.sh"
@@ -221,15 +221,15 @@ main() {
   # Set up local container runtime tools
   run_script_path "$MODULES_DIR/containers/colima/colima.sh"
   run_script_path "$MODULES_DIR/containers/docker/docker-cli.sh"
-  # run_script_path "$MODULES_DIR/containers/buildx/buildx.sh"
-  # run_script_path "$MODULES_DIR/containers/compose/compose.sh"
-  # run_script_path "$MODULES_DIR/containers/caddy/caddy.sh"
-  # run_script_path "$MODULES_DIR/containers/colima/colima-start.sh"
-  # run_script_path "$MODULES_DIR/containers/docker/docker-verify.sh"
+  run_script_path "$MODULES_DIR/containers/buildx/buildx.sh"
+  run_script_path "$MODULES_DIR/containers/compose/compose.sh"
+  run_script_path "$MODULES_DIR/containers/caddy/caddy.sh"
+  run_script_path "$MODULES_DIR/containers/colima/colima-start.sh"
+  run_script_path "$MODULES_DIR/containers/docker/docker-verify.sh"
 
   # Set up container definition and platform authoring tools
-  # run_script_path "$MODULES_DIR/specs/dockerfile/dockerfile-tooling.sh"
-  # run_script_path "$MODULES_DIR/specs/compose/compose-tooling.sh"
+  run_script_path "$MODULES_DIR/specs/dockerfile/dockerfile-tooling.sh"
+  run_script_path "$MODULES_DIR/specs/compose/compose-tooling.sh"
   run_script_path "$MODULES_DIR/specs/helm/helm-tooling.sh"
   # run_script_path "$MODULES_DIR/containers/kind/kind.sh"
   # run_script_path "$MODULES_DIR/containers/kubectl/kubectl.sh"
@@ -266,8 +266,8 @@ main() {
   # --------------------------------------------------------------------------------------------------
 
   # Set up frontend framework tooling
-  run_script_path "$MODULES_DIR/languages/vue/vue-tooling.sh"
-  run_script_path "$MODULES_DIR/languages/svelte/svelte-tooling.sh"
+  # run_script_path "$MODULES_DIR/languages/vue/vue-tooling.sh"
+  # run_script_path "$MODULES_DIR/languages/svelte/svelte-tooling.sh"
 
   # Set up web markup and styling tools
   run_script_path "$MODULES_DIR/files/html/html-tooling.sh"
@@ -305,9 +305,9 @@ main() {
 
   # Set up IntelliJ IDEA
   run_script_path "$MODULES_DIR/editors/intellij/toolbox.sh"
-  run_script_path "$MODULES_DIR/editors/intellij/idea.sh"
-  run_script_path "$MODULES_DIR/editors/intellij/ai.sh"
-  run_script_path "$MODULES_DIR/editors/intellij/intellij-cli.sh"
+  # run_script_path "$MODULES_DIR/editors/intellij/idea.sh"
+  # run_script_path "$MODULES_DIR/editors/intellij/ai.sh"
+  # run_script_path "$MODULES_DIR/editors/intellij/intellij-cli.sh"
 
   # Set up other editors and IDEs
   # run_script_path "$MODULES_DIR/editors/helix/helix-cli.sh"
@@ -318,6 +318,18 @@ main() {
   # run_script_path "$MODULES_DIR/editors/kiro/kiro-app.sh"
   # run_script_path "$MODULES_DIR/editors/kiro/kiro-cli.sh"
   # run_script_path "$MODULES_DIR/editors/windsurf/windsurf-app.sh"
+
+  # Set up AI-assisted development tools and desktop apps
+  run_script_path "$MODULES_DIR/ai/codex/codex-app.sh"
+  run_script_path "$MODULES_DIR/ai/codex/codex-cli.sh"
+  # run_script_path "$MODULES_DIR/ai/aider/aider-cli.sh"
+  # run_script_path "$MODULES_DIR/ai/claude/claude-cli.sh"
+  run_script_path "$MODULES_DIR/ai/chatgpt/chatgpt-app.sh"
+  # run_script_path "$MODULES_DIR/ai/continue/continue-cli.sh"
+  # run_script_path "$MODULES_DIR/ai/gemini/gemini-cli.sh"
+  run_script_path "$MODULES_DIR/ai/github-copilot/github-copilot-cli.sh"
+  # run_script_path "$MODULES_DIR/ai/ollama/ollama-cli.sh"
+  # run_script_path "$MODULES_DIR/ai/lm-studio/lm-studio-app.sh"
 
   # --------------------------------------------------------------------------------------------------
   # Database workflow
@@ -376,24 +388,6 @@ main() {
   run_script_path "$MODULES_DIR/terminals/ghostty/ghostty-app.sh"
   # run_script_path "$MODULES_DIR/terminals/wezterm/wezterm-app.sh"
   # run_script_path "$MODULES_DIR/terminals/warp/warp-app.sh"
-
-
-  # --------------------------------------------------------------------------------------------------
-  # AI assistant workflow
-  # --------------------------------------------------------------------------------------------------
-
-  # Set up standalone AI applications and CLIs
-  run_script_path "$MODULES_DIR/ai/codex/codex-app.sh"
-  run_script_path "$MODULES_DIR/ai/codex/codex-cli.sh"
-  # run_script_path "$MODULES_DIR/ai/aider/aider-cli.sh"
-  # run_script_path "$MODULES_DIR/ai/claude/claude-cli.sh"
-  run_script_path "$MODULES_DIR/ai/chatgpt/chatgpt-app.sh"
-  # run_script_path "$MODULES_DIR/ai/continue/continue-cli.sh"
-  # run_script_path "$MODULES_DIR/ai/gemini/gemini-cli.sh"
-  run_script_path "$MODULES_DIR/ai/github-copilot/github-copilot-cli.sh"
-  # run_script_path "$MODULES_DIR/ai/ollama/ollama-cli.sh"
-  # run_script_path "$MODULES_DIR/ai/lm-studio/lm-studio-app.sh"
-
 
   # ------------------------------------------------------------------------------------------------
   # Finalize VS Code after all enabled modules have staged their assets.

@@ -5,7 +5,7 @@ set -euo pipefail
 source "$LIB_DIR/common.sh"
 
 main() {
-  brew_install_and_verify_command "tlrc" "tlrc" "tlrc" --version
+  brew_install_and_verify_command "tlrc" "tldr" "tlrc" --version
 }
 
 main "$@"
